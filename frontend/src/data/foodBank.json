@@ -1,0 +1,14 @@
+[
+  { "id": 1, "name": "Lomo Saltado", "calories": 650, "macros": { "p": 35, "c": 75, "g": 22 }, "tags": ["criollo", "restaurante", "carne"] },
+  { "id": 2, "name": "Ceviche Mixto", "calories": 320, "macros": { "p": 45, "c": 30, "g": 4 }, "tags": ["criollo", "pescado", "saludable"] },
+  { "id": 3, "name": "Ají de Gallina", "calories": 580, "macros": { "p": 30, "c": 55, "g": 26 }, "tags": ["criollo", "pollo", "casero"] },
+  { "id": 4, "name": "Pollo a la Brasa (1/4 con papas y ensalada)", "calories": 950, "macros": { "p": 55, "c": 80, "g": 45 }, "tags": ["fastfood", "pollo", "común"] },
+  { "id": 5, "name": "Chaufa de Pollo", "calories": 720, "macros": { "p": 32, "c": 95, "g": 24 }, "tags": ["chifa", "arroz", "restaurante"] },
+  { "id": 6, "name": "Tallarines Verdes con Bistec", "calories": 810, "macros": { "p": 42, "c": 85, "g": 35 }, "tags": ["casero", "pasta", "carne"] },
+  { "id": 7, "name": "Pan con Chicharrón", "calories": 640, "macros": { "p": 28, "c": 55, "g": 34 }, "tags": ["desayuno", "cerdo", "callejero"] },
+  { "id": 8, "name": "Empanada de Carne", "calories": 350, "macros": { "p": 12, "c": 38, "g": 18 }, "tags": ["snack", "piqueo", "panadería"] },
+  { "id": 9, "name": "Papa a la Huancaína", "calories": 420, "macros": { "p": 10, "c": 45, "g": 24 }, "tags": ["entrada", "papa", "queso"] },
+  { "id": 10, "name": "Arroz con Pollo", "calories": 610, "macros": { "p": 35, "c": 75, "g": 18 }, "tags": ["casero", "arroz", "pollo"] },
+  { "id": 11, "name": "Anticuchos (2 palitos con papa)", "calories": 480, "macros": { "p": 45, "c": 40, "g": 16 }, "tags": ["callejero", "carne", "noche"] },
+  { "id": 12, "name": "Menu Ejecutivo (Sopa + Segundo estándar)", "calories": 850, "macros": { "p": 40, "c": 110, "g": 28 }, "tags": ["restaurante", "almuerzo", "diario"] }
+]

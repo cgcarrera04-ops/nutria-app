@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "profiles": [
+    {
+      "id":          "demo-001",
+      "created_at":  "2026-04-16T00:00:00Z",
+      "name":        "Carlos",
+      "biometrics": {
+        "weight_kg":  72,
+        "height_cm":  175,
+        "age":        24,
+        "sex":        "Masculino",
+        "somatotype": "athletic"
+      },
+      "goal":        "deficit",
+      "logistics": {
+        "budget_sol_week": 150,
+        "cook_time":       "30min",
+        "equipment":       "gym"
+      },
+      "friction": {
+        "sleep_hours": 7,
+        "stress_level": 3,
+        "activity":    "moderate"
+      },
+      "pandora":     "",
+      "current_week": 1,
+      "current_day":  3,
+      "adherence_pct": 87,
+      "weeks": []
+    }
+  ]
+}

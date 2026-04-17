@@ -1,0 +1,78 @@
+# ─── GUÍA PARA LLENAR LOS 30 PERFILES (BANCO DE RESPUESTAS) ───────────────
+# Para que la aplicación funcione eficientemente y no dependa en su totalidad
+# de las APIs (previniendo caídas o cuotas agotadas), necesitas crear 30 perfiles base
+# en el archivo `d:\Descargas 2.0\PROYECTO\backend\response_bank.json`.
+
+# El archivo JSON debe tener esta estructura principal:
+# {
+#   "version": "1.0",
+#   "plans": [
+#      { PERFIL 1 },
+#      { PERFIL 2 },
+#      ...
+#   ]
+# }
+
+# ── COMBINACIONES SUGERIDAS PARA LOS 30 PERFILES ──────────────────────────
+# Las combinaciones más comunes se basan en estas variables:
+# 1. goal (Objetivo): deficit (perder grasa) | maintain (recomposición) | surplus (ganar músculo)
+# 2. somatotype (Biotipo): slim (ectomorfo) | athletic (mesomorfo) | robust (endomorfo)
+# 3. cookMode (Modo de cocina): cook (cocina en casa) | buy (compra preparado) | mixed (mitad y mitad)
+
+# Te sugiero crear esta matriz para tener la mayor cobertura:
+
+# GRUPO 1: DÉFICIT CALÓRICO (Perder grasa) - 10 perfiles
+# 1. deficit_robust_cook (Endomorfo, cocina en casa) -> Enfoque: control de porciones, recetas saciantes, bajo costo.
+# 2. deficit_robust_buy (Endomorfo, compra preparado) -> Enfoque: opciones saludables en restaurantes/supermercados.
+# 3. deficit_robust_mixed (Endomorfo, mixto) -> Enfoque: meal prep básico + compras inteligentes.
+# 4. deficit_athletic_cook (Mesomorfo, cocina en casa) -> Enfoque: macros balanceados, recetas rápidas.
+# 5. deficit_athletic_buy (Mesomorfo, compra preparado)
+# 6. deficit_athletic_mixed (Mesomorfo, mixto)
+# 7. deficit_slim_cook (Ectomorfo, cocina en casa) -> Enfoque: pequeño déficit, evitar pérdida muscular.
+# 8. deficit_slim_buy (Ectomorfo, compra preparado)
+# 9. deficit_robust_cook_highbudget (Endomorfo, cocina, presupuesto alto) -> Enfoque: ingredientes premium.
+# 10. deficit_athletic_cook_lowbudget (Mesomorfo, cocina, presupuesto bajo) -> Enfoque: atún, huevos, menestras.
+
+# GRUPO 2: SUPERÁVIT CALÓRICO (Ganar músculo) - 10 perfiles
+# 11. surplus_slim_cook (Ectomorfo, cocina en casa) -> Enfoque: alta densidad calórica, licuados, frutos secos.
+# 12. surplus_slim_buy (Ectomorfo, compra preparado)
+# 13. surplus_slim_mixed (Ectomorfo, mixto)
+# 14. surplus_athletic_cook (Mesomorfo, cocina en casa)
+# 15. surplus_athletic_buy (Mesomorfo, compra preparado)
+# 16. surplus_athletic_mixed (Mesomorfo, mixto)
+# 17. surplus_robust_cook (Endomorfo, cocina en casa) -> Enfoque: superávit ligero ("lean bulk"), carbohidratos alrededor del entreno.
+# 18. surplus_robust_buy (Endomorfo, compra preparado)
+# 19. surplus_slim_cook_highbudget (Ectomorfo, cocina, presupuesto alto) -> Enfoque: salmón, cortes magros, suplementos.
+# 20. surplus_athletic_cook_lowbudget (Mesomorfo, cocina, presupuesto bajo) -> Enfoque: avena, maní, pollo entero.
+
+# GRUPO 3: MANTENIMIENTO / RECOMPOSICIÓN - 10 perfiles
+# 21. maintain_athletic_cook (Mesomorfo, cocina en casa) -> Enfoque: balance perfecto, sostenibilidad.
+# 22. maintain_athletic_buy (Mesomorfo, compra preparado)
+# 23. maintain_athletic_mixed (Mesomorfo, mixto)
+# 24. maintain_robust_cook (Endomorfo, cocina en casa)
+# 25. maintain_robust_buy (Endomorfo, compra preparado)
+# 26. maintain_slim_cook (Ectomorfo, cocina en casa)
+# 27. maintain_slim_buy (Ectomorfo, compra preparado)
+# 28. maintain_athletic_cook_highbudget (Mesomorfo, cocina, presupuesto alto)
+# 29. maintain_robust_cook_lowbudget (Endomorfo, cocina, presupuesto bajo)
+# 30. maintain_slim_mixed (Ectomorfo, mixto)
+
+# ── ESTRUCTURA DEL FINGERPRINT ─────────────────────────────────────────────
+# El backend busca una coincidencia exacta o parcial usando la clave "fingerprint".
+# La estructura del fingerprint es:
+# goal_somatotype_cookMode_budget_activity
+
+# Si no vas a especificar presupuesto y actividad para los 30 perfiles, puedes
+# hacer que el backend haga "match parcial" si solo pones:
+# "fingerprint": "deficit_robust_cook"
+# (El backend está programado para hacer fallback a coincidencias parciales).
+
+# ── ¿CÓMO LLENARLOS? ───────────────────────────────────────────────────────
+# 1. Abre el archivo `d:\Descargas 2.0\PROYECTO\backend\response_bank_TEMPLATE.py` que te generé antes.
+# 2. Copia la estructura JSON de allí.
+# 3. Pégala 30 veces en la lista "plans" de `response_bank.json`.
+# 4. Usa ChatGPT, Claude o Gemini directamente (fuera de este entorno) con un prompt como:
+#    "Genera 10 perfiles JSON siguiendo exactamente esta estructura..." (pasándole la plantilla).
+# 5. Pega los resultados en el archivo `response_bank.json`.
+
+# ¡Con eso tendrás un backend robusto y ultrarrápido que no dependerá exclusivamente de la API!

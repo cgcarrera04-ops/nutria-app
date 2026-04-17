@@ -1,0 +1,6411 @@
+{
+  "version": "1.0",
+  "plans": [
+    {
+      "fingerprint": "deficit_robust_cook_low_light",
+      "label": "Déficit · Endomorfo · Cocina · Presupuesto bajo · Actividad ligera",
+      "calories_daily": 1700,
+      "protein_g": 140,
+      "carbs_g": 150,
+      "fat_g": 60,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:30",
+              "kcal": 380,
+              "items": [
+                "3 huevos enteros revueltos",
+                "Avena en hojuelas (30g) cocida con agua",
+                "1 manzana pequeña"
+              ],
+              "plan_b": [
+                "3 huevos duros",
+                "1 plátano",
+                "Café negro"
+              ],
+              "macros": {
+                "p": 22,
+                "c": 40,
+                "g": 15
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 550,
+              "items": [
+                "Hígado de pollo o res a la plancha (150g)",
+                "Lentejas guisadas (150g cocidas)",
+                "Arroz blanco (80g cocido)",
+                "Ensalada de pepino y tomate"
+              ],
+              "plan_b": [
+                "Atún en lata (1 unidad)",
+                "Menestras de sobre lavadas",
+                "Ensalada fresca"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 55,
+                "g": 12
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 220,
+              "items": [
+                "Yogurt natural descremado (150g)",
+                "Maní tostado sin sal (15g)"
+              ],
+              "plan_b": [
+                "Yogurt bebible zero",
+                "Puñado de maní"
+              ],
+              "macros": {
+                "p": 10,
+                "c": 12,
+                "g": 14
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:00",
+              "kcal": 550,
+              "items": [
+                "Pechuga de pollo a la plancha (150g)",
+                "Camote sancochado (150g)",
+                "Brócoli al vapor"
+              ],
+              "plan_b": [
+                "Tortilla de 3 claras y 1 yema",
+                "Camote al microondas",
+                "Espinaca"
+              ],
+              "macros": {
+                "p": 48,
+                "c": 43,
+                "g": 10
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Pechuga de pollo e Hígado",
+          "qty": "1.5 kg",
+          "price": 24,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos",
+          "qty": "1 plancha (30)",
+          "price": 16,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Lentejas y Arroz",
+          "qty": "1 kg c/u",
+          "price": 8,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Camote",
+          "qty": "1.5 kg",
+          "price": 6,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Maní tostado",
+          "qty": "200g",
+          "price": 5,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Yogurt natural",
+          "qty": "1 L",
+          "price": 7,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Vegetales y frutas",
+          "qty": "varios",
+          "price": 15,
+          "cat": "Vegetales"
+        }
+      ],
+      "training": {
+        "split": "FullBody",
+        "sessions_per_week": 3,
+        "session_duration_min": 45,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Cuerpo Completo A",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Sentadilla goblet",
+                "sets": 3,
+                "reps": "10-12",
+                "rest_sec": 90,
+                "muscle": "Piernas",
+                "equipment": "Mancuerna/Pesa rusa",
+                "substitute": "Prensa de piernas",
+                "avoid_if_injury": [
+                  "Rodillas"
+                ]
+              },
+              {
+                "name": "Press de banca con mancuernas",
+                "sets": 3,
+                "reps": "10-12",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Mancuernas",
+                "substitute": "Flexiones",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Cardio LISS",
+            "type": "cardio",
+            "description": "Caminata rápida 30 min"
+          },
+          {
+            "day_of_week": 3,
+            "name": "Cuerpo Completo B",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Peso muerto rumano con mancuernas",
+                "sets": 3,
+                "reps": "10-12",
+                "rest_sec": 90,
+                "muscle": "Isquios",
+                "equipment": "Mancuernas",
+                "substitute": "Curl femoral",
+                "avoid_if_injury": [
+                  "Lumbar"
+                ]
+              },
+              {
+                "name": "Jalón al pecho",
+                "sets": 3,
+                "reps": "10-12",
+                "rest_sec": 90,
+                "muscle": "Espalda",
+                "equipment": "Polea",
+                "substitute": "Remo con mancuernas",
+                "avoid_if_injury": [
+                  "Codos"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 4,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 5,
+            "name": "Cuerpo Completo C",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Descanso Activo",
+            "type": "active_rest",
+            "description": "Movilidad 15 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso total",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "deficit_robust_buy_medium_moderate",
+      "label": "Déficit · Endomorfo · Compra preparado · Presupuesto medio · Actividad moderada",
+      "calories_daily": 1800,
+      "protein_g": 145,
+      "carbs_g": 160,
+      "fat_g": 64,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:00",
+              "kcal": 400,
+              "items": [
+                "Sándwich de pollo deshilachado (pan integral de panadería)",
+                "Café americano sin azúcar"
+              ],
+              "plan_b": [
+                "Empanada horneada de pollo",
+                "Infusión"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 45,
+                "g": 12
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 700,
+              "items": [
+                "1/4 de Pollo a la brasa (pechuga, sin piel)",
+                "Ensalada fresca grande (sin vinagreta, solo limón)",
+                "Papa sancochada (1 unidad mediana)"
+              ],
+              "plan_b": [
+                "Menú: Dieta de pollo (sopa)",
+                "Segundo: Pescado a la plancha con poco arroz"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 60,
+                "g": 25
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "16:30",
+              "kcal": 250,
+              "items": [
+                "Yogurt proteico de supermercado",
+                "1 paquete pequeño de almendras (30g)"
+              ],
+              "plan_b": [
+                "Barrita de proteína baja en azúcar"
+              ],
+              "macros": {
+                "p": 20,
+                "c": 15,
+                "g": 15
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 450,
+              "items": [
+                "Ensalada César con pollo (comprada, usar la mitad del aliño)",
+                "Agua mineral"
+              ],
+              "plan_b": [
+                "Wrap de pollo asado de tienda de conveniencia"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 40,
+                "g": 12
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Presupuesto Desayunos",
+          "qty": "7 días",
+          "price": 70,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Almuerzos",
+          "qty": "7 días",
+          "price": 120,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Cenas",
+          "qty": "7 días",
+          "price": 100,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Snacks supermercado (Yogurt/Almendras)",
+          "qty": "7 días",
+          "price": 40,
+          "cat": "Snacks"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 50,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Máquina de press de pecho",
+                "sets": 3,
+                "reps": "10-12",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Máquina",
+                "substitute": "Press con mancuernas",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Prensa de piernas",
+                "sets": 4,
+                "reps": "10-12",
+                "rest_sec": 90,
+                "muscle": "Piernas",
+                "equipment": "Máquina",
+                "substitute": "Sentadilla libre",
+                "avoid_if_injury": [
+                  "Rodillas"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio",
+            "type": "cardio",
+            "description": "Elíptica 40 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "deficit_robust_mixed_medium_sedentary",
+      "label": "Déficit · Endomorfo · Mixto · Presupuesto medio · Sedentario",
+      "calories_daily": 1600,
+      "protein_g": 135,
+      "carbs_g": 130,
+      "fat_g": 60,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno (Preparado)",
+              "time": "08:00",
+              "kcal": 350,
+              "items": [
+                "2 huevos revueltos con tomate y espinaca",
+                "1 rebanada de pan integral"
+              ],
+              "plan_b": [
+                "Batido de proteína con agua y 1 fruta"
+              ],
+              "macros": {
+                "p": 20,
+                "c": 25,
+                "g": 15
+              }
+            },
+            {
+              "name": "Almuerzo (Comprado)",
+              "time": "13:30",
+              "kcal": 600,
+              "items": [
+                "Menú local: Pollo al horno (sin piel)",
+                "Media porción de arroz",
+                "Porción doble de ensalada fresca"
+              ],
+              "plan_b": [
+                "Ceviche de pescado (sin chicharrón ni camote frito)"
+              ],
+              "macros": {
+                "p": 50,
+                "c": 55,
+                "g": 18
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 200,
+              "items": [
+                "Queso fresco light (50g)",
+                "1 manzana"
+              ],
+              "plan_b": [
+                "Yogurt griego"
+              ],
+              "macros": {
+                "p": 12,
+                "c": 25,
+                "g": 6
+              }
+            },
+            {
+              "name": "Cena (Preparado)",
+              "time": "20:00",
+              "kcal": 450,
+              "items": [
+                "Atún en agua (1 lata)",
+                "Zanahoria y vainitas sancochadas",
+                "1 cucharada de aceite de oliva"
+              ],
+              "plan_b": [
+                "Omelette de atún"
+              ],
+              "macros": {
+                "p": 35,
+                "c": 25,
+                "g": 21
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Huevos y Queso fresco",
+          "qty": "varios",
+          "price": 20,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Atún en agua",
+          "qty": "4 latas",
+          "price": 16,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Pan integral",
+          "qty": "1 bolsa",
+          "price": 7,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Vegetales mixtos y Frutas",
+          "qty": "varios",
+          "price": 25,
+          "cat": "Vegetales"
+        },
+        {
+          "item": "Presupuesto Almuerzos",
+          "qty": "7 días",
+          "price": 90,
+          "cat": "Restaurante"
+        }
+      ],
+      "training": {
+        "split": "FullBody",
+        "sessions_per_week": 2,
+        "session_duration_min": 40,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Cuerpo Completo Ligero",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Sentadilla con peso corporal",
+                "sets": 3,
+                "reps": "15",
+                "rest_sec": 60,
+                "muscle": "Piernas",
+                "equipment": "Ninguno",
+                "substitute": "Sentadilla asistida en silla",
+                "avoid_if_injury": [
+                  "Rodillas"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Caminata",
+            "type": "cardio",
+            "description": "Caminata 30 min (10,000 pasos diarios objetivo)"
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Cuerpo Completo Ligero B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 6,
+            "name": "Caminata",
+            "type": "cardio",
+            "description": "Caminata 40 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "deficit_athletic_cook_medium_moderate",
+      "label": "Déficit · Mesomorfo · Cocina · Presupuesto medio · Actividad moderada",
+      "calories_daily": 1950,
+      "protein_g": 160,
+      "carbs_g": 210,
+      "fat_g": 55,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:00",
+              "kcal": 480,
+              "items": [
+                "3 huevos revueltos",
+                "2 tostadas integrales (50g)",
+                "1 plátano mediano"
+              ],
+              "plan_b": [
+                "Yogurt griego 150g",
+                "Granola 30g",
+                "1 plátano"
+              ],
+              "macros": {
+                "p": 28,
+                "c": 52,
+                "g": 14
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:00",
+              "kcal": 650,
+              "items": [
+                "Arroz integral 1 taza cocido (185g)",
+                "Pechuga de pollo a la plancha 150g",
+                "Ensalada verde con aceite de oliva"
+              ],
+              "plan_b": [
+                "Atún en lata 1 unidad",
+                "Arroz precocido de sobre",
+                "Ensalada de bolsa"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 70,
+                "g": 18
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 220,
+              "items": [
+                "Yogurt griego 150g",
+                "Almendras 20g"
+              ],
+              "plan_b": [
+                "Batido de proteína"
+              ],
+              "macros": {
+                "p": 18,
+                "c": 12,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:00",
+              "kcal": 600,
+              "items": [
+                "Atún en agua 1 lata (170g)",
+                "Camote mediano asado (180g)",
+                "Espinaca salteada con ajo"
+              ],
+              "plan_b": [
+                "Atún directo",
+                "Camote sancochado",
+                "Espinaca cruda"
+              ],
+              "macros": {
+                "p": 42,
+                "c": 58,
+                "g": 10
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Pechuga de pollo",
+          "qty": "1 kg",
+          "price": 18,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos",
+          "qty": "1 docena",
+          "price": 9,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Atún en agua",
+          "qty": "4 latas",
+          "price": 16,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Arroz integral",
+          "qty": "1 kg",
+          "price": 5,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Camote",
+          "qty": "1 kg",
+          "price": 4,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Almendras",
+          "qty": "150g",
+          "price": 12,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Aceite de oliva",
+          "qty": "250ml",
+          "price": 11,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Yogurt griego",
+          "qty": "500g",
+          "price": 12,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Vegetales y Plátanos",
+          "qty": "varios",
+          "price": 15,
+          "cat": "Frutas y Verduras"
+        }
+      ],
+      "training": {
+        "split": "PPL",
+        "sessions_per_week": 5,
+        "session_duration_min": 50,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Empuje (Pecho, Hombro, Tríceps)",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press de banca",
+                "sets": 4,
+                "reps": "8-10",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Barra",
+                "substitute": "Press con mancuernas",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Jalón (Espalda, Bíceps)",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Remo con barra",
+                "sets": 4,
+                "reps": "8-10",
+                "rest_sec": 90,
+                "muscle": "Espalda",
+                "equipment": "Barra",
+                "substitute": "Remo en máquina",
+                "avoid_if_injury": [
+                  "Lumbar"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 3,
+            "name": "Piernas",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Sentadilla frontal",
+                "sets": 4,
+                "reps": "8-10",
+                "rest_sec": 120,
+                "muscle": "Piernas",
+                "equipment": "Barra",
+                "substitute": "Prensa",
+                "avoid_if_injury": [
+                  "Rodillas",
+                  "Muñecas"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 4,
+            "name": "Empuje B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Jalón B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Descanso Activo",
+            "type": "active_rest",
+            "description": "Cardio suave 30 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso total",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "deficit_athletic_buy_high_very",
+      "label": "Déficit · Mesomorfo · Compra preparado · Presupuesto alto · Muy activo",
+      "calories_daily": 2300,
+      "protein_g": 180,
+      "carbs_g": 240,
+      "fat_g": 70,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:30",
+              "kcal": 550,
+              "items": [
+                "Bowl de açai sin azúcar añadida (comprado)",
+                "Topping de proteína de suero y chía",
+                "Café espresso"
+              ],
+              "plan_b": [
+                "Jugo verde y tostadas con palta de cafetería"
+              ],
+              "macros": {
+                "p": 35,
+                "c": 60,
+                "g": 15
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 800,
+              "items": [
+                "Poke Bowl de salmón fresco (restaurante)",
+                "Base de arroz de sushi (media porción), edamame, palta",
+                "Salsa ponzu (evitar mayonesas)"
+              ],
+              "plan_b": [
+                "Ceviche mixto, media porción de camote, chifles limitados"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 85,
+                "g": 25
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "16:30",
+              "kcal": 350,
+              "items": [
+                "Batido de proteína listo para tomar",
+                "1 plátano"
+              ],
+              "plan_b": [
+                "Yogurt Skyr"
+              ],
+              "macros": {
+                "p": 30,
+                "c": 40,
+                "g": 5
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "21:00",
+              "kcal": 600,
+              "items": [
+                "Lomo a la plancha (corte magro, restaurante)",
+                "Vegetales parrilleros",
+                "Media porción de papas doradas"
+              ],
+              "plan_b": [
+                "Sashimi mixto (15 cortes)"
+              ],
+              "macros": {
+                "p": 60,
+                "c": 40,
+                "g": 20
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Presupuesto Desayunos",
+          "qty": "7 días",
+          "price": 140,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Almuerzos (Poke/Sushi)",
+          "qty": "7 días",
+          "price": 250,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Cenas (Carnes/Pescados)",
+          "qty": "7 días",
+          "price": 280,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Batidos RTD (Ready to Drink)",
+          "qty": "7 unidades",
+          "price": 70,
+          "cat": "Suplementos"
+        }
+      ],
+      "training": {
+        "split": "PPL",
+        "sessions_per_week": 6,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Empuje Pesado",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press militar con barra",
+                "sets": 4,
+                "reps": "6-8",
+                "rest_sec": 120,
+                "muscle": "Hombros",
+                "equipment": "Barra",
+                "substitute": "Press con mancuernas",
+                "avoid_if_injury": [
+                  "Hombros",
+                  "Lumbar"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Jalón Pesado",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Piernas Pesado",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Empuje Hipertrofia",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Jalón Hipertrofia",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Piernas Hipertrofia",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso Activo",
+            "type": "active_rest",
+            "description": "Deporte recreativo"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "deficit_athletic_mixed_low_moderate",
+      "label": "Déficit · Mesomorfo · Mixto · Presupuesto bajo · Actividad moderada",
+      "calories_daily": 1900,
+      "protein_g": 155,
+      "carbs_g": 200,
+      "fat_g": 53,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno (Preparado)",
+              "time": "07:00",
+              "kcal": 450,
+              "items": [
+                "4 claras de huevo y 1 yema",
+                "Avena en hojuelas (40g)",
+                "1 plátano"
+              ],
+              "plan_b": [
+                "Pan con atún"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 55,
+                "g": 12
+              }
+            },
+            {
+              "name": "Almuerzo (Comprado)",
+              "time": "13:00",
+              "kcal": 700,
+              "items": [
+                "Menú económico: Pollo a la plancha (2 porciones de carne si es posible)",
+                "Arroz (1 taza)",
+                "Ensalada de col y zanahoria"
+              ],
+              "plan_b": [
+                "Menú: Hígado frito (quitar exceso de aceite), menestras"
+              ],
+              "macros": {
+                "p": 60,
+                "c": 75,
+                "g": 15
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 300,
+              "items": [
+                "Yogurt natural (200g)",
+                "Avena cruda (20g mezclada en yogurt)"
+              ],
+              "plan_b": [
+                "Huevos duros (2 blancos)"
+              ],
+              "macros": {
+                "p": 15,
+                "c": 35,
+                "g": 8
+              }
+            },
+            {
+              "name": "Cena (Preparado)",
+              "time": "20:30",
+              "kcal": 450,
+              "items": [
+                "Lentejas (sobras del día anterior o en lata lavadas) 150g",
+                "2 huevos sancochados",
+                "Tomate picado"
+              ],
+              "plan_b": [
+                "Atún con tomate y cebolla"
+              ],
+              "macros": {
+                "p": 35,
+                "c": 40,
+                "g": 14
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Huevos",
+          "qty": "2 planchas",
+          "price": 30,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Avena",
+          "qty": "1 kg",
+          "price": 6,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Lentejas",
+          "qty": "1 kg",
+          "price": 8,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Yogurt natural",
+          "qty": "2 L",
+          "price": 14,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Plátanos",
+          "qty": "2 kg",
+          "price": 8,
+          "cat": "Frutas"
+        },
+        {
+          "item": "Presupuesto Menú Almuerzo",
+          "qty": "7 días",
+          "price": 85,
+          "cat": "Restaurante"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 55,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Flexiones declinadas",
+                "sets": 4,
+                "reps": "Al fallo",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Peso corporal",
+                "substitute": "Flexiones normales",
+                "avoid_if_injury": [
+                  "Muñecas"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio LISS",
+            "type": "cardio",
+            "description": "Trote suave 30 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "deficit_slim_cook_medium_light",
+      "label": "Déficit · Ectomorfo · Cocina · Presupuesto medio · Actividad ligera",
+      "calories_daily": 2000,
+      "protein_g": 150,
+      "carbs_g": 220,
+      "fat_g": 57,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:00",
+              "kcal": 450,
+              "items": [
+                "2 huevos enteros y 2 claras",
+                "2 rebanadas de pan de molde integral",
+                "Media palta pequeña (50g)"
+              ],
+              "plan_b": [
+                "Avena cocida con leche descremada",
+                "1 scoop de proteína"
+              ],
+              "macros": {
+                "p": 26,
+                "c": 35,
+                "g": 22
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 650,
+              "items": [
+                "Bistec de res magro a la plancha (150g)",
+                "Quinua cocida (150g)",
+                "Ensalada de vainitas y zanahoria"
+              ],
+              "plan_b": [
+                "Pollo a la plancha",
+                "Arroz integral",
+                "Tomate en rodajas"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 75,
+                "g": 18
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "16:30",
+              "kcal": 300,
+              "items": [
+                "Yogurt griego natural (150g)",
+                "1 manzana",
+                "15g de almendras"
+              ],
+              "plan_b": [
+                "Barra de proteína comercial"
+              ],
+              "macros": {
+                "p": 16,
+                "c": 35,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:00",
+              "kcal": 600,
+              "items": [
+                "Filete de pechuga de pollo (150g)",
+                "Papa amarilla sancochada (200g)",
+                "Brócoli al vapor"
+              ],
+              "plan_b": [
+                "Atún en agua (1.5 latas)",
+                "Papa al microondas"
+              ],
+              "macros": {
+                "p": 48,
+                "c": 75,
+                "g": 7
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Pechuga de pollo y Bistec",
+          "qty": "1.5 kg",
+          "price": 35,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos",
+          "qty": "1 docena",
+          "price": 9,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Quinua y Arroz",
+          "qty": "1 kg",
+          "price": 10,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Papa amarilla",
+          "qty": "1.5 kg",
+          "price": 8,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Pan integral",
+          "qty": "1 bolsa",
+          "price": 7,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Palta y Almendras",
+          "qty": "varios",
+          "price": 15,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Yogurt griego",
+          "qty": "1 L",
+          "price": 18,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Vegetales y Manzanas",
+          "qty": "varios",
+          "price": 20,
+          "cat": "Vegetales"
+        }
+      ],
+      "training": {
+        "split": "FullBody",
+        "sessions_per_week": 3,
+        "session_duration_min": 50,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Cuerpo Completo A",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Sentadilla con mancuernas",
+                "sets": 3,
+                "reps": "10-12",
+                "rest_sec": 90,
+                "muscle": "Piernas",
+                "equipment": "Mancuernas",
+                "substitute": "Prensa",
+                "avoid_if_injury": [
+                  "Lumbar"
+                ]
+              },
+              {
+                "name": "Press de banca plano",
+                "sets": 3,
+                "reps": "10",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Barra",
+                "substitute": "Flexiones",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Descanso Activo",
+            "type": "active_rest",
+            "description": "Caminata ligera 20 min"
+          },
+          {
+            "day_of_week": 3,
+            "name": "Cuerpo Completo B",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Peso muerto rumano",
+                "sets": 3,
+                "reps": "10-12",
+                "rest_sec": 90,
+                "muscle": "Isquios",
+                "equipment": "Mancuernas",
+                "substitute": "Curl femoral",
+                "avoid_if_injury": [
+                  "Lumbar"
+                ]
+              },
+              {
+                "name": "Jalón al pecho",
+                "sets": 3,
+                "reps": "10-12",
+                "rest_sec": 90,
+                "muscle": "Espalda",
+                "equipment": "Polea",
+                "substitute": "Remo con mancuernas",
+                "avoid_if_injury": []
+              }
+            ]
+          },
+          {
+            "day_of_week": 4,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 5,
+            "name": "Cuerpo Completo C",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "deficit_slim_buy_high_moderate",
+      "label": "Déficit · Ectomorfo · Compra preparado · Presupuesto alto · Actividad moderada",
+      "calories_daily": 2100,
+      "protein_g": 160,
+      "carbs_g": 230,
+      "fat_g": 60,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:30",
+              "kcal": 500,
+              "items": [
+                "Omelette de claras y pavo (Cafetería)",
+                "Jugo surtido natural sin azúcar",
+                "Café americano"
+              ],
+              "plan_b": [
+                "2 empanadas horneadas de pollo",
+                "Té verde"
+              ],
+              "macros": {
+                "p": 30,
+                "c": 60,
+                "g": 15
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "14:00",
+              "kcal": 750,
+              "items": [
+                "Ceviche de pescado fresco (porción entera)",
+                "Camote glaseado (1 rodaja grande)",
+                "Choclo desgranado"
+              ],
+              "plan_b": [
+                "Ensalada con tiras de asado de tira",
+                "Papas nativas"
+              ],
+              "macros": {
+                "p": 50,
+                "c": 85,
+                "g": 20
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:30",
+              "kcal": 300,
+              "items": [
+                "Muffin proteico (comprado en tienda fitness)",
+                "Iced Latte con leche de almendras"
+              ],
+              "plan_b": [
+                "Batido de proteína Whey (1 scoop)"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 30,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "21:00",
+              "kcal": 550,
+              "items": [
+                "Wrap integral de pollo a la plancha (Delivery)",
+                "Sin mayonesa, con extra palta"
+              ],
+              "plan_b": [
+                "Sashimi de salmón (10 cortes)",
+                "Sopa miso"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 45,
+                "g": 15
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Presupuesto Desayunos",
+          "qty": "7 días",
+          "price": 140,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Almuerzos (Cevicherías/Grill)",
+          "qty": "7 días",
+          "price": 280,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Cenas (Wraps/Sushi)",
+          "qty": "7 días",
+          "price": 210,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Snacks Proteicos",
+          "qty": "7 días",
+          "price": 70,
+          "cat": "Snacks"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press inclinado con mancuernas",
+                "sets": 4,
+                "reps": "8-10",
+                "rest_sec": 120,
+                "muscle": "Pecho",
+                "equipment": "Mancuernas",
+                "substitute": "Press en máquina",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio",
+            "type": "cardio",
+            "description": "Trote 30 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "deficit_slim_mixed_low_moderate",
+      "label": "Déficit · Ectomorfo · Mixto · Presupuesto bajo · Actividad moderada",
+      "calories_daily": 2100,
+      "protein_g": 155,
+      "carbs_g": 240,
+      "fat_g": 57,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno (Preparado)",
+              "time": "07:30",
+              "kcal": 500,
+              "items": [
+                "Batido: 1 plátano, 40g avena, 1 vaso de leche, 1 cdta mantequilla de maní",
+                "1 huevo duro"
+              ],
+              "plan_b": [
+                "Avena sancochada con manzana picada"
+              ],
+              "macros": {
+                "p": 22,
+                "c": 70,
+                "g": 15
+              }
+            },
+            {
+              "name": "Almuerzo (Comprado)",
+              "time": "13:30",
+              "kcal": 700,
+              "items": [
+                "Menú estudiantil: Pollo saltado (pedir menos papas fritas)",
+                "Porción de arroz estándar"
+              ],
+              "plan_b": [
+                "Tallarines rojos con pollo (1 presa grande)"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 85,
+                "g": 20
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 300,
+              "items": [
+                "Pan francés o de piso con queso fresco (40g)",
+                "Infusión"
+              ],
+              "plan_b": [
+                "Fruta de estación (2 mandarinas) y maní"
+              ],
+              "macros": {
+                "p": 12,
+                "c": 40,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena (Preparado)",
+              "time": "20:30",
+              "kcal": 600,
+              "items": [
+                "Torrejas de atún (1 lata con huevo y avena, fritas en poco aceite)",
+                "Arroz sobrante del día (100g)"
+              ],
+              "plan_b": [
+                "Omelette de 3 huevos con espinaca y tomate"
+              ],
+              "macros": {
+                "p": 38,
+                "c": 45,
+                "g": 12
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Huevos",
+          "qty": "1 plancha",
+          "price": 16,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Atún en lata",
+          "qty": "5 latas",
+          "price": 20,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Avena y Arroz",
+          "qty": "1 kg c/u",
+          "price": 9,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Queso fresco",
+          "qty": "500g",
+          "price": 12,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Leche descremada",
+          "qty": "2 L",
+          "price": 10,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Plátanos y vegetales base",
+          "qty": "varios",
+          "price": 15,
+          "cat": "Vegetales"
+        },
+        {
+          "item": "Presupuesto Almuerzos Universitarios",
+          "qty": "7 días",
+          "price": 70,
+          "cat": "Restaurante"
+        }
+      ],
+      "training": {
+        "split": "PPL",
+        "sessions_per_week": 5,
+        "session_duration_min": 50,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Empuje",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press de banca",
+                "sets": 3,
+                "reps": "8-10",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Barra",
+                "substitute": "Flexiones con peso",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Jalón",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Piernas",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Empuje B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Jalón B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio",
+            "type": "cardio",
+            "description": "Bicicleta o caminata rápida 30 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "deficit_robust_cook_high_moderate",
+      "label": "Déficit · Endomorfo · Cocina · Presupuesto alto · Actividad moderada",
+      "calories_daily": 1800,
+      "protein_g": 160,
+      "carbs_g": 140,
+      "fat_g": 66,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:30",
+              "kcal": 450,
+              "items": [
+                "Tortilla de 2 huevos enteros y 3 claras",
+                "Espinaca, champiñones y tomate cherry",
+                "1 rebanada de pan de masa madre"
+              ],
+              "plan_b": [
+                "Yogurt Skyr con arándanos frescos"
+              ],
+              "macros": {
+                "p": 32,
+                "c": 25,
+                "g": 22
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 550,
+              "items": [
+                "Salmón al horno (150g)",
+                "Espárragos salteados en aceite de oliva (1 cdta)",
+                "Porción pequeña de quinua (100g cocida)"
+              ],
+              "plan_b": [
+                "Pechuga de pollo horneada",
+                "Mix de vegetales asiáticos"
+              ],
+              "macros": {
+                "p": 42,
+                "c": 35,
+                "g": 25
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "16:30",
+              "kcal": 250,
+              "items": [
+                "1 scoop de proteína Isolatada en agua",
+                "1 puñado de nueces (15g)"
+              ],
+              "plan_b": [
+                "Requesón bajo en grasa"
+              ],
+              "macros": {
+                "p": 30,
+                "c": 5,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:00",
+              "kcal": 550,
+              "items": [
+                "Lomo fino de res (150g)",
+                "Ensalada fresca grande con vinagre balsámico",
+                "Papa amarilla dorada en freidora de aire (150g)"
+              ],
+              "plan_b": [
+                "Pescado blanco al vapor",
+                "Puré de zapallo macre"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 45,
+                "g": 18
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Salmón y Lomo Fino",
+          "qty": "2 kg total",
+          "price": 120,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos de corral",
+          "qty": "1 docena",
+          "price": 12,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Proteína Isolatada",
+          "qty": "1 tarro",
+          "price": 0,
+          "cat": "Suplementos"
+        },
+        {
+          "item": "Quinua y Pan masa madre",
+          "qty": "varios",
+          "price": 25,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Papa amarilla",
+          "qty": "1 kg",
+          "price": 6,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Nueces y Aceite de oliva extra virgen",
+          "qty": "varios",
+          "price": 30,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Espárragos, champiñones, berries",
+          "qty": "varios",
+          "price": 45,
+          "cat": "Vegetales"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 55,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press de banca",
+                "sets": 3,
+                "reps": "8-10",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Barra",
+                "substitute": "Press con mancuernas",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio Moderado",
+            "type": "cardio",
+            "description": "Elíptica o natación 45 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "surplus_slim_cook_low_moderate",
+      "label": "Superávit · Ectomorfo · Cocina · Presupuesto bajo · Actividad moderada",
+      "calories_daily": 2800,
+      "protein_g": 150,
+      "carbs_g": 380,
+      "fat_g": 75,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:00",
+              "kcal": 750,
+              "items": [
+                "Batido constructor: 100g avena, 1 plátano, 30g maní, 250ml leche entera",
+                "2 huevos sancochados"
+              ],
+              "plan_b": [
+                "Pan con tortilla de 3 huevos",
+                "Taza grande de avena espesa"
+              ],
+              "macros": {
+                "p": 35,
+                "c": 95,
+                "g": 25
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:00",
+              "kcal": 850,
+              "items": [
+                "Lentejas guisadas (250g cocidas)",
+                "Arroz blanco (200g cocido)",
+                "Hígado de pollo o res (150g)"
+              ],
+              "plan_b": [
+                "Fideos rojos con carne molida económica"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 130,
+                "g": 18
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "16:30",
+              "kcal": 450,
+              "items": [
+                "2 panes franceses o de molde",
+                "Atún en lata (1 unidad, escurrida)",
+                "1 plátano"
+              ],
+              "plan_b": [
+                "Yogurt y galletas de soda con mantequilla de maní"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 65,
+                "g": 12
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 750,
+              "items": [
+                "Pechuga de pollo o pierna deshuesada (150g)",
+                "Fideos sancochados (150g crudos)",
+                "Aceite de oliva (1 cucharada mezclada en los fideos)"
+              ],
+              "plan_b": [
+                "Arroz chaufa casero (pollo, huevo, arroz sobrante)"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 90,
+                "g": 20
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Hígado y Pollo",
+          "qty": "2 kg",
+          "price": 28,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos",
+          "qty": "1.5 planchas",
+          "price": 24,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Atún",
+          "qty": "4 latas",
+          "price": 16,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Avena y Fideos",
+          "qty": "1.5 kg c/u",
+          "price": 14,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Arroz y Lentejas",
+          "qty": "1.5 kg c/u",
+          "price": 12,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Maní y Aceite",
+          "qty": "varios",
+          "price": 12,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Plátanos",
+          "qty": "3 kg",
+          "price": 12,
+          "cat": "Frutas"
+        },
+        {
+          "item": "Leche entera",
+          "qty": "3 L",
+          "price": 15,
+          "cat": "Lácteos"
+        }
+      ],
+      "training": {
+        "split": "PPL",
+        "sessions_per_week": 6,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Empuje (Volumen)",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press de banca con mancuernas",
+                "sets": 4,
+                "reps": "8-10",
+                "rest_sec": 120,
+                "muscle": "Pecho",
+                "equipment": "Mancuernas",
+                "substitute": "Flexiones",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Jalón (Volumen)",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Piernas (Volumen)",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Empuje B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Jalón B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Piernas B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso total",
+            "type": "rest",
+            "description": "Comer y dormir para recuperar"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "surplus_slim_buy_medium_very",
+      "label": "Superávit · Ectomorfo · Compra preparado · Presupuesto medio · Muy activo",
+      "calories_daily": 3200,
+      "protein_g": 170,
+      "carbs_g": 430,
+      "fat_g": 88,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:00",
+              "kcal": 800,
+              "items": [
+                "2 panes con chicharrón de pollo (Panadería/Cafetería)",
+                "Jugo de papaya o surtido grande con miel",
+                "1 taza de café"
+              ],
+              "plan_b": [
+                "Tamal de pollo",
+                "2 panes y taza de avena comprada"
+              ],
+              "macros": {
+                "p": 35,
+                "c": 95,
+                "g": 30
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 1000,
+              "items": [
+                "Medio Pollo a la brasa (sin cremas en exceso, comer la piel ocasionalmente por calorías)",
+                "Porción grande de papas fritas o arroz chaufa",
+                "Ensalada"
+              ],
+              "plan_b": [
+                "Menú: Sopa contundente, Segundo: Lomo saltado con extra arroz"
+              ],
+              "macros": {
+                "p": 65,
+                "c": 115,
+                "g": 35
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "16:30",
+              "kcal": 500,
+              "items": [
+                "Batido de proteínas RTD o 1.5 scoops en shaker",
+                "1 paquete de galletas de avena o integrales grandes",
+                "1 plátano"
+              ],
+              "plan_b": [
+                "Empanada de carne y yogurt bebible"
+              ],
+              "macros": {
+                "p": 35,
+                "c": 75,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "21:00",
+              "kcal": 900,
+              "items": [
+                "Chifa: Tallarín saltado de pollo (pedir porción completa)",
+                "Tomar abundante agua"
+              ],
+              "plan_b": [
+                "2 Hamburguesas caseras grandes (compradas en local limpio)"
+              ],
+              "macros": {
+                "p": 35,
+                "c": 145,
+                "g": 13
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Presupuesto Desayunos",
+          "qty": "7 días",
+          "price": 105,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Almuerzos (Pollerías/Menús)",
+          "qty": "7 días",
+          "price": 150,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Cenas (Chifas/Sangucherías)",
+          "qty": "7 días",
+          "price": 140,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Suplemento Whey / Snacks",
+          "qty": "7 días",
+          "price": 60,
+          "cat": "Suplementos"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 70,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior Pesado",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press militar de pie",
+                "sets": 4,
+                "reps": "6-8",
+                "rest_sec": 120,
+                "muscle": "Hombros",
+                "equipment": "Barra",
+                "substitute": "Press con mancuernas",
+                "avoid_if_injury": [
+                  "Lumbar"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior Pesado",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior Hipertrofia",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 6,
+            "name": "Tren Inferior Hipertrofia",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 7,
+            "name": "Deporte recreativo / Full actividad",
+            "type": "cardio",
+            "description": "Compensa el alto superávit"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "surplus_athletic_cook_high_very",
+      "label": "Superávit · Mesomorfo · Cocina · Presupuesto alto · Muy activo",
+      "calories_daily": 3100,
+      "protein_g": 180,
+      "carbs_g": 380,
+      "fat_g": 95,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:00",
+              "kcal": 800,
+              "items": [
+                "Pancakes proteicos: 80g avena, 1 scoop Whey, 2 huevos enteros, 1 plátano",
+                "Topping: 20g mantequilla de almendras y arándanos"
+              ],
+              "plan_b": [
+                "Crema de arroz (100g) con proteína en polvo",
+                "Frutos secos"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 90,
+                "g": 28
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 950,
+              "items": [
+                "Bife ancho o picaña magra (200g)",
+                "Pasta integral (150g peso crudo) con salsa de tomate natural",
+                "Ensalada de espinaca con aceite de oliva"
+              ],
+              "plan_b": [
+                "Salmón al horno",
+                "Risotto de quinua"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 110,
+                "g": 32
+              }
+            },
+            {
+              "name": "Merienda Pre-Entreno",
+              "time": "17:00",
+              "kcal": 500,
+              "items": [
+                "Yogurt griego natural (200g)",
+                "Granola artesanal (60g)",
+                "1 manzana"
+              ],
+              "plan_b": [
+                "2 rebanadas de pan de masa madre con mermelada sin azúcar",
+                "1 medida de proteína"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 80,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena Post-Entreno",
+              "time": "21:00",
+              "kcal": 850,
+              "items": [
+                "Pechuga de pollo a la plancha (200g)",
+                "Arroz jazmín o blanco (200g cocido)",
+                "Palta entera pequeña (100g)"
+              ],
+              "plan_b": [
+                "Lomo de atún fresco a la parrilla",
+                "Puré de papa amarilla"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 100,
+                "g": 25
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Carnes Premium (Bife, Pechuga, Salmón)",
+          "qty": "2.5 kg",
+          "price": 140,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Suplemento Whey Protein",
+          "qty": "1 tarro",
+          "price": 0,
+          "cat": "Suplementos"
+        },
+        {
+          "item": "Huevos orgánicos",
+          "qty": "1 docena",
+          "price": 12,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Pasta integral y Arroz Jazmín",
+          "qty": "2 kg",
+          "price": 18,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Avena y Granola",
+          "qty": "1.5 kg",
+          "price": 25,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Mantequilla de almendras y Palta",
+          "qty": "varios",
+          "price": 35,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Yogurt griego",
+          "qty": "1.5 L",
+          "price": 28,
+          "cat": "Lácteos"
+        }
+      ],
+      "training": {
+        "split": "PPL",
+        "sessions_per_week": 6,
+        "session_duration_min": 75,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Empuje Fuerza",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press de banca pesado",
+                "sets": 4,
+                "reps": "5-8",
+                "rest_sec": 180,
+                "muscle": "Pecho",
+                "equipment": "Barra",
+                "substitute": "Press declinado",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Jalón Fuerza",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Piernas Fuerza",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Empuje Hipertrofia",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Jalón Hipertrofia",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Piernas Hipertrofia",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso total",
+            "type": "rest",
+            "description": "Recuperación del SNC"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "surplus_athletic_buy_medium_moderate",
+      "label": "Superávit · Mesomorfo · Compra preparado · Presupuesto medio · Actividad moderada",
+      "calories_daily": 2900,
+      "protein_g": 165,
+      "carbs_g": 350,
+      "fat_g": 93,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:30",
+              "kcal": 700,
+              "items": [
+                "Sándwich triple de pollo, palta y huevo (Delivery local)",
+                "Jugo de frutas mixto (tamaño grande)",
+                "Café americano"
+              ],
+              "plan_b": [
+                "2 Croissants de jamón y queso",
+                "Yogurt bebible"
+              ],
+              "macros": {
+                "p": 30,
+                "c": 80,
+                "g": 28
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "14:00",
+              "kcal": 950,
+              "items": [
+                "Menú ejecutivo (zonas comerciales ej. Surco/La Molina): Lomo Saltado o Tallarín Saltado",
+                "Entrada: Tequeños o Papa a la huancaína (controlar crema)",
+                "Refresco"
+              ],
+              "plan_b": [
+                "Makises (2 tablas de 10 cortes)",
+                "Sopa ramen con pollo"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 120,
+                "g": 32
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:30",
+              "kcal": 450,
+              "items": [
+                "Batido de proteína listo para tomar (RTD)",
+                "1 paquete de frutos secos mixtos (50g)",
+                "1 plátano"
+              ],
+              "plan_b": [
+                "Barra energética densa en calorías"
+              ],
+              "macros": {
+                "p": 35,
+                "c": 45,
+                "g": 18
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "21:00",
+              "kcal": 800,
+              "items": [
+                "Pollo a la brasa (1/4 parte pecho)",
+                "Porción de arroz chaufa (cambiar papas fritas por chaufa para mejores macros)",
+                "Ensalada fresca"
+              ],
+              "plan_b": [
+                "Shawarma mixto grande (pedir salsas aparte)"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 105,
+                "g": 15
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Presupuesto Desayunos (Sangucherías)",
+          "qty": "7 días",
+          "price": 120,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Almuerzos (Menú Ejecutivo)",
+          "qty": "7 días",
+          "price": 140,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Cenas (Delivery/Pollerías)",
+          "qty": "7 días",
+          "price": 160,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Snacks de grifo/supermercado",
+          "qty": "7 días",
+          "price": 60,
+          "cat": "Snacks"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press militar con mancuernas",
+                "sets": 4,
+                "reps": "8-10",
+                "rest_sec": 120,
+                "muscle": "Hombros",
+                "equipment": "Mancuernas",
+                "substitute": "Elevaciones laterales pesadas",
+                "avoid_if_injury": [
+                  "Cervicales"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Actividad Libre",
+            "type": "cardio",
+            "description": "Deporte de fin de semana"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "surplus_athletic_mixed_low_moderate",
+      "label": "Superávit · Mesomorfo · Mixto · Presupuesto bajo · Actividad moderada",
+      "calories_daily": 2850,
+      "protein_g": 160,
+      "carbs_g": 360,
+      "fat_g": 85,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno (Preparado)",
+              "time": "07:30",
+              "kcal": 650,
+              "items": [
+                "Avena sancochada (80g) con manzana rallada",
+                "4 huevos revueltos (2 enteros, 2 claras)",
+                "2 panes franceses"
+              ],
+              "plan_b": [
+                "Batido casero de avena, plátano y leche"
+              ],
+              "macros": {
+                "p": 32,
+                "c": 95,
+                "g": 18
+              }
+            },
+            {
+              "name": "Almuerzo (Comprado)",
+              "time": "13:30",
+              "kcal": 900,
+              "items": [
+                "Menú de mercado: Arroz con pollo, guiso de lentejas o locro",
+                "Entrada: Sopa de fideos o crema de verduras",
+                "Porción extra de arroz"
+              ],
+              "plan_b": [
+                "Ceviche de pota y chicharrón de pota (controlar raciones fritas)"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 130,
+                "g": 25
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 450,
+              "items": [
+                "Maní con pasas (50g)",
+                "2 plátanos de seda",
+                "Yogurt bebible económico (1 vaso)"
+              ],
+              "plan_b": [
+                "2 huevos duros y 1 papa sancochada"
+              ],
+              "macros": {
+                "p": 15,
+                "c": 60,
+                "g": 20
+              }
+            },
+            {
+              "name": "Cena (Preparado)",
+              "time": "20:30",
+              "kcal": 850,
+              "items": [
+                "Torrejas de atún caseras (2 latas, avena, huevo)",
+                "Arroz (1.5 tazas cocido)",
+                "Media palta"
+              ],
+              "plan_b": [
+                "Fideos saltados caseros con pollo"
+              ],
+              "macros": {
+                "p": 68,
+                "c": 75,
+                "g": 22
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Huevos",
+          "qty": "2 planchas",
+          "price": 30,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Atún en agua/aceite",
+          "qty": "6 latas",
+          "price": 24,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Avena y Arroz",
+          "qty": "2 kg c/u",
+          "price": 14,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Maní con pasas",
+          "qty": "500g",
+          "price": 10,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Plátanos",
+          "qty": "3 kg",
+          "price": 12,
+          "cat": "Frutas"
+        },
+        {
+          "item": "Presupuesto Menú Económico",
+          "qty": "7 días",
+          "price": 90,
+          "cat": "Restaurante"
+        }
+      ],
+      "training": {
+        "split": "PPL",
+        "sessions_per_week": 5,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Empuje",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Fondos en paralelas (Dips)",
+                "sets": 4,
+                "reps": "8-12",
+                "rest_sec": 90,
+                "muscle": "Pecho/Tríceps",
+                "equipment": "Barras paralelas",
+                "substitute": "Flexiones declinadas",
+                "avoid_if_injury": [
+                  "Hombros",
+                  "Muñecas"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Jalón",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Piernas",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Empuje B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Jalón B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "surplus_robust_cook_medium_moderate",
+      "label": "Superávit · Endomorfo · Cocina · Presupuesto medio · Actividad moderada",
+      "calories_daily": 2500,
+      "protein_g": 170,
+      "carbs_g": 250,
+      "fat_g": 90,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:00",
+              "kcal": 550,
+              "items": [
+                "3 huevos enteros revueltos en 1 cdta de aceite de coco",
+                "1 rebanada de pan integral grueso",
+                "Medio vaso de leche descremada o vegetal"
+              ],
+              "plan_b": [
+                "Yogurt griego natural con 30g de nueces"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 25,
+                "g": 38
+              }
+            },
+            {
+              "name": "Almuerzo (Post-Entreno principal)",
+              "time": "14:00",
+              "kcal": 850,
+              "items": [
+                "Pechuga de pollo al horno (200g)",
+                "Camote asado en cubos (250g)",
+                "Ensalada de espinaca y tomate con 1 cda de aceite de oliva"
+              ],
+              "plan_b": [
+                "Guiso de carne magra con papas",
+                "Arroz integral (media porción)"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 80,
+                "g": 25
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:30",
+              "kcal": 400,
+              "items": [
+                "Batido: 1 scoop de proteína, 1 plátano, 20g de avena, agua"
+              ],
+              "plan_b": [
+                "Queso cottage (150g) y 1 fruta"
+              ],
+              "macros": {
+                "p": 30,
+                "c": 50,
+                "g": 5
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 700,
+              "items": [
+                "Filete de tilapia o perico a la plancha (200g)",
+                "Quinua cocida (150g)",
+                "Palta (50g)"
+              ],
+              "plan_b": [
+                "Pollo deshilachado con vegetales",
+                "Puré de camote"
+              ],
+              "macros": {
+                "p": 60,
+                "c": 95,
+                "g": 22
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Pechuga de pollo y Pescado",
+          "qty": "2.5 kg",
+          "price": 45,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos",
+          "qty": "1 docena",
+          "price": 9,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Suplemento Whey",
+          "qty": "1 tarro",
+          "price": 0,
+          "cat": "Suplementos"
+        },
+        {
+          "item": "Camote y Quinua",
+          "qty": "2 kg",
+          "price": 12,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Pan integral y Avena",
+          "qty": "varios",
+          "price": 10,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Palta y Aceite de oliva",
+          "qty": "varios",
+          "price": 25,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Vegetales verdes",
+          "qty": "varios",
+          "price": 18,
+          "cat": "Vegetales"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior (Hipertrofia)",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Remo con barra",
+                "sets": 4,
+                "reps": "8-12",
+                "rest_sec": 90,
+                "muscle": "Espalda",
+                "equipment": "Barra",
+                "substitute": "Remo con mancuernas",
+                "avoid_if_injury": [
+                  "Lumbar"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior (Fuerza)",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior (Fuerza)",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior (Hipertrofia)",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio LISS",
+            "type": "cardio",
+            "description": "Caminata en pendiente 30 min (Control de grasa en volumen)"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "surplus_robust_buy_low_sedentary",
+      "label": "Superávit · Endomorfo · Compra preparado · Presupuesto bajo · Sedentario",
+      "calories_daily": 2350,
+      "protein_g": 155,
+      "carbs_g": 240,
+      "fat_g": 85,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:00",
+              "kcal": 500,
+              "items": [
+                "2 empanadas de carne al horno (Panadería local)",
+                "Infusión o café negro sin azúcar"
+              ],
+              "plan_b": [
+                "Tamal de pollo (sin pan)",
+                "Café"
+              ],
+              "macros": {
+                "p": 20,
+                "c": 50,
+                "g": 25
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 850,
+              "items": [
+                "Menú económico: Pollo al horno o Pescado frito (escurrir aceite)",
+                "Porción completa de arroz",
+                "Ensalada cocida (betarraga, zanahoria)"
+              ],
+              "plan_b": [
+                "Menú: Cau cau o Ají de gallina (pedir con menos papa)"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 100,
+                "g": 30
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 350,
+              "items": [
+                "Yogurt bebible entero (1 vaso)",
+                "1 paquete de galletas de soda",
+                "Maní confitado (bolsita pequeña, 20g)"
+              ],
+              "plan_b": [
+                "Pan con queso en bodega"
+              ],
+              "macros": {
+                "p": 12,
+                "c": 55,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 650,
+              "items": [
+                "1/4 de pollo a la brasa (pierna, comer piel moderadamente)",
+                "Mitad de la porción de papas fritas",
+                "Ensalada fresca sin mayonesa"
+              ],
+              "plan_b": [
+                "Salchipapa pequeña (pedir salsas aparte)"
+              ],
+              "macros": {
+                "p": 48,
+                "c": 35,
+                "g": 35
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Presupuesto Desayunos",
+          "qty": "7 días",
+          "price": 45,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Almuerzos (Menú)",
+          "qty": "7 días",
+          "price": 90,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Cenas (Pollerías baratas)",
+          "qty": "7 días",
+          "price": 105,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Snacks de bodega",
+          "qty": "7 días",
+          "price": 35,
+          "cat": "Snacks"
+        }
+      ],
+      "training": {
+        "split": "FullBody",
+        "sessions_per_week": 3,
+        "session_duration_min": 45,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Cuerpo Completo Base",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Sentadilla goblet",
+                "sets": 3,
+                "reps": "8-10",
+                "rest_sec": 90,
+                "muscle": "Piernas",
+                "equipment": "Mancuerna",
+                "substitute": "Prensa",
+                "avoid_if_injury": [
+                  "Rodillas"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 3,
+            "name": "Cuerpo Completo Base B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 5,
+            "name": "Cuerpo Completo Base C",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "surplus_robust_mixed_high_light",
+      "label": "Superávit · Endomorfo · Mixto · Presupuesto alto · Actividad ligera",
+      "calories_daily": 2600,
+      "protein_g": 175,
+      "carbs_g": 260,
+      "fat_g": 95,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno (Preparado - Batch Cooking)",
+              "time": "08:00",
+              "kcal": 600,
+              "items": [
+                "Overnight oats: 60g avena, 150ml leche de almendras, 1 scoop de proteína de vainilla",
+                "Topping: 20g mantequilla de maní y fresas picadas"
+              ],
+              "plan_b": [
+                "Yogurt alto en proteína con granola sin azúcar"
+              ],
+              "macros": {
+                "p": 38,
+                "c": 60,
+                "g": 22
+              }
+            },
+            {
+              "name": "Almuerzo (Comprado - Delivery Macro-friendly)",
+              "time": "13:30",
+              "kcal": 850,
+              "items": [
+                "Poke Bowl Premium: Base de arroz integral o quinua",
+                "Proteína: Atún fresco y Salmón (doble porción)",
+                "Toppings: Edamame, palta, wakame. Salsa Ponzu."
+              ],
+              "plan_b": [
+                "Ensalada César con pollo doble y palta (aderezo a un lado)"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 80,
+                "g": 35
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 400,
+              "items": [
+                "Snack logístico (pre-armado en tupper): 2 huevos duros",
+                "Almendras tostadas (30g)",
+                "1 manzana"
+              ],
+              "plan_b": [
+                "Barra de proteína keto/low-carb"
+              ],
+              "macros": {
+                "p": 18,
+                "c": 30,
+                "g": 24
+              }
+            },
+            {
+              "name": "Cena (Preparado)",
+              "time": "20:30",
+              "kcal": 750,
+              "items": [
+                "Lomo fino a la plancha (200g)",
+                "Papa amarilla dorada en freidora de aire (200g)",
+                "Espárragos a la parrilla"
+              ],
+              "plan_b": [
+                "Medallones de pavo con puré rústico"
+              ],
+              "macros": {
+                "p": 64,
+                "c": 90,
+                "g": 14
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Lomo Fino y Huevos",
+          "qty": "1.5 kg / 1 doc.",
+          "price": 75,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Avena y Papa amarilla",
+          "qty": "varios",
+          "price": 12,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Leche de almendras y Mantequilla de maní",
+          "qty": "varios",
+          "price": 30,
+          "cat": "Grasas/Lácteos"
+        },
+        {
+          "item": "Almendras y Espárragos",
+          "qty": "varios",
+          "price": 25,
+          "cat": "Grasas/Vegetales"
+        },
+        {
+          "item": "Presupuesto Delivery Macro-friendly",
+          "qty": "7 días",
+          "price": 240,
+          "cat": "Restaurante"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press inclinado en máquina",
+                "sets": 4,
+                "reps": "8-10",
+                "rest_sec": 120,
+                "muscle": "Pecho",
+                "equipment": "Máquina",
+                "substitute": "Press inclinado con mancuernas",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Caminata Ligera",
+            "type": "cardio",
+            "description": "30 min de LISS"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "surplus_slim_cook_high_moderate",
+      "label": "Superávit · Ectomorfo · Cocina · Presupuesto alto · Actividad moderada",
+      "calories_daily": 3000,
+      "protein_g": 170,
+      "carbs_g": 400,
+      "fat_g": 80,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:30",
+              "kcal": 750,
+              "items": [
+                "4 huevos orgánicos revueltos con aceite de oliva",
+                "3 rebanadas de pan de masa madre",
+                "1 plátano y 1 taza de frutos rojos"
+              ],
+              "plan_b": [
+                "Porridge de avena con proteína, arándanos y nueces"
+              ],
+              "macros": {
+                "p": 35,
+                "c": 85,
+                "g": 30
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 950,
+              "items": [
+                "Salmón al horno (200g)",
+                "Arroz jazmín o basmati (250g cocido)",
+                "Media palta Hass (80g)"
+              ],
+              "plan_b": [
+                "Bife angus con puré de papas y espárragos"
+              ],
+              "macros": {
+                "p": 50,
+                "c": 95,
+                "g": 40
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 450,
+              "items": [
+                "Yogurt griego natural (250g)",
+                "Granola premium sin azúcar (60g)",
+                "Miel de abeja (1 cucharada)"
+              ],
+              "plan_b": [
+                "Batido de proteína isolatada y 2 plátanos"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 75,
+                "g": 8
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 850,
+              "items": [
+                "Medallones de pechuga de pavo o pollo (200g)",
+                "Pasta de sémola (150g cruda) con salsa de tomate casera",
+                "Queso parmesano (15g)"
+              ],
+              "plan_b": [
+                "Lomo fino a la plancha con quinua"
+              ],
+              "macros": {
+                "p": 60,
+                "c": 145,
+                "g": 2
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Salmón y Lomo fino",
+          "qty": "2 kg",
+          "price": 130,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos orgánicos",
+          "qty": "2 docenas",
+          "price": 24,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Arroz Jazmín y Pasta",
+          "qty": "2 kg",
+          "price": 18,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Pan de masa madre",
+          "qty": "2 hogazas",
+          "price": 30,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Yogurt griego",
+          "qty": "1.5 kg",
+          "price": 30,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Palta Hass y Frutos Rojos",
+          "qty": "varios",
+          "price": 35,
+          "cat": "Grasas/Vegetales"
+        }
+      ],
+      "training": {
+        "split": "PPL",
+        "sessions_per_week": 5,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Empuje (Fuerza e Hipertrofia)",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press de banca pesado",
+                "sets": 4,
+                "reps": "6-8",
+                "rest_sec": 120,
+                "muscle": "Pecho",
+                "equipment": "Barra",
+                "substitute": "Press con mancuernas",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Jalón",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Piernas",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Empuje B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Jalón B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "surplus_athletic_cook_low_high",
+      "label": "Superávit · Mesomorfo · Cocina · Presupuesto bajo · Muy activo",
+      "calories_daily": 3100,
+      "protein_g": 170,
+      "carbs_g": 420,
+      "fat_g": 80,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:00",
+              "kcal": 800,
+              "items": [
+                "Súper tazón de avena: 100g avena, 1 vaso de leche entera, 2 plátanos picados",
+                "3 huevos sancochados"
+              ],
+              "plan_b": [
+                "Batido casero de avena, maní, plátano y leche"
+              ],
+              "macros": {
+                "p": 38,
+                "c": 110,
+                "g": 24
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:00",
+              "kcal": 950,
+              "items": [
+                "Pollo entero desmenuzado (comprar 1 pollo y dividir en varios días, usar 200g de carne)",
+                "Menestras guisadas (lentejas o frijoles, 200g cocidas)",
+                "Arroz blanco (200g cocido)"
+              ],
+              "plan_b": [
+                "Tallarines rojos con carne molida económica"
+              ],
+              "macros": {
+                "p": 60,
+                "c": 130,
+                "g": 20
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "16:30",
+              "kcal": 550,
+              "items": [
+                "3 panes franceses o de piso",
+                "Mantequilla de maní (30g repartida en los panes)",
+                "Café o infusión"
+              ],
+              "plan_b": [
+                "Camote sancochado (300g) y 2 huevos duros"
+              ],
+              "macros": {
+                "p": 15,
+                "c": 75,
+                "g": 18
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 800,
+              "items": [
+                "Sobras del almuerzo (Pollo 150g y Arroz 200g cocido)",
+                "2 huevos fritos (poco aceite)",
+                "Tomate picado"
+              ],
+              "plan_b": [
+                "Arroz chaufa casero reforzado con tortilla de huevo"
+              ],
+              "macros": {
+                "p": 57,
+                "c": 105,
+                "g": 18
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Pollos enteros crudos",
+          "qty": "2 unidades",
+          "price": 36,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos",
+          "qty": "2 planchas (60)",
+          "price": 30,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Arroz y Menestras",
+          "qty": "3 kg",
+          "price": 18,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Avena y Panes",
+          "qty": "varios",
+          "price": 15,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Mantequilla de maní",
+          "qty": "1 frasco 500g",
+          "price": 15,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Leche entera",
+          "qty": "4 L",
+          "price": 20,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Plátanos",
+          "qty": "3 kg",
+          "price": 12,
+          "cat": "Frutas"
+        }
+      ],
+      "training": {
+        "split": "PPL",
+        "sessions_per_week": 6,
+        "session_duration_min": 70,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Empuje (Volumen Alto)",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Fondos en paralelas con lastre",
+                "sets": 4,
+                "reps": "8-10",
+                "rest_sec": 120,
+                "muscle": "Pecho/Tríceps",
+                "equipment": "Barras paralelas",
+                "substitute": "Press de banca",
+                "avoid_if_injury": [
+                  "Hombros",
+                  "Muñecas"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Jalón",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Piernas",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Empuje B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Jalón B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Piernas B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 7,
+            "name": "Recuperación activa",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "maintain_athletic_cook_medium_moderate",
+      "label": "Mantenimiento · Mesomorfo · Cocina · Presupuesto medio · Actividad moderada",
+      "calories_daily": 2400,
+      "protein_g": 160,
+      "carbs_g": 270,
+      "fat_g": 75,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:30",
+              "kcal": 550,
+              "items": [
+                "3 huevos revueltos",
+                "2 rebanadas de pan de molde integral",
+                "Media palta (50g)",
+                "Café americano"
+              ],
+              "plan_b": [
+                "Batido de avena, proteína en polvo y 1 plátano"
+              ],
+              "macros": {
+                "p": 26,
+                "c": 40,
+                "g": 30
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 750,
+              "items": [
+                "Pechuga de pollo a la plancha (180g)",
+                "Arroz integral o blanco (200g cocido)",
+                "Ensalada fresca de tomate, pepino y zanahoria (aceite de oliva 1 cda)"
+              ],
+              "plan_b": [
+                "Pescado a la plancha con yuca sancochada"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 75,
+                "g": 22
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 350,
+              "items": [
+                "Yogurt griego natural (200g)",
+                "Manzana picada",
+                "Almendras (15g)"
+              ],
+              "plan_b": [
+                "Queso fresco (50g) y 1 pera"
+              ],
+              "macros": {
+                "p": 20,
+                "c": 40,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 750,
+              "items": [
+                "Atún en lata (1.5 latas al agua, 200g)",
+                "Camote mediano asado (250g)",
+                "Espinaca o brócoli al vapor"
+              ],
+              "plan_b": [
+                "Omelette de atún con champiñones y papa dorada"
+              ],
+              "macros": {
+                "p": 59,
+                "c": 115,
+                "g": 13
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Pechuga de pollo",
+          "qty": "1.5 kg",
+          "price": 28,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Atún en agua",
+          "qty": "7 latas",
+          "price": 28,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos",
+          "qty": "1.5 docenas",
+          "price": 14,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Arroz y Pan Integral",
+          "qty": "varios",
+          "price": 15,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Camote",
+          "qty": "2 kg",
+          "price": 8,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Yogurt Griego",
+          "qty": "1.5 kg",
+          "price": 25,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Palta, Almendras y Aceite",
+          "qty": "varios",
+          "price": 30,
+          "cat": "Grasas"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press militar de pie",
+                "sets": 3,
+                "reps": "8-10",
+                "rest_sec": 90,
+                "muscle": "Hombros",
+                "equipment": "Barra",
+                "substitute": "Press con mancuernas",
+                "avoid_if_injury": [
+                  "Lumbar"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio o Deporte",
+            "type": "cardio",
+            "description": "Trote 40 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "maintain_athletic_buy_high_very",
+      "label": "Mantenimiento · Mesomorfo · Compra preparado · Presupuesto alto · Muy activo",
+      "calories_daily": 2600,
+      "protein_g": 170,
+      "carbs_g": 300,
+      "fat_g": 80,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:00",
+              "kcal": 600,
+              "items": [
+                "Bowl de yogurt Skry/Griego comercial con granola y frutos secos (Cafetería)",
+                "Jugo verde o extracto",
+                "Café espresso"
+              ],
+              "plan_b": [
+                "Sándwich de pavo y palta en pan ciabatta integral"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 75,
+                "g": 20
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "14:00",
+              "kcal": 850,
+              "items": [
+                "Poke Bowl Grande (Restaurante): Atún fresco, edamame, quinua, wakame",
+                "Topping de ajonjolí y salsa de soja baja en sodio"
+              ],
+              "plan_b": [
+                "Parrilla magra: Bife angus, ensalada, 1 papa asada"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 95,
+                "g": 25
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:30",
+              "kcal": 400,
+              "items": [
+                "Batido de proteína de marca premium (RTD)",
+                "Barra energética crudi-vegana o de dátiles"
+              ],
+              "plan_b": [
+                "Galletas de arroz con crema de almendras comercial"
+              ],
+              "macros": {
+                "p": 30,
+                "c": 45,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "21:00",
+              "kcal": 750,
+              "items": [
+                "Wrap de pollo a la plancha (Delivery healthy): tortilla integral, hummus, vegetales",
+                "Crema de verduras casera o comprada"
+              ],
+              "plan_b": [
+                "Ceviche fresco, choclo y poco camote"
+              ],
+              "macros": {
+                "p": 60,
+                "c": 85,
+                "g": 25
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Presupuesto Desayunos y Cafés",
+          "qty": "7 días",
+          "price": 150,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Almuerzos (Poke/Parrilla/Ceviche)",
+          "qty": "7 días",
+          "price": 280,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Cenas (Wraps/Healthy Delivery)",
+          "qty": "7 días",
+          "price": 220,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Batidos RTD y Barras",
+          "qty": "7 días",
+          "price": 80,
+          "cat": "Snacks"
+        }
+      ],
+      "training": {
+        "split": "PPL",
+        "sessions_per_week": 6,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Empuje (Mantenimiento)",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press de banca",
+                "sets": 3,
+                "reps": "8-10",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Barra",
+                "substitute": "Press en máquina",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Jalón",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Piernas",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Empuje B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Jalón B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Piernas B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 7,
+            "name": "Crossfit / Funcional",
+            "type": "hiit",
+            "description": "WOD de 45 min"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "maintain_athletic_mixed_low_moderate",
+      "label": "Mantenimiento · Mesomorfo · Mixto · Presupuesto bajo · Actividad moderada",
+      "calories_daily": 2400,
+      "protein_g": 155,
+      "carbs_g": 280,
+      "fat_g": 73,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno (Preparado)",
+              "time": "07:30",
+              "kcal": 550,
+              "items": [
+                "Avena cocida (60g) con manzana y canela",
+                "3 huevos (2 blancos, 1 entero) sancochados o fritos sin aceite",
+                "1 pan francés"
+              ],
+              "plan_b": [
+                "Batido de avena, leche y plátano"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 75,
+                "g": 15
+              }
+            },
+            {
+              "name": "Almuerzo (Comprado)",
+              "time": "13:30",
+              "kcal": 800,
+              "items": [
+                "Menú económico: Pollo al horno o Pavo al horno",
+                "Porción normal de arroz (aprox 1 taza)",
+                "Ensalada de pepino y lechuga"
+              ],
+              "plan_b": [
+                "Guiso de lentejas con huevo frito"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 90,
+                "g": 28
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 350,
+              "items": [
+                "Yogurt natural de litro (1 vaso)",
+                "Plátano (1 unidad)",
+                "Maní (20g)"
+              ],
+              "plan_b": [
+                "1 paquete de galletas integrales y queso fresco"
+              ],
+              "macros": {
+                "p": 15,
+                "c": 45,
+                "g": 15
+              }
+            },
+            {
+              "name": "Cena (Preparado)",
+              "time": "20:30",
+              "kcal": 700,
+              "items": [
+                "Atún en lata (1.5 unidades)",
+                "Papa sancochada (2 medianas, 250g)",
+                "Tomate en rodajas"
+              ],
+              "plan_b": [
+                "Fideos con pollo saltado sobrante"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 90,
+                "g": 15
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Huevos",
+          "qty": "2 planchas",
+          "price": 30,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Atún en agua/aceite",
+          "qty": "8 latas",
+          "price": 32,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Avena y Papas",
+          "qty": "2 kg",
+          "price": 10,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Yogurt natural",
+          "qty": "2 L",
+          "price": 14,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Maní y Plátanos",
+          "qty": "varios",
+          "price": 15,
+          "cat": "Grasas/Frutas"
+        },
+        {
+          "item": "Presupuesto Almuerzos (Menú)",
+          "qty": "7 días",
+          "price": 90,
+          "cat": "Restaurante"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 55,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Dominadas (o jalón en polea)",
+                "sets": 3,
+                "reps": "8-10",
+                "rest_sec": 90,
+                "muscle": "Espalda",
+                "equipment": "Barra",
+                "substitute": "Remo con mancuernas",
+                "avoid_if_injury": [
+                  "Codos"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio",
+            "type": "cardio",
+            "description": "30 min de LISS"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "maintain_robust_cook_medium_light",
+      "label": "Mantenimiento · Endomorfo · Cocina · Presupuesto medio · Actividad ligera",
+      "calories_daily": 2100,
+      "protein_g": 150,
+      "carbs_g": 200,
+      "fat_g": 75,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:00",
+              "kcal": 450,
+              "items": [
+                "Omelette de 2 huevos y 2 claras con espinaca",
+                "1 rebanada de pan integral",
+                "1 taza de papaya picada"
+              ],
+              "plan_b": [
+                "Yogurt griego natural con 1 fruta pequeña"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 35,
+                "g": 20
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 700,
+              "items": [
+                "Pechuga de pollo a la plancha o al horno (180g)",
+                "Lentejas o pallares guisados (150g cocidos)",
+                "Vegetales salteados (zapallito, zanahoria, cebolla) en 1 cdta de aceite de oliva"
+              ],
+              "plan_b": [
+                "Pescado blanco al vapor con ensalada de col"
+              ],
+              "macros": {
+                "p": 50,
+                "c": 60,
+                "g": 22
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 300,
+              "items": [
+                "1 scoop de proteína Whey con agua",
+                "Puñado de nueces o almendras (20g)"
+              ],
+              "plan_b": [
+                "Queso cottage (100g)"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 10,
+                "g": 15
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:00",
+              "kcal": 650,
+              "items": [
+                "Bistec magro a la plancha (150g)",
+                "Quinua cocida (120g)",
+                "Ensalada mixta (lechuga, tomate, pepino)"
+              ],
+              "plan_b": [
+                "Tortilla de verduras con 3 claras y 1 yema"
+              ],
+              "macros": {
+                "p": 50,
+                "c": 55,
+                "g": 18
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Pechuga de pollo y Bistec",
+          "qty": "2 kg",
+          "price": 40,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos",
+          "qty": "1 docena",
+          "price": 9,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Suplemento Whey Protein",
+          "qty": "1 tarro",
+          "price": 0,
+          "cat": "Suplementos"
+        },
+        {
+          "item": "Lentejas y Quinua",
+          "qty": "1 kg c/u",
+          "price": 12,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Nueces/Almendras y Aceite de oliva",
+          "qty": "varios",
+          "price": 25,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Vegetales y Papaya",
+          "qty": "varios",
+          "price": 20,
+          "cat": "Vegetales/Frutas"
+        }
+      ],
+      "training": {
+        "split": "FullBody",
+        "sessions_per_week": 3,
+        "session_duration_min": 50,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Cuerpo Completo Base",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Sentadilla con mancuernas",
+                "sets": 3,
+                "reps": "10-12",
+                "rest_sec": 90,
+                "muscle": "Piernas",
+                "equipment": "Mancuernas",
+                "substitute": "Sentadilla goblet",
+                "avoid_if_injury": [
+                  "Rodillas"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Cardio LISS",
+            "type": "cardio",
+            "description": "Caminata 40 min"
+          },
+          {
+            "day_of_week": 3,
+            "name": "Cuerpo Completo Base B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 5,
+            "name": "Cuerpo Completo Base C",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio LISS",
+            "type": "cardio",
+            "description": "Caminata 40 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "maintain_robust_buy_medium_sedentary",
+      "label": "Mantenimiento · Endomorfo · Compra preparado · Presupuesto medio · Sedentario",
+      "calories_daily": 2000,
+      "protein_g": 145,
+      "carbs_g": 180,
+      "fat_g": 78,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:30",
+              "kcal": 450,
+              "items": [
+                "Sándwich de pavo o pollo asado (Panadería)",
+                "Café americano o infusión sin azúcar"
+              ],
+              "plan_b": [
+                "Empanada horneada y té"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 45,
+                "g": 18
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 750,
+              "items": [
+                "Menú: Dieta de pollo (sopa con verduras y fideo cabello de ángel)",
+                "Segundo: Pescado a la plancha con media porción de arroz y ensalada fresca"
+              ],
+              "plan_b": [
+                "Pollo a la brasa (pechuga sin piel), ensalada grande, pocas papas"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 75,
+                "g": 25
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 300,
+              "items": [
+                "Yogurt griego de supermercado (alto en proteína)",
+                "1 paquete pequeño de nueces o almendras (20g)"
+              ],
+              "plan_b": [
+                "Barrita de proteína baja en carbohidratos"
+              ],
+              "macros": {
+                "p": 20,
+                "c": 15,
+                "g": 18
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 500,
+              "items": [
+                "Ensalada con trozos de pollo a la plancha (Delivery o tienda de conveniencia)",
+                "Aliño de yogurt o limón (evitar mayonesa)"
+              ],
+              "plan_b": [
+                "Wrap de pollo ligero"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 45,
+                "g": 17
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Presupuesto Desayunos",
+          "qty": "7 días",
+          "price": 70,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Almuerzos",
+          "qty": "7 días",
+          "price": 105,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Cenas",
+          "qty": "7 días",
+          "price": 140,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Snacks supermercado",
+          "qty": "7 días",
+          "price": 45,
+          "cat": "Snacks"
+        }
+      ],
+      "training": {
+        "split": "FullBody",
+        "sessions_per_week": 3,
+        "session_duration_min": 40,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Cuerpo Completo Base",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Máquinas guiadas (Press pecho y Prensa)",
+                "sets": 3,
+                "reps": "12-15",
+                "rest_sec": 90,
+                "muscle": "FullBody",
+                "equipment": "Máquinas",
+                "substitute": "Circuito de mancuernas",
+                "avoid_if_injury": [
+                  "Articulaciones"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Caminata",
+            "type": "cardio",
+            "description": "30 min diarios recomendados"
+          },
+          {
+            "day_of_week": 3,
+            "name": "Cuerpo Completo Base B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 5,
+            "name": "Cuerpo Completo Base C",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "maintain_slim_cook_medium_light",
+      "label": "Mantenimiento · Ectomorfo · Cocina · Presupuesto medio · Actividad ligera",
+      "calories_daily": 2400,
+      "protein_g": 150,
+      "carbs_g": 300,
+      "fat_g": 66,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:00",
+              "kcal": 550,
+              "items": [
+                "Avena (60g) cocida con 1 vaso de leche descremada",
+                "1 manzana picada",
+                "2 huevos sancochados o revueltos"
+              ],
+              "plan_b": [
+                "2 panes integrales con palta y huevo"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 75,
+                "g": 16
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 800,
+              "items": [
+                "Pechuga de pollo a la plancha (150g)",
+                "Frijoles o garbanzos guisados (200g cocidos)",
+                "Arroz blanco (150g cocido)",
+                "Ensalada de tomate y cebolla"
+              ],
+              "plan_b": [
+                "Fideos verdes (albahaca/espinaca) con bistec"
+              ],
+              "macros": {
+                "p": 50,
+                "c": 110,
+                "g": 18
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 400,
+              "items": [
+                "Yogurt natural (200ml)",
+                "Granola (40g)",
+                "1 plátano"
+              ],
+              "plan_b": [
+                "Pan con mantequilla de maní"
+              ],
+              "macros": {
+                "p": 12,
+                "c": 65,
+                "g": 10
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 650,
+              "items": [
+                "Atún en lata (1.5 unidades)",
+                "Fideos sancochados (100g crudos)",
+                "1 cucharada de aceite de oliva"
+              ],
+              "plan_b": [
+                "Saltado de pollo con papa amarilla"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 75,
+                "g": 18
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Pechuga de pollo",
+          "qty": "1.5 kg",
+          "price": 28,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos",
+          "qty": "1 docena",
+          "price": 9,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Atún en agua/aceite",
+          "qty": "7 latas",
+          "price": 28,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Arroz, Avena, Fideos",
+          "qty": "1 kg c/u",
+          "price": 15,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Menestras",
+          "qty": "1 kg",
+          "price": 8,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Yogurt natural y Leche",
+          "qty": "varios",
+          "price": 20,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Plátanos y Manzanas",
+          "qty": "varios",
+          "price": 15,
+          "cat": "Frutas"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 3,
+        "session_duration_min": 50,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press de banca",
+                "sets": 3,
+                "reps": "8-12",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Barra",
+                "substitute": "Flexiones",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 3,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 5,
+            "name": "Cuerpo Completo (Repaso)",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio o Actividad Ligera",
+            "type": "cardio",
+            "description": "Caminata 30 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "maintain_slim_buy_high_moderate",
+      "label": "Mantenimiento · Ectomorfo · Compra preparado · Presupuesto alto · Actividad moderada",
+      "calories_daily": 2600,
+      "protein_g": 160,
+      "carbs_g": 330,
+      "fat_g": 71,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "08:30",
+              "kcal": 650,
+              "items": [
+                "Jugo surtido con miel (Cafetería)",
+                "Sándwich triple de pollo y huevo",
+                "Café americano"
+              ],
+              "plan_b": [
+                "2 empanadas de carne horneadas"
+              ],
+              "macros": {
+                "p": 25,
+                "c": 85,
+                "g": 23
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "14:00",
+              "kcal": 900,
+              "items": [
+                "Asado de pejerrey con puré de papas y arroz (Restaurante o Menú Ejecutivo)",
+                "Sopa de casa o entrada",
+                "Refresco natural"
+              ],
+              "plan_b": [
+                "Risotto de lomo saltado"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 120,
+                "g": 26
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:30",
+              "kcal": 400,
+              "items": [
+                "Muffin o galleta de proteína de tienda fitness",
+                "Té helado o infusión",
+                "1 manzana"
+              ],
+              "plan_b": [
+                "Batido de proteína y 1 plátano"
+              ],
+              "macros": {
+                "p": 20,
+                "c": 60,
+                "g": 9
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "21:00",
+              "kcal": 650,
+              "items": [
+                "Sushi (2 tablas de 10 cortes, evitar makis muy fritos estilo furai en exceso)",
+                "Salsa de soja baja en sodio"
+              ],
+              "plan_b": [
+                "Wrap de pollo a la parrilla con extra palta"
+              ],
+              "macros": {
+                "p": 35,
+                "c": 95,
+                "g": 15
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Presupuesto Desayunos",
+          "qty": "7 días",
+          "price": 120,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Almuerzos (Menú Premium/Restaurante)",
+          "qty": "7 días",
+          "price": 210,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Presupuesto Cenas (Sushi/Delivery)",
+          "qty": "7 días",
+          "price": 280,
+          "cat": "Restaurante"
+        },
+        {
+          "item": "Snacks proteicos",
+          "qty": "7 días",
+          "price": 70,
+          "cat": "Snacks"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 60,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press inclinado con mancuernas",
+                "sets": 3,
+                "reps": "8-10",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Mancuernas",
+                "substitute": "Flexiones",
+                "avoid_if_injury": [
+                  "Hombros"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Deporte",
+            "type": "cardio",
+            "description": "Actividad libre"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "maintain_athletic_cook_high_very",
+      "label": "Mantenimiento · Mesomorfo · Cocina · Presupuesto alto · Muy activo",
+      "calories_daily": 2700,
+      "protein_g": 180,
+      "carbs_g": 300,
+      "fat_g": 86,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:30",
+              "kcal": 650,
+              "items": [
+                "4 huevos enteros revueltos",
+                "2 rebanadas de pan de masa madre",
+                "Media palta Hass (80g)"
+              ],
+              "plan_b": [
+                "Yogurt natural con frutos secos"
+              ],
+              "macros": {
+                "p": 32,
+                "c": 40,
+                "g": 40
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 850,
+              "items": [
+                "Lomo fino a la plancha (200g)",
+                "Quinua cocida (200g)",
+                "Espárragos y champiñones salteados"
+              ],
+              "plan_b": [
+                "Salmón al horno con puré"
+              ],
+              "macros": {
+                "p": 60,
+                "c": 80,
+                "g": 25
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 450,
+              "items": [
+                "1 scoop de proteína Whey",
+                "1 plátano y 1 taza de arándanos",
+                "Granola premium sin azúcar (40g)"
+              ],
+              "plan_b": [
+                "Avena fría (Overnight oats)"
+              ],
+              "macros": {
+                "p": 30,
+                "c": 70,
+                "g": 5
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 750,
+              "items": [
+                "Pechuga de pollo al horno (200g)",
+                "Arroz basmati o jazmín (150g cocido)",
+                "Ensalada de espinaca con 1 cda de aceite de oliva"
+              ],
+              "plan_b": [
+                "Medallones de pavo"
+              ],
+              "macros": {
+                "p": 58,
+                "c": 85,
+                "g": 18
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Lomo Fino y Pechuga de Pollo",
+          "qty": "2.5 kg",
+          "price": 85,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos orgánicos",
+          "qty": "2 docenas",
+          "price": 24,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Suplemento Whey",
+          "qty": "1 tarro",
+          "price": 0,
+          "cat": "Suplementos"
+        },
+        {
+          "item": "Quinua y Arroz Basmati",
+          "qty": "varios",
+          "price": 25,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Pan masa madre y Granola",
+          "qty": "varios",
+          "price": 30,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Palta, Espárragos, Arándanos",
+          "qty": "varios",
+          "price": 45,
+          "cat": "Grasas/Vegetales"
+        }
+      ],
+      "training": {
+        "split": "FullBody",
+        "sessions_per_week": 3,
+        "session_duration_min": 75,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Cuerpo Completo A",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Sentadilla trasera",
+                "sets": 4,
+                "reps": "5-8",
+                "rest_sec": 120,
+                "muscle": "Piernas",
+                "equipment": "Barra",
+                "substitute": "Prensa",
+                "avoid_if_injury": [
+                  "Lumbar",
+                  "Rodillas"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "HIIT / Deportes",
+            "type": "hiit",
+            "description": "Entrenamiento de alta intensidad"
+          },
+          {
+            "day_of_week": 3,
+            "name": "Cuerpo Completo B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Descanso Activo",
+            "type": "active_rest",
+            "description": "Movilidad"
+          },
+          {
+            "day_of_week": 5,
+            "name": "Cuerpo Completo C",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Deporte Recreativo",
+            "type": "cardio",
+            "description": "Fútbol, tenis, etc."
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "maintain_robust_cook_low_moderate",
+      "label": "Mantenimiento · Endomorfo · Cocina · Presupuesto bajo · Actividad moderada",
+      "calories_daily": 2200,
+      "protein_g": 155,
+      "carbs_g": 210,
+      "fat_g": 82,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno",
+              "time": "07:30",
+              "kcal": 500,
+              "items": [
+                "3 huevos enteros revueltos",
+                "Avena (40g) cocida con canela",
+                "1 manzana"
+              ],
+              "plan_b": [
+                "Café y 3 huevos duros con plátano"
+              ],
+              "macros": {
+                "p": 24,
+                "c": 45,
+                "g": 22
+              }
+            },
+            {
+              "name": "Almuerzo",
+              "time": "13:30",
+              "kcal": 750,
+              "items": [
+                "Hígado de pollo o res a la plancha (180g)",
+                "Lentejas (200g cocidas)",
+                "Arroz (100g cocido) y ensalada criolla"
+              ],
+              "plan_b": [
+                "Pollo al horno con menestras"
+              ],
+              "macros": {
+                "p": 55,
+                "c": 80,
+                "g": 18
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 350,
+              "items": [
+                "Maní tostado sin sal (30g)",
+                "Yogurt natural (1 vaso, 200ml)"
+              ],
+              "plan_b": [
+                "Fruta de estación y puñado de maní"
+              ],
+              "macros": {
+                "p": 16,
+                "c": 20,
+                "g": 24
+              }
+            },
+            {
+              "name": "Cena",
+              "time": "20:30",
+              "kcal": 600,
+              "items": [
+                "Pechuga de pollo (150g)",
+                "Camote sancochado (200g)",
+                "Brócoli o vainitas al vapor"
+              ],
+              "plan_b": [
+                "Atún en lata con camote"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 60,
+                "g": 12
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Hígado y Pollo",
+          "qty": "2 kg",
+          "price": 28,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Huevos",
+          "qty": "1 plancha (30)",
+          "price": 16,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Lentejas y Arroz",
+          "qty": "1.5 kg",
+          "price": 12,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Camote",
+          "qty": "2 kg",
+          "price": 8,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Maní",
+          "qty": "250g",
+          "price": 6,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Yogurt natural",
+          "qty": "1 L",
+          "price": 7,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Vegetales y Manzanas",
+          "qty": "varios",
+          "price": 20,
+          "cat": "Vegetales/Frutas"
+        }
+      ],
+      "training": {
+        "split": "UpperLower",
+        "sessions_per_week": 4,
+        "session_duration_min": 50,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Tren Superior",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Flexiones",
+                "sets": 3,
+                "reps": "10-15",
+                "rest_sec": 90,
+                "muscle": "Pecho",
+                "equipment": "Peso corporal",
+                "substitute": "Press con mancuernas",
+                "avoid_if_injury": [
+                  "Muñecas"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Tren Inferior",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Descanso",
+            "type": "rest"
+          },
+          {
+            "day_of_week": 4,
+            "name": "Tren Superior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Tren Inferior B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio LISS",
+            "type": "cardio",
+            "description": "Trote ligero o caminata 30 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    },
+    {
+      "fingerprint": "maintain_slim_mixed_medium_moderate",
+      "label": "Mantenimiento · Ectomorfo · Mixto · Presupuesto medio · Actividad moderada",
+      "calories_daily": 2500,
+      "protein_g": 155,
+      "carbs_g": 320,
+      "fat_g": 66,
+      "days": [
+        {
+          "day": 1,
+          "repeat_from": null,
+          "meals": [
+            {
+              "name": "Desayuno (Preparado)",
+              "time": "07:30",
+              "kcal": 600,
+              "items": [
+                "Batido: 1 plátano, 50g avena, 1 vaso de leche entera, 1 cda crema de maní",
+                "2 huevos duros"
+              ],
+              "plan_b": [
+                "Pan con queso y avena caliente"
+              ],
+              "macros": {
+                "p": 28,
+                "c": 75,
+                "g": 20
+              }
+            },
+            {
+              "name": "Almuerzo (Comprado)",
+              "time": "13:30",
+              "kcal": 850,
+              "items": [
+                "Menú universitario: Arroz chaufa de pollo",
+                "Sopa wantán o tequeños de entrada"
+              ],
+              "plan_b": [
+                "Tallarines saltados (comprados)"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 115,
+                "g": 22
+              }
+            },
+            {
+              "name": "Merienda",
+              "time": "17:00",
+              "kcal": 350,
+              "items": [
+                "Pan francés con palta",
+                "Infusión o café"
+              ],
+              "plan_b": [
+                "Yogurt bebible y galletas de soda"
+              ],
+              "macros": {
+                "p": 8,
+                "c": 50,
+                "g": 12
+              }
+            },
+            {
+              "name": "Cena (Preparado)",
+              "time": "20:30",
+              "kcal": 700,
+              "items": [
+                "Tortilla de atún (1 lata con 2 huevos)",
+                "Arroz sobrante (150g cocido)",
+                "Tomate picado"
+              ],
+              "plan_b": [
+                "Omelette con jamón de pavo y pan integral"
+              ],
+              "macros": {
+                "p": 45,
+                "c": 60,
+                "g": 20
+              }
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "repeat_from": 1
+        },
+        {
+          "day": 3,
+          "repeat_from": 1
+        },
+        {
+          "day": 4,
+          "repeat_from": 1
+        },
+        {
+          "day": 5,
+          "repeat_from": 1
+        },
+        {
+          "day": 6,
+          "repeat_from": 1
+        },
+        {
+          "day": 7,
+          "repeat_from": 1
+        }
+      ],
+      "shopping": [
+        {
+          "item": "Huevos",
+          "qty": "1.5 planchas",
+          "price": 24,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Atún en lata",
+          "qty": "5 latas",
+          "price": 20,
+          "cat": "Proteínas"
+        },
+        {
+          "item": "Avena y Arroz",
+          "qty": "1.5 kg",
+          "price": 12,
+          "cat": "Carbohidratos"
+        },
+        {
+          "item": "Leche entera",
+          "qty": "2 L",
+          "price": 10,
+          "cat": "Lácteos"
+        },
+        {
+          "item": "Crema de maní y Palta",
+          "qty": "varios",
+          "price": 20,
+          "cat": "Grasas"
+        },
+        {
+          "item": "Plátanos",
+          "qty": "2 kg",
+          "price": 8,
+          "cat": "Frutas"
+        },
+        {
+          "item": "Presupuesto Menú",
+          "qty": "7 días",
+          "price": 90,
+          "cat": "Restaurante"
+        }
+      ],
+      "training": {
+        "split": "PPL",
+        "sessions_per_week": 5,
+        "session_duration_min": 55,
+        "days": [
+          {
+            "day_of_week": 1,
+            "name": "Empuje",
+            "type": "strength",
+            "exercises": [
+              {
+                "name": "Press militar con barra",
+                "sets": 3,
+                "reps": "8-12",
+                "rest_sec": 90,
+                "muscle": "Hombros",
+                "equipment": "Barra",
+                "substitute": "Press con mancuernas",
+                "avoid_if_injury": [
+                  "Lumbar"
+                ]
+              }
+            ]
+          },
+          {
+            "day_of_week": 2,
+            "name": "Jalón",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 3,
+            "name": "Piernas",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 4,
+            "name": "Empuje B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 5,
+            "name": "Jalón B",
+            "type": "strength",
+            "exercises": []
+          },
+          {
+            "day_of_week": 6,
+            "name": "Cardio / Bici",
+            "type": "cardio",
+            "description": "30 min"
+          },
+          {
+            "day_of_week": 7,
+            "name": "Descanso",
+            "type": "rest"
+          }
+        ]
+      }
+    }
+  ]
+}

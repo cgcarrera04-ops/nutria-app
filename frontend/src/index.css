@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --t-bg: #FFFFFF;
+  --t-surface: #FFFFFF;
+  --t-card: #F7FDFD;
+  --t-border: #C8ECEA;
+  --t-border-focus: #2BBCB9;
+  
+  --t-teal: #2BBCB9;
+  --t-teal-dark: #1E9E9B;
+  --t-teal-light: #E6F9F8;
+  --t-teal-mid: rgba(43,188,185,0.12);
+  --t-teal-xlight: #F0FAFA;
+  
+  --t-brown: #7A5540;
+  --t-brown-light: #FAF3EE;
+  --t-brown-mid: rgba(122,85,64,0.10);
+  
+  --t-blue: #3D85B0;
+  --t-blue-light: #EAF4FB;
+  --t-blue-mid: rgba(61,133,176,0.10);
+  
+  --t-amber: #C07828;
+  --t-amber-light: #FEF5E7;
+  --t-amber-mid: rgba(192,120,40,0.10);
+  
+  --t-text-primary: #0D2929;
+  --t-text-secondary: #3D6060;
+  --t-text-muted: #7EAAA8;
+  
+  --t-shadow: 0 1px 6px rgba(43,188,185,0.10), 0 0 0 1px rgba(43,188,185,0.07);
+  --t-shadow-md: 0 3px 16px rgba(43,188,185,0.14), 0 0 0 1px rgba(43,188,185,0.08);
+  --t-shadow-lg: 0 8px 32px rgba(43,188,185,0.18), 0 0 0 1px rgba(43,188,185,0.10);
+}
+
+[data-theme="dark"] {
+  --t-bg: #071313;
+  --t-surface: #091717;
+  --t-card: #0C1E1E;
+  --t-border: #143535;
+  --t-border-focus: #2BBCB9;
+  
+  --t-teal: #2BBCB9;
+  --t-teal-dark: #40D0CE;
+  --t-teal-light: rgba(43,188,185,0.15);
+  --t-teal-mid: rgba(43,188,185,0.25);
+  --t-teal-xlight: rgba(43,188,185,0.08);
+  
+  --t-brown: #A8836C;
+  --t-brown-light: rgba(168,131,108,0.15);
+  --t-brown-mid: rgba(168,131,108,0.25);
+  
+  --t-blue: #5B9CBF;
+  --t-blue-light: rgba(91,156,191,0.15);
+  --t-blue-mid: rgba(91,156,191,0.25);
+  
+  --t-amber: #D89852;
+  --t-amber-light: rgba(216,152,82,0.15);
+  --t-amber-mid: rgba(216,152,82,0.25);
+  
+  --t-text-primary: #E0EDED;
+  --t-text-secondary: #9CBABA;
+  --t-text-muted: #648585;
+  
+  --t-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.03);
+  --t-shadow-md: 0 4px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.03);
+  --t-shadow-lg: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+body {
+  background-color: var(--t-bg);
+  color: var(--t-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
