@@ -1,10 +1,28 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import ProgressBar from "../../components/ui/ProgressBar";
 import InputField from "../../components/ui/InputField";
 import Icon from "../../components/ui/Icon";
 import { useApp } from "../../context/AppContext";
 import MASCOT from "../../constants/mascotImages";
 import T from "../../tokens/T";
+
+// ─── Detecta si el usuario tiene bajo peso Y eligió bajar grasa ───────────────
+const detectLowWeightDeficit = (userData) => {
+  if (userData.goal !== "deficit") return false;
+  const w = Number(userData.weight);
+  const h = Number(userData.height) / 100;
+  if (!w || !h || h < 1) return false;
+  return (w / (h * h)) < 18.5;
+};
+
+// ─── Detecta si el usuario tiene sobrepeso/obesidad Y eligió ganar volumen ───
+const detectHighWeightSurplus = (userData) => {
+  if (userData.goal !== "surplus") return false;
+  const w = Number(userData.weight);
+  const h = Number(userData.height) / 100;
+  if (!w || !h || h < 1) return false;
+  return (w / (h * h)) >= 28; // IMC >= 28 (Pre-obesidad alta/Obesidad)
+};
 
 const SOMATOTYPES = [
   {
@@ -34,6 +52,15 @@ const SOMATOTYPES = [
     imageKey: "robust",
     color:    T.brown,
   },
+  {
+    id:       "unknown",
+    label:    "No estoy seguro",
+    tag:      "NutrIA decide",
+    quote:    '"Prefiero que NutrIA me evalúe"',
+    desc:     "¡No te preocupes! Si seleccionas esta opción, analizaré tu ritmo de vida y tu primer check-in para deducir tu somatotipo óptimo de forma 100% personalizada. ¡Comencemos paso a paso!",
+    imageKey: "unknown",
+    color:    T.teal,
+  },
 ];
 
 const OnboardBio = ({ onNext, onBack }) => {
@@ -41,6 +68,19 @@ const OnboardBio = ({ onNext, onBack }) => {
   const { userData } = state;
   const set = (payload) => dispatch({ type: "UPDATE_USER_DATA", payload });
   const [expandedSoma, setExpandedSoma] = useState(null);
+  const [lowWeightDismissed, setLowWeightDismissed] = useState(false);
+  const [highWeightDismissed, setHighWeightDismissed] = useState(false);
+
+  // Se recalcula cada vez que cambia peso, altura o goal
+  const showLowWeightAlert = useMemo(
+    () => !lowWeightDismissed && detectLowWeightDeficit(userData),
+    [userData.weight, userData.height, userData.goal, lowWeightDismissed] // eslint-disable-line react-hooks/exhaustive-deps
+  );
+
+  const showHighWeightAlert = useMemo(
+    () => !highWeightDismissed && detectHighWeightSurplus(userData),
+    [userData.weight, userData.height, userData.goal, highWeightDismissed] // eslint-disable-line react-hooks/exhaustive-deps
+  );
 
   const canProceed = 
     userData.weight >= 30 && userData.weight <= 250 &&
@@ -99,6 +139,30 @@ const OnboardBio = ({ onNext, onBack }) => {
           </div>
         </div>
 
+        {/* Alerta Edad Juvenil */}
+        {userData.age && userData.age < 18 && (
+          <div className="fade-up" style={{
+            background:`${T.teal}10`, border:`1.5px solid ${T.teal}40`, borderRadius:14, padding:"12px 14px",
+            display:"flex", gap:10, alignItems:"flex-start", marginBottom:18, animation:"fadeUp .3s ease both"
+          }}>
+            <img src={MASCOT.logo} alt="NutrIA Protectora" style={{ width:40, height:40, borderRadius:10, objectFit:"cover", flexShrink:0, border:`1.5px solid ${T.teal}40` }} onError={e => { e.target.style.display="none"; }} />
+            <div>
+              <div style={{ fontSize:13, fontWeight:700, color:T.teal, marginBottom:2 }}>NutrIA te cuida en tu crecimiento 🌱</div>
+              <div style={{ fontSize:12, color:T.textSecondary, lineHeight:1.5 }}>
+                Como aún estás en etapa de desarrollo físico, tus requerimientos se ajustarán cuidadosamente. El enfoque será construir hábitos saludables, sin restricciones energéticas extremas.
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Nota de honestidad */}
+        <div className="fade-up fade-up-2" style={{
+          background:`${T.teal}08`, border:`1.2px dashed ${T.teal}40`, borderRadius:14, padding:"12px 14px",
+          textAlign:"center", margin:"16px 0", color:T.textSecondary, fontSize:12.5, lineHeight:1.6
+        }}>
+          🦦 <strong>Promesa de Honestidad:</strong> Para que pueda diseñar tu plan ideal, por favor sé 100% honesto con tus datos. Tu cuerpo es único, valioso y perfecto tal como es hoy. ¡Aquí no hay juicios, solo apoyo incondicional! ❤️
+        </div>
+
         {/* Somatotipos con imagen de mascota */}
         <div className="fade-up fade-up-3">
           <label style={{ fontSize:13, fontWeight:600, color:T.textSecondary, display:"block", marginBottom:12 }}>
@@ -133,17 +197,24 @@ const OnboardBio = ({ onNext, onBack }) => {
                       transition:"all .22s",
                     }}>
                       <img
-                        src={MASCOT.somatotype[s.imageKey]}
+                        src={MASCOT.somatotype[s.imageKey] || MASCOT.logo}
                         alt={`NutrIA ${s.label}`}
                         onError={e => {
                           e.target.style.display = "none";
                           e.target.nextSibling.style.display = "flex";
                         }}
-                        style={{ width:"100%", height:"100%", objectFit:"cover" }}
+                        style={{
+                          width:"100%",
+                          height:"100%",
+                          objectFit:"cover",
+                          transition:"all .3s ease",
+                          transform: sel ? "scale(1.08)" : "scale(1)",
+                          animation: sel ? "float 3s ease-in-out infinite" : "none"
+                        }}
                       />
                       {/* Fallback emoji si no carga imagen */}
                       <div style={{ display:"none", fontSize:36, alignItems:"center", justifyContent:"center", width:"100%", height:"100%" }}>
-                        {s.id==="slim" ? "🦦" : s.id==="athletic" ? "🦦💪" : "🦦🏋️"}
+                        {s.id==="slim" ? "🦦" : s.id==="athletic" ? "🦦💪" : s.id==="robust" ? "🦦🏋️" : "🦦❓"}
                       </div>
                     </div>
 
@@ -186,6 +257,92 @@ const OnboardBio = ({ onNext, onBack }) => {
           </div>
         </div>
       </div>
+
+      {/* ── Alerta bajo peso + déficit: aparece en tiempo real ── */}
+      {showLowWeightAlert && (
+        <div style={{
+          position:"fixed", bottom:80, left:0, right:0,
+          padding:"0 16px", zIndex:50,
+          animation:"fadeUp .3s ease both",
+        }}>
+          <div style={{
+            maxWidth:520, margin:"0 auto",
+            background:T.bg,
+            border:`2px solid ${T.amber}`,
+            borderRadius:16, padding:"14px 16px",
+            boxShadow:`0 4px 24px rgba(192,120,40,0.22)`,
+          }}>
+            <div style={{ display:"flex", gap:10, alignItems:"flex-start", marginBottom:10 }}>
+              <span style={{ fontSize:24, flexShrink:0 }}>🦦❤️</span>
+              <div>
+                <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:13.5, color:T.amber, marginBottom:3 }}>
+                  NutrIA se preocupa por ti
+                </div>
+                <p style={{ fontSize:12, color:T.textSecondary, lineHeight:1.6, margin:0 }}>
+                  Con tu peso y altura actuales, tu cuerpo probablemente necesita <strong style={{ color:T.textPrimary }}>ganar músculo y energía</strong>, no reducir. Elegir "Perder grasa" podría ser contraproducente ahora.
+                </p>
+              </div>
+            </div>
+            <div style={{ display:"flex", gap:8 }}>
+              <button
+                onClick={() => { dispatch({ type:"UPDATE_USER_DATA", payload:{ goal:"maintain" } }); setLowWeightDismissed(true); }}
+                style={{ flex:1, padding:"9px 10px", background:T.teal, color:"#fff", border:"none", borderRadius:10, cursor:"pointer", fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:12 }}
+              >
+                ✨ Cambiar a Recomposición
+              </button>
+              <button
+                onClick={() => setLowWeightDismissed(true)}
+                style={{ padding:"9px 12px", background:"transparent", color:T.textMuted, border:`1px solid ${T.border}`, borderRadius:10, cursor:"pointer", fontSize:11 }}
+              >
+                Continuar igual
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Alerta sobrepeso + volumen: aparece en tiempo real ── */}
+      {showHighWeightAlert && (
+        <div style={{
+          position:"fixed", bottom:80, left:0, right:0,
+          padding:"0 16px", zIndex:50,
+          animation:"fadeUp .3s ease both",
+        }}>
+          <div style={{
+            maxWidth:520, margin:"0 auto",
+            background:T.bg,
+            border:`2px solid ${T.amber}`,
+            borderRadius:16, padding:"14px 16px",
+            boxShadow:`0 4px 24px rgba(192,120,40,0.22)`,
+          }}>
+            <div style={{ display:"flex", gap:10, alignItems:"flex-start", marginBottom:10 }}>
+              <span style={{ fontSize:24, flexShrink:0 }}>🦦❤️</span>
+              <div>
+                <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:13.5, color:T.amber, marginBottom:3 }}>
+                  NutrIA sugiere un cambio de enfoque
+                </div>
+                <p style={{ fontSize:12, color:T.textSecondary, lineHeight:1.6, margin:0 }}>
+                  Con tu IMC actual, elegir "Ganar músculo" (superávit calórico) probablemente agregue grasa corporal innecesaria. Lo mejor para tu salud y estética ahora es <strong style={{ color:T.textPrimary }}>recomposición o perder grasa</strong> mientras entrenas fuerza.
+                </p>
+              </div>
+            </div>
+            <div style={{ display:"flex", gap:8 }}>
+              <button
+                onClick={() => { dispatch({ type:"UPDATE_USER_DATA", payload:{ goal:"deficit" } }); setHighWeightDismissed(true); }}
+                style={{ flex:1, padding:"9px 10px", background:T.teal, color:"#fff", border:"none", borderRadius:10, cursor:"pointer", fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:12 }}
+              >
+                ✨ Cambiar a Perder Grasa
+              </button>
+              <button
+                onClick={() => setHighWeightDismissed(true)}
+                style={{ padding:"9px 12px", background:"transparent", color:T.textMuted, border:`1px solid ${T.border}`, borderRadius:10, cursor:"pointer", fontSize:11 }}
+              >
+                Continuar igual
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Footer fijo */}
       <div style={{ position:"fixed", bottom:0, left:0, right:0, padding:"14px 22px 24px", background:`linear-gradient(transparent, ${T.bg} 45%)`, display:"flex", justifyContent:"space-between" }}>

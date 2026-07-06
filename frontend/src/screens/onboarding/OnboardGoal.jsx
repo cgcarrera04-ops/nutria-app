@@ -70,6 +70,7 @@ const OnboardGoal = ({ onNext }) => {
     setExpanded(id);
   };
 
+
   return (
     <div style={{ minHeight:"100vh", display:"flex", flexDirection:"column", background:T.bg }}>
       <ProgressBar step={1} total={3} completedSteps={[]} onStepClick={() => {}} />
@@ -81,7 +82,7 @@ const OnboardGoal = ({ onNext }) => {
             src={MASCOT.logo}
             alt="NutrIA"
             onError={e => { e.target.src = "https://i.postimg.cc/FsNKHJ22/1776015778388.png"; }}
-            style={{ width:44, height:44, borderRadius:12, objectFit:"cover", boxShadow:`0 2px 12px rgba(43,188,185,0.2)`, animation:"float 4s ease-in-out infinite" }}
+            style={{ width:44, height:44, borderRadius:12, objectFit:"contain", background:"#fff", boxShadow:`0 2px 12px rgba(43,188,185,0.2)`, animation:"float 4s ease-in-out infinite" }}
           />
           <div>
             <span className="tag" style={{ background:T.tealLight, color:T.teal, border:`1.5px solid ${T.border}` }}>
@@ -158,10 +159,11 @@ const OnboardGoal = ({ onNext }) => {
           })}
         </div>
 
+
         {/* Campo: nombre */}
         <div className="fade-up fade-up-3" style={{ marginTop:18 }}>
           <label style={{ fontSize:13, fontWeight:600, color:T.textSecondary, display:"block", marginBottom:7 }}>
-            ¿Cómo te llama NutrIA?
+            ¿Cómo quieres que te llame NutrIA?
           </label>
           <input
             type="text"

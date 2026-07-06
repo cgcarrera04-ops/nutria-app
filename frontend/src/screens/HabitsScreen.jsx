@@ -1,25 +1,117 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "../components/ui/Icon";
 import MASCOT from "../constants/mascotImages";
 import { useApp } from "../context/AppContext";
 import T from "../tokens/T";
 
-const HABITS = [
-  { label:"Despertar sin snooze",                    done:true,  emoji:"⏰" },
-  { label:"10 min de luz solar al despertar",         done:true,  emoji:"☀️" },
-  { label:"Suplemento de vitamina D",                 done:false, emoji:"💊" },
-  { label:"Apagar pantallas 30 min antes de dormir",  done:false, emoji:"🌙" },
-  { label:"Check de estrés nocturno (1-5)",           done:false, emoji:"🧠" },
+const HABITS_INITIAL = [
+  { id:"snooze",  label:"Despertar sin snooze",                    emoji:"\u23F0" },
+  { id:"sun",     label:"10 min de luz solar al despertar",         emoji:"\u2600" },
+  { id:"vitd",    label:"Suplemento de vitamina D",                 emoji:"\uD83D\uDC8A" },
+  { id:"screens", label:"Apagar pantallas 30 min antes de dormir",  emoji:"\uD83C\uDF19" },
+  { id:"stress",  label:"Check de estr\u00E9s nocturno (1-5)",           emoji:"\uD83E\uDDE0" },
 ];
 
 const HabitsScreen = ({ onBack }) => {
   const { state, dispatch } = useApp();
   const water    = state.todayHabits.water;
-  const waterGoal = 8;
-  const steps    = 7240;
-  const stepsGoal = 9000;
+  const weight   = Number(state.userData.weight || 70);
+  const waterGoal = Math.max(6, Math.min(10, Math.round((weight * 35) / 250)));
+  const steps    = state.todayHabits.steps || 0;
 
-  const setWater = (n) => dispatch({ type:"UPDATE_HABITS", payload:{ water:n } });
+  // Calculo de meta de pasos dinamico segun somatotipo, objetivo y actividad actual
+  let baseSteps = 8000;
+  const act = state.userData.activity || "moderate";
+  if (act === "sedentary") baseSteps = 6000;
+  else if (act === "light") baseSteps = 8000;
+  else if (act === "moderate") baseSteps = 10000;
+  else if (act === "very") baseSteps = 12000;
+
+  const som = state.userData.somatotype || "athletic";
+  if (som === "slim") baseSteps -= 1000;
+  else if (som === "robust") baseSteps += 1000;
+
+  const goal = state.userData.goal || "deficit";
+  if (goal === "deficit") baseSteps += 1500;
+  else if (goal === "surplus") baseSteps -= 1500;
+
+  const stepsGoal = Math.max(5000, Math.min(15000, baseSteps));
+
+  const [habits, setHabits] = useState(HABITS_INITIAL.map(h => ({ ...h, done: false })));
+  const [isTracking, setIsTracking] = useState(false);
+
+  const toggleHabit = (id) => setHabits(prev => prev.map(h => h.id === id ? { ...h, done: !h.done } : h));
+
+  const setWater  = (n) => {
+    dispatch({ type:"UPDATE_HABITS", payload:{ water: n } });
+    dispatch({ type:"SAVE_PROFILE" });
+  };
+
+  const handleManualStepsChange = (val) => {
+    const num = Math.max(0, Math.min(40000, Number(val) || 0));
+    dispatch({ type:"UPDATE_HABITS", payload:{ steps: num } });
+    dispatch({ type:"SAVE_PROFILE" });
+  };
+
+  // Podometro Automatico via Acelerometro del Navegador
+  const toggleAutomaticPedometer = () => {
+    if (isTracking) {
+      if (window.__nutriaMotionListener) {
+        window.removeEventListener("devicemotion", window.__nutriaMotionListener);
+        delete window.__nutriaMotionListener;
+      }
+      setIsTracking(false);
+    } else {
+      if (typeof DeviceMotionEvent !== "undefined" && typeof DeviceMotionEvent.requestPermission === "function") {
+        DeviceMotionEvent.requestPermission()
+          .then(permissionState => {
+            if (permissionState === "granted") {
+              startMotionListener();
+            } else {
+              alert("Necesitamos accesibilidad de sensores para contar pasos.");
+            }
+          })
+          .catch(console.error);
+      } else {
+        startMotionListener();
+      }
+    }
+  };
+
+  const startMotionListener = () => {
+    setIsTracking(true);
+    let lastTime = Date.now();
+    let lastAcc = 0;
+    let localSteps = steps;
+
+    const handleMotion = (e) => {
+      const acc = e.accelerationIncludingGravity;
+      if (!acc) return;
+      const mag = Math.sqrt(acc.x * acc.x + acc.y * acc.y + acc.z * acc.z);
+      const now = Date.now();
+      if (now - lastTime > 350) {
+        const delta = Math.abs(mag - lastAcc);
+        if (delta > 3.2) {
+          localSteps += 1;
+          dispatch({ type: "UPDATE_HABITS", payload: { steps: localSteps } });
+          lastTime = now;
+        }
+      }
+      lastAcc = mag;
+    };
+
+    window.__nutriaMotionListener = handleMotion;
+    window.addEventListener("devicemotion", handleMotion);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (window.__nutriaMotionListener) {
+        window.removeEventListener("devicemotion", window.__nutriaMotionListener);
+        delete window.__nutriaMotionListener;
+      }
+    };
+  }, []);
 
   const allWaterDone = water >= waterGoal;
   const noWater      = water === 0;
@@ -32,20 +124,19 @@ const HabitsScreen = ({ onBack }) => {
           <Icon name="arrowLeft" size={17} color={T.textSecondary} />
         </button>
         <div>
-          <div style={{ fontSize:10.5, color:T.textMuted, fontFamily:"'IBM Plex Mono', monospace" }}>MÓDULO 03</div>
-          <h2 style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:19, color:T.textPrimary }}>Micro-Hábitos</h2>
+          <div style={{ fontSize:10.5, color:T.textMuted, fontFamily:"'IBM Plex Mono', monospace" }}>M\u00D3DULO 03</div>
+          <h2 style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:19, color:T.textPrimary }}>Micro-H\u00E1bitos</h2>
         </div>
       </div>
 
-      {/* ── Agua — empty state o tracker ── */}
+      {/* Hidratacion */}
       <div className="fade-up fade-up-1 card" style={{ marginBottom:10 }}>
-        {/* Header agua */}
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:14 }}>
           <div style={{ display:"flex", gap:10, alignItems:"center" }}>
             <Icon name="droplets" size={20} color={T.teal} />
             <div>
-              <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:15, color:T.textPrimary }}>Hidratación</div>
-              <div style={{ fontSize:12, color:T.textMuted }}>Meta: {waterGoal} vasos · 2L</div>
+              <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:15, color:T.textPrimary }}>Hidrataci\u00F3n</div>
+              <div style={{ fontSize:12, color:T.textMuted }}>Meta: {waterGoal} vasos · {(waterGoal * 250 / 1000).toFixed(1)}L</div>
             </div>
           </div>
           <div style={{ fontFamily:"'IBM Plex Mono', monospace", fontSize:24, fontWeight:500, color:T.teal }}>
@@ -53,40 +144,36 @@ const HabitsScreen = ({ onBack }) => {
           </div>
         </div>
 
-        {/* Empty state — NutrIA seca */}
         {noWater && (
           <div style={{ textAlign:"center", padding:"10px 0 16px", animation:"fadeUp .3s ease both" }}>
             <img
-              src={MASCOT.emptyState.noWater}
+              src={MASCOT.logo}
               alt="NutrIA necesita agua"
-              onError={e => { e.target.style.display="none"; e.target.nextSibling.style.display="block"; }}
-              style={{ width:80, height:80, borderRadius:18, objectFit:"cover", margin:"0 auto 10px" }}
+              onError={e => { e.target.style.display="none"; }}
+              style={{ width:72, height:72, borderRadius:18, objectFit:"cover", margin:"0 auto 10px", display:"block", animation:"float 3s ease-in-out infinite" }}
             />
-            <div style={{ display:"none", fontSize:48, marginBottom:8 }}>🦦💧</div>
             <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:14, color:T.teal, marginBottom:4 }}>
-              ¡NutrIA necesita agua!
+              \u00A1NutrIA necesita agua! \uD83D\uDCA7
             </div>
-            <div style={{ fontSize:12.5, color:T.textSecondary }}>Aún no has registrado ningún vaso hoy.</div>
+            <div style={{ fontSize:12.5, color:T.textSecondary }}>A\u00FAn no has registrado ning\u00FAn vaso hoy.</div>
           </div>
         )}
 
-        {/* Celebración 100% */}
         {allWaterDone && (
           <div style={{ textAlign:"center", padding:"10px 0 14px", animation:"fadeUp .3s ease both" }}>
             <img
               src={MASCOT.emptyState.celebration}
-              alt="¡Meta de agua lograda!"
+              alt="Meta de agua lograda"
               onError={e => { e.target.style.display="none"; }}
-              style={{ width:72, height:72, borderRadius:16, objectFit:"cover", margin:"0 auto 10px" }}
+              style={{ width:72, height:72, borderRadius:16, objectFit:"cover", margin:"0 auto 10px", animation:"float 2.5s ease-in-out infinite" }}
             />
             <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:14, color:T.teal, marginBottom:2 }}>
-              ¡Meta de hidratación lograda! 🎉
+              \u00A1Meta de hidrataci\u00F3n lograda! \uD83C\uDF89
             </div>
             <div style={{ fontSize:12, color:T.textSecondary }}>NutrIA celebra contigo</div>
           </div>
         )}
 
-        {/* Vasos visuales */}
         <div style={{ display:"flex", gap:7, flexWrap:"wrap", marginBottom:12, justifyContent:"center" }}>
           {[...Array(waterGoal)].map((_,i) => (
             <div key={i} onClick={() => setWater(i+1)} style={{
@@ -105,11 +192,11 @@ const HabitsScreen = ({ onBack }) => {
         </div>
 
         <button onClick={() => setWater(Math.min(water+1, waterGoal))} className="btn-ghost" style={{ width:"100%", justifyContent:"center", padding:"9px", fontSize:13 }}>
-          💧 Registrar vaso de agua
+          \uD83D\uDCA7 Registrar vaso de agua
         </button>
       </div>
 
-      {/* ── Pasos ── */}
+      {/* Pasos */}
       <div className="fade-up fade-up-2 card" style={{ marginBottom:10 }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:13 }}>
           <div style={{ display:"flex", gap:10, alignItems:"center" }}>
@@ -119,29 +206,130 @@ const HabitsScreen = ({ onBack }) => {
               <div style={{ fontSize:12, color:T.textMuted }}>Meta: {stepsGoal.toLocaleString()} pasos</div>
             </div>
           </div>
-          <div style={{ fontFamily:"'IBM Plex Mono', monospace", fontSize:20, fontWeight:500, color:T.blue }}>
+          <div style={{ fontFamily:"'IBM Plex Mono', monospace", fontSize:20, fontWeight:700, color: steps >= stepsGoal ? T.teal : T.blue }}>
             {steps.toLocaleString()}
           </div>
         </div>
-        <div style={{ height:5, background:T.border, borderRadius:3, marginBottom:7 }}>
-          <div style={{ height:"100%", width:`${Math.min((steps/stepsGoal)*100,100)}%`, background:T.blue, borderRadius:3, transition:"width .6s ease" }} />
+        
+        {/* Barra de Progreso con soporte de excedido (glowing gradient) */}
+        <div style={{ height:6, background:T.border, borderRadius:3, marginBottom:7, overflow:"hidden" }}>
+          <div style={{ 
+            height:"100%", 
+            width:`${Math.min((steps/stepsGoal)*100, 100)}%`, 
+            background: steps >= stepsGoal ? "linear-gradient(90deg, #F59E0B 0%, #2BBCB9 100%)" : T.blue, 
+            borderRadius:3, 
+            transition:"width .6s ease, background .4s ease" 
+          }} />
         </div>
-        <div style={{ display:"flex", justifyContent:"space-between" }}>
-          <span style={{ fontSize:12, color:T.textMuted }}>{Math.round((steps/stepsGoal)*100)}% completado</span>
-          <span style={{ fontSize:12, color:T.blue }}>Faltan {Math.max(stepsGoal-steps,0).toLocaleString()}</span>
+
+        <div style={{ display:"flex", justifyContent:"space-between", marginBottom: 12 }}>
+          <span style={{ fontSize:12, color: steps >= stepsGoal ? T.teal : T.textMuted, fontWeight: steps >= stepsGoal ? 600 : 400 }}>
+            {Math.round((steps/stepsGoal)*100)}% completado
+          </span>
+          <span style={{ fontSize:12, color: steps >= stepsGoal ? T.teal : T.blue, fontWeight: 600 }}>
+            {steps >= stepsGoal 
+              ? `¡Superaste tu meta por ${(steps - stepsGoal).toLocaleString()} pasos! 🌟` 
+              : `Faltan ${Math.max(stepsGoal-steps,0).toLocaleString()} pasos`
+            }
+          </span>
         </div>
+
+        {/* Inputs Interactivos Avanzados de 1,000 en 1,000 */}
+        <div style={{ display:"flex", flexDirection:"column", gap:10, borderTop:`1.5px solid ${T.border}`, paddingTop:12, marginTop:8 }}>
+          
+          {/* Botones táctiles de 1,000 en 1,000 */}
+          <div style={{ display:"flex", gap:8, width:"100%" }}>
+            <button 
+              onClick={() => {
+                const current = steps || 0;
+                const next = Math.max(0, Math.round((current - 1000) / 1000) * 1000);
+                handleManualStepsChange(next);
+              }}
+              style={{
+                flex: 1, padding: "8px 12px", background: T.surface, border: `1.5px solid ${T.border}`,
+                borderRadius: 12, fontSize: 13, fontWeight: 700, color: T.textSecondary, cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center", gap: 6, transition: "all 0.2s ease"
+              }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = T.blue}
+              onMouseLeave={e => e.currentTarget.style.borderColor = T.border}
+            >
+              ➖ 1,000 pasos
+            </button>
+            <button 
+              onClick={() => {
+                const current = steps || 0;
+                const next = Math.round((current + 1000) / 1000) * 1000;
+                handleManualStepsChange(next);
+              }}
+              style={{
+                flex: 1, padding: "8px 12px", background: `${T.blue}12`, border: `1.5px solid ${T.blue}30`,
+                borderRadius: 12, fontSize: 13, fontWeight: 700, color: T.blue, cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center", gap: 6, transition: "all 0.2s ease"
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = `${T.blue}1C`}
+              onMouseLeave={e => e.currentTarget.style.background = `${T.blue}12`}
+            >
+              ➕ 1,000 pasos
+            </button>
+          </div>
+
+          {/* Ingreso manual directo (redondeado automáticamente a múltiplos de 1,000) */}
+          <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+            <span style={{ fontSize:13, color:T.textSecondary, fontWeight:500 }}>Ajustar valor exacto:</span>
+            <input 
+              type="number" 
+              step="1000"
+              value={steps || 0} 
+              placeholder="Ej. 8000"
+              onChange={(e) => {
+                const rawVal = Number(e.target.value) || 0;
+                // Redondeamos inmediatamente al múltiplo de 1,000 más cercano
+                const roundedVal = Math.round(rawVal / 1000) * 1000;
+                handleManualStepsChange(roundedVal);
+              }} 
+              style={{ width:110, padding:"6px 12px", border:`1.5px solid ${T.border}`, borderRadius:10, background:T.surface, color:T.textPrimary, fontFamily:"'IBM Plex Mono', monospace", fontWeight:600, textAlign:"center" }}
+            />
+          </div>
+
+          {/* Podometro en tiempo real */}
+          <button 
+            onClick={toggleAutomaticPedometer} 
+            className="btn-ghost" 
+            style={{ 
+              width:"100%", 
+              justifyContent:"center", 
+              padding:"9px", 
+              fontSize:13, 
+              background: isTracking ? `${T.teal}18` : "transparent",
+              color: isTracking ? T.teal : T.textSecondary,
+              border: isTracking ? `1.5px solid ${T.teal}` : `1.5px solid ${T.border}`
+            }}
+          >
+            {isTracking ? "🧵 Podómetro activo... (Camina con tu cel!)" : "🧵 Activar podómetro automático"}
+          </button>
+        </div>
+
+        {steps >= stepsGoal && (
+          <div style={{ display:"flex", gap:10, alignItems:"center", padding:"10px 0", marginTop:8, animation:"fadeUp .3s ease both" }}>
+            <img src={MASCOT.emptyState.celebration} alt="Meta de pasos" style={{ width:44, height:44, borderRadius:12, objectFit:"cover", animation:"float 2.5s ease-in-out infinite" }} onError={e => { e.target.style.display="none"; }} />
+            <div style={{ fontSize:12.5, color:T.teal, fontWeight:600 }}>¡NutrIA está orgullosa de tu movimiento! 🎉🦦</div>
+          </div>
+        )}
       </div>
 
-      {/* ── Hábitos del día ── */}
+      {/* Habitos interactivos */}
       <div className="fade-up fade-up-3 card">
-        <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:15, marginBottom:14, color:T.textPrimary }}>Hábitos del día</div>
-        {HABITS.map((h,i) => (
-          <div key={i} style={{ display:"flex", gap:13, alignItems:"center", padding:"10px 0", borderBottom: i<HABITS.length-1 ? `1px solid ${T.border}` : "none" }}>
-            <div style={{ width:22, height:22, borderRadius:7, background:h.done?T.tealLight:T.card, border:`1.5px solid ${h.done?T.teal:T.border}`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+        <div style={{ display:"flex", gap:10, alignItems:"center", marginBottom:14 }}>
+          <img src={MASCOT.logo} alt="NutrIA" style={{ width:36, height:36, borderRadius:10, objectFit:"cover", animation:"float 4s ease-in-out infinite" }} onError={e => { e.target.style.display="none"; }} />
+          <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:15, color:T.textPrimary }}>H\u00E1bitos del d\u00EDa</div>
+        </div>
+        {habits.map((h,i) => (
+          <div key={h.id} onClick={() => toggleHabit(h.id)} style={{ display:"flex", gap:13, alignItems:"center", padding:"10px 0", borderBottom: i<habits.length-1 ? `1px solid ${T.border}` : "none", cursor:"pointer", transition:"opacity .18s", opacity: h.done ? 1 : 0.8 }}>
+            <div style={{ width:22, height:22, borderRadius:7, background:h.done?T.tealLight:T.card, border:`1.5px solid ${h.done?T.teal:T.border}`, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, transition:"all .18s" }}>
               {h.done && <Icon name="check" size={12} color={T.teal} />}
             </div>
             <span style={{ fontSize:20 }}>{h.emoji}</span>
-            <span style={{ fontSize:13.5, color:h.done?T.textPrimary:T.textSecondary }}>{h.label}</span>
+            <span style={{ fontSize:13.5, color:h.done?T.textPrimary:T.textSecondary, textDecoration:h.done?"line-through":"none", transition:"all .2s" }}>{h.label}</span>
           </div>
         ))}
       </div>

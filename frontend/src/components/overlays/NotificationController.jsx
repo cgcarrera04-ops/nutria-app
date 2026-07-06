@@ -12,7 +12,7 @@ const NotificationController = () => {
     // Only run if there is an active profile with a plan
     if (!state.userData.goal || state.screen === "welcome" || state.screen.startsWith("onboard") || state.isGeneratingPlan) return;
 
-    const MEALS = getMealsForUser(state.userData);
+    const MEALS = getMealsForUser(state.userData, state.plan, state.currentDay);
     if (!MEALS || MEALS.length === 0) return;
 
     const checkMeals = () => {

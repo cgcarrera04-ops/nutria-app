@@ -5,7 +5,9 @@ import LoadingOverlay from "./components/overlays/LoadingOverlay";
 import SplashPreloader from "./components/overlays/SplashPreloader";
 import BottomNav from "./components/ui/BottomNav";
 import NotificationController from "./components/overlays/NotificationController";
+import PWAInstallPrompt from "./components/overlays/PWAInstallPrompt";
 import { findCachedPlan } from "./services/responseCache";
+import { API_BASE } from "./config/api";
 
 // Screens
 import WelcomeScreen   from "./screens/WelcomeScreen";
@@ -19,10 +21,13 @@ import HabitsScreen    from "./screens/HabitsScreen";
 import CheckInScreen   from "./screens/CheckInScreen";
 import AnalyticsScreen from "./screens/AnalyticsScreen";
 import ProfileManagerScreen from "./screens/ProfileManagerScreen";
-
-const APP_SCREENS = new Set(["dashboard","nutrition","training","habits","analytics"]);
+import DiaryScreen from "./screens/DiaryScreen";
 
 import { useEffect } from "react";
+import { playClick } from "./services/audioEngine";
+
+const APP_SCREENS = new Set(["dashboard","nutrition","training","habits","analytics","diary"]);
+
 // ─── Inner app ────────────────────────────────────────────────────────────────
 const AppInner = () => {
   const { state, dispatch } = useApp();
@@ -30,26 +35,118 @@ const AppInner = () => {
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", state.userData.theme || "light");
   }, [state.userData.theme]);
+
+  // ── Interceptor Global de Sonidos de Clic Tactiles ──
+  useEffect(() => {
+    const handleGlobalClick = (e) => {
+      const target = e.target;
+      const interactive = target.closest("button, a, [role='button'], [style*='cursor: pointer'], [style*='cursor:pointer'], input[type='range'], input[type='checkbox'], input[type='radio'], select");
+      if (interactive) {
+        const sfxActive = localStorage.getItem("nutria_sfx") !== "false";
+        if (sfxActive) {
+          playClick();
+        }
+      }
+    };
+    window.addEventListener("click", handleGlobalClick);
+    return () => window.removeEventListener("click", handleGlobalClick);
+  }, []);
+
   const { screen } = state;
 
   const nav = (s) => dispatch({ type:"SET_SCREEN", payload:s });
 
-    const triggerGenerate = () => {
-      dispatch({ type:"SET_GENERATING", payload:true });
-  
-      const cached = findCachedPlan(state.userData);
-      if (cached) {
-        setTimeout(() => {
-          dispatch({ type:"SET_PLAN", payload:cached });
-          dispatch({ type:"SAVE_PROFILE" }); // Guardar tras generar
-        }, 800);
-      } else {
-        setTimeout(() => {
-          dispatch({ type:"SET_PLAN", payload:{ stub:true, fromAI:true } });
-          dispatch({ type:"SAVE_PROFILE" }); // Guardar tras generar
-        }, 4200);
+  const applyLocalAdjustments = (plan, checkin) => {
+    if (!checkin) return plan;
+    try {
+      const clone = JSON.parse(JSON.stringify(plan));
+      if (checkin.hunger === "yes") {
+        clone.calories_daily = (clone.calories_daily || 2000) + 150;
       }
+      if (checkin.fatigue === "yes" && clone.training && clone.training.days) {
+        clone.training.days = clone.training.days.map(d => ({
+          ...d,
+          exercises: (d.exercises || []).map(e => ({
+            ...e,
+            sets: Math.max(1, (e.sets || 3) - 1)
+          }))
+        }));
+      }
+      return clone;
+    } catch (e) {
+      return plan;
+    }
+  };
+
+  const triggerGenerate = (targetWeek = state.currentWeek, lastCheckin = state.lastCheckin) => {
+    dispatch({ type: "SET_GENERATING", payload: true });
+
+    // Protegemos el flujo ante eventos accidentales del DOM para que la mascota trabaje contenta
+    const cleanWeek = (typeof targetWeek === "number") ? targetWeek : state.currentWeek;
+    const cleanCheckin = (lastCheckin && typeof lastCheckin === "object" && !lastCheckin.preventDefault) ? lastCheckin : state.lastCheckin;
+
+    const payload = {
+      userData: state.userData,
+      currentWeek: cleanWeek,
+      lastCheckin: cleanCheckin,
+      basePlan: cleanWeek > 1 ? state.plan : null
     };
+
+    fetch(`${API_BASE}/api/generate`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("Fallo al contactar al servidor local de NutrIA");
+      return res.json();
+    })
+    .then(data => {
+      if (data.plan) {
+        dispatch({ type: "SET_PLAN", payload: data.plan });
+        dispatch({ type: "SAVE_PROFILE" });
+      } else {
+        throw new Error("El servidor devolvió un formato de plan inválido");
+      }
+    })
+    .catch(async err => {
+      console.warn("[NutrIA] Servidor local no disponible. Cargando plan offline con ajustes:", err);
+      // Fallback local robusto
+      try {
+        const cached = await findCachedPlan(state.userData);
+        if (cached) {
+          const adjusted = cleanWeek > 1 ? applyLocalAdjustments(cached, cleanCheckin) : cached;
+          dispatch({ type: "SET_PLAN", payload: adjusted });
+          dispatch({ type: "SAVE_PROFILE" });
+        } else {
+          dispatch({ type: "SET_PLAN", payload: { stub: true, fromAI: true } });
+          dispatch({ type: "SAVE_PROFILE" });
+        }
+      } catch (fallbackErr) {
+        console.error("[NutrIA] Error fatal en fallback local:", fallbackErr);
+        dispatch({
+          type: "SET_PLAN_ERROR",
+          payload: "Hubo un pequeño tropiezo preparando tu plan offline. ¡Volvamos a intentarlo!",
+        });
+      }
+    });
+  };
+
+  useEffect(() => {
+    window.__nutriaTriggerGenerate = (targetWeek, lastCheckin) => {
+      triggerGenerate(targetWeek, lastCheckin);
+    };
+    // Contador en tiempo real de sesiones de inicio
+    try {
+      const currentSessions = Number(localStorage.getItem("nutria_session_count") || 0);
+      localStorage.setItem("nutria_session_count", currentSessions + 1);
+    } catch (e) {}
+    return () => {
+      delete window.__nutriaTriggerGenerate;
+    };
+  }, [state.userData, state.plan, state.currentWeek, state.lastCheckin]);
 
   const showNav = APP_SCREENS.has(screen);
 
@@ -61,16 +158,18 @@ const AppInner = () => {
       {screen === "welcome"   && <WelcomeScreen   onNext={() => nav("onboard1")} onDemo={(p) => { dispatch({ type:"UPDATE_USER_DATA", payload:p }); triggerGenerate(); }} />}
       {screen === "onboard1"  && <OnboardGoal     onNext={() => nav("onboard2")} />}
       {screen === "onboard2"  && <OnboardBio      onNext={() => nav("onboard3")} onBack={() => nav("onboard1")} />}
-      {screen === "onboard3"  && <OnboardContext  onNext={triggerGenerate}        onBack={() => nav("onboard2")} />}
+      {screen === "onboard3"  && <OnboardContext  onNext={() => triggerGenerate()}        onBack={() => nav("onboard2")} />}
       {screen === "dashboard" && <DashboardScreen onNav={nav} />}
       {screen === "nutrition" && <NutritionScreen onBack={() => nav("dashboard")} />}
       {screen === "training"  && <TrainingScreen  onBack={() => nav("dashboard")} />}
       {screen === "habits"    && <HabitsScreen    onBack={() => nav("dashboard")} />}
       {screen === "checkin"   && <CheckInScreen   onBack={() => nav("dashboard")} />}
       {screen === "analytics" && <AnalyticsScreen onBack={() => nav("dashboard")} />}
+      {screen === "diary"     && <DiaryScreen     onBack={() => nav("dashboard")} />}
 
       {showNav && <BottomNav current={screen} onNav={nav} />}
       <NotificationController />
+      <PWAInstallPrompt />
       <LoadingOverlay />
     </>
   );

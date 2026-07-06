@@ -1,45 +1,106 @@
 import { useState } from "react";
 import Icon from "../components/ui/Icon";
 import T from "../tokens/T";
+import { useApp } from "../context/AppContext";
 
 const CheckInScreen = ({ onBack }) => {
+  const { state, dispatch } = useApp();
   const [weightDelta, setWeightDelta] = useState(null);
   const [hunger,      setHunger]      = useState(null);
   const [fatigue,     setFatigue]     = useState(null);
   const [budgetOk,    setBudgetOk]    = useState(null);
+  const [npsRating,   setNpsRating]   = useState(null); // NPS Cuestionario del 1 al 5
   const [submitted,   setSubmitted]   = useState(false);
 
-  if (submitted) return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 28, textAlign: "center", background: T.bg }}>
-      <div style={{ width: 80, height: 80, borderRadius: 22, background: T.tealLight, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 22, fontSize: 40 }}>
-        🎉
-      </div>
-      <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 22, marginBottom: 8, color: T.textPrimary }}>
-        Plan Semana 2 generado
-      </h2>
-      <p style={{ color: T.textSecondary, fontSize: 14, marginBottom: 18, maxWidth: 300, lineHeight: 1.75 }}>
-        La IA ajustó tu plan. Volumen de entrenamiento{" "}
-        <span style={{ color: T.amber }}>−15%</span>, carbohidratos{" "}
-        <span style={{ color: T.teal }}>+8%</span> para mejorar adherencia.
-      </p>
-      <div style={{ padding: "14px 18px", background: T.surface, border: `1.5px solid ${T.border}`, borderRadius: 14, marginBottom: 24, maxWidth: 300, boxShadow: T.shadow }}>
-        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10.5, color: T.textMuted, marginBottom: 9 }}>
-          AJUSTES IA · SEMANA 2
+  const isFirstWeek = state.currentWeek === 1;
+  const canSubmit = weightDelta && hunger && fatigue && budgetOk && (!isFirstWeek || npsRating);
+
+  // ── Calcular ajustes sugeridos según las respuestas ──────────────────────────
+  const computeAdjustments = () => {
+    const adj = [];
+    if (hunger === "yes") {
+      adj.push({ label: "Calorías diarias", change: "+150 kcal", color: T.teal, reason: "Pasaste hambre" });
+    } else if (hunger === "no") {
+      adj.push({ label: "Calorías diarias", change: "Mantenidas", color: T.blue, reason: "Saciedad correcta" });
+    }
+    if (fatigue === "yes") {
+      adj.push({ label: "Volumen entrenamiento", change: "−15%", color: T.amber, reason: "Fatiga elevada" });
+    }
+    if (budgetOk === "no") {
+      adj.push({ label: "Lista de compras", change: "Re-optimizada", color: T.brown, reason: "Presupuesto ajustado" });
+    }
+    if (weightDelta === "up" && hunger === "no") {
+      adj.push({ label: "Carbohidratos", change: "−20g", color: T.amber, reason: "Peso subió sin hambre" });
+    }
+    if (weightDelta === "down") {
+      adj.push({ label: "Proteína diaria", change: "Confirmada ✓", color: T.teal, reason: "Preservación muscular" });
+    }
+    if (adj.length === 0) {
+      adj.push({ label: "Plan actual", change: "Mantenido al 100%", color: T.teal, reason: "Adherencia perfecta" });
+    }
+    return adj;
+  };
+
+  const handleSubmit = () => {
+    if (!canSubmit) return;
+    const checkinPayload = {
+      weightDelta,
+      hunger,
+      fatigue,
+      budgetOk,
+      npsRating, // Guardado para analíticas en tiempo real
+      date: Date.now(),
+    };
+    
+    dispatch({
+      type: "SAVE_CHECKIN",
+      payload: checkinPayload
+    });
+
+    if (window.__nutriaTriggerGenerate) {
+      window.__nutriaTriggerGenerate(state.currentWeek + 1, checkinPayload);
+    } else {
+      dispatch({ type: "SAVE_PROFILE" });
+    }
+    
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    const adjustments = computeAdjustments();
+    return (
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 28, textAlign: "center", background: T.bg }}>
+        <div style={{ width: 80, height: 80, borderRadius: 22, background: T.tealLight, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 22, fontSize: 40 }}>
+          🎉
         </div>
-        {[
-          { label: "Volumen entrenamiento", change: "−15%",           color: T.amber },
-          { label: "Carbohidratos diarios", change: "+18g",           color: T.teal  },
-          { label: "Tiempo cocina",         change: "Reducido 20min", color: T.blue  },
-        ].map((a, i) => (
-          <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderBottom: i < 2 ? `1px solid ${T.border}` : "none" }}>
-            <span style={{ fontSize: 12.5, color: T.textSecondary }}>{a.label}</span>
-            <span style={{ fontSize: 12.5, fontFamily: "'IBM Plex Mono', monospace", color: a.color, fontWeight: 500 }}>{a.change}</span>
+        <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 22, marginBottom: 8, color: T.textPrimary }}>
+          ¡Tu Semana {state.currentWeek + 1} está lista!
+        </h2>
+        <p style={{ color: T.textSecondary, fontSize: 14, marginBottom: 20, maxWidth: 320, lineHeight: 1.75 }}>
+          NutrIA procesó tus respuestas y ajustó el plan. Cada semana será más precisa para ti.
+        </p>
+
+        <div style={{ padding: "16px 18px", background: T.surface, border: `1.5px solid ${T.border}`, borderRadius: 14, marginBottom: 24, width: "100%", maxWidth: 320, boxShadow: T.shadow, textAlign: "left" }}>
+          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10.5, color: T.textMuted, marginBottom: 12, textAlign: "center" }}>
+            AJUSTES APLICADOS · SEMANA {state.currentWeek + 1}
           </div>
-        ))}
+          {adjustments.map((a, i) => (
+            <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: i < adjustments.length - 1 ? `1px solid ${T.border}` : "none", gap: 8 }}>
+              <div>
+                <div style={{ fontSize: 12.5, color: T.textSecondary }}>{a.label}</div>
+                <div style={{ fontSize: 10.5, color: T.textMuted, fontStyle: "italic" }}>{a.reason}</div>
+              </div>
+              <span style={{ fontSize: 12.5, fontFamily: "'IBM Plex Mono', monospace", color: a.color, fontWeight: 600, flexShrink: 0 }}>{a.change}</span>
+            </div>
+          ))}
+        </div>
+
+        <button className="btn-primary" onClick={onBack} style={{ padding: "13px 28px" }}>
+          Ver nuevo plan <Icon name="arrowRight" size={15} color="#fff" />
+        </button>
       </div>
-      <button className="btn-primary" onClick={onBack}>Ver nuevo plan →</button>
-    </div>
-  );
+    );
+  }
 
   return (
     <div style={{ maxWidth: 520, margin: "0 auto", padding: "18px 16px 100px", background: T.bg, minHeight: "100vh" }}>
@@ -48,14 +109,14 @@ const CheckInScreen = ({ onBack }) => {
           <Icon name="arrowLeft" size={17} color={T.textSecondary} />
         </button>
         <div>
-          <div style={{ fontSize: 10.5, color: T.textMuted, fontFamily: "'IBM Plex Mono', monospace" }}>FIN DE SEMANA 1</div>
-          <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 19, color: T.textPrimary }}>Check-in Cualitativo</h2>
+          <div style={{ fontSize: 10.5, color: T.textMuted, fontFamily: "'IBM Plex Mono', monospace" }}>FIN DE SEMANA {state.currentWeek}</div>
+          <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 19, color: T.textPrimary }}>Check-in Semanal</h2>
         </div>
       </div>
 
       <div className="fade-up fade-up-1" style={{ padding: "11px 14px", background: T.tealLight, border: `1.5px solid ${T.border}`, borderRadius: 12, marginBottom: 16, fontSize: 13, color: T.textSecondary, lineHeight: 1.6 }}>
         <Icon name="brain" size={13} color={T.teal} />{" "}
-        Este feedback es <strong style={{ color: T.teal }}>input de re-optimización</strong> directa para la IA.
+        Tus respuestas son el <strong style={{ color: T.teal }}>input real que NutrIA necesita</strong> para ajustar tu plan. Sé honesto/a — no hay respuestas incorrectas.
       </div>
 
       {/* Peso */}
@@ -108,9 +169,63 @@ const CheckInScreen = ({ onBack }) => {
         </div>
       ))}
 
+      {/* Cuestionario NPS de Recomendación (Axioma 1) - Solo 1ra semana */}
+      {isFirstWeek && (
+        <div className="fade-up card" style={{ marginBottom: 12, animationDelay: ".4s" }}>
+          <label style={{ fontSize: 13, fontWeight: 600, color: T.textSecondary, display: "block", marginBottom: 9 }}>
+            ¿Qué tanto recomendarías tu app NutrIA a un ser querido? 🦦
+          </label>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, padding: "4px 0" }}>
+            {[1, 2, 3, 4, 5].map(num => {
+              const isSelected = npsRating === num;
+              return (
+                <button
+                  key={num}
+                  onClick={() => setNpsRating(num)}
+                  style={{
+                    flex: 1, height: 42, borderRadius: 12, border: `1.5px solid ${isSelected ? T.teal : T.border}`,
+                    background: isSelected ? `${T.teal}12` : T.surface,
+                    color: isSelected ? T.teal : T.textSecondary,
+                    fontSize: 16, fontWeight: 700, cursor: "pointer", transition: "all .18s",
+                    display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                    boxShadow: isSelected ? `0 2px 8px ${T.teal}22` : T.shadow
+                  }}
+                >
+                  <span style={{ fontSize: 14 }}>{isSelected ? "⭐" : num}</span>
+                </button>
+              );
+            })}
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10.5, color: T.textMuted, marginTop: 4, padding: "0 4px" }}>
+            <span>1: Nada recomendable</span>
+            <span>5: ¡Totalmente! 🚀</span>
+          </div>
+        </div>
+      )}
+
+      {/* Hint de respuestas pendientes */}
+      {!canSubmit && (weightDelta || hunger || fatigue || budgetOk || (isFirstWeek && npsRating)) && (
+        <div className="fade-up" style={{
+          fontSize: 12.5, color: T.textMuted, textAlign: "center",
+          marginBottom: 10, padding: "9px 14px",
+          background: T.surface, borderRadius: 10, border: `1px dashed ${T.border}`,
+        }}>
+          {(!weightDelta || !hunger || !fatigue || !budgetOk) 
+            ? "🦦 Responde las preguntas de tu plan semanal" 
+            : "⭐ Danos tu calificación recomendando a NutrIA para continuar"
+          }
+        </div>
+      )}
+
       <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, padding: "14px 22px 24px", background: `linear-gradient(transparent, ${T.bg} 45%)` }}>
-        <button id="btn-submit-checkin" className="btn-primary" onClick={() => setSubmitted(true)} style={{ width: "100%", justifyContent: "center", padding: "14px", fontSize: 15 }}>
-          Enviar a IA y generar Semana 2 <Icon name="zap" size={15} color="#fff" />
+        <button
+          id="btn-submit-checkin"
+          className="btn-primary"
+          onClick={handleSubmit}
+          disabled={!canSubmit}
+          style={{ width: "100%", justifyContent: "center", padding: "14px", fontSize: 15, opacity: canSubmit ? 1 : 0.55, cursor: canSubmit ? "pointer" : "not-allowed" }}
+        >
+          Enviar y ajustar Semana {state.currentWeek + 1} <Icon name="zap" size={15} color="#fff" />
         </button>
       </div>
     </div>

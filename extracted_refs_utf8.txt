@@ -1,0 +1,2636 @@
+﻿================================================================================
+NOTA_1_Semana_4_Grupo_X_actualizada.pptx
+================================================================================
+
+--- SLIDE 1 ---
+ClickaClick
+GRUPO X
+Informe de avance - Semana 4
+
+--- SLIDE 2 ---
+Proyecto e Impacto
+Justificaci├│n
+Existe una paradoja tecnol├│gica: alta disponibilidad de celulares (66.9% en adultos mayores) pero bajo uso efectivo (solo 47% de ese 66.9% usa internet).
+La desconexi├│n digital genera vulnerabilidad social y dependencia forzosa de terceros.
+Problema de "Tecnofobia" o ansiedad tecnol├│gica y falta de paciencia de familiares.
+Alineaci├│n con ODS 4 (Educaci├│n inclusiva) Evitamos que el adulto mayor quede excluido de servicios esenciales (Banca M├│vil, Citas M├⌐dicas, Tr├ímites Estatales) por no saber usar la herramienta de acceso.
+ODS 10 (Reducci├│n de desigualdades). Proveemos alfabetizaci├│n digital t├⌐cnica enfocada en la autonom├¡a y la comunicaci├│n.
+Alcance
+Plataforma web con interfaz optimizada para uso de celulares y PC.
+Chatbot con IA para consultas.
+Videoteca de micro-aprendizaje (30-40 videos de <2 min).
+M├│dulo de asistencia humana (WhatsApp) y Piloto de validaci├│n.
+Soporte de ayuda para tanto IOS como Android
+Perfil de Usuario
+Nivel tecnol├│gico bajo/nulo.
+Poseen smartphone (Android gama media/baja).
+Tienen dificultades visuales o motoras leves.
+Adultos mayores de 60+ a├▒os
+
+--- SLIDE 3 ---
+Restricciones y Supuestos
+Restricciones | Supuestos
+Plataforma desarrollada solo en espa├▒ol (sin soporte multilenguaje). Uso exclusivo de herramientas sin licencias de pago. Compatibilidad con computadores y celulares. Funcionalidades cr├¡ticas disponibles desde la primera versi├│n. | El equipo cuenta con las competencias t├⌐cnicas necesarias. Infraestructura (PC e internet) con alta disponibilidad (99.99%). Los requerimientos principales se mantienen estables. La plataforma se actualizar├í seg├║n la retroalimentaci├│n de usuarios. El adulto mayor tendr├í apoyo inicial o conocimientos b├ísicos para acceder a la plataforma
+
+--- SLIDE 4 ---
+Estado general del proyecto
+Aspecto |  | Situaci├│n actual | Correcciones por realizar
+Logro objetivos | ΓùÅ | El objetivo del Sprint 1 se encuentra en ejecuci├│n. Ya se completaron las fases de investigaci├│n, definici├│n del problema y setup inicial. | Completar las funcionalidades prioritarias del Sprint 1 y validar el cumplimiento del objetivo mediante una primera prueba piloto de usabilidad.
+Alcance | ΓùÅ | El alcance del proyecto est├í claramente definido y aprobado. El backlog del Sprint 1 contempla funcionalidades de alta prioridad (interfaz adaptativa, chatbot b├ísico, tutoriales y asistencia humana) | Asegurar que el alcance del Sprint 1 se limite estrictamente al MVP, evitando incorporar funcionalidades previstas para el Sprint 2.
+Tiempo | ΓùÅ | El proyecto se mantiene alineado al cronograma. Al encontrarse en la semana 2 de un Sprint de 3 semanas, el avance corresponde a una fase de desarrollo activo, sin retrasos cr├¡ticos identificados hasta el momento. | Incrementar el seguimiento del avance semanal para garantizar el cierre del Sprint 1 dentro del plazo establecido.
+Costo | ΓùÅ | El presupuesto se encuentra controlado y acorde al plan en mayor medida. Las fases de investigaci├│n y setup inicial ya han sido ejecutadas seg├║n lo presupuestado a gran escala, y actualmente se est├í utilizando el presupuesto asignado al desarrollo del Sprint. | Continuar el monitoreo del consumo de horas durante el desarrollo para evitar sobrecostos en etapas posteriores.
+Riesgos | ΓùÅ | Persisten riesgos moderados asociados al cronograma ajustado del Sprint 1 y a la complejidad de implementar el chatbot en una primera versi├│n funcional. | Priorizar funcionalidades esenciales y realizar validaciones tempranas para reducir el impacto de posibles retrasos t├⌐cnicos.
+Trabajo en equipo | ΓùÅ | El equipo se encuentra organizado y operativo, con roles definidos y buena coordinaci├│n durante el desarrollo del Sprint 1. Existe alineaci├│n entre el backlog, el presupuesto y el roadmap. | Fortalecer la comunicaci├│n de avances t├⌐cnicos y bloqueos para optimizar la ejecuci├│n durante la ├║ltima semana del Sprint.
+
+--- SLIDE 5 ---
+Riesgos y problemas
+Riesgos y preocupaciones:
+Tecnofobia: Existe el riesgo de que la ansiedad tecnol├│gica genere rechazo en el primer uso, afectando la adopci├│n inicial de la plataforma.
+Dependencia de Acceso: Que el usuario no pueda entrar a la web la primera vez sin ayuda de un familiar.
+Disponibilidad de Tiempo: Cronograma ajustado de 3 semanas para el MVP.
+Problemas y pendientes activos
+Sprint 1 (Semanas 1-3): Construcci├│n del MVP
+Entregables:
+Desarrollo de funcionalidades cr├¡ticas del MVP a├║n en curso.
+Integraci├│n inicial del chatbot con respuestas b├ísicas
+Producci├│n y validaci├│n de los primeros videos esenciales.
+Hito: Prueba Piloto con usuarios reales para detectar fallos.
+Cumplimiento acuerdo Team Canvas u oportunidades en la  din├ímica de equipo
+Cumplimiento de acuerdos El equipo mantiene una comunicaci├│n constante y alineaci├│n con los objetivos del proyecto definidos en el Team Canvas.
+Oportunidades de mejora Se identifica la necesidad de fortalecer el seguimiento t├⌐cnico semanal y la asignaci├│n clara de responsables para acelerar la ejecuci├│n del Sprint 1.
+
+--- SLIDE 6 ---
+Principales entregables
+Mostrar el entregable y el criterio de aceptaci├│n. El resultado del experimento si es el caso
+Entregable | Criterios de aceptaci├│n
+Prototipo Web / Interfaz | Botones grandes, alto contraste, navegaci├│n simple (SEQ > 4/5).
+Chatbot "Nieto Virtual" | Responder en <10 seg, entender lenguaje coloquial, precisi├│n >80%.
+Videoteca N├║cleo | Duraci├│n < 2 min, audio claro, subt├¡tulos grandes, temas esenciales (WhatsApp, etc.).
+M├│dulo de Ayuda (WhatsApp) | Bot├│n funcional visible que redirige correctamente al canal de soporte humano dentro del horario definido.
+
+--- SLIDE 7 ---
+Objetivos y Resultados
+Objetivo | Meta (Indicador + Medici├│n) | Resultado
+Validar la eficacia pedag├│gica del chatbot y videos. | Resoluci├│n aut├│noma: > 80% de dudas resueltas sin videollamada.  Medici├│n: (Dudas sin apoyo ├ù 100) / Total de dudas. | Usuarios resuelven consultas b├ísicas sin ayuda humana.
+Reducir el miedo o estr├⌐s al usar el celular. | Nivel de ansiedad: pasar de ΓÇ£AltoΓÇ¥ a ΓÇ£BajoΓÇ¥.  Medici├│n: encuesta inicial vs. post-test (semana 8). | Mayor confianza y tranquilidad al usar el smartphone.
+Asegurar la utilidad real de la plataforma. | Reincidencia: > 50% realiza una segunda consulta.  Medici├│n: anal├¡ticas web (retorno de usuarios). | Uso recurrente y adopci├│n voluntaria.
+Garantizar accesibilidad para el adulto mayor. | Facilidad de uso: ΓëÑ 4/5 (SEQ).  Medici├│n: encuesta SEQ tras 5 min del primer uso. | Interfaz intuitiva y f├ícil de navegar.
+Validar la precisi├│n de la IA. | Reconocimiento de intenci├│n: > 80% a la primera.  Medici├│n: (Preguntas entendidas ├ù 100) / Total. | Respuestas claras y comprensi├│n del lenguaje coloquial.
+
+--- SLIDE 8 ---
+Backlog del Proyecto
+
+--- SLIDE 9 ---
+Backlog del Proyecto
+Anexo: Backlog_Grupo_X.xlsx
+
+--- SLIDE 10 ---
+Backlog del Proyecto
+
+--- SLIDE 11 ---
+Roadmap del Proyecto
+Anexo: Roadmap_Grupo_X_corregido.xlsx
+
+--- SLIDE 12 ---
+Presupuesto
+ | Mano de obra |  |  | Materiales |  | 
+Tarea | HR | S/./HR | Sub total | Sub total | OTROS | PRESUPUESTO
+Proyecto |  |  |  |  |  | S/.4.791,00
+Fase 1: Investigaci├│n |  |  |  |  |  | 
+Encuestas Iniciales | 3,0 | S/.18,00 | S/.54,00 |  |  | S/.54,00
+Fase 2: Setup Inicial |  |  |  |  |  | 
+Configuraciones Iniciales | 4,0 | S/.18,00 | S/.72,00 |  |  | S/.72,00
+Dise├▒o UI/UX | 8,0 | S/.18,00 | S/.144,00 |  |  | S/.144,00
+Dise├▒o de la Arquitectura | 6,0 | S/.18,00 | S/.108,00 |  |  | S/.108,00
+Fase 3: Desarrollo Web |  |  |  |  |  | 
+Desarrollo de Sprint 1 | 112,0 | S/.18,00 | S/.2.016,00 |  |  | S/.2.016,00
+Desarrollo de Sprint 2 | 98,0 | S/.18,00 | S/.1.764,00 |  |  | S/.1.764,00
+Dominio y Hosting | 0,5 | S/.18,00 | S/.9,00 |  | S/.200,00 | S/.209,00
+Fase 4: Lanzamiento y Propagaci├│n |  |  |  |  |  | 
+Contenido Promocional | 3,0 | S/.18,00 | S/.54,00 | S/.100,00 |  | S/.154,00
+Difusi├│n | 4,0 | S/.18,00 | S/.72,00 |  |  | S/.72,00
+Fase 5: Pruebas de Usuario |  |  |  |  |  | 
+Encuestas Finales | 3,0 | S/.18,00 | S/.54,00 |  |  | S/.54,00
+Correcciones y Errores | 8,0 | S/.18,00 | S/.144,00 |  |  | S/.144,00
+COSTOS DEL PROYECTO | 249,5 |  | S/.4.491,00 | S/.100,00 | S/.200,00 | S/.4.791,00
+COSTO TOTAL: S/.5,079.00
+Fuente: SalaryExpert
+https://shorturl.at/hLiP3
+Anexo: Presupuesto_Grupo_X_revisado.xlsx
+
+--- SLIDE 13 ---
+Avance del plan/roadmap a la semana
+Semana actual
+Horas trabajadas |  |  |  |  | 
+58.3 | 37.3 | 37.3 | 44.3 | 37.3 | 48.3
+45.5 | 25 |  |  |  | 
+Plan
+Real
+Semana 1
+Investigaci├│n inicial y planificaci├│n t├⌐cnica
+Definici├│n del alcance del MVP
+Dise├▒o UI/UX y arquitectura preliminar
+Backlog priorizado y setup del entorno de desarrollo
+Semana 2
+Semana 3
+Semana 4
+Semana 5
+Desarrollo activo del MVP
+Implementaci├│n de interfaz adaptativa
+Configuraci├│n inicial del chatbot
+Grabaci├│n de Videos
+Avance parcial
+Finalizaci├│n del MVP
+Interfaz adaptativa, chatbot b├ísico y videoteca n├║cleo
+Prueba piloto con usuarios reales
+Validaci├│n de usabilidad y detecci├│n de fallos
+Inicio del Sprint 2
+Lanzamiento y difusi├│n de la plataforma
+Encuestas de satisfacci├│n a usuarios
+Recolecci├│n de feedback para mejoras de UX
+Ajustes t├⌐cnicos prioritarios
+Dictado por voz y tama├▒o de texto adaptable
+Activaci├│n de modo oscuro
+Configuraci├│n de horarios de soporte humano
+Semana 6
+Optimizaci├│n y preparaci├│n para escalamiento
+Monitoreo de m├⌐tricas clave
+Pruebas finales y correcci├│n de errores
+Capacitaci├│n presencial y entrega del reporte de impacto
+
+--- SLIDE 14 ---
+Anexos
+Business Case: Caso_Agil_Business_Case_Grupo_X.docx
+Backlog: Backlog_Grupo_X.xlsx
+Roadmap: Roadmap_Grupo_X_corregido.xlsx
+Presupuesto: Presupuesto_Grupo_X_revisado.xlsx
+
+================================================================================
+Semana 3 - Business Case y Gestion de Interesados (1).pdf
+================================================================================
+
+--- PAGE 1 ---
+Enfoque de Desarrollo y ciclo 
+de vida II ΓÇôBusiness Case
+Semana 03
+Se sugiere  agregar  una imagen  
+relacionada  con el tema  que se 
+abordar├í  en la claseFACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE INDUSTRIAL
+Gesti├│n de Proyectos
+2026 -1
+
+--- PAGE 2 ---
+Objetivo de la sesi├│n
+Desarrollar la estructura base que debe contener un Business Case 
+(Plan de Negocio ). Conexi├│n con ODS: enesta sesi├│n se pedir├í vincular la 
+justificaci├│n y metas del Business Case con un proyecto de voluntariado alineado
+a uno o varios Objetivos de Desarrollo Sostenible (ODS).
+
+--- PAGE 3 ---
+┬┐Porqu├⌐ no les va bien a los negocios?
+90% de los startups fallan: https:// www.embroker.com /blog/startup -statistics/#ss -3
+
+--- PAGE 4 ---
+Agenda
+ΓÇóEl Business Case, acta de constituci├│n e Inception
+ΓÇóActividad: Armado del Business Case 
+ΓÇóQuienes son losinteresados y sus niveles
+ΓÇóGesti├│n de Interesados en entornos predictivos
+ΓÇóInteresados en entornos ├ígiles
+
+--- PAGE 5 ---
+El caso de negocio
+ΓÇóEs una herramienta  que permite  ΓÇ£vender  
+una ideaΓÇ¥  a la empresa .
+ΓÇóEs estrat├⌐gico  para valorar  y tomar  la 
+mejor  decisi├│n  de inversi├│n  en iniciativas  o 
+proyectos .
+ΓÇóEs un punto  de partida  para autorizar  los 
+proyectos  y dar una visi├│n  estrat├⌐gica  del 
+objetivo  que debe lograr  el proyecto .
+ΓÇóM├ís adelante  este se puede  refinar  en un 
+Acta de Constituci├│n  de Proyecto,  un 
+Canvas  de Producto  o la ΓÇ£Inception ΓÇ¥ de un 
+producto ; donde  se reconoce  al due├▒o  de 
+producto  o Project  Manager .
+
+--- PAGE 6 ---
+Motivadores del proyecto
+ΓÇóIngresos (crecer ): nuevos canales digitales , suscripciones premium, 
+cross/upsell enbase instalada .
+ΓÇóEjemplo TI: marketplace propio genera +8% de ingresos en12 meses.
+ΓÇóEjemplo Educaci├│n : cursos cortos online agregan +300 matr├¡culas /a├▒o.
+ΓÇóCostos ( eficiencia ): automatizaci├│n (RPA), redise├▒o de procesos , reducci├│n
+de mermas y retrabajos .
+ΓÇóEjemplo Operaciones : RPA enconciliaciones reduce 2 FTE y errores 70%.
+ΓÇóRiesgos /Regulaci├│n (cumplimiento ): protecci├│n de datos , seguridad , 
+continuidad , normativas sectoriales .
+ΓÇóEjemplo Financiero: proyecto PCI/ seguridad evita multas y ca├¡da reputacional .
+ΓÇóCliente /Marca ( experiencia ): NPS, CSAT, tiempo de atenci├│n , etc...
+ΓÇóEjemplo Servicio : disminuir tiempo medio de atenci├│n de 7,4 min a 4,5 min.
+ΓÇóSostenibilidad (ODS): impactos ambientales /sociales ; licencia social para 
+operar .
+ΓÇóEjemplo ODS 1: campa├▒a de recolecci├│n de donaciones para reducir la pobreza
+encomunidades locales 30%.
+ΓÇóMini -actividad (2 min): cada equipo etiqueta suproyecto con 2 motivadores
+principales y anota 1 KPI pormotivador . Recursos visuales sugeridos :
+
+--- PAGE 7 ---
+┬┐Qu├⌐ contiene el caso de negocio?
+1.Justificaci├│n de la 
+iniciativa (KPI)
+2. Definici├│n de la 
+iniciativa
+3. Objetivos/Resultados 
+del negocio4. Declaraci├│n inicial del 
+trabajo (dentro, fuera y 
+elementos t├⌐cnicos)
+5. Caracter├¡sticas del 
+producto y presupuesto
+7. Partes interesadas clave6. Restricciones y 
+supuestos
+
+--- PAGE 8 ---
+Caso  de negocio: Justificaci├│n
+Muchas veces a nosotros ya nos llega un producto claro pero la necesidad que la origin├│ se pierdeNos permite entender de d├│nde viene el proyecto y
+qu├⌐ le dio origen.
+Un ejemplo: ΓÇ£ante una escasa oferta de vivienda y alta 
+demanda en la zona, vamos a construir una 
+urbanizaci├│nΓÇ¥.Contexto
+El proyecto debe tener una buena raz├│n de ser.
+Debe de servir a los intereses estrat├⌐gicos de la 
+empresa. El proyecto debe estar alineado con la misi├│n 
+y visi├│n de la compa├▒├¡a.
+Sostenibilidad: Alineamiento a ODS.Necesidad Comercial
+
+--- PAGE 9 ---
+Caso  de negocio: Descripci├│n de la iniciativa
+Esta parte no tiene relaci├│n con los aspectos t├⌐cnicos del  desarrollo del 
+Proyecto
+Requerimientos del producto o servicio resultante de la 
+ejecuci├│n del Proyecto, es decir, aquello que realmente 
+se espera del proyecto.
+Requerimientos del Proyecto asociados a la forma de 
+hacer el trabajo, la metodolog├¡a empleada en el 
+Proyecto, la cultura de la empresa donde se realiza el 
+Proyecto, etc.Es una narraci├│n simple que brinda una 
+visi├│n sobre el tipo de producto que se va a 
+lograr y la visi├│n resultante que va a 
+conseguir el negocio con ella.
+
+--- PAGE 10 ---
+Caso  de negocio: Objetivos / Resultados
+Objetivo
+ΓÇóQu├⌐ prop├│sito queremos conseguir, algo inspirador, 
+ambicioso, alcanzable y cualitativo.
+ΓÇóSimples, entendibles y relevantes.
+ΓÇóSon propuestos con un di├ílogo y consenso entre los 
+l├¡deres (solicitante) y el equipo ejecutor (due├▒os del 
+objetivo).
+Resultados clave
+ΓÇóQu├⌐ resultados claves se reflejan al alcanzar o 
+acercarse al objetivo, lo que nos hace pensar que tan 
+lejos o qu├⌐ tan cerca estamos del objetivo.
+ΓÇóDeben de ser medibles y cuantificables.
+ΓÇóNo son un To Do (pendientes o por hacer), siempre 
+deben de representar resultados.
+ΓÇóRecordar que son hip├│tesis.
+ΓÇóODS a considerar porejemplo :9.c(acceso a TIC) 
+y12.5 (residuos electr├│nicos ) ΓÇöcon 
+opcional 10.2 (inclusi├│n )
+
+--- PAGE 11 ---
+Caso  de negocio: Objetivos / Resultados
+Ejemplo  de Objetivo  (O):
+ΓÇóPotenciar  la TV por cable  en el Per├║  mediante  la diversificaci├│n  
+de la oferta  de entretenimiento .
+Ejemplo  de Resultados  clave  (KR) :
+ΓÇóAumentar  la tasa  de retenci├│n  mensual  de clientes  de 4% a 6%
+ΓÇóIncrementar  las suscripciones  mensuales  en 15%
+ΓÇóIncrementar  el consumo  de contenido  en 25% en el primer  a├▒o .
+ΓÇóIncrementar  la migraci├│n  a paquetes  de mayor  valor  en un 40% 
+de la base  de clientes  actual  en  2 a├▒os .
+
+--- PAGE 12 ---
+Caso  de negocio: Objetivos / Resultados
+SMART  es una metodolog├¡a 
+para definir objetivos.
+SMART  es un acr├│nimo.
+Importante:
+Los objetivos deben reflejar 
+la visi├│n y misi├│n de la 
+organizaci├│n, adem├ís de 
+alinearse con su estrategia 
+general.
+Diferencia Objetivo vs. 
+Indicador : El objetivo es la 
+meta; elindicador permite
+monitorear sise lograr├í .
+
+--- PAGE 13 ---
+Caso  de negocio: Objetivos / Resultados
+Los resultados  nos van a decir en qu├⌐ punto  
+nos encontramos  y hacia  qu├⌐ direcci├│n  
+vamos
+Indicador  y objetivo  son diferentes
+El objetivo  es la meta que te gustar├¡a  
+alcanzar  y el indicador  es el elemento  que te 
+permite  monitorizar  si vas a lograr  dicho  
+objetivo  o no.
+Ejemplo  1
+1.Objetivo : Incrementar  las suscripciones  
+mensuales  en 15%
+2.Indicador : N├║mero  de suscripciones  en 
+el mes.
+Ejemplos ODS:
+O (ODS 7): Disminuir consumo
+el├⌐ctrico 15% . 
+ΓåÆIndicador :kWh/m┬▓ (mensual ) yfactor 
+de carga (semanal ).Relevante para 
+toma decisionesFactible de 
+medir
+F├ícil de 
+interpretarVerificableCaracter├¡sticas de un indicador:
+
+--- PAGE 14 ---
+Caso  de negocio: Declaraci├│n de trabajo
+Se mencionan aquellos elementos del 
+alcance que:
+ΓÇóEst├ín dentro del alcance de la 
+iniciativa
+ΓÇóEst├ín fuera del alcance, no se van a 
+realizar
+ΓÇóAspectos t├⌐cnicos que se deben 
+tener en cuenta como la seguridad, 
+el desempe├▒o, etc.Aspecto Alcance
+MercadoΓÇóBase de clientes de la empresa
+ΓÇóNuevos clientes potenciales
+ΓÇóCobertura solo en zonas que opera la 
+empresa
+ActividadesΓÇóNegociaci├│n con las empresas socio -
+comerciales
+ΓÇóDise├▒o de paquetes de producto
+ΓÇóIntegraci├│n de la tecnolog├¡a de ambas 
+empresas
+ΓÇóEstrategia de marketing
+ΓÇóAtenci├│n posventa
+ΓÇóDefinici├│n de principales indicadores
+ExclusionesΓÇóNo se producir├í contenido
+ΓÇóNo se ofertar├í fuera de Per├║
+ΓÇóNo deben producirse nuevas 
+adquisiciones la plataforma actual
+Aspectos t├⌐cnicosΓÇóCapacitaci├│n de personal
+ΓÇóPlataforma integrada en Sistemas
+ΓÇóCyberseguridad
+
+--- PAGE 15 ---
+Caso  de negocio: Caracter├¡stica del producto
+Las caracter├¡sticas de los productos est├ín 
+relacionadas con los usos del producto y 
+m├⌐todos de operaci├│n.
+Son aquellas funcionalidades que el cliente 
+final percibe y valora de un producto.
+Dependiendo del enfoque podemos tener el 
+listado total de caracter├¡sticas y su costo, o 
+tener eso disgregado por el MVP y el 
+producto final.
+Ejemplo ODS 12: Producto M├¡nimo Viable 
+(PMV) ΓÇ£pre -orden ΓÇ¥ para reducir desperdicio
+encafeter├¡a .
+
+--- PAGE 16 ---
+Formalizaci├│n del 
+proyecto
+Ejemplo relacionado a ODS: Para un proyecto
+de voluntariado alineado a ODS 7 (Energ├¡a 
+asequible y no contaminante ), elInception 
+Deck define la visi├│n inicial de una campa├▒a
+de paneles solares comunitarios .
+
+--- PAGE 17 ---
+Formalizaci├│n del 
+proyecto
+Inception  Deck
+
+--- PAGE 18 ---
+Caso  de negocio: Personal clave y partes interesadas
+ΓÇóPatrocinador del proyecto
+ΓÇóMiembro de Equipo
+ΓÇóInteresados
+ΓÇóGerente Funcional
+ΓÇóResponsable del Proyecto
+
+--- PAGE 19 ---
+Caso  de negocio: Roles
+El rol del Patrocinador / Sponsor
+ΓÇóProporciona los requerimientos que el proyecto debe cumplir. (Por lo tanto puede aclarar dudas 
+sobre el alcance del proyecto)
+ΓÇóResponsable de conseguir los recursos financieros del proyecto.
+ΓÇóElabora el acta de constituci├│n del proyecto o participa de la incepci├│n del proyecto.
+ΓÇóVela por la integridad e identidad del equipo de proyecto.
+ΓÇóProporciona juicio experto. Por lo tanto:
+ΓÇóAyuda a identificar los riesgos del proyecto.
+ΓÇóAyuda a evaluar ajustes en el cronograma.
+ΓÇóPuede revisar el alcance, Etc.
+ΓÇóResuelve conflictos que sobrepasan la autoridad del Director de Proyectos.
+ΓÇóForma parte del comit├⌐ de control de cambio (aprueba o rechaza cambios en el proyecto)
+
+--- PAGE 20 ---
+Caso  de negocio: Roles
+El rol del Miembro del Equipo (Team Member)
+ΓÇóIdentifica e involucra a los Interesados del Proyecto.
+ΓÇóEjecuta el plan de proyecto para cumplir con su alcance.
+ΓÇóAsiste a las reuniones del proyecto.
+ΓÇóCumple con los planes de calidad y comunicaciones.
+ΓÇóSigue las reglas b├ísicas del equipo.
+ΓÇóDependiendo de la complejidad del proyecto tambi├⌐n puede ayudar al director de proyectos en 
+las actividades de planificaci├│n y seguimiento de proyecto
+
+--- PAGE 21 ---
+Caso  de negocio: Roles
+El rol de los Interesados
+ΓÇóPuede verse involucrado en la realizaci├│n de la definici├│n del alcance del proyecto.
+ΓÇóParticipan en:
+ΓÇóDesarrollo del Plan de Proyecto
+ΓÇóAprobaci├│n de Cambios (Comit├⌐ de Control de Cambios)
+ΓÇóVerificaci├│n del Alcance
+ΓÇóIdentificaci├│n de restricciones
+ΓÇóAdministraci├│n de riesgos
+ΓÇóPuede ser nombrado due├▒o o responsable de un riesgo.
+
+--- PAGE 22 ---
+Caso  de negocio: Roles
+El rol del Gerente Funcional
+ΓÇóNegociar  con el Director de Proyectos, la asignaci├│n de un recurso de su ├írea al Proyecto.
+ΓÇóHacer conocer al Director de Proyectos sobre el posible impacto de otros proyectos.
+ΓÇóAprobar el plan de proyectos final (especialmente el cronograma).
+ΓÇóRecomendar acciones correctivas.
+ΓÇóAyudar en caso de problemas de desempe├▒o del recurso de su ├írea.
+ΓÇóOptimizar el uso de los recursos del proyecto.
+
+--- PAGE 23 ---
+Caso  de negocio: Roles
+El rol del Responsable del Proyecto / Director de Proyectos
+ΓÇóEs responsable del ├⌐xito del proyecto.
+ΓÇóEst├í a cargo del proyecto, pero no necesariamente de los recursos.
+ΓÇóLidera y dirige la planeaci├│n del proyecto.
+ΓÇóPuede decir ΓÇ£NoΓÇ¥ cuando es necesario.
+ΓÇóSe encarga de integrar los componentes del proyecto y convertirlos en un entregable que 
+satisfaga las necesidades del cliente.
+ΓÇóCrea el sistema de reconocimiento y recompensas.
+ΓÇóCrea el sistema de control de cambios.
+ΓÇóAsiste al equipo y a los interesados durante la ejecuci├│n del proyecto.
+ΓÇóDetermina el nivel de calidad de los entregables del proyecto.
+
+--- PAGE 24 ---
+OKR -Alineaci├│n con ODS
+ODS 12.3 ( merma alimentaria): KR:ΓêÆ30% merma (90 d├¡as) ΓåÆKPI:% merma
+semanal .
+ODS 11.2 ( movilidad ):KR:25% de viajes sostenibles (6 meses) ΓåÆKPI:% viajes
+bici+pie+carpool+bus .
+ODS 4.1 ( logro de aprendizaje ):KR:62% ΓåÆ78% aprobaci├│n (2 semestres ) 
+ΓåÆKPI:tasade aprobaci├│n .
+ODS 7.3 ( eficiencia energ├⌐tica ):KR:ΓêÆ15% kWh/m┬▓ (90 d├¡as) ΓåÆKPI:kWh/m┬▓ 
+mensual .
+ODS 6.4 ( usoeficiente del agua ):KR:ΓêÆ20% m┬│ (6 meses) ΓåÆKPI:consumo de 
+agua porm┬▓.
+ODS 8.8 ( seguridad y salud laboral ):KR:ΓêÆ30% TRIR (12 meses) ΓåÆKPI:tasade 
+incidentes .
+
+--- PAGE 25 ---
+Ejemplo de caso  de negocio
+https://www.youtube.com/watch?v=c -EoIRgWC_I
+https://www.youtube.com/watch?v=t2U6pGGbN0g  
+SDG 4: A business case about quality 
+education (RSM Erasmus). C├│mo justificar
+iniciativas de educaci├│n .
+
+--- PAGE 26 ---
+Agenda
+ΓÇóEl Business Case, acta de constituci├│n e Inception
+ΓÇóActividad: Armado del Business Case 
+ΓÇóQuienes son losinteresados y sus niveles
+ΓÇóGesti├│n de Interesados en entornos predictivos
+ΓÇóInteresados en entornos ├ígiles
+
+--- PAGE 27 ---
+Elaborar un caso 
+de negocio
+
+--- PAGE 28 ---
+Caso de Negocio: Mejora del servicio en una cafeter├¡a 
+universitaria
+Apliquemos lo aprendido en un caso:
+      
+Contexto: Caf├⌐ Latrica,  la cafeter├¡a universitaria , atiende alto volumen enhoras pico. Se 
+observan colas extensas ,tiempos de espera elevados ydesperdicio de alimentos .
+Sin embargo, en horarios pico (de 8:30 a 10:30 am y de 12:30 a 2:00 pm), los clientes 
+enfrentan largas filas, demoras en la entrega de pedidos y errores en los pedidos, lo que 
+genera quejas constantes y p├⌐rdida de clientes que prefieren comprar en otros lugares.
+Necesidad :La direcci├│n solicita una propuesta de mejora que eleve la satisfacci├│n del 
+estudiante yreduzca eldesperdicio ,alineada a ODS, sin incrementar costos fijos. ODS 
+obligatorios :ODS 12.3 (reducci├│n del desperdicio alimentario ) + elegir 1 co-ODS seg├║n la 
+hip├│tesis del equipo (ODS 3 salud y bienestar /ODS 2.1 donaci├│n de excedentes /ODS 
+11.6 gesti├│n de residuos /ODS 7.3 eficiencia energ├⌐tica ).
+Reto: Dise├▒ar una propuesta de mejora en la atenci├│n al cliente que reduzca los tiempos 
+de espera, los desperdicios y merma y aumente la satisfacci├│n de los clientes.
+Entregable :Borrador de Business Case (1 p├ígina )conproblema -evidencia -ODS, KPIs 
+propuestos ysupuestos .
+
+--- PAGE 29 ---
+Material para leer 
+en casa:
+J. Rasmusson  (2011). 
+The Agile Samurai : How 
+agile masters deliver  
+great  software
+
+--- PAGE 30 ---
+Gesti├│n de Interesados
+Semana 03b
+Se sugiere  agregar  una imagen  
+relacionada  con el tema  que se 
+abordar├í  en la claseFACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE INDUSTRIAL
+Gesti├│n de Proyectos
+2026 -1
+
+--- PAGE 31 ---
+Reflexi├│n: ┬┐Qu├⌐ es gestionar los interesados?
+Imagine que usted est├í haciendo la lista de principales 
+requisitos que debe cumplir la nueva p├ígina eCommerce para 
+su tienda  por departamento.
+Usted tiene gran n├║mero de categor├¡as de productos y por 
+primera  vez va a salir al mundo  digital.
+Para  reflexionar:
+ΓÇó┬┐Qu├⌐ busca  el Gerente  Comercial?
+ΓÇó┬┐Qu├⌐  busca  el Gerente  de Log├¡stica?
+ΓÇó┬┐Cu├íl  es su principal  indicador  de resultado?
+ΓÇó┬┐C├│mo  se compatibiliza  todas  sus expectativas?
+ΓÇó┬┐Esto  es una labor  sencilla?
+En grupos  de 2 o 3 personas
+
+--- PAGE 32 ---
+Agenda
+ΓÇóEl Business Case, acta de constituci├│n e Inception
+ΓÇóActividad: Armado del Business Case 
+ΓÇóQuienes son losinteresados y sus niveles
+ΓÇóGesti├│n de Interesados en entornos predictivos
+ΓÇóInteresados en entornos ├ígiles
+
+--- PAGE 33 ---
+┬┐Qui├⌐nes son losinteresados?
+Seconsideran interesados alaspersonas ,grupos u
+organizaciones que puedan impactar overse
+impactados por los resultados delaejecuci├│n del
+mismo .
+Los interesados pueden participar activamente del
+proyecto opodr├¡an tener intereses que losafecten de
+manera positiva onegativa .
+
+--- PAGE 34 ---
+┬┐Qui├⌐nes son los interesados ?
+Proyecto: Remodelar una casa de un condominio donde viven hace 20a├▒os
+
+--- PAGE 35 ---
+Objetivo delagesti├│n de interesados
+Γ¥æProveer deunplan deInvolucramiento delosInteresados
+que defina las estrategias necesarias para lograr la
+participaci├│n eficaz delosinteresados enlasdecisiones y
+ejecuci├│n delProyecto .
+Γ¥æDesar rollarlas actividadesdecomunicaci├│n conlos
+interesados para satisfacer susnecesidades yexpectativas.
+Γ¥æMonitorear lasrelaciones con losinteresados para ajustar
+elplan deinvolucramiento
+
+--- PAGE 36 ---
+Agenda
+ΓÇóEl Business Case, acta de constituci├│n e Inception
+ΓÇóActividad: Armado del Business Case 
+ΓÇóQuienes son losinteresados y sus niveles
+ΓÇóGesti├│n de Interesados en entornos predictivos
+ΓÇóInteresados en entornos ├ígiles
+
+--- PAGE 37 ---
+1.Identificar a los Interesados
+Γ¥æProceso  para identificar alas personas, grupos e
+individuos que afectan osonafectados porelproyecto .
+Γ¥æSe analiza yse documenta la participaci├│n,
+dependencia, influencia, ycu├íles son susintereses con
+elproyecto, adem├ís deunposible impacto .
+Γ¥æEsimportanterealizaresteproceso enlafase de
+iniciaci├│n delproyecto.
+Γ¥æEsclave para eljefe deproyecto yatodo elequipo tener
+el foco necesario para cada grupo de inter├⌐s
+identificado .
+
+--- PAGE 38 ---
+1.Identificar a los Interesados
+Principales  herramientas  para  identificar  a los interesados  del proyecto  son:
+Γ¥æJuicio  de expertos .
+Γ¥æCuestionarios y encuestas .
+Γ¥æTormenta  de ideas .
+Γ¥æAn├ílisis  de interesados .
+Γ¥æAn├ílisis  de documentos .
+Γ¥æReuniones
+
+--- PAGE 39 ---
+1. Identificar  a los interesados
+Γ¥æSe podr├¡an  clasificar  en base  a la matriz  poder  
+(seg├║n  su nivel  de autoridad)  e inter├⌐s  (nivel  de 
+inquietud  respecto  a los resultados  del proyecto) . 
+Adem├ís de identificar a los interesados es importante categorizarlos, para ello se utilizando diversos m├⌐todos, entre 
+ellos se tienen los siguientes:
+Γ¥æSe podr├¡an  clasificar  en base  a la matriz  poder  
+(seg├║n  su nivel  de autoridad)  e influencia  
+(capacidad  para  influir  en los resultados  del 
+proyecto) . 
+Matriz de Stakeholders
+Mantener
+conformeGestionar,
+Involucrar ,
+Informar
+Atenci├│n
+M├¡nimaInformar
+constantemente
+Bajo           INTERES                AltoBaja       INFLUENCIA        Alta
+
+--- PAGE 40 ---
+1. Identificar  a los interesados
+Γ¥æSe podr├¡an  clasificar  en base  al modelo  de 
+prominencia,  el cual describe  a los interesados  en base  
+a su poder  (nivel  de autoridad),  urgencia  (necesidad  de 
+atenci├│n  inmediata)  y legitimidad  (nivel  de 
+involucramiento  en el proyecto) . 
+Γ¥æEn base  a la clasificaci├│n  obtenida  utilizando  una o varias  matrices  se define  la estrategia  m├ís 
+adecuada  de comunicaci├│n  e involucramiento .
+Γ¥æLa salida  principal  de este  proceso  es el registro  de interesados,  documento  que contiene,  entre  
+otras  cosas,  informaci├│n  de los interesados,  su evaluaci├│n  y clasificaci├│n
+
+--- PAGE 41 ---
+2.Planificar lainvolucramiento de losinteresados
+Es elproceso de desarrollar estrategias adecuada para  
+que durante elciclo devida delproyecto selogre una
+participaci├│n eficaz delos interesados .
+Γ¥æContiene eldetalle dec├│mo lograr una gesti├│n eficaz delos
+interesados
+Γ¥æProporciona unplan factible para lainteracci├│n conlos
+interesados
+Γ¥æAmedida que avanza elproyecto, laparticipaci├│n delos
+interesados puede variar .
+Γ¥æEsunproceso iterativo.
+
+--- PAGE 42 ---
+Proceso deGesti├│n delos interesados2. Planificar  la gesti├│n  de los interesados
+Basada  en participaci├│n  y compromiso  actual  comparando  con lo esperado
+InteresadoCompromiso (*)
+Cuadrante
+Poder/InteresInteres Estrategia (**)Desconoce
+Seresiste
+Neutral
+Apoya
+Promo tor
+Presidente dela 
+Asociaci├│n deVecinos 
+delCondominioI FAlto Poder e 
+Inter├⌐sAsegurar que laconstrucci├│n
+cumpla conlasnormas y 
+est├⌐tica del condominio, y que 
+nocause molestias alos 
+vecinos.Involucrarlo activamente,
+manteniendo comunicaci├│n 
+constante ysolicitando suopini├│n 
+sobre aspectos relevantes del 
+proyecto.
+Administrador del
+CondominioI,FAlto Poder ,
+Poco Inter├⌐sQue la construcci├│n siga las 
+normas yregulaciones del
+condominio sin causar
+problemas administrativos o
+legales.Mantener informado al 
+administrador , asegur├índose de
+cumplir contodas lasnormativas y
+proporcionando reportes
+peri├│dicos delavance.
+Vecino del
+condominioI FBajo Poder ,
+Alto Inter├⌐sMinimizar lasmolestias como el
+ruido oelpolvo durante la
+construcci├│n, mantener su
+tranquilidad .Comunicaci├│n m├¡nima pero
+efectiva, informando sobre los 
+horarios deconstrucci├│n ymedidas 
+para reducir molestias.
+(*)I:Situacion inial, F:Situacion final deseada
+(**) Gestion decerca (A-A(,Mantener satisfecho (A-B),Informar (B-A),Monitorear (B -B)
+
+--- PAGE 43 ---
+Esclave para eljefeogerente deproyecto para incrementar elapoyo o
+reducir laresistencia yas├¡ tener mayor probabilidad de├⌐xito.Confianza 
+Conflictos 
+Escucha Activa
+Resistencia alcambio3.Gestionar el involucramiento delos interesados
+Es el proceso de comunicarse y trabajar con los interesados para satisfacer sus 
+necesidades y expectativas, abordar los incidentes y fomentar la participaci├│n 
+adecuada de los interesados. Implica realizar actividades tales como:
+Γ¥æInvolucrar  a los interesados  ΓÇïΓÇïe n las etapas  apropiadas  del proyecto
+para obtener, confirmar o mantener sucompromiso conel Proyecto
+Γ¥æGestionar las expectativas de los interesados atrav├⌐s de la
+negociaci├│n ylacomunicaci├│n.
+Γ¥æAclara y resolver problemas que han sido identificados.
+Γ¥æAbordar cualquier riesgo oposible preocupaci├│n relacionada con la
+gesti├│n delosinteresados y anticipar problemas futuros
+
+--- PAGE 44 ---
+4.Monitorear el involucramiento delosinteresados
+Γ¥æEselproceso para demonitorear lasrelaciones con los
+interesados del proyecto yadaptar las estrategias para
+involucrar alosinteresados atrav├⌐s delamodificaci├│n de
+lasestrategias yplanes departicipaci├│n
+Γ¥æBeneficio clave :mantiene oaumenta laeficiencia yla
+efectividad de las actividades de participaci├│n de los
+interesados amedida que elproyecto evoluciona ysu
+entorno cambia .
+Se pueden generar los siguientes entregables ,
+solicitudes decambio ,actualizaci├│n delplan ,informe
+dedesempe├▒o ,yotros .
+
+--- PAGE 45 ---
+Agenda
+ΓÇóEl Business Case, acta de constituci├│n e Inception
+ΓÇóActividad: Armado del Business Case 
+ΓÇóQuienes son losinteresados y sus niveles
+ΓÇóGesti├│n de Interesados en entornos predictivos
+ΓÇóInteresados en entornos ├ígiles
+
+--- PAGE 46 ---
+Interesados en entornos ├ígiles
+Seg├║n  Scrum .org cualquier  persona  afectada  por el resultado  del producto  y que est├⌐ interesada  en su 
+├⌐xito  se considera  parte  interesada . Ejemplos  de partes  interesadas  de un equipo  Scrum  pueden  incluir :
+Γ¥æClientes : usuarios  y compradores  del producto .
+Γ¥æPartes interesadas internas : la direcci├│n de la empresa y otras organizaciones como Recursos 
+Humanos/Gesti├│n del Talento, cumplimiento normativo, finanzas, etc.
+Γ¥æSocios : proveedores,  distribuidores  y otros  socios  comerciales .
+Γ¥æPersonas  influyentes : personas  influyentes  externas  como  organizaciones  comerciales,  medios  de 
+comunicaci├│n  o analistas  del sector .
+La interacci├│n  con las partes  interesadas  es fundamental  para  el ├⌐xito  de cualquier  tipo de desarrollo  de 
+producto . Solo  ellas  pueden  proporcionar  la retroalimentaci├│n  necesaria  para  garantizar  que el producto  
+satisfaga  sus necesidades  y expectativas .
+
+--- PAGE 47 ---
+Diferencias entre enfoques
+NOT A: Ojoque esto noimplica que nosepuedan aplicar las practicas adaptativas en los predictivosAdaptativo Predictivo
+Comunicaci├│n Comunicaci├│n constante y 
+transparente conlos 
+interesados. Se les invita a 
+reuniones yrevisiones del 
+proyectoComunicaci├│n es m├ís formal y 
+jer├írquica. Serealizan informes 
+peri├│dicos.
+Adaptabilidad
+alcambioEl interesado veun 
+resultado funcional cada 
+sprint ypuede hacer ajustes.Nohayunentregable funcional 
+ynosiempre escomprensible 
+porelusuario. Esdificil hacer 
+cambios.
+Comunicaci├│n  
+activaLosequipos ├ígiles 
+interact├║an directamente 
+conlosinteresados.La gesti├│n de interesados 
+puede serm├ís jer├írquica.
+
+--- PAGE 48 ---
+Discusi├│n en clase
+El Puerto  de Chancay , ubicado  a 80 km al norte  de Lima,  es uno de los proyectos  
+de infraestructura  m├ís importantes  de Per├║  en los ├║ltimos  a├▒os . El puerto,  
+financiado  por una alianza  entre  una empresa  china  (Cosco  Shipping  Ports)  y un 
+consorcio  peruano,  busca  convertirse  en un hub log├¡stico  clave  en el Pac├¡fico  Sur, 
+conectando  Per├║  con Asia y otras  partes  del mundo .
+Desde  su inicio,  el proyecto  ha enfrentado  diversos  desaf├¡os  relacionados  con la 
+gesti├│n  de interesados . Estos  incluyen  la resistencia  de las comunidades  locales  
+preocupadas  por el impacto  ambiental  y social,  as├¡ como  la necesidad  de 
+coordinar  con m├║ltiples  entidades  gubernamentales,  empresas  privadas  y actores  
+internacionales . Adem├ís,  han surgido  preocupaciones  sobre  los efectos  que el 
+puerto  podr├¡a  tener  en la infraestructura  vial y la cadena  de suministro  del pa├¡s.
+Algunos  de los problemas  que han surgido  hasta  ahora  incluyen  retrasos  en la 
+construcci├│n  debido  a la falta  de consenso  entre  los diferentes  interesados,  
+dificultades  en las negociaciones  con las comunidades  locales  y la presi├│n  de 
+grupos  ecologistas  que buscan  limitar  el impacto  ambiental  del proyecto . A pesar  
+de estas  dificultades,  el proyecto  avanza  con el objetivo  de posicionar  a Per├║  
+como  un nodo  log├¡stico  clave .
+
+--- PAGE 49 ---
+Plan deGesti├│n Interesado
+Desarrollar plan de 
+gesti├│n de 
+interesados
+
+--- PAGE 50 ---
+Elaborar plan deGesti├│n deInteresados
+ΓÇó┬┐Qu├⌐ interesados tiene elproyecto?
+ΓÇó┬┐Cu├íl eslaclasificaci├│n delosinteresados?
+ΓÇó┬┐Cu├íles sonsusintereses?
+ΓÇó┬┐Qu├⌐ acciones realizar ?
+ΓÇó┬┐Qu├⌐ canal de comunicaci├│n utilizamos?
+ΓÇó┬┐Con qu├⌐ frecuencia nos comunicamos?
+
+--- PAGE 51 ---
+Gracias por su atenci├│n
+
+================================================================================
+Semana 5 - Planificacion del Cronograma (1).pdf
+================================================================================
+
+--- PAGE 1 ---
+DOMINIO DE RENDIMIENTO 
+DEL CRONOGRAMA
+Semana 05
+Sesugiere agregar una imagen
+relacionada con eltema que se
+abordar├í enlaclase
+Gesti├│n de Proyectos
+2026 -1
+Alineado a la Octava Edici├│n del PMBOK┬«FACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+
+--- PAGE 2 ---
+Objetivo de la sesi├│n
+Al t├⌐rmino de la sesi├│n, El estudiante identificar├í las etapas clave 
+de la gesti├│n del cronograma de proyecto, logrando definir y 
+monitorear el cronograma del proyecto, aplic├índolo en el 
+proyecto que se encuentra desarrollando en equipo.
+
+--- PAGE 3 ---
+Agenda
+
+--- PAGE 4 ---
+Agenda
+ΓÇó├ürea deenfoque dePlanificaci├│n
+ΓÇóGesti├│n delcronograma
+Enfoque predictivo
+Enfoque Adaptativo
+
+--- PAGE 5 ---
+Agenda
+ΓÇó├ürea deenfoque dePlanificaci├│n
+ΓÇóGesti├│n delcronograma
+Enfoque predictivo
+Enfoque Adaptativo
+
+--- PAGE 6 ---
+GESTI├ôN DEL 
+CRONOGRAMAFACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+Alineado a la Octava Edici├│n del PMBOK┬«
+├ürea de enfoque de Planificaci├│n
+
+--- PAGE 7 ---
+┬┐En qu├⌐ consiste la gesti├│n del cronograma?
+eselproceso deanalizar secuencias, duraciones,
+requisitos derecursos yrestricciones del
+cronograma paracrear unmodelo decronograma
+para laejecuci├│n, elseguimiento yelcontrol del
+proyecto .Desarrollar uncronograma deproyecto
+aceptable esunproceso iterativo2. Desarrollar el cronograma
+Este proceso establece las pol├¡ticas,
+procedimientos ydocumentaci├│n para dise├▒ar,
+desarrollar, gestionar, ejecutar ymantener el
+cronograma .1. Planificar la Gesti├│n del Cronograma
+Es el proceso de monitorear el estado del 
+proyecto para actualizarlo y gestionar los 
+cambios en el cronograma acordado. 
+Actualizar el cronograma requiere conocer 
+el rendimiento real o previsto hasta la 
+fecha. El principal beneficio de este 
+proceso es mantener un cronograma 
+realista durante todo el proyecto.3. Monitorear y Controlar el 
+Cronograma
+
+--- PAGE 8 ---
+┬┐C├│mo se relaciona Tiempo, Alcance y la entrega de Valor?
+Visi├│n Hol├¡stica :Eltiempo, el
+alcance yelvalor est├ín
+interconectados .Uncambio en
+lasfechas afecta directamente
+lapercepci├│n de├⌐xito yel
+retorno de inversi├│n del
+proyecto
+Actividad :Acciones necesarias paralograr unResultado (Outcome) de
+valor.Nominaci├│n :Verbo +Sustantivo .Paquete detrabajo :
+Nivel m├ís bajo dela
+EDT/VBS que incluye el
+trabajo necesario para
+completar unentregable
+quegenera valorValor Total: 100% Beneficio: $12,000
+Valor: 25% Valor: 46% Valor: 29%
+Valor: 33%
+Valor: 67%Valor: 55%
+Valor: 45%Valor: 57%
+Valor: 43%
+Visi├│n 
+Hol├¡stica
+
+--- PAGE 9 ---
+Proceso 1 -Planificar la Gesti├│n del Cronograma
+Esproceso deestablecer laspol├¡ticas, procedimientos yladocumentaci├│n para planificar,
+desarrollar, gestionar, ejecutar ycontrolar elcronograma delproyecto .
+Elobjetivo deesteproceso eselcrear unPlan quenospermita gestionar elcronograma,
+dicho planpuede establecer losiguiente :
+ΓÇóLametodolog├¡a ym├⌐todo deprogramaci├│n autilizar .
+ΓÇóElrango aceptable utilizado parahacer lasestimaciones deladuraci├│n delasactividades .
+ΓÇóLasunidades queseutilizar├ín enlasmediciones (horas, d├¡as, metros, toneladas, etc.).
+ΓÇóElproceso autilizar paraactualizar elestado yregistrar elavance delproyecto .
+ΓÇóLosumbrales devariaci├│n permitidos antes queseanecesario tomar alguna medida .
+ΓÇóReglas paramedir eldesempe├▒o (porejemplo, lagesti├│n delvalor ganado) .
+ΓÇóFormatos yfrecuencia delapresentaci├│n delosdiferentes informes relativos al
+cronograma .
+ΓÇóIntegrar laSostenibilidad :Lasdecisiones deprogramaci├│n consideran losimpactos
+ambientales, buscando minimizar lahuella decarbono yelusoderecursos .
+
+--- PAGE 10 ---
+Paso 1 -Definir las actividades
+Proceso deidentificar acciones para lograr resultados (Outcomes) quegeneren
+valor, descomponiendo eltrabajo entareas ejecutables .
+Tomando como base lospaquetes detrabajo delaVBS (Value Breakdown
+Structure )oEDT,lasrestricciones ylossupuestos delproyecto, y,utilizando
+principalmente eljuicio deexpertos yladescomposici├│n procedemos adefinir
+lasactividades necesarias paradesarrollar losentregables .
+Lasalida principal deesteproceso, esunalistadeactividades necesarias para
+llevar acabo elproyecto, acompa├▒ada desusprincipales atributos .Esta lista
+esiterativa, puede incluir inicialmente :
+ΓÇóIdentificador delaactividad .
+ΓÇóDescripci├│n delaactividad .
+Nota :m├ís adelante ir├ínapareciendo m├ís atributos delasactividades, tales
+como :actividades sucesoras, actividades predecesoras, adelantos, retrasos,
+requisitos derecursos, restricciones, supuestos, fechas impuestas, esfuerzo
+involucrado, etc.
+Proceso 2 -Desarrollar el Cronograma
+Cultura Empoderada: En entornos adaptativos, 
+el equipo es autogestionado para descomponer 
+sus propias actividades del backlog sin 
+supervisi├│n r├¡gida"
+.
+"Visi├│n Hol├¡stica: Las actividades no se definen 
+aisladas, sino considerando sus 
+interdependencias dentro de todo el sistema de 
+entrega de valor.
+
+--- PAGE 11 ---
+Paso 2 -Secuenciar las actividades
+Proceso deidentificar ydocumentar lasrelaciones l├│gicas entre lasactividades para obtener la
+m├íxima eficiencia, considerando lasrestricciones delproyecto .Utilizando elM├⌐todo deDiagramaci├│n
+porPrecedencia, obtenemos elDiagrama deReddelCronograma delProyecto .Talcomo seilustra a
+continuaci├│n :Proceso 2 -Desarrollar el Cronograma
+An├ílisis de Red del Cronograma: Un proceso iterativo para generar un modelo viable
+Adoptar una Visi├│n Hol├¡stica: Las secuencias 
+no son solo flechas; representan c├│mo fluye 
+el valor. Un error en la l├│gica afecta la 
+realidad de todo el sistema de entrega de 
+valor
+
+--- PAGE 12 ---
+Lasactividades serelacionen entre si,elM├⌐todo deDiagramaci├│n porPrecedencia incluye cuatro
+tipos derelaciones l├│gicas .
+ΓÇóFinal aInicio (FS):unaactividad sucesora nopuede comenzar hasta quefinalice suactividad
+predecesora .
+ΓÇóFinal aFinal (FF):unaactividad sucesora nopuede finalizar hasta quefinalice suactividad
+predecesora .
+ΓÇóInicio aInicio (SS):unaactividad sucesora nopuede comenzar hasta quecomience suactividad
+predecesora .
+ΓÇóInicio aFinal (SF):unaactividad sucesora nopuede finalizar hasta quecomience suactividad
+predecesora .Paso 2 -Secuenciar las actividades
+Herramienta para optimizar la eficiencia del flujo de trabajoProceso 2 -Desarrollar el Cronograma
+
+--- PAGE 13 ---
+Paso 2 -Secuenciar las actividades
+Herramienta para optimizar la eficiencia del flujo de trabajoProceso 2 -Desarrollar el Cronograma
+
+--- PAGE 14 ---
+Lasactividades secaracterizan porpresentar ciertos tipos dedependencias, entre ellas tenemos :
+ΓÇóObligatorias
+-Requeridas legalmente o por contrato
+-Se llaman ΓÇ£l├│gica duraΓÇ¥ o ΓÇ£dependencia duraΓÇ¥
+ΓÇóDiscrecionales
+-Se establecen en base a las mejores pr├ícticas
+-Se llaman ΓÇ£l├│gica preferidaΓÇ¥, ΓÇ£l├│gica blandaΓÇ¥ o ΓÇ£l├│gica preferencialΓÇ¥
+ΓÇóExternas
+-Dependencias con actividades que no pertenecen al proyecto
+-Est├ín fuera del control directo del equipo de proyecto
+ΓÇóInternas
+-Dependencias con actividades que pertenecen al proyecto
+-Est├ín dentro del control directo del equipo de proyectoPaso 2 -Secuenciar las actividades
+Atributos de las dependencias usados para el An├ílisis de Red del CronogramaProceso 2 -Desarrollar el Cronograma
+
+--- PAGE 15 ---
+Paso 3 -Estimar el Esfuerzo y la Duraci├│n
+EselProceso deaproximar eln├║mero deper├¡odos detrabajo (duraci├│n) ylacantidad delabor
+(esfuerzo) necesarios para completar lasactividades, utilizando datos ytecnolog├¡a .Seutilizan los
+siguientes t├⌐cnicas deestimaci├│n :
+ΓÇóJuicio Expertos :Buscar informaci├│n yconocimiento enmiembros delequipo uotros
+expertos externos conexperiencia .
+ΓÇóEstimaci├│n an├íloga .Utiliza par├ímetros de un proyecto anterior similar, tales como la
+duraci├│n, elpresupuesto, eltama├▒o, lacarga ylacomplejidad .Esmenos costosa pero tambi├⌐n
+menos exacta .
+ΓÇóEstimaci├│n param├⌐trica Utiliza una relaci├│n estad├¡stica entre losdatos hist├│ricos yotras
+variables (porejemplo, metros cuadrados enlaconstrucci├│n) .
+ΓÇóEstimaci├│n basada entres valores, Utiliza laduraci├│n m├ísprobable, laduraci├│n optimista yla
+duraci├│n pesimista, promedia estos valores yasigna estevalor como duraci├│n delaactividad .
+ΓÇóEstimaci├│n ascendente .
+Esunm├⌐todo deestimaci├│n deladuraci├│n ocosto mediante lasuma delasestimaciones delos
+componentes denivel inferior enlaEDT.
+Las estimaciones deben diferenciar el Esfuerzo (unidades de labor como horas -hombre) 
+de la Duraci├│n (per├¡odos de trabajo calendario)Proceso 2 -Desarrollar el Cronograma
+Relaci├│n
+t├⌐cnica : El
+n├║mero de
+recursos ysu
+nivel dehabilidad
+determinan la
+duraci├│n
+bas├índose enel
+esfuerzo total
+requerido
+Uso de Modelos de
+Lenguaje Extensos
+(LLMs )deuso p├║blico
+(gratuitos ode pago)
+para generar borradores
+iniciales de listas de
+actividades yduraciones
+basadas enelcontexto del
+proyecto
+"El impacto de laIA
+depende delasupervisi├│n
+humana ylacalidad delos
+datos de entrada
+(Prompts )"
+
+--- PAGE 16 ---
+EselProceso deintegrar secuencias, duraciones, recursos yrestricciones para crear unmodelo deprogramaci├│n
+quegu├¡elaejecuci├│n yelcontrol, asegurando laflexibilidad paraadaptarse acambios .
+Paso 4 -Ajustar y Finalizar el ModeloProceso 2 -Desarrollar el Cronograma
+ΓÇóAn├ílisis delModelo :Revisi├│n delborrador para identificar conflictos derecursos yaplicar t├⌐cnicas de
+optimizaci├│n (Nivelaci├│n oSuavizaci├│n) .
+ΓÇóConsolidaci├│n delaL├¡nea Base :Aprobaci├│n delmodelo final queservir├í como referencia para medir el
+desempe├▒o .
+Estrategia GenAI -
+Optimizaci├│n dela
+L├¡nea Base :LaIA
+act├║a como socio
+para realizar an├ílisis
+de compensaci├│n
+(trade -off) entre
+alcance, tiempo y
+costo, determinando
+elescenario ├│ptimo
+
+--- PAGE 17 ---
+RUTA CRITICAFACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+Alineado a la Octava Edici├│n del PMBOK┬«
+├ürea de enfoque de Planificaci├│n
+
+--- PAGE 18 ---
+Planificaci├│n ruta critica
+TAREAS PREDECESORESDURACI├ôN 
+(d├¡as)
+ASeleccionar personal - 12
+BSeleccionar lugar - 9
+CSeleccionar equipos 1 10
+DRealizar Planos 2 10
+EInstalar Servicios 2 24
+FEntrevistar personal 1 10
+GComprar equipos 3 35
+HConstruir edificio 4 40
+IInstalar inform├ítica 1 15
+JInstalar equipos 5, 7, 8 4
+KCapacitar personal 6, 9, 10 6
+
+--- PAGE 19 ---
+Inicio Fin
+La ruta critica, es la ruta m├ís larga, en este caso la ruta cr├¡tica est├í compuesta de las actividades
+B-D-H-J-K(69 d├¡as), adem├ís las actividades de la ruta cr├¡tica tienen holgura cero.
+
+--- PAGE 20 ---
+Ruta Cr├¡tica, Repaso
+02
+0304Demoras
+┬┐Si una actividad 
+de la ruta cr├¡tica se 
+atrasa se afecta la 
+duracion del 
+Proyecto?.  
+M├║ltiples Rutas
+┬┐Un Proyecto puede 
+tener m├ís de 1 ruta 
+cr├¡tica?.  Seguimiento
+┬┐Qu├⌐ actividades 
+merecen mayor 
+atencion para no 
+demorar el 
+Proyecto?.  
+01 Holguras
+┬┐Las actividades 
+que estan en la 
+ruta cr├¡tica tienen 
+holgura?.
+
+--- PAGE 21 ---
+Mantenimiento de un Modelo Realista y Flexible
+ΓÇóPaso 1:Determinar elEstado Actual
+Comparar elprogreso real(datos dedesempe├▒o) contra lal├¡nea base
+yloshitos delproyecto .
+ΓÇóPaso 2:Analizar Influencias yReservas
+Evaluar lascausas delasvariaciones yverificar silasreservas de
+cronograma a├║nsonsuficientes paracubrir riesgos .
+ΓÇóPaso 3:Gestionar Cambios yAjustes
+Aplicar elcontrol decambios para corregir desviaciones, optimizar
+recursos ocomprimir elcronograma siesnecesario .
+Proceso 3 ΓÇôMonitorear y controlar el cronograma
+Eselproceso derastrear, revisar yregular elprogreso para cumplir conlosobjetivos de
+desempe├▒o, gestionando cambios alal├¡nea base paraasegurar laentrega continua devalor
+Herramienta :IAGenerativa (GenAI )
+Se├▒alizaci├│n Temprana :Uso deIA
+para reconocer patrones ypredecir si
+elproyecto sesaldr├í delarutacr├¡tica
+antes dequesuceda .
+Monitoreo enTiempo Real:Alertas
+autom├íticas sobre desviaciones frente
+alosplanes originales .
+Uso de Indicadores Clave: Aplicar Indicadores Predictivos 
+(Leading ) para anticipar problemas y Indicadores Retrasados 
+(Lagging ) para medir resultados pasados
+
+--- PAGE 22 ---
+Acciones de Ajuste: Compresi├│n del Cronograma
+M├⌐todos deCompresi├│n delCronograma :
+ΓÇóFast tracking :Unm├⌐todo decompresi├│n del
+cronograma enelquelasactividades ofases
+normalmente realizadas ensecuencia, son
+ejecutadas enparalelo para obtener una
+porci├│n deladuraci├│n total.
+ΓÇóCrashing :Unm├⌐todo usado para acortar la
+duraci├│n delcronograma agregando recursos
+mediante elm├¡nimo incremento decostos .
+Proceso 3 ΓÇôMonitorear y controlar el cronograma
+Optimizaci├│n Asistida por IA:La IA
+Generativa permite realizar an├ílisis de
+escenarios '┬┐Qu├⌐ pasa si...?masivos para
+decidir qu├⌐t├⌐cnica decompresi├│n (Crashing o
+Fast Tracking) ofrece elmejor retorno devalor
+conelmenor riesgo .
+
+--- PAGE 23 ---
+Agenda
+ΓÇóGesti├│n delcronograma
+Enfoque predictivo
+Enfoque Adaptativo
+
+--- PAGE 24 ---
+Agenda
+ΓÇóGesti├│n delcronograma
+Enfoque predictivo
+Enfoque Adaptativo
+
+--- PAGE 25 ---
+Enfoque 
+adaptativo
+┬┐C├│mo gestionamos el 
+cronograma en un proyecto 
+con enfoque adaptativo o ├ígil?
+
+--- PAGE 26 ---
+Diferencias y similitudes 
+Enfoque ├ígil: 
+No conozco el detalle , no se puede llegar a 
+una estimaci├│n detallada porque hay 
+incertidumbreEnfoque Predictivo:
+Conozco el detalle, no tengo incertidumbre sobre el 
+entregable.
+
+--- PAGE 27 ---
+T├⌐cnicas de Estimaci├│n Relativa
+T├⌐cnicas utilizadas para estimar elesfuerzo ylacomplejidad bas├índose enlacomparaci├│n entre
+tareas, enlugar deperiodos detiempo absolutos .Elequipo estima deforma colaborativa usando su
+conocimiento colectivo
+Planning Poker (Sucesi├│n deFibonacci)
+Estat├⌐cnica seutiliza para alcanzar elconsenso delequipo sobre el
+esfuerzo deunatarea
+.
+ΓÇóElPatr├│n (Fibonacci) :Seutiliza lasecuencia 1,2,3,5,
+8,13,20,40,100.
+ΓÇóLaRegla aSeguir (Incertidumbre NoLineal) :A
+medida quelatarea crece, elsalto entre n├║meros es
+mayor .Esto obliga alequipo areconocer queamayor
+esfuerzo, mayor eslaincertidumbre yelriesgo asociados .
+Sielequipo duda entre un5yun7,laregla essaltar al8,
+aceptando que nohay precisi├│n absoluta entareas
+grandes .
+ΓÇóRegla de Ejecuci├│n :Votaci├│n Simult├ínea .Todos
+muestran sucarta almismo tiempo para evitar elsesgo de
+anclaje (donde losmiembros conmenos experiencia se
+dejan influir porlosl├¡deres) .
+https://planningpokeronline.com
+
+--- PAGE 28 ---
+T├⌐cnicas de Estimaci├│n Relativa
+Puntos deHistoria (Story Points)
+Esunaunidad demedida abstracta utilizada paraexpresar laestimaci├│n delesfuerzo total
+ΓÇóElPatr├│n (LaTr├¡ada ├ügil) :Unpunto dehistoria noes"tiempo" ;eslasuma deEsfuerzo
++Complejidad +Riesgo
+ΓÇóLaRegla aSeguir (Estimaci├│n porAnalog├¡a) :Seutiliza una"Historia Ancla" (una
+tarea peque├▒a ybien conocida portodos, porejemplo, quevalga 2puntos) .Elequipo
+estima lasnuevas tareas compar├índolas siempre contra esaancla :"┬┐Esto eseldoble de
+complejo quenuestra ancla oesigual?
+ΓÇóNota T├⌐cnica :Lospuntos dehistoria alimentan laVelocidad delequipo, queeslatasa
+realdeentrega devalor aceptado .
+Tallas deCamisetas (T-Shirt Sizing )
+Seutiliza principalmente enlasetapas iniciales deplanificaci├│n opara elRoadmap dealto
+nivel
+ΓÇóElPatr├│n :Clasificaci├│n porcategor├¡as :XS,S,M,L,XL,XXL.
+ΓÇóLaRegla aSeguir (Categorizaci├│n porCubetas) :Seaplica solocuando eldetalle
+esinsuficiente para usarn├║meros (porejemplo, para estimar Epicas ograndes bloques
+detrabajo)
+ΓÇóRegla deEjecuci├│n :Evitar laConversi├│n Horaria .Laregla deoroesnopermitir que
+elequipo intente traducir "M"a"40horas" deforma r├¡gida .Elobjetivo esvisualizar el
+"tama├▒o delproblema" deforma estrat├⌐gica para decidir qu├⌐priorizar enelBacklog
+bas├índose enelvalor
+
+--- PAGE 29 ---
+┬┐Qu├⌐ debo entregar en el trabajo pr├íctico? 
+Enfoque ├ígil: Enfoque Predictivo:
+Cronograma RoadMap
+
+--- PAGE 30 ---
+Roadmap
+Existen varios tipos deRoadmap, aqu├¡noscentraremos enelRoadmap deLiberaci├│n basado enlas
+caracter├¡stica delosentregables, debe tenerse encuenta que, dado queelRoadmap sebasa el
+Product Backlog yesteesunartefacto vivo(sufre cambios eneltiempo) conelRoadmap sucede lo
+mismo .
+ElRoadmap determina cu├índo sevaaentregar valor alcliente, adem├ís comunica como esprobable
+queevolucione elproducto almapear susrespectivos lanzamientos (oentregables) enunal├¡nea de
+tiempo .
+ElRoadmap expresa lasdecisiones estrat├⌐gicas relacionadas conelproducto adesarrollar, adem├ís
+puede utilizarse como unaherramienta decomunicaci├│n .
+Pararealizar unRoadmap adecuado, debe tenerse encuenta :
+ΓÇóLavisi├│n delproducto
+ΓÇóLaestrategia deliberaci├│n
+ΓÇóLaestimaci├│n deltama├▒o delproducto
+ΓÇóLaestimaci├│n deltiempo dedesarrollo
+ΓÇóSetrata deunartefacto vivo
+
+--- PAGE 31 ---
+Roadmap v.1.0
+Desarrollar unap├ígina webparaventa deproductos atrav├⌐s deInternet .Amuyaltonivel serequiere :
+ΓÇóElcliente debe crear unacuenta
+ΓÇóLosproductos mostrar├ín informaci├│n detallada
+ΓÇóSeutilizar├í uncarro decompras
+ΓÇóSeutilizar├ín diversas formas depago
+ΓÇóPermitir├í retroalimentaci├│n, comentarios, etc.delosclientes
+ΓÇóIntegraci├│n consistemas internos yproveedoresRelease cada 2 Sprint
+Ene FebSemana 1   Semana 2 Semana 3   Semana 4 Semana 1   Semana 2 Semana 3   Semana 4
+Sprint 1 Sprint 2 Sprint 3 Sprint 4
+Crear
+CuentaDise├▒o
+UI
+Crear
+LoginCrear
+AdminCrear
+BDCarro de 
+compras
+M├⌐todos de 
+Pago
+SeguridadFeedback
+de clientes
+Fidelizaci├│n
+de clientesIntegraci├│n
+con el DWH
+Integraci├│n
+con el CRM
+Integraci├│n
+con proveedores
+
+--- PAGE 32 ---
+T├⌐cnica Moderna ΓÇôAjuste y finalizaci├│n del modelo
+Programaci├│n Basada enFlujo (Flow -based scheduling )
+Enfoque degesti├│n quesecentra enoptimizar elmovimiento delosentregables atrav├⌐s deun
+sistema, maximizando laeficiencia yelrendimiento basados enlacapacidad real
+Teor├¡a de Restricciones (TOC)
+Descripci├│n :Filosof├¡a degesti├│n enfocada enidentificar ygestionar elfactor
+limitante (restricci├│n) m├ísimportante quefrena ellogro deunobjetivo
+Regla a seguir: Elevar la Restricci├│n. Una hora perdida en el cuello de 
+botella es una hora perdida en todo el sistema. El cronograma adaptativo 
+debe pivotar para asegurar que el recurso m├ís lento nunca deje de trabajarM├⌐todo Kanban
+Descripci├│n :Sistema visual degesti├│n delflujo de
+trabajo queutiliza tableros para mostrar elestado de
+lastareas (ToDo,Doing ,Done)
+Regla aseguir :Limitar elTrabajo enProgreso (WIP) .
+Sedebe establecer unn├║mero m├íximo detareas
+permitidas encada columna para identificar cuellos de
+botella yevitar lasobrecarga delequipo
+https://www.kanbanboardgame.com
+UsodeIAGenerativa
+Para analizar patrones
+hist├│ricos deflujoypredecir
+autom├íticamente d├│nde se
+formar├ín futuros cuellos de
+botella, sugiriendo ajustes
+din├ímicos alWIP
+
+--- PAGE 33 ---
+┬┐C├│mo se aplica en su Proyecto?
+
+================================================================================
+Semana 7 - Incertidumbre y Riesgos 2026-1.pdf
+================================================================================
+
+--- PAGE 1 ---
+Incertidumbre & Riesgos
+Semana 07FACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+Gesti├│n de Proyectos
+2026 -1
+
+--- PAGE 2 ---
+Objetivo de la sesi├│n
+Al terminar la sesi├│n, el alumno debe ser capaz de comprender la gesti├│n de la 
+incertidumbre y los riesgos en proyectos, diferenciando entre enfoques predictivos y 
+adaptativos. Adem├ís, podr├í analizar estrategias de respuesta a riesgos y aplicar 
+herramientas para su identificaci├│n, evaluaci├│n y mitigaci├│n
+
+--- PAGE 3 ---
+FACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+ΓÇóIntroducci├│n a la incertidumbre y la gesti├│n de 
+riesgos
+ΓÇóProceso de gesti├│n de riesgo predictivo
+ΓÇóProceso de gesti├│n de riesgos adaptativo
+ΓÇóEjercicio en claseAgenda
+
+--- PAGE 4 ---
+Incertidumbre. ┬┐Algo podr├í salir mal?
+
+--- PAGE 5 ---
+Introducci├│n a 
+la 
+incertidumbre y 
+la gesti├│n de 
+riesgos
+
+--- PAGE 6 ---
+Es un estado de 
+desconocimiento o 
+imprevisibilidad.Riesgo asociado con 
+no conocer eventos 
+futuros.Complejidad 
+asociada con 
+sistemas din├ímicos 
+que tienen 
+resultados 
+impredecibles.Ambig├╝edad 
+asociada con no ser 
+consciente de las 
+condiciones actuales 
+o futuras.
+
+--- PAGE 7 ---
+Opciones de 
+respuesta a la 
+incertidumbreRecopilar 
+informaci├│n
+Prepararse 
+para 
+m├║ltiples 
+resultados
+Dise├▒o 
+basado en 
+conjuntosIncorporar 
+resilienciaRespuestas a la incertidumbre
+
+--- PAGE 8 ---
+Definici├│n de Riesgos
+Esunevento ocondici├│n
+incierta que, siesque
+ocurre, tiene unefecto
+positivo onegativo en
+porlomenos unobjetivo
+delproyecto .
+
+--- PAGE 9 ---
+Gesti├│n de Riesgo
+┬┐Tienen una bola de
+cristal?
+
+--- PAGE 10 ---
+Caracter├¡sticas de los Riesgos
+Es un evento o 
+condici├│n incierta , 
+que si es que ocurre, 
+tiene un efecto  
+positivo o negativo en 
+por lo menos un objeto 
+del proyecto.Es un evento futuro  
+que puede o no puede 
+ocurrir.
+La probabilidad de 
+ocurrencia del evento 
+futuro  debe ser mayor 
+que 0% pero menor 
+que 100%El efecto o 
+consecuencia probable 
+es determinado o 
+calculado .
+
+--- PAGE 11 ---
+Categor├¡as de 
+riesgos
+
+--- PAGE 12 ---
+Categor├¡a de riesgos
+Estructura de desglose de riesgos (RBS)
+
+--- PAGE 13 ---
+┬┐Son lo mismo?
+Gesti├│n de Riesgos 
+de un ProyectoGesti├│n de la 
+Continuidad del 
+NegocioGesti├│n de Riesgos 
+Operacionales
+
+--- PAGE 14 ---
+Proceso de 
+gesti├│n de 
+riesgo 
+predictivo
+
+--- PAGE 15 ---
+Proceso de gesti├│n de riesgos
+Identificaci├│n 
+y RegistroEvaluaci├│n
+Planificaci├│n de 
+respuesta
+Implementaci├│n de 
+respuesta y control
+
+--- PAGE 16 ---
+An├ílisis de 
+documentaci├│n
+Revisi├│n estructurada de la 
+documentaci├│n del proyectoTormenta de ideas
+Obtener una lista completa de los 
+riesgos del proyectoT├⌐cnica Delphi
+T├⌐cnica para lograr un consenso 
+de expertos
+Entrevistas
+Entrevistas a los participantes 
+experimentados del proyecto, a 
+los interesados y a los expertos 
+en la materiaAn├ílisis de causa ra├¡z
+T├⌐cnica para identificar un 
+problema, determinar las causas 
+subyacentes que lo ocasionan y 
+desarrollar acciones preventivas.An├ílisis FODA
+T├⌐cnica que examina el proyecto 
+desde cada uno de los aspectos 
+FODA (fortalezas, oportunidades, 
+debilidades y amenazas)Identificaci├│n de riesgos
+
+--- PAGE 17 ---
+Ejemplo: Gestionar riesgos en la construcci├│n de una cancha de futbol 7
+Laconstrucci├│n deunacancha def├║tbol, como cualquier proyecto, conlleva riesgos quedeben ser
+identificados ymitigados .Losriesgos pueden serdenaturaleza financiera, contractual, operativos,
+ambientales ydeseguridad .
+Estrategias como evitar, reducir, transferir oaceptar losriesgos sonclave parael├⌐xito delproyecto .
+Identificaci├│n de riesgos:
+ΓÇóRiesgos financieros: Aumento de costos, retrasos en los pagos, fluctuaciones 
+del mercado.
+ΓÇóRiesgos contractuales: Incumplimiento de contratos, disputas legales, 
+problemas con proveedores.
+ΓÇóRiesgos operativos: Problemas con la maquinaria, errores en la construcci├│n, 
+retrasos en la entrega.
+ΓÇóRiesgos ambientales: Impacto ambiental, problemas de contaminaci├│n, 
+permisos ambientales.
+ΓÇóRiesgos de seguridad: Accidentes laborales, ca├¡das, golpes, contactos 
+el├⌐ctricos, ruido, vibraciones, uso de productos qu├¡micos seg├║n un informe 
+sobre riesgos laborales en estadios y campos de f├║tbol.
+
+--- PAGE 18 ---
+Estrategias de mitigaci├│n:
+ΓÇóEvitar riesgos :Modificar eldise├▒o para eliminar riesgos, como cambios
+enlaubicaci├│n paraevitar terrenos inestables .
+ΓÇóReducir riesgos :Implementar medidas deseguridad, como elusode
+equipo deprotecci├│n personal (EPP), capacitaci├│n del personal,
+inspecciones regulares seg├║n undocumento sobre laidentificaci├│n y
+manejo deriesgos enproyectos deconstrucci├│n .
+ΓÇóTransferir riesgos :Contratar seguros para cubrir posibles p├⌐rdidas,
+subcontratar ciertas tareas aempresas especializadas .
+ΓÇóAceptar riesgos :Evaluar elimpacto deciertos riesgos ydecidir sise
+pueden asumir, como peque├▒os retrasos que no afecten
+significativamente elproyecto .
+ΓÇóPlanificaci├│n detallada :Definir elalcance delproyecto, recopilar
+informaci├│n, identificar riesgos ysusconsecuencias, establecer controles,
+asignar probabilidad eimpacto, ydeterminar elnivel deriesgo .
+ΓÇóMonitoreo constante :Realizar unseguimiento continuo delproyecto,
+identificar nuevos riesgos yajustar lasestrategias demitigaci├│n seg├║n
+seanecesario .Ejemplo: Gestionar riesgos en la construcci├│n de una cancha de futbol 7
+
+--- PAGE 19 ---
+┬┐Qu├⌐ se incluye 
+en el registro de 
+riesgos?
+
+--- PAGE 20 ---
+Proyecto social de agua y desag├╝e en Puno
+Ejemplo
+
+--- PAGE 21 ---
+Matriz de riesgos
+
+--- PAGE 22 ---
+Matriz de riesgos
+
+--- PAGE 23 ---
+Proyecto social de agua y desag├╝e en PunoEjemplo
+
+--- PAGE 24 ---
+oExplotar :Cuando laorganizaci├│n desea asegurarse deque
+laoportunidad sehaga realidad .Esta estrategia busca
+eliminar laincertidumbre asociada conunriesgo alaalzaen
+particular, asegurando quelaoportunidad definitivamente se
+concrete .
+oMejorar :Seutiliza para aumentar laprobabilidad y/olos
+impactos positivos deunaoportunidad .
+oCompartir :Implica asignar toda oparte delapropiedad de
+laoportunidad auntercero mejor capacitado para capturar
+laoportunidad enbeneficio delproyecto .
+oAceptar :Esestar dispuesto aaprovechar laoportunidad si
+sepresenta, perosinbuscarla demanera activa .
+Respuesta a los riesgos
+Estrategia de respuesta: Oportunidades
+
+--- PAGE 25 ---
+oEvitar :Implica reducir aunumbral aceptable laprobabilidad
+y/oelimpacto deunriesgo adverso .Laestrategia deevasi├│n
+m├ísdr├ística consiste enanular porcompleto elproyecto .
+oTransferir :Traslada elimpacto deunaamenaza auntercero,
+junto conlaresponsabilidad delarespuesta .
+oMitigar :Elequipo delproyecto act├║a para reducir la
+probabilidad deocurrencia oimpacto deunriesgo
+oAceptar :Elequipo delproyecto decide reconocer elriesgo yno
+tomar ninguna medida amenos queelriesgo sematerialice .La
+estrategia deaceptaci├│n activa m├ís com├║n consiste en
+establecer una reserva para contingencias, que incluya la
+cantidad detiempo, dinero orecursos necesarios para manejar
+losriesgos .Respuesta a los riesgos
+Estrategia de respuesta: Amenazas
+
+--- PAGE 26 ---
+Ejemplos de estrategias
+
+--- PAGE 27 ---
+Ejemplos de estrategias
+
+--- PAGE 28 ---
+ΓÇóReserva para losriesgos que quedan tras
+aplicar lasmedidas preventivas oportunas .
+ΓÇóEselvalor monetario delosprincipales riesgos
+identificados, evaluados atrav├⌐s delamatriz
+deprobabilidad eimpacto .
+ΓÇóGestionada porelgestor delproyecto .Reserva de ContingenciaReserva de Gesti├│n
+ΓÇóCantidad adicional para cubrir losriesgos NO
+identificados .
+ΓÇóPuede representar hasta un10%delal├¡nea
+base decostos .
+ΓÇóGestionada porelSponsor oGerente Sr.
+
+--- PAGE 29 ---
+Proceso de 
+gesti├│n de 
+riesgo 
+adaptativo
+
+--- PAGE 30 ---
+Se buscan identificar la mayor├¡a 
+de los riesgos desde la planeaci├│n 
+del proyectoSe identifican los riesgos para las 
+historias que se van a trabajar
+
+--- PAGE 31 ---
+Ejercicio en 
+clase
+
+--- PAGE 32 ---
+Ejercicio: Identifique los riesgos y prepare un plan de mitigaci├│n para el 
+proyecto de implementar una piscina recreacional de 5 metros de largo, 
+por 3 de ancho y 1.8 metros de profundidad.
+
+--- PAGE 33 ---
+FACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+ΓÇóConclusiones
+ΓÇóPreparar plan de gesti├│n de riesgos y mitigaci├│n 
+de su proyectoCierre
+
+--- PAGE 34 ---
+Gracias por su atenci├│n
+
+================================================================================
+Semana 4- Planificaci├│n del Alcance 2026-1 (1).pdf
+================================================================================
+
+--- PAGE 1 ---
+Gesti├│n de ProyectosPlanificaci├│n del Alcance
+Semana 04Sesugiere agregar una imagen
+relacionada con eltema que se
+abordar├í enlaclaseFACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+2025 -1
+
+--- PAGE 2 ---
+Planificaci├│n del Alcance
+Semana 04FACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+Gesti├│n de Proyectos
+2026 -1
+
+--- PAGE 3 ---
+Objetivo de la sesi├│n
+El objetivo de esta sesi├│n es que los estudiantes comprendan c├│mo 
+recopilar requisitos y definir el alcance en proyectos predictivos (EDT, 
+paquetes de trabajo) y adaptativos (historias de usuario, priorizaci├│n, 
+roadmap), destacando sus diferencias y aplicaciones
+
+--- PAGE 4 ---
+1.Planificaci├│n del Alcance. Enfoque predictivo
+1.1. Ciclo de vida del proyecto
+1.2. Alcance del producto y del proyecto
+1.3. Estructura del desglose de traba jo (EDT)
+1.4. Caso pr├íctico
+2.Planificaci├│n del Alcance. Enfoque Adaptativo
+2.1. Ciclo de vida del proyecto
+2.2. Historias de usuario, features, ├⌐picas
+2.3. Roadmap
+2.4. Caso pr├íticoAgenda
+
+--- PAGE 5 ---
+1.Planificaci├│n del Alcance. Enfoque predictivo
+1.1. Ciclo de vida del proyecto
+1.2. Alcance del producto y del proyecto
+1.3. Estructura del desglose de traba jo (EDT)
+1.4. Caso pr├íctico
+2.Planificaci├│n del Alcance. Enfoque Adaptativo
+2.1. Ciclo de vida del proyecto
+2.2. Historias de usuario, features, ├⌐picas
+2.3. Roadmap
+2.4. Caso pr├íticoAgenda
+
+--- PAGE 6 ---
+┬┐Cu├íl es la historia?
+Analice cada una de las im├ígenes de 
+forma individual y comente en clase.
+
+--- PAGE 7 ---
+Planificaci├│n del alcance seg├║n PMI : Consiste en 
+definir y documentar el trabajo necesario para completar 
+el proyecto exitosamente, minimizando cambios 
+posteriores ( PMI, 2021 ).
+Planificaci├│n del alcance seg├║n Scrum : Es un 
+proceso adaptable donde el alcance evoluciona 
+iterativamente seg├║n prioridades del Product Backlog y 
+retroalimentaci├│n constante ( Schwaber & Sutherland, 
+2020).┬┐Qu├⌐ es la planificaci├│n del alcance?
+
+--- PAGE 8 ---
+1. Ciclo de vida del 
+proyecto. PredictivoFACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+
+--- PAGE 9 ---
+1.1. Enfoques del ciclo de vida de proyectos
+El alcance es fijo. El costo y tiempo son variables.Tradicional / Waterfall
+El alcance es variable. El costo y tiempo son fijos.├ügilAlcance
+Costo TiempoImpulsado 
+por un plan
+AlcanceCosto Tiempo
+Impulsado 
+por una 
+visi├│n<<< Fijo >>>
+<<< Variable >>>
+
+--- PAGE 10 ---
+oLaGesti├│n delAlcance delProyecto incluye
+losprocesos requeridos para garantizar
+queelproyecto incluya todo eltrabajo
+requerido, y├║nicamente eltrabajo
+requerido ,para completar elproyecto con
+├⌐xito.
+oGestionar elalcance delproyecto seenfoca
+primordialmente endefinir ycontrolar
+queseincluye yquenoseincluye enel
+proyecto .Alcance 
+del 
+ProyectoObjetivos
+Estrategia de 
+comprasCriterios de 
+aceptaci├│n
+Supuestos
+Alcance del 
+producto
+Identificaci├│n de 
+riesgosConstrucci├│n del 
+plan
+Restricciones del 
+proyecto
+Factores cr├¡ticos 
+de ├⌐xito
+Entregables del 
+proyectoEntidades externas 
+y exclusiones1.1. Gesti├│n del Alcance del Proyecto (Predictivo)
+
+--- PAGE 11 ---
+oEnunciclo devida predictivo, losentregables del
+proyecto sedefinen alcomienzo delproyecto y
+cualquier cambio enelalcance esgestionado enforma
+progresiva .
+oLinea base:Lal├¡nea base delalcance delproyecto esla
+versi├│n aprobada delEnunciado delAlcance del
+Proyecto +EDT+Diccionario EDT.
+oUna l├¡nea base puede cambiarse solo mediante
+procedimientos formales decontrol decambios yse
+utiliza como base decomparaci├│n durante larealizaci├│n
+delosprocesos deValidar elAlcance ydeControlar el
+Alcance .
+1.1. Ciclo de vida en proyectos Predictivos
+
+--- PAGE 12 ---
+1.2. Alcance del Producto y Proyecto
+Alcance delProyecto
+Eltrabajo que debe realizarse para entregar un
+producto ,servicio oresultado .
+Eltrabajo oactividades delproyecto para realizar su
+entregable final, sebasa enelalcance delproducto y
+t├¡picamente enelciclodevidadelproducto .Alcance delProducto
+Caracter├¡sticas yfunciones quedefinen unproducto,
+servicio oresultado, elfinprimario delarealizaci├│n
+delproyecto .
+Requisitos dem├║ltiples stakeholders setransforman
+enunadeclaraci├│n delalcance delproducto, lacual
+sebasa encomponentes opartes delproducto .
+
+--- PAGE 13 ---
+1.3. La Estructura de Desglose del Trabajo (EDT)
+┬┐C├│mo comerse a un 
+elefante?
+
+--- PAGE 14 ---
+1.3. La Estructura de Desglose del Trabajo (EDT)
+ΓÇ£La Estructura de Desglose 
+del Trabajo o EDT es una 
+descomposici├│n jer├írquica 
+del alcance total del trabajo 
+a realizarse por el equipo de 
+proyecto para alcanzar los 
+objetivos del proyecto y crear 
+los entregables requeridosΓÇ¥.
+PMBOK 2021Proyecto
+Entregable
+Sub 
+entregablePaquete de 
+TrabajoEntregable
+Sub 
+entregablePaquete de 
+TrabajoEntregable
+Sub 
+entregablePaquete de 
+Trabajo
+Los sub entregables o paquetes 
+de trabajo se dividen en 
+actividades en los procesos de 
+Gesti├│n del Tiempo.
+
+--- PAGE 15 ---
+1.3. La Estructura de Desglose del Trabajo (EDT)
+Proyecto
+Entrega
+ble
+Sub 
+entrega
+blePaquete 
+de 
+TrabajoEntrega
+ble
+Sub 
+entrega
+blePaquete 
+de 
+TrabajoEntrega
+ble
+Sub 
+entrega
+blePaquete 
+de 
+TrabajoRelaci├│n entre EDTyCriterios deAceptaci├│n
+Γ¥æLaEDT yloscriterios deaceptaci├│n trabajan
+juntos para asegurar queelproyecto secomplete
+con├⌐xito.
+Γ¥æLaEDT proporciona laestructura para la
+planificaci├│n yejecuci├│n, mientras queloscriterios
+deaceptaci├│n definen lascondiciones para la
+finalizaci├│n exitosa decada entregable .Al
+combinar ambas herramientas, seaumenta la
+probabilidad deentregar unproducto quecumpla
+conlasexpectativas delcliente .
+
+--- PAGE 16 ---
+1.3. EDT: ┬┐Cu├íl es el ├║ltimo nivel de desglose?
+LaEDTsedesarrolla desglosando entregables hasta
+llegar aunnivel decontrol enelquecada elemento
+(paquete detrabajo) pueda ser:
+ΓÇóAsignado aunresponsable
+ΓÇóProgramado
+ΓÇóCosteado
+ΓÇóMonitoreado .
+Un entregable es un informe, una obra finalizada, un motor en un proyecto de autos, un 
+equipo, un manual de entrenamiento, etc.
+
+--- PAGE 17 ---
+1.3. EDT: ┬┐Cu├íl es el ├║ltimo nivel de desglose?
+EDT:
+Unproyecto dedesarrollo desoftware puede tener
+una EDT con fases como "An├ílisis", "Dise├▒o",
+"Desarrollo", "Pruebas" y"Despliegue" .Cada fasese
+descompone entareas m├ís peque├▒as, como
+"Realizar entrevistas con usuarios" (dentro de
+"An├ílisis") o"Escribir c├│digo para lafunci├│n X"
+(dentro de"Desarrollo") .
+Criterios deAceptaci├│n :
+Para latarea "Escribir c├│digo para lafunci├│n X",los
+criterios deaceptaci├│n podr├¡an incluir :"Elc├│digo
+debe pasar todas laspruebas unitarias", "Lafunci├│n
+debe realizar latarea Ycorrectamente" y"Lafunci├│n
+debe cumplir con losest├índares decodificaci├│n
+definidos porlaempresa" .
+
+--- PAGE 18 ---
+Caso 1: Planificaci├│n 
+del alcande (predictivo)FACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+
+--- PAGE 19 ---
+Ejemplo 1: ┬┐C├│mo hacer una pizza paso a paso?
+Imagina que tienes que hacer una pizza desde cero. Si intentas hacerlo todo de una sola 
+vez, puede ser complicado, pero si divides el trabajo en partes m├ís peque├▒as, ser├í m├ís 
+f├ícil de gestionar.
+
+--- PAGE 20 ---
+Ejemplo 1: ┬┐C├│mo hacer una pizza paso a paso?
+1.Nivel 1: Proyecto completo ΓåÆHacer una pizza.
+2.Nivel 2: Entregables principales ΓåÆPreparar la masa, hacer la salsa, seleccionar 
+ingredientes, hornear.
+3.Nivel 3: Paquetes de trabajo
+ΓÇóPreparar la masa ΓåÆMezclar ingredientes, amasar, dejar reposar.
+ΓÇóHacer la salsa ΓåÆPicar tomates, cocinar con especias.
+ΓÇóSeleccionar ingredientes ΓåÆCortar queso, embutidos, verduras.
+ΓÇóHornear ΓåÆPrecalentar horno, armar la pizza, hornear.
+
+--- PAGE 21 ---
+Ejemplo 1: ┬┐C├│mo hacer una pizza paso a paso?
+1. Hacer una 
+pizza.
+1.1. Seleccionar 
+ingredientes
+1.1.1. 
+Cortar 
+queso1.1.2. 
+Embutidos1.1.3. 
+Verduras1.2. Preparar la 
+masa
+1.2.1. 
+Mezclar 
+ingrediente
+s1.2.2. 
+Amasar1.2.3. 
+Dejar 
+reposar1.3. Hacer la salsa
+1.3.1. 
+Picar 
+tomates1.3.2. 
+Cocinar 
+con 
+especias1.4. Hornear
+1.4.1. 
+Precalentar 
+horno1.4.2. 
+Armar la 
+pizza1.4.3. 
+Hornear
+
+--- PAGE 22 ---
+Ejemplo 1: ┬┐C├│mo hacer una pizza paso a paso?
+ΓÇóAhora vemos que cada tarea es manejable y podemos asignarla a diferentes personas 
+si fuera necesario.
+ΓÇóEsta es la l├│gica de la EDT: descomponer un gran trabajo en partes m├ís 
+peque├▒as y organizadas para facilitar su ejecuci├│n y control .
+Moraleja : Si intentas hacer toda la pizza de golpe, ser├í un desastre. Si la divides el 
+trabajo en tareas concretas, el resultado ser├í mejor y m├ís eficiente. ┬íAs├¡ funciona la EDT 
+en proyectos!
+
+--- PAGE 23 ---
+Ejemplo 2: Construcci├│n de una cancha de futbol 7 -
+EDT
+
+--- PAGE 24 ---
+Ejemplo 2: Construcci├│n de una cancha de futbol 7 -
+EDT
+Construcci├│n de 
+cancha de futbol 
+7
+1. Planificaci├│n y 
+Dise├▒o2. Preparaci├│n 
+del Terreno3. Construcci├│n 
+de la Base4. Instalaci├│n de 
+la Superficie5. Instalaci├│n de 
+Equipamiento y 
+Accesorios6. Pruebas y 
+Entrega
+
+--- PAGE 25 ---
+Ejemplo 2: Construcci├│n de una cancha de futbol 7 -
+EDT
+
+--- PAGE 26 ---
+Ejemplo 2: Construcci├│n de una cancha de futbol 7 -
+EDT
+Ejercicio:
+Desarrollar criterios de aceptaci├│n de cada tarea / entregable.
+
+--- PAGE 27 ---
+1.Planificaci├│n del Alcance. Enfoque predictivo
+1.1. Ciclo de vida del proyecto
+1.2. Alcance del producto y del proyecto
+1.3. Estructura del desglose de traba jo (EDT)
+1.4. Caso pr├íctico
+2.Planificaci├│n del Alcance. Enfoque Adaptativo
+2.1. Ciclo de vida del proyecto
+2.2. Historias de usuario, features, ├⌐picas
+2.3. Backlog y mapa de historias de usuario
+2.4. Caso pr├íticoAgenda
+
+--- PAGE 28 ---
+2. Planificaci├│n del Alcance. 
+Enfoque adaptativoFACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+
+--- PAGE 29 ---
+2.1. Enfoques del ciclo de vida de proyectos
+El alcance es fijo. El costo y tiempo son variables.Tradicional / Waterfall
+El alcance es variable. El costo y tiempo son fijos.├ügilAlcance
+Costo TiempoImpulsado 
+por un plan
+AlcanceCosto Tiempo
+Impulsado 
+por una 
+visi├│n<<< Fijo >>>
+<<< Variable >>>
+
+--- PAGE 30 ---
+2.1. Ciclo de vida de proyectos: Adaptativo
+Fuente: Scrum.org
+
+--- PAGE 31 ---
+2.1. Ciclo de vida de proyectos: Adaptativo
+oEnciclos devida ├ígiles, losentregables se
+desarrollan eniteraciones con unalcance
+aprobado antes decada una.
+oLos proyectos adaptativos manejan cambios
+constantes yrequieren laparticipaci├│n activa de
+losinteresados .
+oElalcance sedescompone enrequisitos ytareas
+dentro delProduct Backlog .
+oAliniciar cada iteraci├│n, elequipo selecciona los
+elementos prioritarios quepuede entregar .
+
+--- PAGE 32 ---
+2.1. Ciclo de vida de proyectos: Adaptativo
+oSerepiten tres procesos (Refinar Requisitos,
+Definir Objetivo, Actualizar Backlog) encada
+iteraci├│n .
+oEnciclos ├ígiles, elcliente ypatrocinador deben
+involucrarse constantemente para dar
+retroalimentaci├│n yactualizar elbacklog .
+
+--- PAGE 33 ---
+2.1. Ciclo de vida de proyectos: Adaptativo
+Define entregas peque├▒as devalor quelepermitan evolucionar elproducto delproyecto
+enciclos constantes detiempo manteniendo fijoelpresupuesto yeltiempo delproyecto .
+
+--- PAGE 34 ---
+2.1. Ciclo de vida de proyectos: Adaptativo
+1 2 3 4
+1
+ 2
+ 3
+ 4
+ 5
+
+--- PAGE 35 ---
+2.2. Historias de usuario, features y ├⌐picas
+ΓÇóUna historia de usuario es una 
+descripci├│n breve del requerimiento 
+del cliente .
+ΓÇóDefine qu├⌐ necesita y por qu├⌐ es 
+importante para su objetivo.
+ΓÇóIncluye criterio de aceptaci├│n para 
+validar su correcto desarrollo
+
+--- PAGE 36 ---
+2.2. Historias de usuario, features y ├⌐picas
+Jerarqu├¡a Ejemplo
+├ëpica: Esta es una iniciativa, un sistema o un 
+componente de la soluci├│n. (Puede durar m├ís de 3 
+meses)."Gesti├│n de pedidos en una app de comida" ΓåÆ 
+Un usuario debe poder realizar y dar seguimiento a 
+sus pedidos en la aplicaci├│n.
+Feature (Caracter├¡stica): Son las principales 
+caracter├¡sticas de la iniciativa, sistema o 
+componente de la soluci├│n. (Puede durar entre 1 
+mes a 3 meses)."Seguimiento del pedido en tiempo real" ΓåÆ 
+Permitir a los usuarios ver el estado de su pedido 
+desde que es confirmado hasta que llega.
+Historia de Usuario: Es una funcionalidad que 
+cubre una necesidad puntual de cliente final. 
+(Puede durar hasta 2 semanas)."Como cliente, quiero recibir notificaciones sobre el 
+estado de mi pedido para saber cu├índo llegar├í."
+Fuente: Elaboraci├│n Propia
+
+--- PAGE 37 ---
+2.2. Historias de usuario, features y ├⌐picas
+├ëpica Feature Cod. HU Historia de Usuario Sprint Estado
+Gesti├│n de 
+pedidos en appSeguimiento 
+del pedido 
+en tiempo 
+realHU-001Como cliente, quiero recibir 
+notificaciones sobre el estado de mi 
+pedido para saber cu├índo llegar├í.Sprint 1 En Proceso
+B├║squeda y 
+filtrado de 
+productosFiltros 
+avanzados 
+de b├║squedaHU-002Como usuario, quiero filtrar 
+productos por precio y categor├¡a para 
+encontrar lo que necesito f├ícilmente.Sprint 2 Por realizar
+Gesti├│n de 
+cuentas de 
+usuarioRecuperaci├│
+n de 
+contrase├▒aHU-003Como usuario, quiero restablecer mi 
+contrase├▒a mediante correo 
+electr├│nico para recuperar el acceso 
+a mi cuenta.Sprint 3 FinalizadaSe debe llegar un registro de todas las historias de usuario donde se indique a que Sprint est├í 
+asignado y cual el estado de la misma.
+Fuente: Elaboraci├│n Propia
+
+--- PAGE 38 ---
+2.3. Backlog y roadmap
+El backlog de un proyecto es una lista priorizada de requisitos , funcionalidades y mejoras 
+pendientes (Historias de usuario), evolucionando seg├║n necesidades del cliente y el negocio.
+Fuente: Elaboraci├│n PropiaΓÇóDetailed Appropriately
+ΓÇóEstimated
+ΓÇóEmergent
+ΓÇóPrioritized
+
+--- PAGE 39 ---
+2.3. Backlog y mapa de historias de usuario
+El mapa de historias de usuario es una representaci├│n visual que organiza y prioriza 
+historias seg├║n flujo, valor y necesidades del producto.
+
+--- PAGE 40 ---
+Caso 2: Planificaci├│n del 
+alcande (adaptativo)FACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+
+--- PAGE 41 ---
+Ejemplo 2: ┬┐C├│mo crear una aplicaci├│n para entrega de comida?
+Imagina ahora que eres el responsable de proponer el desarrollo de 
+una app m├│vil para entrega de comida a domicilio. Considera 
+adem├ís que es tu primera vez en el rubro de comidas y no eres 
+desarrollador de aplicaciones.
+ΓÇóSi pensamos utilizar el enfoque predictivo, primero debemos 
+identifican y documentan todos los requisitos en detalle, 
+estableciendo un alcance fijo antes de iniciar el desarrollo.
+ΓÇóSin embargo, si surge la necesidad de cambios o mejoras durante 
+el proceso, implementarlos puede ser complicado y costoso, ya 
+que esta metodolog├¡a no permite mucha flexibilidad en la 
+evoluci├│n del proyecto.
+
+--- PAGE 42 ---
+Scrum permite desarrollar la app de forma iterativa y adaptable , entregando 
+funcionalidades en ciclos cortos ( Sprints ) y ajustando el producto seg├║n la 
+retroalimentaci├│n de los usuarios.
+1.Registrarse en la app
+Como usuario, quiero registrarme con mi n├║mero de celular para pedir comida 
+f├ícilmente.
+2.Buscar restaurantes cercanos
+Como cliente, quiero ver una lista de restaurantes cercanos para elegir d├│nde ordenar.
+3.Seleccionar un platillo
+Como usuario, quiero ver el men├║ con fotos y precios para elegir mi comida.
+4.Realizar un pedido
+Como cliente, quiero pagar con tarjeta o efectivo para completar mi compra.
+5.Rastrear mi pedido
+Como usuario, quiero ver en el mapa d├│nde est├í el repartidor para saber cu├índo llegar├í 
+mi comida.Ejemplo 2: ┬┐C├│mo crear una aplicaci├│n para entrega de comida?
+
+--- PAGE 43 ---
+┬┐Cu├íles son los 
+siguientes pasos?FACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+
+--- PAGE 44 ---
+┬┐Cu├íles son los siguientes pasos?
+ΓÇóPara la siguiente sesi├│n debe elaborar un primera versi├│n del enunciado del alcance si su 
+proyecto es prectivio o el backlog con las historias de usuario si su proyecto es adaptativo.
+ΓÇóConsidere desarrollar esta actividad de forma grupal, no individual.
+
+--- PAGE 45 ---
+┬┐Qu├⌐ nos llevamos de esta 
+sesi├│n?
+Preparar plan de gesti├│n 
+de alcance.FACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+
+--- PAGE 46 ---
+Gracias por su atenci├│n
+
+--- PAGE 47 ---
+Referencias
+PMI
+1.Project Management Institute. (2021). A Guide to the Project Management Body of Knowledge (PMBOK 
+Guide) ΓÇôSeventh Edition and The Standard for Project Management . Project Management Institute. 
+1.Este es el libro de referencia principal del PMI y contiene informaci├│n detallada sobre la planificaci├│n 
+del alcance y otros procesos de gesti├│n de proyectos.
+2.Project Management Institute. (2019). Practice Standard for Work Breakdown Structures . Project 
+Management Institute.
+1.Este est├índar se enfoca espec├¡ficamente en la creaci├│n de la Estructura de Desglose del Trabajo 
+(EDT), una herramienta clave en la planificaci├│n del alcance.
+Scrum
+3.Schwaber, K., & Sutherland, J. (2020). The Scrum Guide: The Definitive Guide to Scrum: The Rules of 
+the Game . Scrum.org.
+3.La gu├¡a oficial de Scrum, que describe el marco de trabajo y los roles, eventos y artefactos, 
+incluyendo la planificaci├│n del Sprint y el Product Backlog.
+4.Rubin, K. S. (2013). Essential Scrum: A Practical Guide to the Most Popular Agile Process . Addison -Wesley 
+Professional.
+3.Un libro pr├íctico que ofrece una visi├│n general de Scrum y proporciona consejos sobre c├│mo 
+implementar Scrum en proyectos reales.
+
+================================================================================
+Semana 6 - Planificaci├│n Financiera.pdf
+================================================================================
+
+--- PAGE 1 ---
+DOMINIO DEL RENDIMIENTO 
+FINANCIERO
+Semana 06
+Sesugiere agregar una imagen
+relacionada con eltema que se
+abordar├í enlaclase
+Gesti├│n de Proyectos
+2026 -1
+Alineado a la Octava Edici├│n del PMBOK┬«FACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+
+--- PAGE 2 ---
+Objetivo de la sesi├│n
+Al t├⌐rmino de la sesi├│n, El estudiante identificar├í las etapas clave 
+de la gesti├│n financiera, logrando conocer e interpretar las partes 
+del presupuesto, aplic├índolo en el proyecto que se encuentra 
+desarrollando en equipo.
+
+--- PAGE 3 ---
+GESTI├ôN 
+FINANCIERAFACULTAD DE INGENIER├ìA
+CARRERA DE INGENIER├ìA DE SISTEMAS
+
+--- PAGE 4 ---
+ΓÇóGesti├│n Financiera .
+Enfoque predictivo
+Enfoque AdaptativoAgenda
+
+--- PAGE 5 ---
+ΓÇóGesti├│n Financiera .
+Enfoque predictivo
+Enfoque AdaptativoAgenda
+
+--- PAGE 6 ---
+En grupos
+Aumentar 
+presupuesto
+Ampliar
+plazo
+Recortar
+alcance
+Est├ís gestionando unproyecto para desarrollar
+una aplicaci├│n m├│vil navide├▒a para una
+empresa decomercio electr├│nico .Elproyecto
+tiene unpresupuesto inicial de$200,000yun
+plazo de6meses para sufinalizaci├│n .Todo va
+seg├║n loplaneado hasta que, amitad de
+camino, elequipo dedesarrollo seencuentra
+convarios desaf├¡os t├⌐cnicos inesperados que
+requieren m├ís tiempo yrecursos para
+resolverse .Problemas :
+1.Laintegraci├│n deunsistema depago seguro est├í
+resultando m├íscompleja deloprevisto .
+2.Lostestdeusuario hanrevelado problemas deusabilidad
+querequieren unarevisi├│n significativa deldise├▒o dela
+interfaz .
+3.Sehadescubierto quelaaplicaci├│n tiene problemas de
+rendimiento enciertos dispositivos m├ís antiguos, loque
+requiere optimizaci├│n adicional .
+┬┐Qu├⌐ decisiones tomar├¡as para
+gestionar ΓÇª?
+
+--- PAGE 7 ---
+┬┐Qu├⌐ es el 
+Dominio de 
+Desempe├▒o 
+de 
+Finanzas?Seocupa delusoylaasignaci├│n efectiva delosrecursos
+financieros ,tanto internos como externos, para garantizar
+laejecuci├│n delproyecto
+Asegura queelproyecto cuente conelcapital necesario y
+gestiona laobtenci├│n delos recursos econ├│micos
+requeridos paraoperar
+Seasegura dequecada gasto est├⌐alineado conlaestrategia
+organizacional para maximizar elretorno deinversi├│n y
+elbeneficio delnegocio
+Supervisa lasalud financiera ylospron├│sticos de
+ingresos para garantizar queelproyecto siga siendo una
+inversi├│n rentable durante todosuciclodevida
+
+--- PAGE 8 ---
+Enfoques de Gesti├│n Financiera
+Objetivo :
+Maximizar elvalor entregado dentro deunpresupuesto
+fijo.Elpresupuesto serevisa peri├│dicamente para ajustar
+lainversi├│n alacapacidad realdelequipo .Objetivo :
+Establecer unaL├¡nea Base deCostos s├│lida basada en
+unalcance definido .Seenfoca enlaprecisi├│n dela
+estimaci├│n absoluta yelcontrol devariaciones
+Predictivo
+Conozco eldetalle de
+mi cronograma ylos
+recursos asignados a
+las actividades, hay
+baja incertidumbre
+Adaptativo
+No conozco eldetalle
+del alcance, pero
+tengo eltiempo yel
+costo fijo, por lotanto,
+debo asegurarme de
+aprovechar la
+capacidad fija que
+tengo .Constraint
+EstimateConstraint
+Estimate
+Optimizaci├│n con IA: Uso de modelos predictivos para el an├ílisis de escenarios financieros 'What -if' y detecci├│n temprana 
+de riesgos presupuestarios
+
+--- PAGE 9 ---
+Conceptos de costos
+ΓÇóEstimaci├│n :Una evaluaci├│n cuantitativa demonto oresultado probable deunavariable, talcomo
+costos delproyecto, recursos, esfuerzo oduraci├│n .
+ΓÇóExactitud :Dentro delsistema degesti├│n decalidad, exactitud esunaevaluaci├│n delocorrecto o
+acertado .
+ΓÇóPrecisi├│n :Dentro delsistema degesti├│n decalidad, precisi├│n esunaevaluaci├│n delopreciso .
+ΓÇóCrashing :Unm├⌐todo usado para acortar laduraci├│n delcronograma agregando recursos mediante el
+m├¡nimo incremento decostos .
+ΓÇóFast tracking :Unm├⌐todo decompresi├│n delcronograma enelque lasactividades ofases
+normalmente realizadas ensecuencia, sonejecutadas enparalelo para obtener unaporci├│n dela
+duraci├│n total.
+ΓÇóPresupuesto :Elestimado aprobado para elproyecto ocualquier componente EDT oactividad del
+cronograma .
+Ampliaci├│n con IA (GenAI): El 
+uso de IA Generativa permite 
+procesar grandes vol├║menes de 
+datos hist├│ricos para mejorar la 
+Exactitud de las estimaciones y 
+realizar an├ílisis de sensibilidad 
+autom├íticos que identifiquen 
+riesgos presupuestarios ocultos
+
+--- PAGE 10 ---
+Conceptos de estimaci├│n
+ΓÇóRango :L├¡mite superior einferior delmonto estimado .Losestimados tienden atener
+rangos muy amplios alinicio delproyecto (-25%a+75%),yvaacort├índose conforme
+pasa eltiempo, idealmente llegando a-5%a+10%.
+ΓÇóExactitud :Serefiere alaforma correcta deestimar .Mientras m├ís baja laexactitud,
+mayor ser├í elrango .
+ΓÇóPrecisi├│n :Serefiere algrado deexactitud delaestimaci├│n .Porejemplo, unestimado
+deΓÇ£2d├¡asΓÇ¥ esm├ís preciso queunestimado deΓÇ£enalg├║n momento estasemanaΓÇ¥ .
+ΓÇóConfianza :Laconfianza seincrementa con laexperiencia .Para tecnolog├¡as,
+componentes oequipos detrabajo nuevos, elnivel deconfianza seespera que sea
+bajo
+Ampliaci├│n con IA: El uso 
+de IA Generativa permite 
+procesar grandes vol├║menes 
+de datos externos para 
+mejorar la Exactitud y reducir 
+el tiempo en que el Cono de 
+Incertidumbre se cierra, 
+permitiendo decisiones 
+financieras m├ís seguras [
+
+--- PAGE 11 ---
+Conceptos de costos
+Fuente: PMBOK 7ma Edici├│nBaja exactitud, alta precisi├│n
+Fuente: PMBOK 7ma Edici├│nEl rango de estimaci├│n decrece con el 
+tiempo
+
+--- PAGE 12 ---
+Reglas de Negocio de la Gesti├│n Financiera
+Nivel de precisi├│n requerida 
+para los costos. Dependiendo del 
+alcance de las actividades y la 
+magnitud del proyecto se puede 
+definir un redondeoUnidades de medida. Se definen 
+todas las unidades usadas en las 
+mediciones, como por ejemplo, las 
+horas o d├¡as de trabajo, la semana 
+detrabajo, la suma global, etc., 
+para cada uno de los recursos 
+(humanos o no), incluyendo 
+m├⌐tricas de valor como ROI, VAN 
+o beneficios por hitoIntegraci├│n con la 
+contabilidad 
+organizacional. Establece el 
+uso de Cuentas de Control 
+como marco de referencia 
+para vincular la EDT/WBS con 
+los c├│digos contables y 
+presupuestales de la 
+empresa, asegurando la 
+trazabilidad del gasto
+Umbrales decontrol .Sepueden
+definir umbrales devariaci├│n para
+loscostos uotros indicadores (por
+ejemplo, d├¡asporpersona, volumen
+deproducto) enpuntos detiempo
+designados durante elproyecto,
+para indicar lacantidad acordada de
+variaci├│n permitida, definidos para
+activar alertas tempranas mediante
+se├▒ales degobernanzaFormatos de informe. Se 
+definen los formatos para los 
+diferentes informes de costosDescripciones del 
+proceso. Se documentan 
+las descripciones de cada 
+uno de los tres procesos de 
+gesti├│n de costosEstrategia de 
+Financiamiento: Define de 
+d├│nde viene el dinero 
+(interno, externo, 
+subvenciones) y su 
+disponibilidad en el tiempo
+Ampliaci├│n con IA: Uso de 
+modelos predictivos para 
+ajustar autom├íticamente los 
+pron├│sticos de costos (EAC) 
+bas├índose en la volatilidad 
+del mercado
+
+--- PAGE 13 ---
+ΓÇóGesti├│n Financiera .
+Enfoque predictivo
+Enfoque AdaptativoAgenda
+
+--- PAGE 14 ---
+ΓÇóGesti├│n Financiera .
+Enfoque predictivo
+Enfoque AdaptativoAgenda
+
+--- PAGE 15 ---
+Gesti├│n Financiera Predictiva
+Estimar los costos
+ΓÇóDesarrollar unaaproximaci├│n
+delosrecursos monetarios
+necesarios basada enun
+alcance definido
+tempranamente para capturar
+certeza .
+ΓÇóEvaluar alternativas decostos
+(recursos propios,
+adquisiciones, outsourcing) y
+considerar losriesgos que
+impactan laexactitud del
+estimado .Desarrollar el presupuesto
+ΓÇóConsiste ensumar loscostos
+estimados deactividades para
+establecer laL├¡nea Base de
+Costos autorizada ydefinir los
+requisitos definanciamiento
+delproyectoMonitorear y controlar las finanzas
+ΓÇóSupervisar lasalud financiera
+yasegurar que elproyecto
+permanezca econ├│micamente
+viable yalineado con los
+objetivos denegocio .
+ΓÇóGestionar cambios enlal├¡nea
+base mediante uncontrol
+integrado y actualizar
+pron├│sticos deingresos o
+ahorros esperados
+Ampliaci├│n con IA: Uso de anal├¡tica predictiva para generar pron├│sticos de costos 
+(EAC) m├ís exactos y alertas tempranas de desviaciones basadas en datos hist├│ricos
+
+--- PAGE 16 ---
+Desarrollar el presupuesto
+Reservas de Gesti├│n
+L├¡nea Base de 
+Costos
+Reserva spara 
+Contingencias
+Proyecto
+Cuentas de Control
+Paquetes de Trabajo
+ActividadesPresupuesto del 
+Proyecto
+ΓÇóCompromiso Oficial : El
+presupuesto eselestimado
+aprobado que sirve como el
+compromiso financiero oficial para
+elproyecto
+ΓÇóAgregaci├│n deCostos :Proceso
+desumar loscostos estimados de
+actividades ypaquetes detrabajo
+para establecer una base
+autorizada
+ΓÇóTrazabilidad Organizacional :
+Sevincula conlasCuentas de
+Control para asegurar que el
+gasto delproyecto hable elmismo
+idioma quelacontabilidad dela
+empresa
+Ampliaci├│n conIA(GenAI) :
+Usodemodelos deAnal├¡tica
+Predictiva para validar la
+suficiencia delasReservas de
+Gesti├│n bas├índose en la
+volatilidad hist├│rica de
+proyectos similares,
+eliminando el "oj├¡metro"
+humano enlaprotecci├│n del
+presupuesto
+
+--- PAGE 17 ---
+ΓÇóGesti├│n Financiera .
+Enfoque predictivo
+Enfoque AdaptativoAgenda
+
+--- PAGE 18 ---
+ΓÇóGesti├│n Financiera .
+Enfoque predictivo
+Enfoque AdaptativoAgenda
+
+--- PAGE 19 ---
+Gesti├│n Financiera Adaptativa
+Planificaci├│n Basada enelValor .Enentornos dealtaincertidumbre, el
+presupuesto yelcronograma suelen serfijos(restricciones), mientras queel
+alcance esvariable .Elobjetivo esoptimizar lacapacidad delequipo para
+entregar elm├íximo valor posible dentro deesos l├¡mites financieros .
+Estimaci├│n Progresiva yRolling Wave .Seutilizan m├⌐todos deestimaci├│n
+ligera para proyecciones dealto nivel alargo plazo (Roadmap ).Los
+presupuestos detallados sereservan exclusivamente para elhorizonte de
+planeamiento inmediato (laiteraci├│n actual), permitiendo ajustes r├ípidos
+antecambios enlasprioridades delnegocio .
+Asignaci├│n Din├ímica deFondos .Elpresupuesto serevisa yajusta
+peri├│dicamente (ej.cada trimestre) bas├índose enelvalor realentregado y
+validado porlosinteresados, asegurando quelainversi├│n financiera siga
+siendo viable
+Ampliaci├│n con IA.Uso deanal├¡tica
+predictiva para procesar lavelocidad
+hist├│rica del equipo (Velocity )y
+proyectar elconsumo delpresupuesto
+(Burn rate),detectando anomal├¡as
+financieras deforma autom├ítica
+
+--- PAGE 20 ---
+Desarrollar el presupuesto
+Proyecto
+Costo 
+capacidadPresupuesto de 
+Costos
+Licencias 
+y otrosEnfoque deInversi├│n Fija:Elpresupuesto seestablece
+como una restricci├│n para unperiodo determinado (ej.
+trimestral), donde elcosto yeltiempo son fijos para
+maximizar laentrega devalor.Elpresupuesto sedesarrolla
+considerando :
+ΓÇóEstrategia deSourcing :Contrataci├│n deservicios
+externos especializados para aumentar lacapacidad del
+equipo .
+ΓÇóInfraestructura deEntrega :Costos deplataformas,
+hardware ylicencias necesarios para sostener elflujo de
+trabajo .
+ΓÇóDesarrollo deCompetencias :Inversi├│n encapacitaci├│n
+parareducir eldesperdicio ymejorar lavelocidad .
+ΓÇóReserva deContingencia :Fondo para mitigar riesgos
+dealtaincertidumbre detectados enlasretrospectivas
+Ampliaci├│n conIA:Usodemodelos predictivos paraanalizar laVelocidad
+delequipo yproyectar elBurn rate(tasa deconsumo), permitiendo ajustes
+presupuestarios din├ímicos antes deagotar losfondos
+
+--- PAGE 21 ---
+Caso de aplicaci├│n
+
+--- PAGE 22 ---
+Desarrollo de una Aplicaci├│n para el Bienestar Estudiantil
+Actualmente se tiene una creciente
+preocupaci├│n por elbienestar mental y
+emocional delosestudiantes universitarios,
+especialmente alaluzdelosrecientes incidentes
+enotras universidades donde lapresi├│n
+acad├⌐mica yelestr├⌐s hanllevado aalgunos
+estudiantes atomar decisiones perjudiciales para
+suintegridad .Esteproblema esparticularmente
+relevante enelcontexto actual, donde los
+estudiantes enfrentan m├║ltiples desaf├¡os, como
+lacarga acad├⌐mica, laincertidumbre sobre el
+futuro ylafalta derecursos adecuados para
+manejar elestr├⌐s .
+
+--- PAGE 23 ---
+Desarrollo de una Aplicaci├│n para el Bienestar Estudiantil
+Alcance
+Crear una aplicaci├│n m├│vil que ofrezca recursos y 
+actividades para mejorar el bienestar f├¡sico y mental 
+de los estudiantes, incluyendo ejercicios de 
+relajaci├│n, meditaci├│n, y eventos recreativos.
+
+--- PAGE 24 ---
+Desarrollo de una Aplicaci├│n para el Bienestar Estudiantil
+Descomposici├│n
+Fase 1: Investigaci├│n de Necesidades de Bienestar
+Fase 2: Dise├▒o de la Interfaz de Usuario
+Fase 3: Desarrollo de Funcionalidades de Bienestar
+Fase 4: Pruebas de Usuario
+Fase 5: Lanzamiento y Promoci├│n
+
+--- PAGE 25 ---
+Desarrollo de una Aplicaci├│n para el Bienestar Estudiantil
+Identificaci├│n de recursos
+ΓÇóPersonal: desarrolladores de aplicaciones m├│viles, dise├▒adores UX/UI, 
+expertos en bienestar.
+ΓÇóSoftware: herramientas de desarrollo de aplicaciones, plataformas de 
+prueba.
+ΓÇóEquipos: dispositivos m├│viles para pruebas.
+
+--- PAGE 26 ---
+Desarrollo de una Aplicaci├│n para el Bienestar Estudiantil
+Estimaci├│n de costos
+Fase 1: $2,000 (investigaci├│n de necesidades)
+Fase 2: $3,000 (dise├▒o de la interfaz)
+Fase 3: $10,000 (desarrollo de funcionalidades)
+Fase 4: $2,500 (pruebas de usuario)
+Fase 5: $4,000 (lanzamiento y promoci├│n)
+
+--- PAGE 27 ---
+Desarrollo de una Aplicaci├│n para el Bienestar Estudiantil
+An├ílisis de costos unitarios
+ΓÇóLicencias de software: $300 por licencia
+ΓÇóMano de obra: $30 por hora
+ΓÇóDispositivos de prueba: $500 por unidad
+
+--- PAGE 28 ---
+Desarrollo de una Aplicaci├│n para el Bienestar Estudiantil
+Desarrollar el presupuesto
+
+--- PAGE 29 ---
+ΓÇó$/ 23650L├¡nea base de costo
+ΓÇó$/ 2150Reserva de contingencia (la valorizaci├│n 
+monetaria de atenci├│n de los riesgos -10%)
+ΓÇó$/ 21500Costo unitario (paquetes de trabajo, 
+materiales, licencias, etc)Desarrollo de una Aplicaci├│n para el Bienestar Estudiantil
+Desarrollar el presupuesto
+
+--- PAGE 30 ---
+ΓÇó$/ 25800Presupuesto
+ΓÇó$/ 2150Reserva de gesti├│n (monto para atender eventos imprevistos o 
+riesgos no identificados ΓÇôrecomienda 5% y 15% dependiendo)
+ΓÇó$/ 23650L├¡nea base de costo
+ΓÇó$/ 2150Reserva de contingencia (la valorizaci├│n monetaria de atenci├│n 
+de los riesgos -10%)
+ΓÇó$/ 21500Costo unitario (paquetes de trabajo, materiales, licencias, etc)Desarrollo de una Aplicaci├│n para el Bienestar Estudiantil
+Desarrollar el presupuesto
+
+--- PAGE 31 ---
+Actividad Practica
+Realizar la estimaci├│n de proyecto 
+del curso
+
+--- PAGE 32 ---
+┬┐Qu├⌐ me llevo de la sesi├│n?

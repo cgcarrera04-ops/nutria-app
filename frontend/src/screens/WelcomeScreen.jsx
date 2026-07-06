@@ -41,7 +41,7 @@ const WelcomeScreen = ({ onNext, onDemo }) => {
           <img
             src={MASCOT.logo}
             alt="NutrIA"
-            style={{ width:42, height:42, borderRadius:13, objectFit:"cover", boxShadow:`0 2px 10px rgba(43,188,185,0.28)` }}
+            style={{ width:40, height:40, borderRadius:12, objectFit:"contain", boxShadow:`0 2px 10px rgba(43,188,185,0.28)`, background:"#fff", animation:"float 4s ease-in-out infinite" }}
             onError={e => e.target.style.display="none"}
           />
           <span style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:800, fontSize:20, color:T.textPrimary, letterSpacing:"-0.5px" }}>
@@ -66,11 +66,11 @@ const WelcomeScreen = ({ onNext, onDemo }) => {
             padding:16,
           }}>
             <img
-              src={MASCOT.fullBody}
+              src={MASCOT.wave || MASCOT.fullBody}
               alt="NutrIA — tu compañera de salud"
               onError={e => { e.target.src = MASCOT.logo; }}
               style={{
-                width:"100%", height:"auto", objectFit:"contain", maxHeight:260,
+                width:"100%", height:"auto", objectFit:"contain", maxHeight:280,
                 borderRadius:20,
                 filter:"drop-shadow(0 6px 20px rgba(43,188,185,0.25))",
                 animation:"float 4s ease-in-out infinite",
@@ -111,8 +111,51 @@ const WelcomeScreen = ({ onNext, onDemo }) => {
 
         {/* CTAs */}
         <div className="fade-up fade-up-3" style={{ display:"flex", flexDirection:"column", gap:10, width:"100%", maxWidth:340 }}>
+          
+          {/* Botón de Google Sign-In */}
+          <button 
+            onClick={async () => {
+              try {
+                const { loginWithGoogle } = await import("../services/firebase");
+                const user = await loginWithGoogle();
+                // Si el logueo es exitoso, actualizamos los datos locales del usuario
+                onDemo({
+                  name: user.displayName.split(" ")[0],
+                  email: user.email,
+                  photoURL: user.photoURL,
+                  googleUid: user.uid,
+                });
+              } catch (e) {
+                alert("No se pudo iniciar sesión con Google. Inténtalo de nuevo. 🦦");
+              }
+            }} 
+            className="btn-ghost" 
+            style={{ 
+              width:"100%", 
+              padding:"14px", 
+              background:"#fff", 
+              color:"#333", 
+              border:`1.5px solid ${T.border}`, 
+              borderRadius:12, 
+              display:"flex", 
+              alignItems:"center", 
+              justifyContent:"center", 
+              gap:10,
+              boxShadow:"0 2px 8px rgba(0,0,0,0.05)",
+              fontWeight: 600
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18">
+              <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
+              <path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+              <path d="M3.964 10.707a5.416 5.416 0 0 1-.282-1.707c0-.593.102-1.17.282-1.707V4.961H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.039l3.007-2.332z" fill="#FBBC05"/>
+              <path d="M9 3.58c1.32 0 2.508.454 3.44 1.345l2.582-2.58C13.463.896 11.427 0 9 0A8.997 8.997 0 0 0 .957 4.961l3.007 2.332C4.672 5.164 6.656 3.58 9 3.58z" fill="#EA4335"/>
+            </svg>
+            Conectarse con Google
+          </button>
+
           <button id="btn-start" className="btn-primary" onClick={onNext} style={{ padding:"15px 40px", fontSize:16 }}>
-            Iniciar mi plan <Icon name="arrowRight" size={17} color="#fff" />
+            Iniciar plan sin cuenta <Icon name="arrowRight" size={17} color="#fff" />
           </button>
 
           <div style={{ position:"relative" }}>
@@ -120,9 +163,9 @@ const WelcomeScreen = ({ onNext, onDemo }) => {
               <Icon name="layers" size={15} color={T.teal} /> Probar con perfil de ejemplo
             </button>
             {showDemos && (
-              <div style={{ position:"absolute", top:"100%", left:0, right:0, marginTop:8, background:T.surface, border:`1.5px solid ${T.border}`, borderRadius:14, padding:8, boxShadow:T.shadow, zIndex:20, animation:"fadeUp .2s ease both" }}>
+              <div style={{ position:"relative", zIndex:150, marginTop:8, backgroundColor:"var(--t-surface)", border:`1.5px solid ${T.border}`, borderRadius:14, padding:8, boxShadow:T.shadowMd, animation:"fadeIn .2s ease both" }}>
                 {DEMO_PROFILES.map(p => (
-                  <div key={p.id} onClick={() => onDemo(p.data)} style={{ padding:"12px 14px", fontSize:13, fontWeight:600, color:T.textPrimary, borderBottom:`1px solid ${T.border}`, cursor:"pointer", borderRadius:8 }}>
+                  <div key={p.id} onClick={() => onDemo(p.data)} style={{ padding:"12px 14px", fontSize:13, fontWeight:600, color:T.textPrimary, borderBottom:`1px solid ${T.border}`, cursor:"pointer", borderRadius:8, textAlign:"left", backgroundColor:"var(--t-surface)" }}>
                     {p.label}
                   </div>
                 ))}
@@ -145,7 +188,13 @@ const WelcomeScreen = ({ onNext, onDemo }) => {
         </div>
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
           {FEATURES.map((f, i) => (
-            <div key={i} className="card" style={{ padding:"14px 12px" }}>
+            <div key={i} style={{
+              padding:"14px 12px",
+              background:T.surface,
+              border:`1.5px solid ${T.border}`,
+              borderRadius:12,
+              boxShadow:T.shadow,
+            }}>
               <div style={{ fontSize:26, marginBottom:8 }}>{f.emoji}</div>
               <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:13, color:T.textPrimary, marginBottom:4 }}>{f.title}</div>
               <div style={{ fontSize:11.5, color:T.textMuted, lineHeight:1.5 }}>{f.desc}</div>

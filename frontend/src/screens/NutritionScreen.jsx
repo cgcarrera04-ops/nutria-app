@@ -45,11 +45,20 @@ const bankMealsToUI = (bankMeals) =>
  * getMealsForUser — exportada para que DashboardScreen calcule totales.
  * Prioriza los datos reales del banco si el plan está cargado.
  */
-export const getMealsForUser = (userData, plan) => {
-  // Si hay plan del banco y tiene días, usar el día 1 (o el actual)
+export const getMealsForUser = (userData, plan, targetDayIndex = 1) => {
+  // Si hay plan del banco y tiene días, aplicar algoritmo de Rotación Infinita
   if (plan && plan.days && plan.days.length > 0) {
-    const day = plan.days[0]; // día 1 por defecto
-    if (day.meals && day.meals.length > 0) {
+    const totalDays = plan.days.length; // Usualmente 7
+    const week = Math.floor((targetDayIndex - 1) / totalDays);
+    const cycleDay = ((targetDayIndex - 1) % totalDays) + 1;
+    
+    // Offset algorítmico: en la semana 2, el lunes es el martes de la semana 1, etc.
+    // Esto da la ilusión de un plan 100% nuevo sin usar la API
+    const mappedDay = ((cycleDay - 1 + week) % totalDays) + 1;
+
+    const day = plan.days.find(d => d.day === mappedDay) || plan.days[0];
+    
+    if (day && day.meals && day.meals.length > 0) {
       const meals = bankMealsToUI(day.meals);
       // Si el usuario compra preparado, usar plan_b como items
       if (userData?.cookMode === "buy") {
@@ -65,7 +74,12 @@ export const getMealsForUser = (userData, plan) => {
 // ─── Datos de compras del plan real ──────────────────────────────────────────
 const getShoppingList = (plan) => {
   if (plan && plan.shopping && plan.shopping.length > 0) {
-    return plan.shopping;
+    return plan.shopping.map(s => ({
+      item:  s.item || s.n,
+      qty:   s.qty  || s.q,
+      price: s.price ?? s.pr,
+      cat:   s.cat  || s.ct,
+    }));
   }
   // Fallback
   return [
@@ -82,6 +96,44 @@ const getShoppingList = (plan) => {
   ];
 };
 
+// Helper interactivo de Variantes del Chef para evitar la monotonía alimentaria
+const getChefAlternatives = (name, items) => {
+  const text = (items || []).join(" ").toLowerCase();
+  if (text.includes("pollo")) {
+    return {
+      title: "Transforma tu Pollo 🍗",
+      desc: "Si hoy no quieres pollo a la plancha, ¡prepáralo de otra forma con los mismos ingredientes! Puedes deshilacharlo para un fresco Salpicón de Pollo con limón y vegetales, o hervirlo con un toque de kión para una Sopa de Pollo reconfortante.",
+      tip: "Mismas calorías, cero aburrimiento."
+    };
+  }
+  if (text.includes("huevo")) {
+    return {
+      title: "Dale otra vida a tus Huevos 🍳",
+      desc: "En lugar de revueltos, hoy puedes batirlos con espinacas para una Tortilla esponjosa, o simplemente prepararlos sancochados (huevos duros) para llevarlos fácilmente donde quieras.",
+      tip: "La misma proteína, diferente textura."
+    };
+  }
+  if (text.includes("atún")) {
+    return {
+      title: "Variante Marina Express 🐟",
+      desc: "Mezcla tu atún con cebolla picada en cuadritos, limón y un toque de culantro para un Ceviche Express de Atún súper fresco, o úsalo como relleno de una papa o palta.",
+      tip: "Frescura inmediata en 3 minutos."
+    };
+  }
+  if (text.includes("avena") || text.includes("plátano")) {
+    return {
+      title: "Variedad de Desayuno 🥞",
+      desc: "Licúa la avena junto con el plátano y el huevo para preparar unos deliciosos Pancakes de Avena en la sartén sin añadir grasas extra, en lugar de comerlos por separado.",
+      tip: "Se siente como un postre, pero es 100% saludable."
+    };
+  }
+  return {
+    title: "Toque del Chef NutrIA 🌿",
+    desc: "Cambia el perfil de sabor usando condimentos peruanos libres de calorías como orégano seco, comino, ajo en polvo o ají amarillo picado. ¡Un aderezo diferente cambia todo!",
+    tip: "Añade sabor, no calorías."
+  };
+};
+
 // ─── NutritionScreen ───────────────────────────────────────────────────────────
 const NutritionScreen = ({ onBack }) => {
   const { state, dispatch } = useApp();
@@ -89,11 +141,68 @@ const NutritionScreen = ({ onBack }) => {
   const [showPlanB,    setShowPlanB]    = useState(false);
   const [showSearch,   setShowSearch]   = useState(false);
   const [expandedTip,  setExpandedTip]  = useState(null);
-  const [checkedItems, setCheckedItems] = useState({});
+  const [expandedChef, setExpandedChef] = useState(null);
 
   const isBuyMode = state.userData?.cookMode === "buy";
   const plan      = state.plan;
-  const MEALS     = getMealsForUser(state.userData, plan);
+
+  // Menstrual Syncing Calculations
+  const isFemale = state.userData.sex === "Female" || state.userData.sex === "Femenino" || state.userData.sex === "female";
+  const daysAgo = Number(state.userData.lastPeriodDaysAgo !== undefined ? state.userData.lastPeriodDaysAgo : 5);
+  const cLength = Number(state.userData.cycleLength || 28);
+  const pDuration = Number(state.userData.periodDuration || 5);
+
+  const dayMap = { "Lun": 1, "Mar": 2, "Mié": 3, "Jue": 4, "Vie": 5, "Sáb": 6, "Dom": 7 };
+  const targetDayIndex = activeDay === "Hoy" ? state.currentDay : (dayMap[activeDay] || state.currentDay);
+  const dayOffset = targetDayIndex - state.currentDay;
+  const targetDaysAgo = daysAgo + dayOffset;
+  const targetCycleDay = ((targetDaysAgo % cLength) + cLength) % cLength + 1;
+
+  let currentPhase = "follicular";
+  if (targetCycleDay <= pDuration) currentPhase = "menstrual";
+  else if (targetCycleDay < 14) currentPhase = "follicular";
+  else if (targetCycleDay <= 16) currentPhase = "ovulatory";
+  else currentPhase = "luteal";
+
+  const isSyncActive = isFemale && (currentPhase === "luteal" || currentPhase === "menstrual");
+
+  const phaseColors = {
+    menstrual: "#e53935",
+    follicular: "#e91e63",
+    ovulatory: T.amber,
+    luteal: T.brown
+  };
+  const phaseNames = {
+    menstrual: "Fase Menstrual 🩸",
+    follicular: "Fase Folicular 🌸",
+    ovulatory: "Fase Ovulatoria ✨",
+    luteal: "Fase Lútea 🍂"
+  };
+
+  const totalDaysForTip = plan?.days?.length || 7;
+  const currentWeek = Math.floor((targetDayIndex - 1) / totalDaysForTip);
+  const currentCycleDay = ((targetDayIndex - 1) % totalDaysForTip) + 1;
+  const mappedTipDay = ((currentCycleDay - 1 + currentWeek) % totalDaysForTip) + 1;
+  const activeDayData = plan?.days?.find(d => d.day === mappedTipDay);
+
+  const rawMeals = getMealsForUser(state.userData, plan, targetDayIndex);
+  const MEALS = rawMeals.map((m, idx) => {
+    if (isSyncActive) {
+      if (idx === 0 || idx === 2) {
+        return {
+          ...m,
+          macros: {
+            p: m.macros.p,
+            c: m.macros.c + 10,
+            g: Math.max(2, Math.round(m.macros.g - 4.5))
+          },
+          items: [...m.items, "🌟 Carbohidratos extra (NutrIA Sync Hormonal)"]
+        };
+      }
+    }
+    return m;
+  });
+
   const SHOPPING  = getShoppingList(plan);
   const CATS      = [...new Set(SHOPPING.map(s => s.cat))];
 
@@ -135,10 +244,17 @@ const NutritionScreen = ({ onBack }) => {
 
       {/* ── Badge del plan actual ── */}
       {planLabel && (
-        <div className="fade-up" style={{ marginBottom:12, padding:"10px 14px", background:T.tealLight, border:`1.5px solid ${T.teal}30`, borderRadius:12, fontSize:12, color:T.teal, fontWeight:600, display:"flex", alignItems:"center", gap:8 }}>
-          <span>✨</span>
-          <span style={{ color:T.textSecondary, fontWeight:400 }}>Tu plan: </span>
-          {planLabel}
+        <div className="fade-up" style={{ marginBottom:12, padding:"10px 14px", background:T.tealLight, border:`1.5px solid ${T.teal}30`, borderRadius:12, fontSize:12, color:T.teal, fontWeight:600, display:"flex", alignItems:"flex-start", gap:8 }}>
+          <span style={{ fontSize:16, marginTop:-2 }}>✨</span>
+          <div style={{ flex:1 }}>
+            <div style={{ color:T.textSecondary, fontWeight:400 }}>Tu plan: </div>
+            <div style={{ marginBottom: plan?.welcome_message ? 6 : 0 }}>{planLabel}</div>
+            {plan?.welcome_message && (
+              <div style={{ fontSize:11.5, color:T.textSecondary, fontWeight:400, fontStyle:"italic", lineHeight:1.4, borderTop:`1px dashed ${T.teal}40`, paddingTop:6 }}>
+                "{plan.welcome_message}"
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -156,7 +272,20 @@ const NutritionScreen = ({ onBack }) => {
         </div>
       </div>
 
-      {/* ── Day selector ── */}
+      {/* ── Nutri-Tip del Día ── */}
+      {activeDayData && activeDayData.nutri_tip && (
+        <div className="fade-up" style={{ marginBottom:14, padding:"12px 14px", background:`${T.amber}15`, border:`1.5px solid ${T.amber}40`, borderRadius:12, display:"flex", gap:10, alignItems:"center" }}>
+          <span style={{ fontSize:22 }}>🦦</span>
+          <div style={{ flex:1 }}>
+            <div style={{ fontSize:12, fontWeight:700, color:T.amber, marginBottom:2 }}>Nutri-Tip del Día</div>
+            <div style={{ fontSize:11.5, color:T.textSecondary, lineHeight:1.4 }}>
+              {activeDayData.nutri_tip}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Selector de Comida / Compra ── */}
       <div style={{ marginBottom:6 }}>
         <div style={{ fontSize:10, color:T.textMuted, fontFamily:"'IBM Plex Mono', monospace", marginBottom:5, display:"flex", justifyContent:"space-between" }}>
           <span>DÍA DEL PLAN</span>
@@ -198,6 +327,43 @@ const NutritionScreen = ({ onBack }) => {
       {showPlanB && (
         <div style={{ padding:"10px 14px", background:T.tealLight, border:`1.5px solid ${T.border}`, borderRadius:11, marginBottom:12, fontSize:13, color:T.textSecondary, lineHeight:1.6 }}>
           <strong style={{ color:T.teal }}>Plan B activado</strong> · Opciones con ≤10 min de preparación. Perfectas para días caóticos.
+        </div>
+      )}
+
+      {/* Banner Sincronización Hormonal Reactivo por Día */}
+      {isFemale && (
+        <div style={{
+          background: `${phaseColors[currentPhase]}08`,
+          border: `1.5px solid ${phaseColors[currentPhase]}35`,
+          borderRadius: 14, padding: "12px 14px", marginBottom: 14,
+          display: "flex", justifyContent: "space-between", alignItems: "center"
+        }}>
+          <div>
+            <div style={{ fontSize: 10, color: T.textMuted, fontFamily: "'IBM Plex Mono', monospace" }}>SINCRONIZACIÓN ACTIVA · {activeDay.toUpperCase()}</div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: phaseColors[currentPhase], marginTop: 2 }}>
+              {phaseNames[currentPhase]} (Día {targetCycleDay})
+            </div>
+          </div>
+          {isSyncActive ? (
+            <span style={{ fontSize: 10, background: T.teal, color: "#fff", padding: "3px 8px", borderRadius: 20, fontWeight: 700, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              +20g Carbs (Antojos) ✓
+            </span>
+          ) : (
+            <span style={{ fontSize: 10, background: T.blue, color: "#fff", padding: "3px 8px", borderRadius: 20, fontWeight: 700, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+              Fuerza Máxima 🔥
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* ── Nota Dietética Dinámica (Antojos/Intercambios) ── */}
+      {plan?.dietary_note && (
+        <div className="fade-up" style={{ 
+          marginBottom: 16, padding: "12px 16px", background: T.amberLight, 
+          border: `1.5px solid ${T.amber}40`, borderRadius: 12, 
+          fontSize: 12.5, color: T.brown, lineHeight: 1.5, fontWeight: 500 
+        }}>
+          {plan.dietary_note}
         </div>
       )}
 
@@ -245,9 +411,13 @@ const NutritionScreen = ({ onBack }) => {
                 <span className="tag" style={{ background:T.blueLight,  color:T.blue,  border:`1.5px solid ${T.border}` }}>Prot: {m.macros.p}g</span>
                 <span className="tag" style={{ background:T.tealLight,  color:T.teal,  border:`1.5px solid ${T.border}` }}>Carb: {m.macros.c}g</span>
                 <span className="tag" style={{ background:T.brownLight, color:T.brown, border:`1.5px solid ${T.border}` }}>Gras: {m.macros.g}g</span>
-                <span className="tag" onClick={() => setExpandedTip(tipOpen?null:i)}
+                <span className="tag" onClick={() => { setExpandedTip(tipOpen?null:i); setExpandedChef(null); }}
                   style={{ background:tipOpen?T.amber+"20":T.card, color:T.amber, border:`1.5px solid ${T.amber}50`, cursor:"pointer" }}>
                   💡 Tip
+                </span>
+                <span className="tag" onClick={() => { setExpandedChef(expandedChef===i?null:i); setExpandedTip(null); }}
+                  style={{ background:expandedChef===i?T.tealLight:T.card, color:T.teal, border:`1.5px solid ${T.teal}50`, cursor:"pointer" }}>
+                  ♻️ Variar
                 </span>
               </div>
 
@@ -256,10 +426,46 @@ const NutritionScreen = ({ onBack }) => {
                   {m.tip}
                 </div>
               )}
+
+              {expandedChef === i && (() => {
+                const chefAlt = getChefAlternatives(m.name, itemList);
+                return (
+                  <div className="fade-up" style={{ marginTop: 10, padding: "12px 14px", background: `${T.teal}08`, border: `1.5px solid ${T.teal}35`, borderRadius: 12, display: "flex", gap: 10, alignItems: "flex-start", animation: "fadeUp .22s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
+                    <img src={MASCOT.logo} alt="NutrIA Chef" style={{ width: 42, height: 42, borderRadius: 11, objectFit: "cover", flexShrink: 0, border: `1px solid ${T.teal}40` }} onError={e => { e.target.style.display="none"; }} />
+                    <div>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: T.teal, marginBottom: 2 }}>{chefAlt.title}</div>
+                      <div style={{ fontSize: 12, color: T.textSecondary, lineHeight: 1.5 }}>{chefAlt.desc}</div>
+                      <div style={{ fontSize: 10.5, color: T.textMuted, marginTop: 4, fontStyle: "italic", fontWeight: 600 }}>💡 Tip: {chefAlt.tip}</div>
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           );
         })}
       </div>
+
+      {/* ── Protocolo de Suplementación Dinámico ── */}
+      {plan?.supplementation_protocol && plan.supplementation_protocol.length > 0 && (
+        <div className="fade-up card" style={{ padding: "16px", marginBottom: 18, border: `1.5px solid ${T.teal}40`, background: `${T.teal}08` }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+            <span style={{ fontSize: 20 }}>💊</span>
+            <div>
+              <div style={{ fontWeight: 700, fontSize: 14, color: T.teal }}>Protocolo de Suplementación</div>
+              <div style={{ fontSize: 11, color: T.textSecondary }}>Personalizado para tu objetivo</div>
+            </div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {plan.supplementation_protocol.map((supp, i) => (
+              <div key={i} style={{ padding: "10px", background: T.surface, borderRadius: 10, border: `1px solid ${T.border}` }}>
+                <div style={{ fontSize: 13, fontWeight: 600, color: T.textPrimary, marginBottom: 2 }}>{supp.name}</div>
+                <div style={{ fontSize: 12, color: T.teal, fontWeight: 500, marginBottom: 2 }}>Dosis: {supp.dose}</div>
+                <div style={{ fontSize: 11.5, color: T.textMuted }}>{supp.timing}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* ── Buscador con detective ── */}
       <div className="fade-up fade-up-2 card" onClick={() => setShowSearch(true)}

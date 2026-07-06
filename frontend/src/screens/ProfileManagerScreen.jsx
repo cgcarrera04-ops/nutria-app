@@ -4,22 +4,36 @@ import MASCOT from "../constants/mascotImages";
 import { useApp } from "../context/AppContext";
 import T from "../tokens/T";
 
-const EMOJIS = ["🦦","🦊","🦁","🐼","🐯","🐷","🐸","🐙","🦖","🦈","🦸‍♂️","🦸‍♀️","🧙‍♂️","🥷","🕵️","🧑‍🚀","🧟","🤖","👻","👽"];
+// Emojis representados en Unicode Escapes para maxima compatibilidad de codificacion
+const EMOJIS = [
+  "\uD83E\uDDF6", 
+  "\uD83E\uDD8A", 
+  "\uD83E\uDD81", 
+  "\uD83D\uDC3C", 
+  "\uD83D\uDC2F", 
+  "\uD83D\uDC37", 
+  "\uD83D\uDC38", 
+  "\uD83D\uDC19", 
+  "\uD83E\uDD96", 
+  "\uD83E\uDD88", 
+  "\uD83E\uDD77", 
+  "\uD83D\uDD75\uFE0F", 
+  "\uD83E\uDD16", 
+  "\uD83D\uDC7B", 
+  "\uD83D\uDC7D"  
+];
 
 const ProfileManagerScreen = ({ profiles, onLoad, onDelete, onCreate }) => {
   const { dispatch } = useApp();
   const [editingId, setEditingId] = useState(null);
+  const [deleteConfirmId, setDeleteConfirmId] = useState(null);
 
   const handleSetEmoji = (id, emoji) => {
-    // Find profile, update it, save it
     const profile = profiles.find(p => p.id === id);
     if (!profile) return;
-    
-    // We need to load it, update the userData, and save it.
-    // However, we are outside the active profile context, so it's safer to just trigger an action.
-    dispatch({ type: "LOAD_PROFILE", payload: profile });
-    dispatch({ type: "UPDATE_USER_DATA", payload: { avatarEmoji: emoji } });
-    dispatch({ type: "SAVE_PROFILE" });
+    const updatedProfile = { ...profile, userData: { ...profile.userData, avatarEmoji: emoji } };
+    const newProfiles = profiles.map(p => p.id === id ? updatedProfile : p);
+    dispatch({ type: "INIT_PROFILES", payload: newProfiles });
     setEditingId(null);
   };
 
@@ -41,9 +55,23 @@ const ProfileManagerScreen = ({ profiles, onLoad, onDelete, onCreate }) => {
       {/* Grid de Perfiles */}
       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(140px, 1fr))", gap:16, maxWidth:600, margin:"0 auto", width:"100%" }}>
         
+        {profiles.length === 0 && (
+          <div className="fade-up" style={{
+            gridColumn:"1 / -1",
+            background:T.surface, border:`1.5px dashed ${T.teal}`, borderRadius:20, padding:"24px",
+            textAlign:"center", display:"flex", flexDirection:"column", alignItems:"center", gap:12
+          }}>
+            <img src={MASCOT.logo} alt="NutrIA Anfitriona" style={{ width:80, height:80, borderRadius:16, objectFit:"cover", boxShadow:`0 4px 16px rgba(43,188,185,0.2)` }} onError={e => { e.target.style.display="none"; }} />
+            <div>
+              <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:16, color:T.textPrimary, marginBottom:4 }}>\u00A1Hola, caminante! \uD83D\uDC4B</div>
+              <div style={{ fontSize:13, color:T.textSecondary, maxWidth:280, margin:"0 auto", lineHeight:1.5 }}>Parece que tu espacio de entrenamiento est\u00E1 listo para un nuevo comienzo. \u00A1Crea tu primer perfil para que NutrIA dise\u00F1e tu plan semanal!</div>
+            </div>
+          </div>
+        )}
+
         {profiles.map((p, i) => {
           const s = p.userData.somatotype || "athletic";
-          const goal = p.userData.goal === "deficit" ? "Déficit" : p.userData.goal === "surplus" ? "Superávit" : "Mantener";
+          const goal = p.userData.goal === "deficit" ? "D\u00E9ficit" : p.userData.goal === "surplus" ? "Super\u00E1vit" : "Mantener";
           
           return (
             <div key={p.id} className={`fade-up fade-up-${(i % 5) + 1}`} style={{ position:"relative" }}>
@@ -82,12 +110,12 @@ const ProfileManagerScreen = ({ profiles, onLoad, onDelete, onCreate }) => {
                 </div>
               </div>
               
-              {/* Botón borrar */}
+              {/* Boton borrar */}
               <button 
-                onClick={(e) => { e.stopPropagation(); onDelete(p.id); }}
+                onClick={(e) => { e.stopPropagation(); setDeleteConfirmId(p.id); }}
                 style={{
                   position:"absolute", top:-8, right:-8, width:28, height:28, borderRadius:"50%", 
-                  background:T.surface, border:`1px solid ${T.border}`, color:T.amber, display:"flex", 
+                  background:T.surface, border:`1px solid ${T.border}`, display:"flex", 
                   alignItems:"center", justifyContent:"center", cursor:"pointer", boxShadow:T.shadow, zIndex:10
                 }}
               >
@@ -97,7 +125,7 @@ const ProfileManagerScreen = ({ profiles, onLoad, onDelete, onCreate }) => {
           );
         })}
 
-        {/* Añadir Perfil */}
+        {/* Anadir Perfil */}
         <div className="fade-up fade-up-5">
           <div 
             onClick={onCreate}
@@ -129,12 +157,31 @@ const ProfileManagerScreen = ({ profiles, onLoad, onDelete, onCreate }) => {
             </h3>
             <div style={{ display:"grid", gridTemplateColumns:"repeat(5, 1fr)", gap:10, marginBottom:20 }}>
               {EMOJIS.map(em => (
-                <div key={em} onClick={() => handleSetEmoji(editingId, em)} style={{ fontSize:32, textAlign:"center", cursor:"pointer", padding:8, background:T.surface, border:`1px solid ${T.border}`, borderRadius:12, transition:"all .1s" }}>
+                <div key={em} onClick={() => handleSetEmoji(editingId, em)} style={{ fontSize:26, display:"flex", alignItems:"center", justifyContent:"center", width:44, height:44, cursor:"pointer", background:T.surface, border:`1px solid ${T.border}`, borderRadius:12, transition:"all .1s" }} onMouseEnter={e => e.currentTarget.style.borderColor=T.teal} onMouseLeave={e => e.currentTarget.style.borderColor=T.border}>
                   {em}
                 </div>
               ))}
             </div>
             <button onClick={() => setEditingId(null)} className="btn-ghost" style={{ width:"100%" }}>Cancelar</button>
+          </div>
+        </div>
+      )}
+
+      {/* Deletion Confirmation Modal */}
+      {deleteConfirmId && (
+        <div style={{ position:"fixed", inset:0, zIndex:3000, background:"rgba(13,41,41,0.6)", backdropFilter:"blur(4px)", display:"flex", alignItems:"center", justifyContent:"center", padding:20 }} onClick={() => setDeleteConfirmId(null)}>
+          <div style={{ background:T.bg, borderRadius:24, padding:24, width:"100%", maxWidth:320, textAlign:"center", boxShadow:T.shadow, animation:"fadeUp .2s ease both" }} onClick={e => e.stopPropagation()}>
+            <div style={{ fontSize:44, marginBottom:16 }}>\uD83E\uDDF6\uD83D\uDC94</div>
+            <h3 style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:18, color:T.textPrimary, marginBottom:8 }}>
+              \u00BFDespedirse de NutrIA?
+            </h3>
+            <p style={{ fontSize:13.5, color:T.textSecondary, lineHeight:1.5, marginBottom:24 }}>
+              Est\u00E1s a punto de eliminar este perfil. Se perder\u00E1 todo tu historial, metas y h\u00E1bitos de forma permanente.
+            </p>
+            <div style={{ display:"flex", gap:10 }}>
+              <button onClick={() => setDeleteConfirmId(null)} className="btn-ghost" style={{ flex:1 }}>Cancelar</button>
+              <button onClick={() => { onDelete(deleteConfirmId); setDeleteConfirmId(null); }} style={{ flex:1, background:T.amber, color:"#fff", border:"none", padding:"12px", borderRadius:12, fontWeight:700, cursor:"pointer", boxShadow:T.shadow }}>Eliminar</button>
+            </div>
           </div>
         </div>
       )}

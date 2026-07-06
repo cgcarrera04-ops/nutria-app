@@ -3,44 +3,51 @@ import T from "../../tokens/T";
 
 // ─── Gauge SVG de 270° ───────────────────────────────────────────────────────
 const GaugeSVG = ({ score, color }) => {
-  const R   = 44;
-  const cx  = 60, cy = 60;
-  const total = 270; // grados del arco
-  const filled = (score / 100) * total;
-  const toRad  = (deg) => (deg * Math.PI) / 180;
-
-  const arcPath = (startDeg, endDeg) => {
-    const start = toRad(startDeg - 90 + 45);
-    const end   = toRad(endDeg   - 90 + 45);
-    const x1 = cx + R * Math.cos(start);
-    const y1 = cy + R * Math.sin(start);
-    const x2 = cx + R * Math.cos(end);
-    const y2 = cy + R * Math.sin(end);
-    const large = endDeg - startDeg > 180 ? 1 : 0;
-    return `M ${x1} ${y1} A ${R} ${R} 0 ${large} 1 ${x2} ${y2}`;
-  };
+  const r = 32;
+  const cx = 60;
+  const cy = 46;
+  const circ = 2 * Math.PI * r; // ~201
+  const trackLength = circ * 0.75;
+  const gapLength = circ * 0.25;
+  const fillLength = (score / 100) * trackLength;
 
   return (
-    <svg width={120} height={90} viewBox="0 0 120 90">
-      {/* Track */}
-      <path d={arcPath(0, 270)} fill="none" stroke={T.border} strokeWidth="7" strokeLinecap="round" />
-      {/* Fill animado */}
+    <svg width={120} height={90} viewBox="0 0 120 90" style={{ overflow: "visible" }}>
+      {/* Track Base (Gris) */}
+      <circle
+        cx={cx}
+        cy={cy}
+        r={r}
+        fill="none"
+        stroke={T.border}
+        strokeWidth="6"
+        strokeLinecap="round"
+        strokeDasharray={`${trackLength} ${gapLength}`}
+        strokeDashoffset={circ * 0.125}
+        transform={`rotate(135 ${cx} ${cy})`}
+      />
+      {/* Fill (Progreso animado) */}
       {score > 0 && (
-        <path
-          d={arcPath(0, filled)}
+        <circle
+          cx={cx}
+          cy={cy}
+          r={r}
           fill="none"
           stroke={color}
-          strokeWidth="7"
+          strokeWidth="6"
           strokeLinecap="round"
+          strokeDasharray={`${fillLength} ${circ - fillLength}`}
+          strokeDashoffset={circ * 0.125}
+          transform={`rotate(135 ${cx} ${cy})`}
           style={{ transition: "stroke-dasharray 1s cubic-bezier(.22,.68,0,1.15)" }}
         />
       )}
       {/* Score */}
-      <text x={cx} y={cy + 2} textAnchor="middle" fontSize="18" fontWeight="600"
+      <text x={cx} y={cy + 5} textAnchor="middle" fontSize="20" fontWeight="700"
         fontFamily="IBM Plex Mono" fill={color}>
         {score}
       </text>
-      <text x={cx} y={cy + 16} textAnchor="middle" fontSize="9"
+      <text x={cx} y={cy + 18} textAnchor="middle" fontSize="9"
         fontFamily="'Nunito Sans', sans-serif" fill={T.textMuted}>
         / 100
       </text>

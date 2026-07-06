@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useApp } from "../context/AppContext";
+import { calcFrictionScore } from "../hooks/useFriction";
 import T from "../tokens/T";
 
 // ─── Mapa de mensajes por estado del sistema ──────────────────────────────────
@@ -95,17 +96,12 @@ const useSystemState = () => {
     if ((userData.sleep || 7) < 5)  return "NO_SLEEP";
     if ((userData.stress || 3) >= 4) return "HIGH_STRESS";
 
-    // FrictionScore simplificado inline
-    const nStress   = ((userData.stress || 3) - 1) / 4;
-    const nSleep    = 1 - Math.min(Math.max(((userData.sleep || 7) - 4) / 6, 0), 1);
-    const nBudget   = 1 - Math.min(Math.max(((userData.budget || 150) - 30) / 470, 0), 1);
-    const score     = Math.round((nStress * 0.30 + nSleep * 0.25 + nBudget * 0.20) * 100);
+    // Usa el mismo calcFrictionScore canónico del hook useFriction para evitar divergencia
+    const score = calcFrictionScore(userData);
 
     if (score > 65) return "HIGH_FRICTION";
     if (score < 35) return "OPTIMAL";
-    if (score < 65) return "MODERATE";
-
-    return "DEFAULT";
+    return "MODERATE";
   }, [userData, isGeneratingPlan, planError, currentDay]);
 };
 
@@ -173,7 +169,7 @@ const EmpatheticFooter = () => {
           fontFamily: "'IBM Plex Mono', monospace",
           marginTop: 3, letterSpacing: ".3px",
         }}>
-          ESTADO · {systemState.replace("_", " ")}
+          ESTADO · {systemState.replaceAll("_", " ")}
         </div>
       </div>
     </div>

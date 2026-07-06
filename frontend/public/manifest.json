@@ -1,0 +1,22 @@
+{
+  "short_name": "NutrIA",
+  "name": "NutrIA · Nutrición Inteligente",
+  "description": "Tu nutrición es un sistema. Optimízala con la mascota NutrIA de forma empática.",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/FsNKHJ22/1776015778388.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://i.postimg.cc/FsNKHJ22/1776015778388.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#0F172A",
+  "theme_color": "#2BBCB9",
+  "display": "standalone",
+  "orientation": "portrait"
+}

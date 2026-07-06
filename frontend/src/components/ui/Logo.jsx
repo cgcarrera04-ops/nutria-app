@@ -1,6 +1,7 @@
 import T from "../../tokens/T";
 
 // ─── Logo con mascota nutria ──────────────────────────────────────────────────
+// Logo oficial NutrIA — actualizado por el usuario
 export const LOGO_URL = "https://i.postimg.cc/FsNKHJ22/1776015778388.png";
 
 const Logo = ({ size = 36, showText = true }) => (

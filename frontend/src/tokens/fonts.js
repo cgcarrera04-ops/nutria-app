@@ -92,4 +92,49 @@ export const globalStyles = `
     font-family: 'IBM Plex Mono', monospace; font-size: 10px;
     font-weight: 500; letter-spacing: .5px; white-space: nowrap;
   }
+
+  /* Tarjeta del Diario - Estilo Premium Sensible al Tema */
+  .diary-card {
+    border-radius: 18px;
+    padding: 15px 18px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 22px;
+    box-shadow: ${T.shadow};
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  [data-theme="light"] .diary-card {
+    background: linear-gradient(135deg, ${T.teal} 0%, #1c9b98 100%);
+    border: 1.5px solid ${T.teal};
+  }
+  [data-theme="light"] .diary-card h4 {
+    color: #ffffff;
+  }
+  [data-theme="light"] .diary-card p {
+    color: rgba(255, 255, 255, 0.95);
+  }
+  [data-theme="light"] .diary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(43,188,185,0.32);
+  }
+  
+  [data-theme="dark"] .diary-card {
+    background: linear-gradient(135deg, #071716 0%, #030808 100%);
+    border: 1.5px solid ${T.teal};
+  }
+  [data-theme="dark"] .diary-card h4 {
+    color: ${T.teal};
+    text-shadow: 0 0 10px rgba(43,188,185,0.3);
+  }
+  [data-theme="dark"] .diary-card p {
+    color: ${T.textSecondary};
+  }
+  [data-theme="dark"] .diary-card:hover {
+    transform: translateY(-3px);
+    border-color: #3fe2de;
+    box-shadow: 0 8px 28px rgba(43,188,185,0.25);
+  }
 `;

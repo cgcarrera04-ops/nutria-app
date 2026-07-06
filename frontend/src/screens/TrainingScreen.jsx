@@ -26,9 +26,47 @@ const TrainingScreen = ({ onBack }) => {
   const [expanded, setExpanded] = useState(null);
   const [done, setDone]         = useState({});
 
-  const totalSets    = WORKOUT.exercises.reduce((a,e) => a + e.sets, 0);
+  // 1. Normalizar lesiones del usuario (ej: "Rodillas" -> "rodilla")
+  const normInjuries = (userData.injuries || []).map(i => i.toLowerCase().replace(/s$/, ""));
+  const bankTraining = state.plan?.training;
+
+  const WORKOUT_DATA = (() => {
+    if (!bankTraining || !bankTraining.days || bankTraining.days.length === 0) return WORKOUT;
+
+    // Tomamos el primer día del banco (podría expandirse para multi-día)
+    const day = bankTraining.days[0];
+    const exercises = (day.exercises || []).filter(ex => {
+      // Filtrar si el ejercicio está contraindicado por alguna lesión del usuario
+      if (ex.avoid_if_injury && Array.isArray(ex.avoid_if_injury)) {
+        const contra = ex.avoid_if_injury.some(inj => normInjuries.includes(inj.toLowerCase()));
+        if (contra) return false;
+      }
+      return true;
+    }).map((ex, i) => ({
+      id: i,
+      name: ex.name,
+      sets: ex.sets || 3,
+      reps: ex.reps || "10",
+      rest: ex.rest_sec ? `${ex.rest_sec}s` : "60s",
+      muscle: ex.muscle || "General",
+      equipment: ex.equipment || "Libre",
+      substitute: ex.substitute || "Variante libre",
+      technique: ex.technique || "Mantén la técnica estricta y controla la fase excéntrica.",
+      tip: ex.tip || "Concéntrate en la contracción muscular."
+    }));
+
+    return {
+      name: day.name || "Sesión de Entrenamiento",
+      duration: bankTraining.sessions_per_week ? `${bankTraining.sessions_per_week} sesiones/sem` : "3 sesiones/sem",
+      intensity: bankTraining.split || "Rutina",
+      exercises,
+      note: exercises.length < (day.exercises || []).length ? "Se omitieron ejercicios contraindicados por tus lesiones reportadas." : null
+    };
+  })();
+
+  const totalSets    = WORKOUT_DATA.exercises.reduce((a,e) => a + e.sets, 0);
   const completedCnt = Object.values(done).filter(Boolean).length;
-  const allDone      = completedCnt === totalSets;
+  const allDone      = completedCnt === totalSets && totalSets > 0;
 
   return (
     <div style={{ maxWidth:520, margin:"0 auto", padding:"18px 16px 110px", background:T.bg, minHeight:"100vh" }}>
@@ -53,11 +91,11 @@ const TrainingScreen = ({ onBack }) => {
         />
         <div>
           <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:15, marginBottom:4, color:T.textPrimary }}>
-            {WORKOUT.name}
+            {WORKOUT_DATA.name}
           </div>
           <div style={{ display:"flex", gap:7 }}>
-            <span className="tag" style={{ background:T.tealLight, color:T.teal, border:`1.5px solid ${T.border}` }}>⏱ {WORKOUT.duration}</span>
-            <span className="tag" style={{ background:T.card, color:T.textMuted, border:`1.5px solid ${T.border}` }}>↗ {WORKOUT.intensity}</span>
+            <span className="tag" style={{ background:T.tealLight, color:T.teal, border:`1.5px solid ${T.border}` }}>⏱ {WORKOUT_DATA.duration}</span>
+            <span className="tag" style={{ background:T.card, color:T.textMuted, border:`1.5px solid ${T.border}` }}>↗ {WORKOUT_DATA.intensity}</span>
           </div>
         </div>
       </div>
@@ -69,12 +107,25 @@ const TrainingScreen = ({ onBack }) => {
             src={MASCOT.training.injury}
             alt="NutrIA revisando lesión"
             onError={e => { e.target.src = MASCOT.logo; }}
-            style={{ width:44, height:44, borderRadius:11, objectFit:"cover", flexShrink:0 }}
+            style={{ width:44, height:44, borderRadius:11, objectFit:"cover", flexShrink:0, animation:"float 3.5s ease-in-out infinite" }}
           />
           <div>
             <div style={{ fontSize:12.5, fontWeight:600, color:T.amber, marginBottom:2 }}>Plan adaptado por lesiones</div>
             <div style={{ fontSize:12, color:T.textSecondary, lineHeight:1.5 }}>
               NutrIA eliminó ejercicios de alto impacto en: <strong>{userData.injuries.join(", ")}</strong>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Aviso de fatiga */}
+      {WORKOUT_DATA.note && (
+        <div className="fade-up" style={{ display:"flex", gap:12, alignItems:"center", marginBottom:10, padding:"12px 14px", background:`${T.amber}15`, border:`1.5px solid ${T.amber}60`, borderRadius:13 }}>
+          <span style={{ fontSize: 24 }}>🔋</span>
+          <div>
+            <div style={{ fontSize:12.5, fontWeight:600, color:T.brown, marginBottom:2 }}>Ajuste de Entrenamiento</div>
+            <div style={{ fontSize:12, color:T.textSecondary, lineHeight:1.5 }}>
+              {WORKOUT_DATA.note}
             </div>
           </div>
         </div>
@@ -95,7 +146,7 @@ const TrainingScreen = ({ onBack }) => {
       {allDone && (
         <div className="fade-up card" style={{ textAlign:"center", padding:20, marginBottom:10, background:T.tealLight, border:`1.5px solid ${T.teal}` }}>
           <img src={MASCOT.emptyState.celebration} alt="¡Completado!" onError={e => { e.target.style.display="none"; }}
-            style={{ width:80, height:80, borderRadius:18, objectFit:"cover", margin:"0 auto 12px" }} />
+            style={{ width:80, height:80, borderRadius:18, objectFit:"cover", margin:"0 auto 12px", animation:"float 2.5s ease-in-out infinite" }} />
           <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:16, color:T.teal, marginBottom:4 }}>
             ¡Completaste el entrenamiento!
           </div>
@@ -103,11 +154,58 @@ const TrainingScreen = ({ onBack }) => {
         </div>
       )}
 
-      {/* Ejercicios */}
-      {WORKOUT.exercises.map((ex, i) => (
-        <div key={ex.id} className="fade-up" style={{ animationDelay:`${i*.07}s`, marginBottom:10 }}>
-          <div className="card" style={{ cursor:"pointer" }} onClick={() => setExpanded(expanded===ex.id ? null : ex.id)}>
-            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+      {/* Ejercicios con periodización fisiológica real (mesociclo de 4 semanas) */}
+      {(() => {
+        const currentWeek = state.currentWeek || 1;
+        const cycleWeek = ((currentWeek - 1) % 4) + 1;
+        const lastFatigue = state.lastCheckin?.fatigue || "no";
+        
+        return WORKOUT_DATA.exercises.map((ex, i) => {
+          const hasOverload = ex.equipment !== "none" && ex.equipment !== "Libre" && ex.equipment !== "peso corporal";
+          
+          // Motor de periodización adaptativo basado en encuesta semanal
+          let overloadLabel = "";
+          let overloadDesc = "";
+          let overloadBg = T.amber;
+          
+          if (lastFatigue === "yes") {
+            overloadLabel = `💤 DESCARGA POR FATIGA ALTA (ENCUESTA)`;
+            overloadDesc = "Reportaste fatiga alta. Reduce el peso un 15-20% o haz 1 serie menos para facilitar la recuperación.";
+            overloadBg = T.blue;
+          } else if (lastFatigue === "mild") {
+            overloadLabel = `🟢 CONSOLIDACIÓN POR FATIGA (ENCUESTA)`;
+            overloadDesc = "Reportaste fatiga moderada. Mantén las cargas constantes sin subir peso esta semana.";
+            overloadBg = T.teal;
+          } else {
+            // Ciclo regular de periodización
+            if (cycleWeek === 1) {
+              overloadLabel = `🟢 SEMANA 1: BASE DE FUERZA (RPE 7-8)`;
+              overloadDesc = "Consolida la técnica. Enfócate en el control y guarda 2 reps en reserva.";
+              overloadBg = T.teal;
+            } else if (cycleWeek === 2) {
+              overloadLabel = `⚡ SEMANA 2: SOBRECARGA VOLUMÉTRICA`;
+              overloadDesc = hasOverload 
+                ? "Sube +2.5% a 5% de peso respecto a la semana pasada con las mismas reps."
+                : "Suma +1 repetición en las últimas dos series.";
+            } else if (cycleWeek === 3) {
+              overloadLabel = `🔥 SEMANA 3: PICO DE INTENSIDAD (RPE 9)`;
+              overloadDesc = hasOverload
+                ? "Suma +5% de peso o intenta llegar al fallo técnico controlado en la última serie."
+                : "Reduce los descansos entre series en 10-15 segundos.";
+            } else if (cycleWeek === 4) {
+              overloadLabel = `💤 SEMANA 4: DESCARGA PLANIFICADA (DELOAD)`;
+              overloadDesc = "Asimilación nerviosa. Baja el peso un 30-40% para recuperación total.";
+              overloadBg = T.blue;
+            }
+          }
+
+          return (
+            <div key={ex.id} className="fade-up" style={{ animationDelay:`${i*.07}s`, marginBottom:10 }}>
+              <div className="card" style={{ cursor:"pointer", position: "relative", overflow: "hidden", paddingTop: 20 }} onClick={() => setExpanded(expanded===ex.id ? null : ex.id)}>
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, background: overloadBg, color: "#fff", fontSize: 9.5, fontWeight: 700, textAlign: "center", padding: "3px 6px", letterSpacing: "0.5px", textTransform: "uppercase" }}>
+                  {overloadLabel}
+                </div>
+                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginTop: 4 }}>
               <div style={{ display:"flex", gap:12, alignItems:"center" }}>
                 <div style={{ width:36, height:36, borderRadius:10, background:T.tealLight, display:"flex", alignItems:"center", justifyContent:"center" }}>
                   <Icon name="dumbbell" size={16} color={T.teal} />
@@ -145,6 +243,12 @@ const TrainingScreen = ({ onBack }) => {
                     <div style={{ fontSize:12, fontWeight:600, color:T.teal, marginBottom:2 }}>Ejecución técnica</div>
                     <div style={{ fontSize:11.5, color:T.textSecondary, lineHeight:1.4 }}>{ex.technique}</div>
                     <div style={{ fontSize:11, color:T.textMuted, marginTop:4, fontStyle:"italic" }}>Tip de NutrIA: {ex.tip}</div>
+                    {overloadDesc && (
+                      <div style={{ fontSize:11, color: overloadBg === T.teal ? T.teal : (overloadBg === T.blue ? T.blue : T.amber), fontWeight:700, marginTop:6, display:"flex", gap:4, alignItems:"center" }}>
+                        <span>⚡</span>
+                        <span>Estrategia: {overloadDesc}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -159,8 +263,9 @@ const TrainingScreen = ({ onBack }) => {
             )}
           </div>
         </div>
-      ))}
-    </div>
+      );
+    }); })()}
+  </div>
   );
 };
 
