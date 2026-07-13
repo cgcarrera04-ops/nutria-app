@@ -23,7 +23,7 @@ const FEATURES = [
   { emoji: "📲", title: "Notificaciones empáticas", desc: "Un recordatorio amable, nunca una alarma que te haga sentir culpable." },
 ];
 
-const WelcomeScreen = ({ onNext, onDemo }) => {
+const WelcomeScreen = ({ onNext, onDemo, onGoogleLogin }) => {
   const [showDemos, setShowDemos] = useState(false);
 
   return (
@@ -118,13 +118,17 @@ const WelcomeScreen = ({ onNext, onDemo }) => {
               try {
                 const { loginWithGoogle } = await import("../services/firebase");
                 const user = await loginWithGoogle();
-                // Si el logueo es exitoso, actualizamos los datos locales del usuario
-                onDemo({
-                  name: user.displayName.split(" ")[0],
-                  email: user.email,
-                  photoURL: user.photoURL,
-                  googleUid: user.uid,
-                });
+                // Si el logueo es exitoso, actualizamos los datos locales del usuario o cargamos perfil
+                if (onGoogleLogin) {
+                  onGoogleLogin(user);
+                } else {
+                  onDemo({
+                    name: user.displayName.split(" ")[0],
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    googleUid: user.uid,
+                  });
+                }
               } catch (e) {
                 alert("No se pudo iniciar sesión con Google. Inténtalo de nuevo. 🦦");
               }

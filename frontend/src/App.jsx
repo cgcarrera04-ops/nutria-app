@@ -91,6 +91,24 @@ const AppInner = () => {
 
   const { screen } = state;
 
+  const handleGoogleLogin = (googleUser) => {
+    const existing = state.profiles.find(p => p.userData?.googleUid === googleUser.uid || p.userData?.email === googleUser.email);
+    if (existing) {
+      dispatch({ type: "LOAD_PROFILE", payload: existing });
+    } else {
+      dispatch({
+        type: "UPDATE_USER_DATA",
+        payload: {
+          name: googleUser.displayName ? googleUser.displayName.split(" ")[0] : "Usuario",
+          email: googleUser.email,
+          photoURL: googleUser.photoURL,
+          googleUid: googleUser.uid,
+        }
+      });
+      nav("onboard1");
+    }
+  };
+
   const nav = (s) => dispatch({ type:"SET_SCREEN", payload:s });
 
   const applyLocalAdjustments = (plan, checkin) => {
@@ -192,7 +210,7 @@ const AppInner = () => {
       <style>{globalStyles}</style>
 
       {screen === "profiles"  && <ProfileManagerScreen profiles={state.profiles} onLoad={p => dispatch({ type:"LOAD_PROFILE", payload:p })} onDelete={id => dispatch({ type:"DELETE_PROFILE", payload:id })} onCreate={() => dispatch({ type:"RESET_ONBOARDING" })} />}
-      {screen === "welcome"   && <WelcomeScreen   onNext={() => nav("onboard1")} onDemo={(p) => { dispatch({ type:"UPDATE_USER_DATA", payload:p }); triggerGenerate(); }} />}
+      {screen === "welcome"   && <WelcomeScreen   onNext={() => nav("onboard1")} onDemo={(p) => { dispatch({ type:"UPDATE_USER_DATA", payload:p }); triggerGenerate(); }} onGoogleLogin={handleGoogleLogin} />}
       {screen === "onboard1"  && <OnboardGoal     onNext={() => nav("onboard2")} />}
       {screen === "onboard2"  && <OnboardBio      onNext={() => nav("onboard3")} onBack={() => nav("onboard1")} />}
       {screen === "onboard3"  && <OnboardContext  onNext={() => triggerGenerate()}        onBack={() => nav("onboard2")} />}
