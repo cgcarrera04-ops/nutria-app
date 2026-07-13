@@ -16,7 +16,7 @@ const HabitsScreen = ({ onBack }) => {
   const { state, dispatch } = useApp();
   const water    = state.todayHabits.water;
   const weight   = Number(state.userData.weight || 70);
-  const waterGoal = Math.max(6, Math.min(10, Math.round((weight * 35) / 250)));
+  const waterGoal = Math.max(6, Math.ceil((weight * 35) / 250));
   const steps    = state.todayHabits.steps || 0;
 
   // Calculo de meta de pasos dinamico segun somatotipo, objetivo y actividad actual

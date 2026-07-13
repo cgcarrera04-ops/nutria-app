@@ -36,6 +36,28 @@ const AppInner = () => {
     document.documentElement.setAttribute("data-theme", state.userData.theme || "light");
   }, [state.userData.theme]);
 
+  // ── Sincronizador de Día y Progreso Diario (Axioma 3) ──
+  useEffect(() => {
+    if (!state.planStartDate) return;
+    const diffTime = Date.now() - state.planStartDate;
+    const daysPassed = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+    const calculatedWeek = Math.floor(daysPassed / 7) + 1;
+    const calculatedDay = (daysPassed % 7) + 1; // 1 a 7
+
+    if (calculatedWeek === state.currentWeek) {
+      if (calculatedDay !== state.currentDay) {
+        dispatch({
+          type: "SYNC_DAILY_PROGRESS",
+          payload: {
+            currentDay: calculatedDay,
+            todayHabits: { water: 0, steps: 0, sleepActual: 0 },
+            mealsCompleted: []
+          }
+        });
+      }
+    }
+  }, [state.planStartDate, state.currentWeek, state.currentDay, dispatch]);
+
   // ── Interceptor Global de Sonidos de Clic Tactiles y Música ──
   useEffect(() => {
     let audioInitialized = false;

@@ -400,6 +400,15 @@ export const appReducer = (state, action) => {
     case "INIT_PROFILES":
       return { ...state, profiles: action.payload };
 
+    case "SYNC_DAILY_PROGRESS": {
+      return autoSaveProfile({
+        ...state,
+        currentDay: action.payload.currentDay,
+        todayHabits: action.payload.todayHabits,
+        mealsCompleted: action.payload.mealsCompleted,
+      });
+    }
+
     default:
       return state;
   }

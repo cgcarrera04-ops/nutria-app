@@ -78,7 +78,7 @@ const LoadingOverlay = () => {
     return () => clearInterval(interval);
   }, [state.isGeneratingPlan]);
 
-  if (!state.isGeneratingPlan) return null;
+  if (!state.isGeneratingPlan && !state.planError) return null;
 
   return (
     <div style={{

@@ -96,7 +96,7 @@ const AnalyticsScreen = ({ onBack }) => {
 
   // Dias de hidratacion completados
   const targetWater = Math.max(6, Math.ceil((userWeight * 35) / 250));
-  const waterGlasses = userData.waterGlasses || 0;
+  const waterGlasses = state.todayHabits.water || 0;
   const waterComplete = waterGlasses >= targetWater;
 
   // Calcular logros reales

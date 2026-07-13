@@ -64,16 +64,18 @@ const ProgressCalendar = ({ state }) => {
 const WaterTracker = ({ state, dispatch, sfxActive }) => {
   // Calculo dinamico inteligente basado en peso real
   const targetWater = Math.max(6, Math.ceil(((Number(state.userData.weight) || 70) * 35) / 250));
-  const water = state.userData.waterGlasses || 0;
+  const water = state.todayHabits.water || 0;
   
   const handleAdd = () => {
     if (sfxActive) playChime();
     const newWater = water + 1;
-    dispatch({ type: "UPDATE_USER_DATA", payload: { waterGlasses: newWater } });
+    dispatch({ type: "UPDATE_HABITS", payload: { water: newWater } });
+    dispatch({ type: "SAVE_PROFILE" });
   };
 
   const handleReset = () => {
-    dispatch({ type: "UPDATE_USER_DATA", payload: { waterGlasses: 0 } });
+    dispatch({ type: "UPDATE_HABITS", payload: { water: 0 } });
+    dispatch({ type: "SAVE_PROFILE" });
   };
   
   const pct = Math.min(100, Math.round((water / targetWater) * 100));
