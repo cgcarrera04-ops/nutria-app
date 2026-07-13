@@ -5,11 +5,11 @@ import { useApp } from "../context/AppContext";
 import T from "../tokens/T";
 
 const HABITS_INITIAL = [
-  { id:"snooze",  label:"Despertar sin snooze",                    emoji:"\u23F0" },
-  { id:"sun",     label:"10 min de luz solar al despertar",         emoji:"\u2600" },
-  { id:"vitd",    label:"Suplemento de vitamina D",                 emoji:"\uD83D\uDC8A" },
-  { id:"screens", label:"Apagar pantallas 30 min antes de dormir",  emoji:"\uD83C\uDF19" },
-  { id:"stress",  label:"Check de estr\u00E9s nocturno (1-5)",           emoji:"\uD83E\uDDE0" },
+  { id:"snooze",  label:"Despertar sin snooze",                    emoji:"⏰" },
+  { id:"sun",     label:"10 min de luz solar al despertar",         emoji:"☀️" },
+  { id:"vitd",    label:"Suplemento de vitamina D",                 emoji:"💊" },
+  { id:"screens", label:"Apagar pantallas 30 min antes de dormir",  emoji:"🌙" },
+  { id:"stress",  label:"Check de estrés nocturno (1-5)",           emoji:"🧠" },
 ];
 
 const HabitsScreen = ({ onBack }) => {
@@ -36,6 +36,27 @@ const HabitsScreen = ({ onBack }) => {
   else if (goal === "surplus") baseSteps -= 1500;
 
   const stepsGoal = Math.max(5000, Math.min(15000, baseSteps));
+
+  const pct = Math.min(100, Math.round((water / waterGoal) * 100));
+
+  const IMG_THIRSTY = "https://i.postimg.cc/Jn4kCQjM/image.png";
+  const IMG_FLOATIE = "https://i.postimg.cc/RFFNDZz0/image.png";
+  const IMG_COCO    = "https://i.postimg.cc/8Cs7yCSn/image.png";
+  const IMG_LOGO    = MASCOT.logo;
+
+  let mascotImg = IMG_THIRSTY;
+  let mascotText = "Un vasito me caería genial...";
+  let floatAnim = "none";
+
+  if (pct >= 100) {
+    mascotImg = IMG_COCO;
+    mascotText = "Meta de hidratación cumplida, ¡metabolismo al 100%!";
+    floatAnim = "float 2.5s ease-in-out infinite";
+  } else if (pct >= 50) {
+    mascotImg = IMG_FLOATIE;
+    mascotText = "¡Ya casi llegas a la meta! El agua está deliciosa hoy.";
+    floatAnim = "float 3s ease-in-out infinite";
+  }
 
   const [habits, setHabits] = useState(HABITS_INITIAL.map(h => ({ ...h, done: false })));
   const [isTracking, setIsTracking] = useState(false);
@@ -124,8 +145,8 @@ const HabitsScreen = ({ onBack }) => {
           <Icon name="arrowLeft" size={17} color={T.textSecondary} />
         </button>
         <div>
-          <div style={{ fontSize:10.5, color:T.textMuted, fontFamily:"'IBM Plex Mono', monospace" }}>M\u00D3DULO 03</div>
-          <h2 style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:19, color:T.textPrimary }}>Micro-H\u00E1bitos</h2>
+          <div style={{ fontSize:10.5, color:T.textMuted, fontFamily:"'IBM Plex Mono', monospace" }}>MÓDULO 03</div>
+          <h2 style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:19, color:T.textPrimary }}>Micro-Hábitos</h2>
         </div>
       </div>
 
@@ -135,7 +156,7 @@ const HabitsScreen = ({ onBack }) => {
           <div style={{ display:"flex", gap:10, alignItems:"center" }}>
             <Icon name="droplets" size={20} color={T.teal} />
             <div>
-              <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:15, color:T.textPrimary }}>Hidrataci\u00F3n</div>
+              <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:15, color:T.textPrimary }}>Hidratación</div>
               <div style={{ fontSize:12, color:T.textMuted }}>Meta: {waterGoal} vasos · {(waterGoal * 250 / 1000).toFixed(1)}L</div>
             </div>
           </div>
@@ -144,35 +165,34 @@ const HabitsScreen = ({ onBack }) => {
           </div>
         </div>
 
-        {noWater && (
-          <div style={{ textAlign:"center", padding:"10px 0 16px", animation:"fadeUp .3s ease both" }}>
-            <img
-              src={MASCOT.logo}
-              alt="NutrIA necesita agua"
-              onError={e => { e.target.style.display="none"; }}
-              style={{ width:72, height:72, borderRadius:18, objectFit:"cover", margin:"0 auto 10px", display:"block", animation:"float 3s ease-in-out infinite" }}
-            />
-            <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:14, color:T.teal, marginBottom:4 }}>
-              \u00A1NutrIA necesita agua! \uD83D\uDCA7
+        {/* Mascota y Estado de Hidratación Dinámico */}
+        <div style={{
+          display: "flex", gap: 12, alignItems: "center", justifyContent: "space-between",
+          background: `linear-gradient(135deg, ${T.tealLight} 0%, rgba(2,132,199,0.02) 100%)`,
+          border: `1.5px solid ${T.border}`, borderRadius: 14, padding: "12px 14px", marginBottom: 14,
+          animation: "fadeUp .3s ease both"
+        }}>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: T.teal, textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: 3 }}>
+              {pct >= 100 ? "¡Felicidades!" : pct >= 50 ? "¡Excelente avance!" : "¡A hidratarse!"}
             </div>
-            <div style={{ fontSize:12.5, color:T.textSecondary }}>A\u00FAn no has registrado ning\u00FAn vaso hoy.</div>
-          </div>
-        )}
-
-        {allWaterDone && (
-          <div style={{ textAlign:"center", padding:"10px 0 14px", animation:"fadeUp .3s ease both" }}>
-            <img
-              src={MASCOT.emptyState.celebration}
-              alt="Meta de agua lograda"
-              onError={e => { e.target.style.display="none"; }}
-              style={{ width:72, height:72, borderRadius:16, objectFit:"cover", margin:"0 auto 10px", animation:"float 2.5s ease-in-out infinite" }}
-            />
-            <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:14, color:T.teal, marginBottom:2 }}>
-              \u00A1Meta de hidrataci\u00F3n lograda! \uD83C\uDF89
+            <div style={{ fontSize: 13, color: T.textSecondary, fontStyle: "italic", lineHeight: 1.4 }}>
+              "{mascotText}"
             </div>
-            <div style={{ fontSize:12, color:T.textSecondary }}>NutrIA celebra contigo</div>
           </div>
-        )}
+          <img 
+            src={mascotImg} 
+            alt="NutrIA Hidratación" 
+            style={{ width: 56, height: 56, objectFit: "contain", animation: floatAnim, borderRadius: 8 }} 
+            onError={(e) => { 
+              if (e.target.src !== IMG_LOGO) { 
+                e.target.src = IMG_LOGO; 
+              } else { 
+                e.target.style.display = "none"; 
+              } 
+            }} 
+          />
+        </div>
 
         <div style={{ display:"flex", gap:7, flexWrap:"wrap", marginBottom:12, justifyContent:"center" }}>
           {[...Array(waterGoal)].map((_,i) => (
@@ -192,7 +212,7 @@ const HabitsScreen = ({ onBack }) => {
         </div>
 
         <button onClick={() => setWater(Math.min(water+1, waterGoal))} className="btn-ghost" style={{ width:"100%", justifyContent:"center", padding:"9px", fontSize:13 }}>
-          \uD83D\uDCA7 Registrar vaso de agua
+          💧 Registrar vaso de agua
         </button>
       </div>
 
@@ -321,7 +341,7 @@ const HabitsScreen = ({ onBack }) => {
       <div className="fade-up fade-up-3 card">
         <div style={{ display:"flex", gap:10, alignItems:"center", marginBottom:14 }}>
           <img src={MASCOT.logo} alt="NutrIA" style={{ width:36, height:36, borderRadius:10, objectFit:"cover", animation:"float 4s ease-in-out infinite" }} onError={e => { e.target.style.display="none"; }} />
-          <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:15, color:T.textPrimary }}>H\u00E1bitos del d\u00EDa</div>
+          <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:600, fontSize:15, color:T.textPrimary }}>Hábitos del día</div>
         </div>
         {habits.map((h,i) => (
           <div key={h.id} onClick={() => toggleHabit(h.id)} style={{ display:"flex", gap:13, alignItems:"center", padding:"10px 0", borderBottom: i<habits.length-1 ? `1px solid ${T.border}` : "none", cursor:"pointer", transition:"opacity .18s", opacity: h.done ? 1 : 0.8 }}>

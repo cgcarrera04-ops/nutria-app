@@ -34,10 +34,10 @@ const KPI = ({ label, val, sub, color, icon }) => (
 
 // Frases motivacionales para Semana 1 (Axioma 1)
 const WEEK1_MESSAGES = [
-  { emoji: "\uD83C\uDF31", title: "Semillas plantadas", body: "Tu cuerpo necesita 7 a 14 dias para empezar a notar los cambios reales. \u00A1La constancia es tu superpoder!" },
-  { emoji: "\uD83E\uDDE0", title: "Tu cerebro se adapta", body: "Los primeros dias son los de mayor esfuerzo mental. Cada comida saludable refuerza nuevas rutas neuronales." },
-  { emoji: "\uD83D\uDCAA", title: "\u00A1Ya empezaste!", body: "El 80% de las personas no llega a completar la primera semana. Tu ya lo estas logrando." },
-  { emoji: "\uD83D\uDCA7", title: "Hidratacion = Rendimiento", body: "Beber suficiente agua los primeros dias ayuda a tu metabolismo a adaptarse al nuevo plan." },
+  { emoji: "🌱", title: "Semillas plantadas", body: "Tu cuerpo necesita 7 a 14 dias para empezar a notar los cambios reales. ¡La constancia es tu superpoder!" },
+  { emoji: "🧠", title: "Tu cerebro se adapta", body: "Los primeros dias son los de mayor esfuerzo mental. Cada comida saludable refuerza nuevas rutas neuronales." },
+  { emoji: "💪", title: "¡Ya empezaste!", body: "El 80% de las personas no llega a completar la primera semana. Tu ya lo estas logrando." },
+  { emoji: "💧", title: "Hidratacion = Rendimiento", body: "Beber suficiente agua los primeros dias ayuda a tu metabolismo a adaptarse al nuevo plan." },
 ];
 
 const AnalyticsScreen = ({ onBack }) => {

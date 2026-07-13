@@ -260,8 +260,8 @@ export const appReducer = (state, action) => {
       
       const checkinEntry = {
         date: Date.now(),
-        title: "\uD83D\uDCC8 Calibraci\u00F3n para la Semana " + (state.currentWeek + 1),
-        content: "Completamos la Semana " + state.currentWeek + ". " + weightComment + " " + energyComment + " He recalculado tu plan completo para la nueva semana para optimizar cada comida. \u00A1Vamos por m\u00E1s! \uD83D\uDC3F\u2728"
+        title: "📈 Calibración para la Semana " + (state.currentWeek + 1),
+        content: "Completamos la Semana " + state.currentWeek + ". " + weightComment + " " + energyComment + " He recalculado tu plan completo para la nueva semana para optimizar cada comida. ¡Vamos por más! 🦦✨"
       };
 
       return autoSaveProfile({

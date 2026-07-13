@@ -63,15 +63,15 @@ const ProfileManagerScreen = ({ profiles, onLoad, onDelete, onCreate }) => {
           }}>
             <img src={MASCOT.logo} alt="NutrIA Anfitriona" style={{ width:80, height:80, borderRadius:16, objectFit:"cover", boxShadow:`0 4px 16px rgba(43,188,185,0.2)` }} onError={e => { e.target.style.display="none"; }} />
             <div>
-              <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:16, color:T.textPrimary, marginBottom:4 }}>\u00A1Hola, caminante! \uD83D\uDC4B</div>
-              <div style={{ fontSize:13, color:T.textSecondary, maxWidth:280, margin:"0 auto", lineHeight:1.5 }}>Parece que tu espacio de entrenamiento est\u00E1 listo para un nuevo comienzo. \u00A1Crea tu primer perfil para que NutrIA dise\u00F1e tu plan semanal!</div>
+              <div style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:16, color:T.textPrimary, marginBottom:4 }}>¡Hola, caminante! 👋</div>
+              <div style={{ fontSize:13, color:T.textSecondary, maxWidth:280, margin:"0 auto", lineHeight:1.5 }}>Parece que tu espacio de entrenamiento está listo para un nuevo comienzo. ¡Crea tu primer perfil para que NutrIA diseñe tu plan semanal!</div>
             </div>
           </div>
         )}
 
         {profiles.map((p, i) => {
           const s = p.userData.somatotype || "athletic";
-          const goal = p.userData.goal === "deficit" ? "D\u00E9ficit" : p.userData.goal === "surplus" ? "Super\u00E1vit" : "Mantener";
+          const goal = p.userData.goal === "deficit" ? "Déficit" : p.userData.goal === "surplus" ? "Superávit" : "Mantener";
           
           return (
             <div key={p.id} className={`fade-up fade-up-${(i % 5) + 1}`} style={{ position:"relative" }}>
@@ -171,12 +171,12 @@ const ProfileManagerScreen = ({ profiles, onLoad, onDelete, onCreate }) => {
       {deleteConfirmId && (
         <div style={{ position:"fixed", inset:0, zIndex:3000, background:"rgba(13,41,41,0.6)", backdropFilter:"blur(4px)", display:"flex", alignItems:"center", justifyContent:"center", padding:20 }} onClick={() => setDeleteConfirmId(null)}>
           <div style={{ background:T.bg, borderRadius:24, padding:24, width:"100%", maxWidth:320, textAlign:"center", boxShadow:T.shadow, animation:"fadeUp .2s ease both" }} onClick={e => e.stopPropagation()}>
-            <div style={{ fontSize:44, marginBottom:16 }}>\uD83E\uDDF6\uD83D\uDC94</div>
+            <div style={{ fontSize:44, marginBottom:16 }}>🧶💔</div>
             <h3 style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:18, color:T.textPrimary, marginBottom:8 }}>
-              \u00BFDespedirse de NutrIA?
+              ¿Despedirse de NutrIA?
             </h3>
             <p style={{ fontSize:13.5, color:T.textSecondary, lineHeight:1.5, marginBottom:24 }}>
-              Est\u00E1s a punto de eliminar este perfil. Se perder\u00E1 todo tu historial, metas y h\u00E1bitos de forma permanente.
+              Estás a punto de eliminar este perfil. Se perderá todo tu historial, metas y hábitos de forma permanente.
             </p>
             <div style={{ display:"flex", gap:10 }}>
               <button onClick={() => setDeleteConfirmId(null)} className="btn-ghost" style={{ flex:1 }}>Cancelar</button>
