@@ -22,6 +22,7 @@ import CheckInScreen   from "./screens/CheckInScreen";
 import AnalyticsScreen from "./screens/AnalyticsScreen";
 import ProfileManagerScreen from "./screens/ProfileManagerScreen";
 import DiaryScreen from "./screens/DiaryScreen";
+import AdminNpsScreen from "./screens/AdminNpsScreen";
 
 import { useEffect } from "react";
 import { playClick, startBgMusic } from "./services/audioEngine";
@@ -221,6 +222,7 @@ const AppInner = () => {
       {screen === "checkin"   && <CheckInScreen   onBack={() => nav("dashboard")} />}
       {screen === "analytics" && <AnalyticsScreen onBack={() => nav("dashboard")} />}
       {screen === "diary"     && <DiaryScreen     onBack={() => nav("dashboard")} />}
+      {screen === "admin-nps" && <AdminNpsScreen  onBack={() => nav("dashboard")} />}
 
       {showNav && <BottomNav current={screen} onNav={nav} />}
       <NotificationController />

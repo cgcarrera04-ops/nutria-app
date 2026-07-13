@@ -1028,6 +1028,17 @@ def submit_nps(req: SubmitNPSRequest):
         
     return {"status": "ok", "message": "¡Gracias por tu recomendación! Puntuación registrada."}
 
+@app.get("/api/admin/nps")
+def get_nps_scores():
+    nps_file = BASE_DIR / "nps_scores.json"
+    if nps_file.exists():
+        try:
+            with open(nps_file, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return []
+    return []
+
 
 # ── Entrypoint ────────────────────────────────────────────────────────────────
 if __name__ == "__main__":

@@ -673,6 +673,18 @@ const DashboardScreen = ({ onNav }) => {
                 <Icon name="arrowRight" size={16} color={T.textMuted} />
               </div>
 
+              {/* Opción: Reportes NPS (Admin) */}
+              <div onClick={() => { if (sfxActive) playChime(); onNav("admin-nps"); setShowSettings(false); }} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", background:T.surface, padding:"14px 16px", borderRadius:16, border:`1.5px solid ${T.border}`, cursor:"pointer", transition:"all .2s" }} onMouseEnter={e => e.currentTarget.style.borderColor=T.teal} onMouseLeave={e => e.currentTarget.style.borderColor=T.border}>
+                <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                  <div style={{ fontSize:22 }}>📊</div>
+                  <div>
+                    <div style={{ fontWeight:600, fontSize:14, color:T.textPrimary }}>Reportes NPS (Admin)</div>
+                    <div style={{ fontSize:11.5, color:T.textMuted }}>Ver opiniones y calificaciones en tiempo real</div>
+                  </div>
+                </div>
+                <Icon name="arrowRight" size={16} color={T.textMuted} />
+              </div>
+
               {/* Opción: Cambiar Perfil */}
               <div onClick={() => { if (sfxActive) playChime(); onNav("profiles"); setShowSettings(false); }} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", background:T.surface, padding:"14px 16px", borderRadius:16, border:`1.5px solid ${T.border}`, cursor:"pointer", transition:"all .2s" }} onMouseEnter={e => e.currentTarget.style.borderColor=T.teal} onMouseLeave={e => e.currentTarget.style.borderColor=T.border}>
                 <div style={{ display:"flex", alignItems:"center", gap:12 }}>
