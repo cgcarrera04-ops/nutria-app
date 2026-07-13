@@ -37,6 +37,65 @@ const ProfileManagerScreen = ({ profiles, onLoad, onDelete, onCreate }) => {
     setEditingId(null);
   };
 
+  const handleExportBackup = () => {
+    try {
+      if (!profiles || profiles.length === 0) {
+        alert("Tu NutrIA no encontró ningún perfil guardado en este dispositivo para exportar. ¡Crea uno primero! 🦦");
+        return;
+      }
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(profiles, null, 2));
+      const downloadAnchor = document.createElement("a");
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "nutria_respaldo_perfiles.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    } catch (e) {
+      alert("Tu NutrIA tuvo un pequeño problema preparando el archivo de respaldo. ¡Inténtalo de nuevo! 🦦");
+    }
+  };
+
+  const handleImportBackup = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const parsed = JSON.parse(event.target.result);
+        if (Array.isArray(parsed) && parsed.every(p => p.id && p.userData)) {
+          const saved = localStorage.getItem("nutriaccion_profiles");
+          const existing = saved ? JSON.parse(saved) : [];
+          
+          let merged = [...existing];
+          let addedCount = 0;
+          let updatedCount = 0;
+          
+          parsed.forEach(newP => {
+            const idx = merged.findIndex(p => p.id === newP.id);
+            if (idx >= 0) {
+              merged[idx] = newP;
+              updatedCount++;
+            } else {
+              merged.push(newP);
+              addedCount++;
+            }
+          });
+          
+          dispatch({ type: "INIT_PROFILES", payload: merged });
+          localStorage.setItem("nutriaccion_profiles", JSON.stringify(merged));
+          
+          alert(`¡Qué alegría! Tu NutrIA 🦦 procesó el archivo con éxito. Agregamos ${addedCount} nuevo(s) perfil(es) y actualizamos ${updatedCount} perfil(es).`);
+        } else {
+          alert("El archivo no tiene el formato correcto de perfiles de NutrIA. 🦦");
+        }
+      } catch (err) {
+        alert("Hubo un error al leer el archivo. Asegúrate de que sea un archivo de respaldo JSON válido. 🦦");
+      }
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <div style={{
       minHeight: "100vh", display: "flex", flexDirection: "column",
@@ -145,6 +204,72 @@ const ProfileManagerScreen = ({ profiles, onLoad, onDelete, onCreate }) => {
               Nuevo Perfil
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Copia de Seguridad Local */}
+      <div className="fade-up" style={{
+        marginTop: 36,
+        padding: "20px",
+        background: T.surface,
+        border: `1.5px solid ${T.border}`,
+        borderRadius: 24,
+        boxShadow: T.shadow,
+        maxWidth: 500,
+        margin: "36px auto 0",
+        width: "100%",
+        textAlign: "center"
+      }}>
+        <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 16, color: T.textPrimary, marginBottom: 6 }}>
+          💾 Copia de Seguridad Local
+        </h3>
+        <p style={{ fontSize: 12.5, color: T.textSecondary, lineHeight: 1.5, marginBottom: 16 }}>
+          Guarda tus perfiles y progreso en tu dispositivo para poder transferirlos a otros navegadores o teléfonos fácilmente. 🦦 💚
+        </p>
+        
+        <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
+          <button
+            onClick={handleExportBackup}
+            style={{
+              padding: "10px 18px",
+              background: T.teal,
+              color: "#fff",
+              border: "none",
+              borderRadius: 12,
+              fontWeight: 600,
+              fontSize: 12.5,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              boxShadow: `0 2px 8px ${T.teal}33`
+            }}
+          >
+            <Icon name="zap" size={13} color="#fff" /> Exportar Copia (JSON)
+          </button>
+          
+          <label style={{
+            padding: "10px 18px",
+            background: T.surface,
+            color: T.textPrimary,
+            border: `1.5px solid ${T.border}`,
+            borderRadius: 12,
+            fontWeight: 600,
+            fontSize: 12.5,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
+            boxShadow: T.shadow
+          }}>
+            <Icon name="plus" size={13} color={T.textPrimary} /> Importar Copia
+            <input
+              type="file"
+              accept=".json"
+              onChange={handleImportBackup}
+              style={{ display: "none" }}
+            />
+          </label>
         </div>
       </div>
 

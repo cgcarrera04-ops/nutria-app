@@ -10,7 +10,7 @@ const TABS = [
 ];
 
 const BottomNav = ({ current, onNav }) => (
-  <div style={{
+  <div id="tour-nav" style={{
     position: "fixed", bottom: 0, left: 0, right: 0,
     background: T.glass,
     backdropFilter: "blur(12px) saturate(180%)",

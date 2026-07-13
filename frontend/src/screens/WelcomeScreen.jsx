@@ -2,6 +2,7 @@ import { useState } from "react";
 import MASCOT from "../constants/mascotImages";
 import Icon from "../components/ui/Icon";
 import T from "../tokens/T";
+import { useApp } from "../context/AppContext";
 
 const DEMO_PROFILES = [
   { id: "office",  label: "👨‍💻 Oficinista Sedentario (Perder Grasa)",  data: { name: "Carlos", goal: "deficit",  weight: 82, height: 175, age: 30, sex: "Masculino", somatotype: "robust",   cookMode: "mixed", cookTime: "15min", exerciseTime: "45min",  equipment: "gym",  budget: 180, activity: "sedentary", sleep: 6, stress: 4 } },
@@ -24,7 +25,32 @@ const FEATURES = [
 ];
 
 const WelcomeScreen = ({ onNext, onDemo, onGoogleLogin }) => {
+  const { dispatch } = useApp();
   const [showDemos, setShowDemos] = useState(false);
+
+  const handleImportBackup = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const parsed = JSON.parse(event.target.result);
+        if (Array.isArray(parsed) && parsed.every(p => p.id && p.userData)) {
+          dispatch({ type: "INIT_PROFILES", payload: parsed });
+          localStorage.setItem("nutriaccion_profiles", JSON.stringify(parsed));
+          
+          alert(`¡Qué alegría! Tu NutrIA 🦦 ha cargado con éxito tus perfiles (${parsed.length} cuenta(s) recuperada(s)).`);
+          dispatch({ type: "SET_SCREEN", payload: "profiles" });
+        } else {
+          alert("El archivo no tiene el formato correcto de perfiles de NutrIA. 🦦");
+        }
+      } catch (err) {
+        alert("Hubo un error al leer el archivo. Asegúrate de elegir el archivo de respaldo .json correcto. 🦦");
+      }
+    };
+    reader.readAsText(file);
+  };
 
   return (
     <div style={{
@@ -176,6 +202,30 @@ const WelcomeScreen = ({ onNext, onDemo, onGoogleLogin }) => {
               </div>
             )}
           </div>
+
+          <label className="btn-ghost" style={{ 
+            width:"100%", 
+            padding:"12px", 
+            background:"transparent", 
+            color: T.textSecondary, 
+            border:`1.5px dashed ${T.border}`, 
+            borderRadius:12,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
+            cursor: "pointer",
+            fontWeight: 600,
+            fontSize: 13.5
+          }}>
+            <Icon name="plus" size={14} color={T.textSecondary} /> Importar respaldo local (JSON) 🦦
+            <input
+              type="file"
+              accept=".json"
+              onChange={handleImportBackup}
+              style={{ display: "none" }}
+            />
+          </label>
         </div>
 
         {/* Hint de scroll */}

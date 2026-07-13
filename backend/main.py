@@ -102,6 +102,9 @@ class CheckinRequest(BaseModel):
 class EstimateRequest(BaseModel):
     food_name: str
 
+class ScanMenuRequest(BaseModel):
+    image_base64: str
+
 # ── Banco de respuestas ───────────────────────────────────────────────────────
 def load_bank() -> list:
     try:
@@ -867,7 +870,7 @@ def estimate_food(req: EstimateRequest):
     Eres NutrIA, la mascota virtual de salud empática y experta en nutrición.
     Analiza este alimento, snack o bebida peruana: "{food_name}".
     Estima los macronutrientes y calorías por una porción estándar de consumo regular.
-    Devuelve estrictamente un objeto JSON con la estructura indicada a continuación. No incluyas explicaciones, no uses markdown ```json ni rodeos.
+    Devuelve estrictamente un objeto JSON con la estructura indicada a continuación. No incluyes explicaciones, no uses markdown ```json ni rodeos.
     
     Axioma 1: Toda variable de texto o cadena debe exhibir un tono cálido, humano y empático.
     Axioma 2: Prohibido inyectar la palabra "Dieta", "Restricción calórica", "Gemini", "Grok" o "API limit" en el texto de cara al usuario.
@@ -882,11 +885,12 @@ def estimate_food(req: EstimateRequest):
     """
 
     for key in keys_to_try:
-        try:
-            result = call_gemini_model(key, "gemini-2.5-flash-lite", prompt)
-            return result
-        except Exception as e:
-            log.error(f"Error en estimación por IA con canal: {e}")
+        for model in ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]:
+            try:
+                result = call_gemini_model(key, model, prompt)
+                return result
+            except Exception as e:
+                log.error(f"Error en estimación por IA con canal ({model}): {e}")
 
     # Fallback si no hay llaves o todas fallan
     return {
@@ -895,6 +899,101 @@ def estimate_food(req: EstimateRequest):
         "macros": {"p": 8, "c": 30, "g": 10},
         "description": "Tu NutrIA ha preparado una estimación aproximada para este plato. ¡Disfruta con alegría! 🦦"
     }
+
+@app.post("/api/scan-menu")
+def scan_menu(req: ScanMenuRequest):
+    img_data = req.image_base64
+    if "," in img_data:
+        img_data = img_data.split(",")[1]
+    
+    import base64
+    try:
+        image_bytes = base64.b64decode(img_data)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail="Imagen base64 inválida.")
+
+    # 1. Identificamos los canales de llaves disponibles para NutrIA
+    keys_to_try = [k for k in [GEMINI_FLASH_API_KEY_PAID, GEMINI_FLASH_API_KEY_FREE] if k]
+
+    prompt = """
+    Eres NutrIA, la mascota virtual de salud empática y experta en nutrición.
+    Analiza esta imagen de un menú de restaurante.
+    Identifica de 3 a 5 platos o combinaciones saludables que se muestran en el menú y que sean representativos o recomendables.
+    Para cada plato:
+    - Estima las calorías y los macronutrientes (proteína, carbohidratos, grasas).
+    - Escribe una descripción empática de no más de 12 palabras.
+    
+    Axioma 1: Toda variable de texto o cadena debe exhibir un tono cálido, humano y empático.
+    Axioma 2: Prohibido inyectar la palabra "Dieta", "Restricción calórica", "Gemini", "Grok" o "API limit" en el texto de cara al usuario.
+    
+    Devuelve estrictamente un objeto JSON con la estructura indicada a continuación. No incluyes explicaciones, no uses markdown ```json ni rodeos.
+    
+    ESTRUCTURA DEL JSON:
+    {
+      "dishes": [
+        {
+          "name": "Nombre limpio del plato (ej. 'Pechuga a la Plancha con Ensalada')",
+          "calories": <número entero>,
+          "macros": {"p": <proteina gramos>, "c": <carbohidratos gramos>, "g": <grasas gramos>},
+          "description": "Breve descripción empática de no más de 12 palabras. Ej: 'Una opción ligera y fresca para recargar energías hoy.'"
+        }
+      ]
+    }
+    """
+
+    for key in keys_to_try:
+        for model in ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]:
+            try:
+                client = genai.Client(api_key=key)
+                response = client.models.generate_content(
+                    model=model,
+                    contents=[
+                        types.Part.from_bytes(
+                            data=image_bytes,
+                            mime_type="image/jpeg",
+                        ),
+                        prompt
+                    ],
+                    config=types.GenerateContentConfig(
+                        temperature=0.4,
+                        max_output_tokens=2048,
+                        response_mime_type="application/json",
+                        thinking_config=types.ThinkingConfig(
+                            thinking_budget=0
+                        )
+                    ),
+                )
+                data = clean_json_response(response.text)
+                if data and "dishes" in data and isinstance(data["dishes"], list):
+                    return data
+            except Exception as e:
+                log.error(f"Error en escaneo de menú por IA con canal ({model}): {e}")
+
+    # Fallback si no hay llaves o todas fallan
+    # Devolver una selección empática local
+    return {
+        "dishes": [
+            {
+                "name": "Pechuga de Pollo a la Plancha",
+                "calories": 350,
+                "macros": {"p": 35, "c": 10, "g": 8},
+                "description": "Una opción clásica, ligera y rica en proteínas para cuidar de ti. 🦦"
+            },
+            {
+                "name": "Pescado al Vapor con Ensalada",
+                "calories": 280,
+                "macros": {"p": 28, "c": 8, "g": 6},
+                "description": "Ligero, fresco y lleno de nutrientes para que te sientas genial. 💚"
+            },
+            {
+                "name": "Ensalada Rústica con Huevo Frito",
+                "calories": 310,
+                "macros": {"p": 14, "c": 12, "g": 18},
+                "description": "Nutrición sencilla con grasas buenas y proteína para mantener tu energía. 🦦"
+            }
+        ]
+    }
+
 
 # ── Entrypoint ────────────────────────────────────────────────────────────────
 if __name__ == "__main__":

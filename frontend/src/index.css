@@ -80,3 +80,18 @@ body {
   0%, 100% { box-shadow: 0 4px 20px rgba(43,188,185,0.1); }
   50% { box-shadow: 0 4px 28px rgba(43,188,185,0.3), 0 0 0 3px rgba(43,188,185,0.12); }
 }
+
+/* Estilos para el Recorrido Guiado (Spotlight Tour) */
+.tour-highlight {
+  position: relative !important;
+  z-index: 10001 !important;
+  pointer-events: none !important;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.65), 0 0 15px 5px var(--t-teal) !important;
+  transition: box-shadow 0.25s ease !important;
+  border-color: var(--t-teal) !important;
+}
+
+/* Evitar que se desborde el spotlight en la barra de navegación inferior */
+#tour-nav.tour-highlight {
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.65), 0 -4px 15px 5px var(--t-teal) !important;
+}

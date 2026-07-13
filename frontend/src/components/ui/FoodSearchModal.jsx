@@ -21,6 +21,8 @@ const FoodSearchModal = ({ onClose }) => {
   const [estimateError, setEstimateError] = useState(null);
   const [selectedFood, setSelectedFood] = useState(null);
   const [successMsg, setSuccessMsg] = useState("");
+  const [scanWarning, setScanWarning] = useState("");
+  const [isOfflineWarning, setIsOfflineWarning] = useState(false);
 
   const results = query.trim().length > 1
     ? foodBank.filter(f => 
@@ -29,6 +31,95 @@ const FoodSearchModal = ({ onClose }) => {
       )
     : [];
 
+  // Función de estimación local para fallback offline
+  const estimateMacrosLocally = (q) => {
+    const text = q.toLowerCase().trim();
+    
+    // Buscar en foodBank si hay coincidencia aproximada de nombre
+    const exactMatch = foodBank.find(f => f.name.toLowerCase() === text);
+    if (exactMatch) {
+      return {
+        name: exactMatch.name,
+        calories: exactMatch.calories,
+        macros: exactMatch.macros,
+        description: `Tu NutrIA 🦦 recuperó esta deliciosa opción peruana de la memoria local.`
+      };
+    }
+    
+    // Si no es coincidencia exacta, hagamos un escaneo heurístico de palabras clave
+    let calories = 300;
+    let p = 15;
+    let c = 35;
+    let g = 10;
+    let reasons = [];
+    
+    if (text.includes("pollo") || text.includes("gallina")) {
+      p += 15;
+      g += 4;
+      reasons.push("pollo");
+    }
+    if (text.includes("carne") || text.includes("res") || text.includes("lomo") || text.includes("bistec") || text.includes("cerdo")) {
+      p += 18;
+      g += 8;
+      reasons.push("carne");
+    }
+    if (text.includes("pescado") || text.includes("marisco") || text.includes("camaron") || text.includes("ceviche")) {
+      p += 20;
+      g += 2;
+      reasons.push("marinos");
+    }
+    if (text.includes("arroz") || text.includes("chaufa") || text.includes("tallarin") || text.includes("papa") || text.includes("yuca") || text.includes("camote")) {
+      c += 40;
+      reasons.push("carbohidratos");
+    }
+    if (text.includes("ensalada") || text.includes("verdura") || text.includes("limon") || text.includes("tomate")) {
+      c += 5;
+      calories -= 80;
+      reasons.push("verduras");
+    }
+    if (text.includes("huevo")) {
+      p += 6;
+      g += 5;
+      reasons.push("huevo");
+    }
+    if (text.includes("palta") || text.includes("aceite") || text.includes("queso")) {
+      g += 12;
+      reasons.push("grasas");
+    }
+    if (text.includes("zero") || text.includes("sin azucar") || text.includes("sin azúcar")) {
+      c = 0;
+      calories = 5;
+      p = 0;
+      g = 0;
+    }
+    
+    // Calibración final de calorías
+    if (calories === 300) {
+      calories = p * 4 + c * 4 + g * 9;
+    } else {
+      calories = Math.max(50, calories + (p * 4 + c * 4 + g * 9) - 300);
+    }
+    
+    // Si hay un número en el texto (ej. "2 huevos", "200g"), podemos intentar multiplicar
+    const numMatch = text.match(/^(\d+)\s+/);
+    if (numMatch) {
+      const mult = parseInt(numMatch[1], 10);
+      if (mult > 1 && mult <= 10) {
+        calories *= mult;
+        p *= mult;
+        c *= mult;
+        g *= mult;
+      }
+    }
+
+    return {
+      name: q.charAt(0).toUpperCase() + q.slice(1),
+      calories: Math.round(calories),
+      macros: { p: Math.round(p), c: Math.round(c), g: Math.round(g) },
+      description: `Tu NutrIA 🦦 estimó esto offline con base en ingredientes de ${reasons.join(', ') || 'alimento estándar'}.`
+    };
+  };
+
   const handleCapture = async (e) => {
     if (e.target.files && e.target.files[0]) {
       const originalFile = e.target.files[0];
@@ -36,6 +127,7 @@ const FoodSearchModal = ({ onClose }) => {
       
       setIsScanning(true);
       setScanResults(null);
+      setScanWarning("");
       
       try {
         // Comprimir de forma local en el navegador
@@ -48,20 +140,56 @@ const FoodSearchModal = ({ onClose }) => {
         console.log(`- Tamaño Comprimido: ${compSizeKb} KB`);
         console.log(`- Ahorro de red: ${savingsPct}%`);
         
-        // Simular llamada a Gemini Vision
-        setTimeout(() => {
-          setIsScanning(false);
-          const suggested = foodBank.filter(f => f.calories < 500).slice(0, 3);
-          setScanResults(suggested.length ? suggested : foodBank.slice(0, 3));
-        }, 3500);
+        // Convertir a base64 para enviar al servidor
+        const reader = new FileReader();
+        reader.readAsDataURL(compressedFile);
+        reader.onloadend = () => {
+          const base64data = reader.result;
+          
+          fetch(`${API_BASE}/api/scan-menu`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ image_base64: base64data })
+          })
+          .then(res => {
+            if (!res.ok) throw new Error("Fallo al escanear el menú con la IA");
+            return res.json();
+          })
+          .then(data => {
+            setIsScanning(false);
+            if (data && data.dishes && data.dishes.length > 0) {
+              // Convertir estructura de platos a formato compatible con foodBank (con id)
+              const formattedDishes = data.dishes.map((d, index) => ({
+                id: `scanned-${Date.now()}-${index}`,
+                name: d.name,
+                calories: d.calories,
+                macros: {
+                  p: d.macros?.p || d.macros?.protein || 0,
+                  c: d.macros?.c || d.macros?.carbs || 0,
+                  g: d.macros?.g || d.macros?.fat || 0
+                },
+                description: d.description || "Recomendado por NutrIA 🦦"
+              }));
+              setScanResults(formattedDishes);
+            } else {
+              throw new Error("Respuesta del servidor vacía o incompleta");
+            }
+          })
+          .catch(err => {
+            console.warn("[NutrIA] Servidor de menú offline. Cargando sugerencias locales:", err);
+            setIsScanning(false);
+            setScanWarning("Tu NutrIA 🦦 no se pudo conectar al servidor, pero aquí tienes 3 sugerencias saludables clásicas de su memoria local. 💚");
+            // Cargar sugerencias locales desde el banco
+            const suggested = foodBank.filter(f => f.calories < 500).slice(0, 3);
+            setScanResults(suggested.length ? suggested : foodBank.slice(0, 3));
+          });
+        };
       } catch (err) {
-        console.error("[NutrIA] Error al comprimir la foto:", err);
-        // Fallback
-        setTimeout(() => {
-          setIsScanning(false);
-          const suggested = foodBank.filter(f => f.calories < 500).slice(0, 3);
-          setScanResults(suggested.length ? suggested : foodBank.slice(0, 3));
-        }, 3500);
+        console.error("[NutrIA] Error al comprimir o procesar la foto:", err);
+        setIsScanning(false);
+        setScanWarning("Tu NutrIA 🦦 tuvo un problema leyendo la foto, pero te comparte estas opciones locales. 💚");
+        const suggested = foodBank.filter(f => f.calories < 500).slice(0, 3);
+        setScanResults(suggested.length ? suggested : foodBank.slice(0, 3));
       }
     }
   };
@@ -95,6 +223,7 @@ const FoodSearchModal = ({ onClose }) => {
 
     setIsEstimating(true);
     setEstimateError(null);
+    setIsOfflineWarning(false);
     setAiResult(null);
 
     fetch(`${API_BASE}/api/estimate-food`, {
@@ -115,9 +244,15 @@ const FoodSearchModal = ({ onClose }) => {
       }
     })
     .catch(err => {
-      console.error("[NutrIA] Error de IA:", err);
+      console.warn("[NutrIA] Servidor de estimación offline. Usando motor local:", err);
       setIsEstimating(false);
-      setEstimateError("NutrIA 🦦 no pudo reconocer ese alimento. Intenta con algo como: \"arroz con pollo\", \"2 huevos fritos\" o \"ceviche mixto\".");
+      try {
+        const localEst = estimateMacrosLocally(query);
+        setAiResult(localEst);
+        setIsOfflineWarning(true);
+      } catch (fallbackErr) {
+        setEstimateError("NutrIA 🦦 no pudo reconocer ese alimento. Intenta con algo como: \"arroz con pollo\", \"2 huevos fritos\" o \"ceviche mixto\".");
+      }
     });
   };
 
@@ -198,6 +333,18 @@ const FoodSearchModal = ({ onClose }) => {
                 <img src={MASCOT.logo} alt="NutrIA pensando" style={{ width:60, height:60, borderRadius:16, animation:"float 3s ease-in-out infinite", margin:"0 auto 12px", display:"block", border:`1px solid ${T.teal}40` }} />
                 <h4 style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:14.5, color:T.teal }}>La mascota NutrIA está estimando...</h4>
                 <p style={{ fontSize:12, color:T.textSecondary, marginTop:4 }}>Calculando calorías y macros con lupa de nutricionista. 🦦🕵️</p>
+              </div>
+            )}
+
+            {isOfflineWarning && (
+              <div style={{
+                padding:"12px 14px", background:`${T.amber}12`, border:`1.5px solid ${T.amber}35`,
+                borderRadius:14, marginBottom:16, display:"flex", gap:10, alignItems:"center", textAlign:"left"
+              }}>
+                <span style={{ fontSize: 20 }}>🦦</span>
+                <p style={{ fontSize: 12, color: T.textSecondary, margin: 0, lineHeight: 1.4 }}>
+                  <strong>Modo offline:</strong> No logré conectar con mi servidor principal, pero he aproximado esta estimación con mi sabiduría local. ¡Puedes registrarla con total confianza! 💚
+                </p>
               </div>
             )}
 
@@ -332,6 +479,15 @@ const FoodSearchModal = ({ onClose }) => {
 
             {scanResults && !isScanning && (
               <div style={{ animation:"fadeIn .4s ease" }}>
+                {scanWarning && (
+                  <div style={{
+                    padding:"12px 14px", background:`${T.teal}12`, border:`1.5px solid ${T.teal}35`,
+                    borderRadius:14, marginBottom:16, display:"flex", gap:10, alignItems:"center", textAlign:"left"
+                  }}>
+                    <span style={{ fontSize: 20 }}>🦦</span>
+                    <p style={{ fontSize: 12, color: T.textSecondary, margin: 0, lineHeight: 1.4 }}>{scanWarning}</p>
+                  </div>
+                )}
                 <div style={{ display:"flex", alignItems:"center", gap:10, justifyContent:"center", marginBottom:20 }}>
                   <span style={{ fontSize:24 }}>✨</span>
                   <h4 style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight:700, fontSize:16, color:T.textPrimary }}>Opciones Recomendadas · Clic para registrar</h4>

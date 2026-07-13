@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MacroBar from "../components/ui/MacroBar";
 import EmpatheticFooter from "../components/EmpatheticFooter";
 import FrictionScore from "../components/domain/FrictionScore";
@@ -155,6 +155,7 @@ const DashboardScreen = ({ onNav }) => {
   const [bgMusicActive, setBgMusicActive] = useState(localStorage.getItem("nutria_bgmusic") !== "false");
   const [sfxActive, setSfxActive] = useState(localStorage.getItem("nutria_sfx") !== "false");
   const [musicMode, setMusicModeState] = useState(localStorage.getItem("nutria_musicmode") || "active");
+  const [tourStep, setTourStep] = useState(null);
 
   const handleMusicModeChange = (mode) => {
     setMusicModeState(mode);
@@ -187,6 +188,54 @@ const DashboardScreen = ({ onNav }) => {
 
   const name = state.userData.name || "tú";
   const completed = state.mealsCompleted || [];
+
+  const TOUR_STEPS = [
+    {
+      targetId: "tour-mascot",
+      title: "Tu mascota NutrIA 🦦",
+      content: "¡Hola! Soy NutrIA, tu mascota virtual. Te acompañaré día a día, reaccionaré alegremente a tu hidratación y nos enfocaremos siempre en el lado positivo. ¡Trabajaremos como un gran equipo! 💚",
+    },
+    {
+      targetId: "tour-calories",
+      title: "Energía y Nutrición 📊",
+      content: "Aquí verás tus calorías consumidas en el día. Al completar las comidas de tu plan en la pestaña de 'Nutrición', el anillo se irá llenando de forma automática.",
+    },
+    ...(isFemale ? [{
+      targetId: "tour-hormonal",
+      title: "Sincronizador Hormonal 🌸",
+      content: "Este panel inteligente adapta tus porciones, nutrientes y rutina de ejercicios según la fase de tu ciclo menstrual actual para cuidar tu vitalidad.",
+    }] : []),
+    {
+      targetId: "tour-water",
+      title: "Piscina de Hidratación 💧",
+      content: "Controla tu meta de agua diaria. Con cada vaso registrado, me verás nadar con un accesorio diferente y mi piscina estará radiante.",
+    },
+    {
+      targetId: "tour-nav",
+      title: "Barra de Navegación 📲",
+      content: "Usa estos botones para cambiar de pantalla: ver tu plan semanal de comidas, tu rutina de ejercicios adaptativa, tus hábitos o tus estadísticas históricas.",
+    }
+  ];
+
+  useEffect(() => {
+    const prevHighlighted = document.querySelectorAll(".tour-highlight");
+    prevHighlighted.forEach(el => el.classList.remove("tour-highlight"));
+
+    if (tourStep === null || !TOUR_STEPS[tourStep]) return;
+
+    const currentStep = TOUR_STEPS[tourStep];
+    const targetElement = document.getElementById(currentStep.targetId);
+    if (targetElement) {
+      targetElement.classList.add("tour-highlight");
+      targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    
+    return () => {
+      if (targetElement) {
+        targetElement.classList.remove("tour-highlight");
+      }
+    };
+  }, [tourStep, isFemale]);
   
   // ─── Calendario y Sincronización de Tiempo Inteligente (Axioma 1) ───────────
   const getCalendarInfo = () => {
@@ -296,6 +345,28 @@ const DashboardScreen = ({ onNav }) => {
           </div>
         </div>
         <div style={{ display:"flex", gap:8 }}>
+          <button 
+            onClick={() => { 
+              if (sfxActive) playChime(); 
+              setTourStep(0); 
+            }} 
+            style={{ 
+              width:40, 
+              height:40, 
+              borderRadius:12, 
+              background:`${T.teal}15`, 
+              border:`1.5px solid ${T.teal}35`, 
+              display:"flex", 
+              alignItems:"center", 
+              justifyContent:"center", 
+              boxShadow:T.shadow, 
+              cursor:"pointer",
+              padding: 0
+            }}
+            title="Recorrido de ayuda"
+          >
+            <span style={{ fontSize: 18 }}>❓</span>
+          </button>
           <div onClick={() => { if (sfxActive) playClick(); setShowSettings(true); }} style={{ width:40, height:40, borderRadius:12, background:T.surface, border:`1.5px solid ${T.border}`, display:"flex", alignItems:"center", justifyContent:"center", boxShadow:T.shadow, cursor:"pointer" }}>
             <Icon name="settings" size={20} color={T.textSecondary} />
           </div>
@@ -320,7 +391,7 @@ const DashboardScreen = ({ onNav }) => {
       <StreakBadge />
 
       {/* ── Hero Mascot ── */}
-      <div className="fade-up fade-up-1" style={{ display:"flex", justifyContent:"center", marginBottom:20 }}>
+      <div id="tour-mascot" className="fade-up fade-up-1" style={{ display:"flex", justifyContent:"center", marginBottom:20 }}>
         <div style={{
           position:"relative", width:"100%", maxWidth:300,
           background:`linear-gradient(160deg, ${T.tealLight} 0%, ${T.bg} 100%)`,
@@ -395,7 +466,7 @@ const DashboardScreen = ({ onNav }) => {
       </div>
 
       {/* ── Anillo calórico ── */}
-      <div className="fade-up fade-up-2 card" style={{ marginBottom:10 }}>
+      <div id="tour-calories" className="fade-up fade-up-2 card" style={{ marginBottom:10 }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
           <div>
             <p style={{ fontSize:10.5, color:T.textMuted, fontFamily:"'IBM Plex Mono', monospace", marginBottom:5 }}>CALORÍAS HOY</p>
@@ -422,7 +493,7 @@ const DashboardScreen = ({ onNav }) => {
 
       {/* ── Sincronizador Hormonal NutrIA (Solo Mujeres) ── */}
       {isFemale && (
-        <div className="fade-up fade-up-3 card" style={{ marginBottom:10, position:"relative", overflow:"hidden" }}>
+        <div id="tour-hormonal" className="fade-up fade-up-3 card" style={{ marginBottom:10, position:"relative", overflow:"hidden" }}>
           {/* Fondo sutil degradado rosa/teja */}
           <div style={{
             position:"absolute", top:0, right:0, bottom:0, left:0,
@@ -524,7 +595,9 @@ const DashboardScreen = ({ onNav }) => {
       <ProgressCalendar state={state} />
 
       {/* ── Gamificación del Agua ── */}
-      <WaterTracker state={state} dispatch={dispatch} sfxActive={sfxActive} />
+      <div id="tour-water">
+        <WaterTracker state={state} dispatch={dispatch} sfxActive={sfxActive} />
+      </div>
 
       {/* ── Quick Actions ── */}
       <div className="fade-up fade-up-5" style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:10 }}>
@@ -569,6 +642,37 @@ const DashboardScreen = ({ onNav }) => {
             </div>
 
             <div style={{ display:"flex", flexDirection:"column", gap:14, marginBottom:24 }}>
+              {/* Opción: Respaldar Perfiles (Copia de seguridad) */}
+              <div onClick={() => { 
+                if (sfxActive) playChime(); 
+                try {
+                  const saved = localStorage.getItem("nutriaccion_profiles");
+                  if (!saved || JSON.parse(saved).length === 0) {
+                    alert("Tu NutrIA no encontró ningún perfil guardado en este dispositivo para exportar. ¡Crea uno primero! 🦦");
+                    return;
+                  }
+                  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(saved);
+                  const downloadAnchor = document.createElement("a");
+                  downloadAnchor.setAttribute("href", dataStr);
+                  downloadAnchor.setAttribute("download", "nutria_respaldo_perfiles.json");
+                  document.body.appendChild(downloadAnchor);
+                  downloadAnchor.click();
+                  downloadAnchor.remove();
+                } catch (e) {
+                  alert("Tu NutrIA tuvo un pequeño problema preparando el archivo de respaldo. ¡Inténtalo de nuevo! 🦦");
+                }
+                setShowSettings(false); 
+              }} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", background:T.surface, padding:"14px 16px", borderRadius:16, border:`1.5px solid ${T.border}`, cursor:"pointer", transition:"all .2s" }} onMouseEnter={e => e.currentTarget.style.borderColor=T.teal} onMouseLeave={e => e.currentTarget.style.borderColor=T.border}>
+                <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                  <div style={{ fontSize:22 }}>📥</div>
+                  <div>
+                    <div style={{ fontWeight:600, fontSize:14, color:T.textPrimary }}>Respaldar Perfiles</div>
+                    <div style={{ fontSize:11.5, color:T.textMuted }}>Guarda una copia de seguridad local (JSON)</div>
+                  </div>
+                </div>
+                <Icon name="arrowRight" size={16} color={T.textMuted} />
+              </div>
+
               {/* Opción: Cambiar Perfil */}
               <div onClick={() => { if (sfxActive) playChime(); onNav("profiles"); setShowSettings(false); }} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", background:T.surface, padding:"14px 16px", borderRadius:16, border:`1.5px solid ${T.border}`, cursor:"pointer", transition:"all .2s" }} onMouseEnter={e => e.currentTarget.style.borderColor=T.teal} onMouseLeave={e => e.currentTarget.style.borderColor=T.border}>
                 <div style={{ display:"flex", alignItems:"center", gap:12 }}>
@@ -769,6 +873,114 @@ const DashboardScreen = ({ onNav }) => {
             <p style={{ fontSize:11, color:T.textMuted, textAlign:"center", margin:0, fontFamily:"'IBM Plex Mono', monospace" }}>
               NUTRIA SOUND ENGINE v1.2 · 100% SINTETIZADO
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* ── Tour Overlay Modal ── */}
+      {tourStep !== null && TOUR_STEPS[tourStep] && (
+        <div style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 10002,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 24,
+          background: "rgba(0,0,0,0.15)",
+          pointerEvents: "none"
+        }}>
+          <div style={{
+            background: T.surface,
+            border: `2px solid ${T.teal}`,
+            borderRadius: 24,
+            padding: 24,
+            maxWidth: 360,
+            width: "100%",
+            boxShadow: T.shadowLg,
+            pointerEvents: "auto",
+            animation: "fadeUp 0.3s ease both",
+            textAlign: "center"
+          }}>
+            <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: 16, color: T.teal, marginBottom: 8 }}>
+              {TOUR_STEPS[tourStep].title}
+            </h3>
+            <p style={{ fontSize: 13, color: T.textSecondary, lineHeight: 1.5, marginBottom: 20 }}>
+              {TOUR_STEPS[tourStep].content}
+            </p>
+            
+            <div style={{ display: "flex", justifyContent: "center", gap: 6, marginBottom: 20 }}>
+              {TOUR_STEPS.map((_, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    background: tourStep === idx ? T.teal : T.border,
+                    transition: "background 0.2s"
+                  }}
+                />
+              ))}
+            </div>
+
+            <div style={{ display: "flex", gap: 10, justifyContent: "space-between" }}>
+              <button
+                onClick={() => setTourStep(null)}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: T.textMuted,
+                  fontSize: 12.5,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  padding: 0
+                }}
+              >
+                Saltar
+              </button>
+              
+              <div style={{ display: "flex", gap: 8 }}>
+                {tourStep > 0 && (
+                  <button
+                    onClick={() => {
+                      if (sfxActive) playClick();
+                      setTourStep(tourStep - 1);
+                    }}
+                    className="btn-ghost"
+                    style={{
+                      padding: "8px 14px",
+                      fontSize: 12.5,
+                      fontWeight: 600,
+                      borderRadius: 10,
+                      border: `1.5px solid ${T.border}`
+                    }}
+                  >
+                    Atrás
+                  </button>
+                )}
+                
+                <button
+                  onClick={() => {
+                    if (sfxActive) playClick();
+                    if (tourStep < TOUR_STEPS.length - 1) {
+                      setTourStep(tourStep + 1);
+                    } else {
+                      setTourStep(null);
+                    }
+                  }}
+                  className="btn-primary"
+                  style={{
+                    padding: "8px 14px",
+                    fontSize: 12.5,
+                    fontWeight: 700,
+                    borderRadius: 10
+                  }}
+                >
+                  {tourStep < TOUR_STEPS.length - 1 ? "Siguiente 🦦" : "Terminar 🎉"}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
