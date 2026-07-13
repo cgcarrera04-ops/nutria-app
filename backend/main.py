@@ -105,6 +105,12 @@ class EstimateRequest(BaseModel):
 class ScanMenuRequest(BaseModel):
     image_base64: str
 
+class SubmitNPSRequest(BaseModel):
+    nps_rating: int
+    user_name: Optional[str] = "Anónimo"
+    user_email: Optional[str] = None
+    timestamp: Optional[float] = None
+
 # ── Banco de respuestas ───────────────────────────────────────────────────────
 def load_bank() -> list:
     try:
@@ -993,6 +999,34 @@ def scan_menu(req: ScanMenuRequest):
             }
         ]
     }
+
+@app.post("/api/submit-nps")
+def submit_nps(req: SubmitNPSRequest):
+    import time
+    nps_file = BASE_DIR / "nps_scores.json"
+    scores = []
+    if nps_file.exists():
+        try:
+            with open(nps_file, "r", encoding="utf-8") as f:
+                scores = json.load(f)
+        except Exception:
+            scores = []
+            
+    scores.append({
+        "rating": req.nps_rating,
+        "name": req.user_name,
+        "email": req.user_email,
+        "timestamp": req.timestamp or time.time()
+    })
+    
+    try:
+        with open(nps_file, "w", encoding="utf-8") as f:
+            json.dump(scores, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        log.error(f"Error saving NPS score: {e}")
+        raise HTTPException(status_code=500, detail="No se pudo registrar la puntuación localmente")
+        
+    return {"status": "ok", "message": "¡Gracias por tu recomendación! Puntuación registrada."}
 
 
 # ── Entrypoint ────────────────────────────────────────────────────────────────

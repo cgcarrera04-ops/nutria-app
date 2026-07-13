@@ -2,6 +2,7 @@ import { useState } from "react";
 import Icon from "../components/ui/Icon";
 import T from "../tokens/T";
 import { useApp } from "../context/AppContext";
+import { API_BASE } from "../config/api";
 
 const CheckInScreen = ({ onBack }) => {
   const { state, dispatch } = useApp();
@@ -56,6 +57,26 @@ const CheckInScreen = ({ onBack }) => {
       type: "SAVE_CHECKIN",
       payload: checkinPayload
     });
+
+    // Enviar calificación NPS de la primera semana al backend de forma asíncrona
+    if (isFirstWeek && npsRating) {
+      fetch(`${API_BASE}/api/submit-nps`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nps_rating: npsRating,
+          user_name: state.userData?.name || "Anónimo",
+          user_email: state.userData?.email || null,
+          timestamp: Date.now() / 1000
+        })
+      })
+      .then(res => {
+        if (!res.ok) console.warn("[NutrIA] Fallo al enviar NPS al servidor");
+      })
+      .catch(err => {
+        console.warn("[NutrIA] Servidor offline al enviar NPS:", err);
+      });
+    }
 
     if (window.__nutriaTriggerGenerate) {
       window.__nutriaTriggerGenerate(state.currentWeek + 1, checkinPayload);
