@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import MacroBar from "../components/ui/MacroBar";
 import EmpatheticFooter from "../components/EmpatheticFooter";
 import FrictionScore from "../components/domain/FrictionScore";
@@ -156,6 +156,64 @@ const DashboardScreen = ({ onNav }) => {
   const [sfxActive, setSfxActive] = useState(localStorage.getItem("nutria_sfx") !== "false");
   const [musicMode, setMusicModeState] = useState(localStorage.getItem("nutria_musicmode") || "active");
   const [tourStep, setTourStep] = useState(null);
+
+  // ── Acceso secreto al panel de administración ──────────────────────────────
+  const [showPinModal, setShowPinModal] = useState(false);
+  const [pinValue, setPinValue] = useState("");
+  const [pinError, setPinError] = useState("");
+  const [pinAttempts, setPinAttempts] = useState(0);
+  const [pinBlocked, setPinBlocked] = useState(false);
+  const tapTimestamps = useRef([]);
+
+  const ADMIN_PIN_HASH = "d07164a628596323ebcf8796dee0e5c164620e0922b52483bc805f54416ee73c";
+
+  const sha256 = async (message) => {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+  };
+
+  const handleMascotTap = () => {
+    if (pinBlocked) return;
+    const now = Date.now();
+    tapTimestamps.current.push(now);
+    // Mantener solo los últimos 5 toques
+    if (tapTimestamps.current.length > 5) tapTimestamps.current.shift();
+    // Verificar si los 5 toques ocurrieron en menos de 3 segundos
+    if (tapTimestamps.current.length === 5) {
+      const elapsed = now - tapTimestamps.current[0];
+      if (elapsed < 3000) {
+        tapTimestamps.current = [];
+        setShowPinModal(true);
+        setPinValue("");
+        setPinError("");
+      }
+    }
+  };
+
+  const handlePinSubmit = async () => {
+    if (pinBlocked || pinValue.length !== 4) return;
+    const hash = await sha256(pinValue);
+    if (hash === ADMIN_PIN_HASH) {
+      setShowPinModal(false);
+      setPinValue("");
+      setPinError("");
+      setPinAttempts(0);
+      onNav("admin-nps");
+    } else {
+      const newAttempts = pinAttempts + 1;
+      setPinAttempts(newAttempts);
+      if (newAttempts >= 3) {
+        setPinBlocked(true);
+        setPinError("");
+        setShowPinModal(false);
+      } else {
+        setPinError("Hmm, eso no coincide 🦦");
+        setPinValue("");
+      }
+    }
+  };
 
   const handleMusicModeChange = (mode) => {
     setMusicModeState(mode);
@@ -402,7 +460,8 @@ const DashboardScreen = ({ onNav }) => {
           <img
             src={MASCOT.fullBody}
             alt="NutrIA"
-            style={{ width:"100%", height:"auto", objectFit:"contain", maxHeight:220, borderRadius:18, filter:`drop-shadow(0 6px 16px rgba(43,188,185,0.2))`, animation:"float 4s ease-in-out infinite" }}
+            onClick={handleMascotTap}
+            style={{ width:"100%", height:"auto", objectFit:"contain", maxHeight:220, borderRadius:18, filter:`drop-shadow(0 6px 16px rgba(43,188,185,0.2))`, animation:"float 4s ease-in-out infinite", cursor:"default" }}
             onError={e => { e.target.src = MASCOT.logo; }}
           />
           <div style={{ textAlign:"center", paddingBottom:6 }}>
@@ -668,18 +727,6 @@ const DashboardScreen = ({ onNav }) => {
                   <div>
                     <div style={{ fontWeight:600, fontSize:14, color:T.textPrimary }}>Respaldar Perfiles</div>
                     <div style={{ fontSize:11.5, color:T.textMuted }}>Guarda una copia de seguridad local (JSON)</div>
-                  </div>
-                </div>
-                <Icon name="arrowRight" size={16} color={T.textMuted} />
-              </div>
-
-              {/* Opción: Reportes NPS (Admin) */}
-              <div onClick={() => { if (sfxActive) playChime(); onNav("admin-nps"); setShowSettings(false); }} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", background:T.surface, padding:"14px 16px", borderRadius:16, border:`1.5px solid ${T.border}`, cursor:"pointer", transition:"all .2s" }} onMouseEnter={e => e.currentTarget.style.borderColor=T.teal} onMouseLeave={e => e.currentTarget.style.borderColor=T.border}>
-                <div style={{ display:"flex", alignItems:"center", gap:12 }}>
-                  <div style={{ fontSize:22 }}>📊</div>
-                  <div>
-                    <div style={{ fontWeight:600, fontSize:14, color:T.textPrimary }}>Reportes NPS (Admin)</div>
-                    <div style={{ fontSize:11.5, color:T.textMuted }}>Ver opiniones y calificaciones en tiempo real</div>
                   </div>
                 </div>
                 <Icon name="arrowRight" size={16} color={T.textMuted} />
@@ -993,6 +1040,77 @@ const DashboardScreen = ({ onNav }) => {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Modal secreto de PIN para acceso admin ── */}
+      {showPinModal && (
+        <div style={{
+          position: "fixed", inset: 0, zIndex: 10003,
+          background: "rgba(13,41,41,0.7)", backdropFilter: "blur(8px)",
+          display: "flex", alignItems: "center", justifyContent: "center", padding: 24
+        }} onClick={() => { setShowPinModal(false); setPinValue(""); setPinError(""); }}>
+          <div style={{
+            background: T.surface, border: `2px solid ${T.border}`,
+            borderRadius: 24, padding: 28, maxWidth: 300, width: "100%",
+            boxShadow: T.shadowLg, textAlign: "center",
+            animation: "fadeUp 0.25s ease both"
+          }} onClick={e => e.stopPropagation()}>
+            <div style={{ fontSize: 36, marginBottom: 12 }}>🦦🔒</div>
+            <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 15, color: T.textPrimary, marginBottom: 6 }}>
+              Acceso restringido
+            </h3>
+            <p style={{ fontSize: 12, color: T.textMuted, marginBottom: 20, lineHeight: 1.5 }}>
+              Ingresa tu código de acceso para continuar.
+            </p>
+
+            <input
+              type="password"
+              inputMode="numeric"
+              maxLength={4}
+              value={pinValue}
+              onChange={e => {
+                const val = e.target.value.replace(/\D/g, "").slice(0, 4);
+                setPinValue(val);
+                setPinError("");
+              }}
+              onKeyDown={e => { if (e.key === "Enter") handlePinSubmit(); }}
+              autoFocus
+              placeholder="● ● ● ●"
+              style={{
+                width: "100%", textAlign: "center", fontSize: 28,
+                letterSpacing: 12, padding: "12px 16px",
+                background: T.bg, border: `2px solid ${pinError ? T.amber : T.border}`,
+                borderRadius: 16, color: T.textPrimary,
+                fontFamily: "'IBM Plex Mono', monospace",
+                outline: "none", transition: "border-color 0.2s"
+              }}
+            />
+
+            {pinError && (
+              <p style={{ fontSize: 12, color: T.amber, marginTop: 10, fontWeight: 600 }}>
+                {pinError}
+              </p>
+            )}
+
+            <button
+              onClick={handlePinSubmit}
+              disabled={pinValue.length !== 4}
+              className="btn-primary"
+              style={{
+                width: "100%", marginTop: 16, padding: 12, fontSize: 13.5,
+                fontWeight: 700, borderRadius: 14,
+                opacity: pinValue.length === 4 ? 1 : 0.45,
+                cursor: pinValue.length === 4 ? "pointer" : "not-allowed"
+              }}
+            >
+              Verificar
+            </button>
+
+            <p style={{ fontSize: 10.5, color: T.textMuted, marginTop: 12 }}>
+              {3 - pinAttempts} intento(s) restante(s)
+            </p>
           </div>
         </div>
       )}
