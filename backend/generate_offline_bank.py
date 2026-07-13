@@ -146,38 +146,64 @@ def get_meal_templates(p_day, c_day, f_day, diet_type):
         "vegan": {
              "desayuno": [
                 {"n": "Revuelto vegano de Tofu con espinaca", "items": [f"{gd('queso')*2}g de tofu firme desmenuzado", "Espinaca picada salteada", f"{gd('pan')} rebanadas de pan integral"], "pb": ["Batido de avena con proteína de arveja"]},
+                {"n": "Avena power con leche de soya y plátano", "items": [f"{gd('avena')}g de avena en hojuelas", f"{gd('fruta')} plátano maduro", f"{gd('queso')}ml de leche de soya", "1 cda de mantequilla de maní"], "pb": ["Smoothie verde de espinaca y mango"]},
+                {"n": "Tostadas con hummus casero y palta", "items": [f"{gd('pan')} rebanadas de pan integral", f"{gd('palta')}g de palta cremosa", "Hummus de garbanzos casero", "Tomate cherry en rodajas"], "pb": ["Pudding de chía con leche de coco"]},
+                {"n": "Pancakes veganos de avena y banana", "items": [f"{gd('avena')}g de avena licuada", f"{gd('fruta')} plátano maduro", "1 cda de linaza molida + 3 cdas agua"], "pb": ["Granola casera con bebida vegetal"]},
              ],
              "almuerzo": [
                 {"n": "Bowl proteico de tempeh y arroz", "items": [f"{ga('tofu')}g de tempeh asado a la parrilla", f"{ga('arroz')}g de arroz integral", "Vainitas tiernas espolvoreadas con ajonjolí"], "pb": ["Sopa espesa y reconfortante de lentejas rojas"]},
+                {"n": "Guiso potente de lentejas con arroz", "items": [f"{ga('tofu')}g de lentejas cocidas con comino", f"{ga('arroz')}g de arroz integral", "Ensalada criolla fresca"], "pb": ["Tacu tacu vegano de lentejas"]},
+                {"n": "Pasta integral con salsa de tofu y espinaca", "items": [f"{ga('tofu')}g de tofu firme desmenuzado", f"{ga('arroz')}g de fideos integrales cocidos", "Salsa de tomate natural y espinaca"], "pb": ["Wrap de garbanzos y verduras al horno"]},
+                {"n": "Quinua graneada con garbanzos al curry", "items": [f"{ga('tofu')}g de garbanzos cocidos", f"{ga('arroz')}g de quinua graneada", "Salsa de curry suave con leche de coco"], "pb": ["Buddha bowl de quinua y vegetales"]},
              ],
              "snack": [
                 {"n": "Snack de nueces y manzana crocante", "items": [f"{gs('almendra')}g de nueces o almendras tostadas", "1 manzana fresca y dulce"], "pb": ["Mix energético de frutos secos"]},
+                {"n": "Hummus cremoso con palitos de zanahoria", "items": [f"{gs('almendra')*2}g de hummus casero", "Bastones de zanahoria y apio"], "pb": ["Galletas de arroz con mantequilla de maní"]},
+                {"n": "Batido proteico de soya y cacao", "items": [f"{gs('yogurt')}ml de leche de soya", "1 cda de cacao en polvo sin azúcar", f"{gs('almendra')}g de mantequilla de maní"], "pb": ["Barritas caseras de avena y dátiles"]},
              ],
              "cena": [
                 {"n": "Chaufa vegano de quinua al wok", "items": [f"{gc('arroz')}g de quinua graneada suelta", "Cebollita china, toques de sillao y verduritas", f"{gc('pollo')}g de seitán en daditos"], "pb": ["Berenjenas asadas bañadas en salsa de ajonjolí"]},
+                {"n": "Sopa reconfortante de lentejas rojas", "items": [f"{gc('pollo')}g de lentejas rojas", f"{gc('arroz')}g de fideos de arroz", "Caldo de verduras con kión y cúrcuma"], "pb": ["Crema de zapallo con semillas de girasol"]},
+                {"n": "Tacos veganos de frijoles negros", "items": [f"{gc('pan')} tortillas de maíz", f"{gc('pollo')}g de frijoles negros refritos", f"{gc('palta')}g de palta y tomate fresco"], "pb": ["Bowl de arroz con frijoles y palta"]},
              ]
         },
         "keto": {
              "desayuno": [
                 {"n": "Desayuno Keto: Huevos, tocino y palta", "items": [f"{gd('huevos')} huevos enteros de corral", f"{gd('palta')}g de palta en rodajas", "Toque de tocino doradito"], "pb": ["Omelette quesudo con jamón artesanal"]},
+                {"n": "Omelette de queso con champiñones", "items": [f"{gd('huevos')} huevos batidos", f"{gd('queso')}g de queso mozzarella", "Champiñones salteados en mantequilla"], "pb": ["Revuelto de huevos con espinaca y queso"]},
+                {"n": "Bowl keto de yogurt griego y nueces", "items": [f"{gd('queso')*2}g de yogurt griego sin azúcar", f"{gd('palta')//2}g de nueces pecanas", "Ralladura de coco sin azúcar"], "pb": ["Batido keto de cacao y palta"]},
              ],
              "almuerzo": [
                 {"n": "Pollo asado jugoso con costra de mozzarella", "items": [f"{ga('pollo')}g de pechuga o muslo de pollo", f"{ga('pollo')//2}g de queso mozzarella gratinado", "Floretes de brócoli bañados en mantequilla"], "pb": ["Ensalada Cobb contundente"]},
+                {"n": "Salmón o pescado al horno con espárragos", "items": [f"{ga('pescado')}g de filete de salmón o pescado", "Espárragos asados con aceite de oliva", f"{ga('pollo')//3}g de queso parmesano"], "pb": ["Ensalada de atún con palta y aceite de oliva"]},
+                {"n": "Carne molida con espinacas gratinadas", "items": [f"{ga('cerdo')}g de carne molida magra", "Espinacas salteadas con ajo", f"{ga('pollo')//3}g de queso gratinado"], "pb": ["Hamburguesa sin pan con lechuga y queso"]},
              ],
              "snack": [
                 {"n": "Cubos de queso cheddar y almendras", "items": [f"{gs('yogurt')//2}g de queso cheddar en cubitos", f"{gs('almendra')}g de almendras enteras"], "pb": ["Bolsita de chicharrón de cerdo crujiente"]},
+                {"n": "Rollitos de jamón con queso crema", "items": ["3 fetas de jamón serrano", f"{gs('yogurt')//2}g de queso crema", "Pepinillos encurtidos"], "pb": ["Aceitunas verdes rellenas con almendras"]},
+                {"n": "Palta rellena con atún", "items": [f"{gs('almendra')*2}g de palta", "1 lata pequeña de atún en aceite", "Limón y sal al gusto"], "pb": ["Huevo duro con mayonesa casera keto"]},
              ],
              "cena": [
                 {"n": "Pescado blanco bañado en crema de espinacas", "items": [f"{gc('pescado')}g de filete de pescado doradito", "Espinacas tiernas sumergidas en crema de leche"], "pb": ["Ensalada César abundante con pollo (cero croutones)"]},
+                {"n": "Pollo a la mantequilla con brócoli", "items": [f"{gc('pollo')}g de muslo de pollo dorado", "Salsa de mantequilla y ajo", "Brócoli al vapor con queso"], "pb": ["Wrap de lechuga con pollo deshilachado"]},
+                {"n": "Lomo de cerdo con ensalada de palta", "items": [f"{gc('cerdo')}g de lomo de cerdo al horno", f"{gc('palta')}g de palta en láminas", "Ensalada de rúcula con aceite de oliva"], "pb": ["Sopa cremosa de coliflor keto"]},
              ]
         }
     }
     
-    # Rellenar con fallback si el tipo de dieta tiene pocas opciones
-    if diet_type not in ["balanced", "vegetarian"]:
+    # Rellenar con fallback si el tipo de alimentación tiene pocas opciones
+    # IMPORTANTE: Vegano jamás hereda de balanced (contiene carne), usa vegetarian como fallback
+    if diet_type == "vegan":
         for m_type in ["desayuno", "almuerzo", "snack", "cena"]:
-            if len(templates[diet_type][m_type]) < 5:
-                templates[diet_type][m_type].extend(templates["balanced"][m_type])
+            if len(templates["vegan"][m_type]) < 5:
+                # Filtrar recetas vegetarianas que no tengan huevo/lácteo explícito en el nombre
+                veg_fallback = [r for r in templates["vegetarian"][m_type]]
+                templates["vegan"][m_type].extend(veg_fallback)
+    elif diet_type == "keto":
+        # Keto puede heredar de balanced ya que ambos incluyen proteína animal
+        for m_type in ["desayuno", "almuerzo", "snack", "cena"]:
+            if len(templates["keto"][m_type]) < 5:
+                templates["keto"][m_type].extend(templates["balanced"][m_type])
                 
     return templates.get(diet_type, templates["balanced"])
 

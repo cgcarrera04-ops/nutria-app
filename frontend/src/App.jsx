@@ -24,7 +24,7 @@ import ProfileManagerScreen from "./screens/ProfileManagerScreen";
 import DiaryScreen from "./screens/DiaryScreen";
 
 import { useEffect } from "react";
-import { playClick } from "./services/audioEngine";
+import { playClick, startBgMusic } from "./services/audioEngine";
 
 const APP_SCREENS = new Set(["dashboard","nutrition","training","habits","analytics","diary"]);
 
@@ -36,9 +36,20 @@ const AppInner = () => {
     document.documentElement.setAttribute("data-theme", state.userData.theme || "light");
   }, [state.userData.theme]);
 
-  // ── Interceptor Global de Sonidos de Clic Tactiles ──
+  // ── Interceptor Global de Sonidos de Clic Tactiles y Música ──
   useEffect(() => {
+    let audioInitialized = false;
+
     const handleGlobalClick = (e) => {
+      // Intentar iniciar la música de fondo en la primera interacción
+      if (!audioInitialized) {
+        const bgMusicActive = localStorage.getItem("nutria_bgmusic") !== "false";
+        if (bgMusicActive) {
+          startBgMusic();
+        }
+        audioInitialized = true;
+      }
+
       const target = e.target;
       const interactive = target.closest("button, a, [role='button'], [style*='cursor: pointer'], [style*='cursor:pointer'], input[type='range'], input[type='checkbox'], input[type='radio'], select");
       if (interactive) {
@@ -49,7 +60,11 @@ const AppInner = () => {
       }
     };
     window.addEventListener("click", handleGlobalClick);
-    return () => window.removeEventListener("click", handleGlobalClick);
+    window.addEventListener("touchstart", handleGlobalClick, { passive: true });
+    return () => {
+      window.removeEventListener("click", handleGlobalClick);
+      window.removeEventListener("touchstart", handleGlobalClick);
+    };
   }, []);
 
   const { screen } = state;

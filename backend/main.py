@@ -8,7 +8,7 @@ Endpoints:
   GET  /api/bank/list  → lista fingerprints disponibles en el banco
 """
 
-import os, json, random, logging, urllib.request, urllib.error, copy
+import os, json, random, logging, urllib.request, urllib.error, copy, re
 from pathlib import Path
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
@@ -51,6 +51,7 @@ app.add_middleware(
 class UserData(BaseModel):
     goal:         str = "maintain"
     somatotype:   str = "athletic"
+    dietType:     str = "balanced"
     cookMode:     str = "cook"
     cookTime:     Optional[str] = "30min"
     exerciseTime: Optional[str] = "45min"
@@ -67,6 +68,10 @@ class UserData(BaseModel):
     injuries:     List[str] = []
     pandoraText:  str = ""
     name:         str = ""
+    mealCount:    Optional[int] = 4
+    cravings:     Optional[str] = "none"
+    supplements:  Optional[str] = "none"
+    fatigue:      Optional[str] = "low"
 
 class CheckinData(BaseModel):
     weight_now:       Optional[float] = None
@@ -106,8 +111,8 @@ def load_bank() -> list:
         return []
 
 def budget_range(soles: int) -> str:
-    if soles <= 79:  return "low"
-    if soles <= 150: return "medium"
+    if soles <= 100: return "low"
+    if soles <= 200: return "medium"
     return "high"
 
 def build_fingerprint(ud: UserData, week: int = 1) -> str:
@@ -402,7 +407,6 @@ def save_to_bank(fingerprint: str, label: str, plan: dict, ud: Optional[UserData
         log.error(f"Error al guardar en banco de respuestas: {e}")
 
 # ── Sanitización de la Caja de Pandora ────────────────────────────────────────
-import re
 
 def sanitize_pandora(text: str) -> str:
     """Sanitiza el texto libre de la Caja de Pandora para prevenir inyección de prompt.

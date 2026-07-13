@@ -2,6 +2,7 @@
 const T = {
   bg:           "var(--t-bg)",
   surface:      "var(--t-surface)",
+  glass:        "var(--t-glass)",
   card:         "var(--t-card)",
   border:       "var(--t-border)",
   borderFocus:  "var(--t-border-focus)",

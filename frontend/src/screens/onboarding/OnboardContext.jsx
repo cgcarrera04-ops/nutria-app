@@ -525,7 +525,7 @@ const OnboardContext = ({ onNext, onBack }) => {
             {/* ── Frecuencia de Comidas ── */}
             <div style={{ marginBottom:16 }}>
               <label style={{ fontSize:13, fontWeight:600, color:T.textSecondary, display:"block", marginBottom:9 }}>Frecuencia de comidas por día</label>
-              <GridSelect options={MEAL_COUNTS} value={userData.mealCount || 3} onChange={v => set({ mealCount:v })} cols={2} />
+              <GridSelect options={MEAL_COUNTS} value={userData.mealCount || 4} onChange={v => set({ mealCount:v })} cols={2} />
             </div>
 
             {/* ── Flexibilidad / Comida Chatarra ── */}

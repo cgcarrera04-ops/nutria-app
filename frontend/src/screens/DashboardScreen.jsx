@@ -62,7 +62,7 @@ const ProgressCalendar = ({ state }) => {
 };
 
 const WaterTracker = ({ state, dispatch, sfxActive }) => {
-  // Cálculo dinámico inteligente basado en peso real
+  // Calculo dinamico inteligente basado en peso real
   const targetWater = Math.max(6, Math.ceil(((Number(state.userData.weight) || 70) * 35) / 250));
   const water = state.userData.waterGlasses || 0;
   
@@ -71,21 +71,31 @@ const WaterTracker = ({ state, dispatch, sfxActive }) => {
     const newWater = water + 1;
     dispatch({ type: "UPDATE_USER_DATA", payload: { waterGlasses: newWater } });
   };
+
+  const handleReset = () => {
+    dispatch({ type: "UPDATE_USER_DATA", payload: { waterGlasses: 0 } });
+  };
   
   const pct = Math.min(100, Math.round((water / targetWater) * 100));
   
-  // Axioma 3: Mascota dinámica e imágenes
-  let mascotImg = MASCOT.water.thirsty;
-  let mascotText = "¡Qué calor! Un vasito me caería genial... 🏜️";
+  // Mascota dinamica segun progreso de hidratacion
+  // URLs directas de postimg.cc (CDN)
+  const IMG_THIRSTY = "https://i.postimg.cc/Jn4kCQjM/image.png";
+  const IMG_FLOATIE = "https://i.postimg.cc/RFFNDZz0/image.png";
+  const IMG_COCO    = "https://i.postimg.cc/8Cs7yCSn/image.png";
+  const IMG_LOGO    = MASCOT.logo;
+  
+  let mascotImg = IMG_THIRSTY;
+  let mascotText = "Un vasito me caeria genial...";
   let floatAnim = "none";
   
   if (pct >= 100) {
-    mascotImg = MASCOT.water.coco;
-    mascotText = "¡Salud! Meta cumplida, metabolismo al 100%. 🥥";
+    mascotImg = IMG_COCO;
+    mascotText = "Meta cumplida, metabolismo al 100%.";
     floatAnim = "float 2.5s ease-in-out infinite";
   } else if (pct >= 50) {
-    mascotImg = MASCOT.water.floatie;
-    mascotText = "¡Ya casi! El agua está deliciosa hoy. 🛟";
+    mascotImg = IMG_FLOATIE;
+    mascotText = "Ya casi! El agua esta deliciosa hoy.";
     floatAnim = "float 3s ease-in-out infinite";
   }
 
@@ -96,7 +106,18 @@ const WaterTracker = ({ state, dispatch, sfxActive }) => {
           <h4 style={{ fontFamily:"'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 14.5, margin: 0, color:"#0284c7" }}>Piscina de NutrIA</h4>
           <span style={{ fontSize:11, color:T.textSecondary }}>Meta diaria: {targetWater} vasos</span>
         </div>
-        <img src={mascotImg} alt="NutrIA Agua" style={{ width: 56, height: 56, objectFit: "contain", animation: floatAnim }} onError={(e) => { e.target.src = MASCOT.logo; }} />
+        <img 
+          src={mascotImg} 
+          alt="NutrIA Agua" 
+          style={{ width: 56, height: 56, objectFit: "contain", animation: floatAnim, borderRadius: 8 }} 
+          onError={(e) => { 
+            if (e.target.src !== IMG_LOGO) { 
+              e.target.src = IMG_LOGO; 
+            } else { 
+              e.target.style.display = "none"; 
+            } 
+          }} 
+        />
       </div>
       
       <div style={{ fontSize: 11, fontStyle: "italic", color: T.textSecondary, marginBottom: 10, textAlign: "right" }}>
@@ -110,9 +131,16 @@ const WaterTracker = ({ state, dispatch, sfxActive }) => {
         <span style={{ fontSize:12, fontWeight:700, color:"#0284c7", width:35, textAlign:"right", fontFamily:"'IBM Plex Mono', monospace" }}>{water}/{targetWater}</span>
       </div>
       
-      <button onClick={handleAdd} style={{ marginTop:14, width:"100%", padding:"10px", background:"#0284c7", color:"#fff", border:"none", borderRadius:12, fontWeight:700, cursor:"pointer", display:"flex", justifyContent:"center", alignItems:"center", gap:8, boxShadow:"0 4px 12px rgba(2,132,199,0.25)" }}>
-        <span style={{fontSize:15}}>💧</span> Añadir Vaso (250ml)
-      </button>
+      <div style={{ display: "flex", gap: 8, marginTop: 14 }}>
+        <button onClick={handleAdd} style={{ flex:1, padding:"10px", background:"#0284c7", color:"#fff", border:"none", borderRadius:12, fontWeight:700, cursor:"pointer", display:"flex", justifyContent:"center", alignItems:"center", gap:8, boxShadow:"0 4px 12px rgba(2,132,199,0.25)" }}>
+          + Vaso (250ml)
+        </button>
+        {water > 0 && (
+          <button onClick={handleReset} style={{ padding:"10px 14px", background:T.surface, color:T.textMuted, border:`1px solid ${T.border}`, borderRadius:12, fontWeight:600, cursor:"pointer", fontSize:11 }}>
+            Reiniciar
+          </button>
+        )}
+      </div>
     </div>
   );
 };
@@ -122,7 +150,7 @@ const DashboardScreen = ({ onNav }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [showCycleModal, setShowCycleModal] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [bgMusicActive, setBgMusicActive] = useState(localStorage.getItem("nutria_bgmusic") === "true");
+  const [bgMusicActive, setBgMusicActive] = useState(localStorage.getItem("nutria_bgmusic") !== "false");
   const [sfxActive, setSfxActive] = useState(localStorage.getItem("nutria_sfx") !== "false");
   const [musicMode, setMusicModeState] = useState(localStorage.getItem("nutria_musicmode") || "active");
 
@@ -233,7 +261,7 @@ const DashboardScreen = ({ onNav }) => {
               ¡Momento de calibración!
             </h2>
             <p style={{ fontSize: 13.5, color: T.textSecondary, lineHeight: 1.6, marginBottom: 24 }}>
-              Completamos con éxito la **Semana {state.currentWeek}** de tu plan. Tu **NutrIA** 🦦 necesita ajustar tus metas, porciones y recetas para la **Semana {calendar.week}** basándose en cómo te has sentido físicamente.
+              Completamos con éxito la <strong>Semana {state.currentWeek}</strong> de tu plan. Tu <strong>NutrIA</strong> 🦦 necesita ajustar tus metas, porciones y recetas para la <strong>Semana {calendar.week}</strong> basándose en cómo te has sentido físicamente.
             </p>
             <button
               onClick={() => { if (sfxActive) playClick(); onNav("checkin"); }}
@@ -281,7 +309,7 @@ const DashboardScreen = ({ onNav }) => {
         }}>
           <span style={{ fontSize: 20 }}>🌙</span>
           <p style={{ fontSize: 11.5, color: T.textSecondary, lineHeight: 1.5, margin: 0 }}>
-            **Regla de la Noche:** Al registrarte tarde, tu plan se activará oficialmente **mañana por la mañana**. ¡Duerme bien y recupera energías hoy! 🦦
+            <strong>Regla de la Noche:</strong> Al registrarte tarde, tu plan se activará oficialmente <strong>mañana por la mañana</strong>. ¡Duerme bien y recupera energías hoy! 🦦
           </p>
         </div>
       )}
@@ -519,7 +547,7 @@ const DashboardScreen = ({ onNav }) => {
 
       {/* ── Settings Drawer Modal ── */}
       {showSettings && (
-        <div style={{ position:"fixed", inset:0, zIndex:2000, background:"rgba(13,41,41,0.6)", backdropFilter:"blur(4px)", display:"flex", alignItems:"flex-end", justifyContent:"center" }} onClick={() => { if (sfxActive) playClick(); setShowSettings(false); }}>
+        <div style={{ position:"fixed", inset:0, zIndex:2000, background:"rgba(13,41,41,0.6)", backdropFilter:"blur(6px)", WebkitBackdropFilter:"blur(6px)", display:"flex", alignItems:"flex-end", justifyContent:"center" }} onClick={() => { if (sfxActive) playClick(); setShowSettings(false); }}>
           <div style={{ background:T.bg, borderTopLeftRadius:28, borderTopRightRadius:28, padding:"24px 20px 40px", width:"100%", maxWidth:520, animation:"fadeUp .24s ease both" }} onClick={e => e.stopPropagation()}>
             <div style={{ width:40, height:4, borderRadius:2, background:T.border, margin:"0 auto 20px" }} />
             

@@ -3,6 +3,7 @@
 :root {
   --t-bg: #FFFFFF;
   --t-surface: #FFFFFF;
+  --t-glass: rgba(255, 255, 255, 0.85);
   --t-card: #F7FDFD;
   --t-border: #C8ECEA;
   --t-border-focus: #2BBCB9;
@@ -37,6 +38,7 @@
 [data-theme="dark"] {
   --t-bg: #071313;
   --t-surface: #091717;
+  --t-glass: rgba(9, 23, 23, 0.85);
   --t-card: #0C1E1E;
   --t-border: #143535;
   --t-border-focus: #2BBCB9;

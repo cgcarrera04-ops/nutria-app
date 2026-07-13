@@ -52,8 +52,7 @@ export const buildFingerprint = (userData) => {
   const act  = activityMap[activity] || activity || "moderate";
   const cook = cookMode === "mixed" ? "mixed" : cookMode === "buy" ? "buy" : "cook";
   const exTime = exerciseTime || "45min";
-  // Map outdoor to home para asegurar un match exacto si el banco no tiene outdoor
-  const equip = equipment === "outdoor" ? "home" : (equipment || "gym");
+  const equip = equipment || "gym";
 
   return [goal, somatotype, diet, cook, budg, act, sex, exTime, equip].join("_");
 };

@@ -187,15 +187,15 @@ const PWAInstallPrompt = () => {
             <div style={{ display: "flex", flexDirection: "column", gap: 7, fontSize: 12, color: T.textSecondary }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontSize: 15 }}>1️⃣</span>
-                <span>Toca el botón **Compartir** en tu Safari (icono 📤 en la parte inferior).</span>
+                <span>Toca el botón <strong>Compartir</strong> en tu Safari (icono 📤 en la parte inferior).</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontSize: 15 }}>2️⃣</span>
-                <span>Desliza las opciones y selecciona **"Agregar a inicio"** (o *"Add to Home Screen"* ➕).</span>
+                <span>Desliza las opciones y selecciona <strong>"Agregar a inicio"</strong> (o <em>"Add to Home Screen"</em> ➕).</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontSize: 15 }}>3️⃣</span>
-                <span>Presiona **Agregar** arriba a la derecha. ¡Y listo! 🦦</span>
+                <span>Presiona <strong>Agregar</strong> arriba a la derecha. ¡Y listo! 🦦</span>
               </div>
             </div>
           </div>
@@ -235,11 +235,11 @@ const PWAInstallPrompt = () => {
             <div style={{ display: "flex", flexDirection: "column", gap: 7, fontSize: 12, color: T.textSecondary }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontSize: 15 }}>1️⃣</span>
-                <span>Toca el menú de opciones de tu navegador (los **tres puntos ⁝** o líneas ☰).</span>
+                <span>Toca el menú de opciones de tu navegador (los <strong>tres puntos ⁝</strong> o líneas ☰).</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontSize: 15 }}>2️⃣</span>
-                <span>Elige **"Agregar a la pantalla principal"** (o *"Instalar aplicación"*).</span>
+                <span>Elige <strong>"Agregar a la pantalla principal"</strong> (o <em>"Instalar aplicación"</em>).</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ fontSize: 15 }}>3️⃣</span>

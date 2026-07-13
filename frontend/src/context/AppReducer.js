@@ -276,22 +276,25 @@ export const appReducer = (state, action) => {
       });
     }
 
-    case "LOAD_PROFILE":
+    case "LOAD_PROFILE": {
+      const prof = action.payload;
+      const hasPlan = prof.plan && !prof.plan.stub;
       return {
         ...state,
-        activeProfileId: action.payload.id,
-        userData:        action.payload.userData,
-        plan:            action.payload.plan || null,
-        currentWeek:     action.payload.currentWeek || 1,
-        currentDay:      action.payload.currentDay || 1,
-        planStartDate:   action.payload.planStartDate || null,
-        weekHistory:     action.payload.weekHistory || [],
-        lastCheckin:     action.payload.lastCheckin || null,
-        diary:           action.payload.diary || [],
-        todayHabits:     action.payload.todayHabits || initialState.todayHabits,
-        mealsCompleted:  action.payload.mealsCompleted || [],
-        screen:          "dashboard",
+        activeProfileId: prof.id,
+        userData:        prof.userData || initialState.userData,
+        plan:            prof.plan || null,
+        currentWeek:     prof.currentWeek || 1,
+        currentDay:      prof.currentDay || 1,
+        planStartDate:   prof.planStartDate || null,
+        weekHistory:     prof.weekHistory || [],
+        lastCheckin:     prof.lastCheckin || null,
+        diary:           prof.diary || [],
+        todayHabits:     prof.todayHabits || initialState.todayHabits,
+        mealsCompleted:  prof.mealsCompleted || [],
+        screen:          hasPlan ? "dashboard" : "welcome",
       };
+    }
 
     case "SAVE_PROFILE": {
       return autoSaveProfile(state);
@@ -299,6 +302,25 @@ export const appReducer = (state, action) => {
 
     case "DELETE_PROFILE": {
       const newProfiles = state.profiles.filter(p => p.id !== action.payload);
+      const isActiveDeleted = state.activeProfileId === action.payload;
+      if (isActiveDeleted) {
+        return {
+          ...state,
+          profiles: newProfiles,
+          activeProfileId: null,
+          userData: initialState.userData,
+          plan: null,
+          currentWeek: 1,
+          currentDay: 1,
+          planStartDate: null,
+          weekHistory: [],
+          lastCheckin: null,
+          diary: [],
+          todayHabits: initialState.todayHabits,
+          mealsCompleted: [],
+          screen: newProfiles.length > 0 ? "profiles" : "welcome",
+        };
+      }
       return { ...state, profiles: newProfiles };
     }
 

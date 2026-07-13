@@ -12,10 +12,12 @@ const TABS = [
 const BottomNav = ({ current, onNav }) => (
   <div style={{
     position: "fixed", bottom: 0, left: 0, right: 0,
-    background: T.surface,
+    background: T.glass,
+    backdropFilter: "blur(12px) saturate(180%)",
+    WebkitBackdropFilter: "blur(12px) saturate(180%)",
     borderTop: `1.5px solid ${T.border}`,
     display: "flex", padding: "7px 6px 14px",
-    boxShadow: "0 -4px 20px rgba(43,188,185,0.08)",
+    boxShadow: "0 -4px 24px rgba(43,188,185,0.12)",
     zIndex: 100,
   }}>
     {TABS.map(t => {

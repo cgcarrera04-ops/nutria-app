@@ -74,7 +74,8 @@ const NotificationController = () => {
   return (
     <div style={{
       position: "fixed", top: 20, left: "50%", transform: "translateX(-50%)",
-      zIndex: 9999, background: T.surface, border: `1.5px solid ${T.teal}`,
+      zIndex: 9999, background: T.glass, backdropFilter: "blur(12px) saturate(180%)", WebkitBackdropFilter: "blur(12px) saturate(180%)",
+      border: `1.5px solid ${T.teal}40`,
       borderRadius: 16, padding: "16px", boxShadow: T.shadowLg, width: "90%", maxWidth: 360,
       display: "flex", gap: 12, alignItems: "flex-start", animation: "slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
     }}>
