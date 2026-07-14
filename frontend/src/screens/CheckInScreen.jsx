@@ -60,6 +60,20 @@ const CheckInScreen = ({ onBack }) => {
 
     // Enviar calificación NPS de la primera semana al backend de forma asíncrona
     if (isFirstWeek && npsRating) {
+      // Guardar también localmente por robustez offline
+      try {
+        const localNps = JSON.parse(localStorage.getItem("nutria_local_nps") || "[]");
+        localNps.push({
+          rating: npsRating,
+          name: state.userData?.name || "Anónimo",
+          email: state.userData?.email || null,
+          timestamp: Date.now() / 1000
+        });
+        localStorage.setItem("nutria_local_nps", JSON.stringify(localNps));
+      } catch (e) {
+        console.error("[NutrIA] Error al guardar NPS localmente:", e);
+      }
+
       fetch(`${API_BASE}/api/submit-nps`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
